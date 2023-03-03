@@ -77,5 +77,23 @@
 
         <button type="submit">Order</button>
     </form>
+
+    <hr>
+
+    <h1>Validasi</h1>
+    <form action="valid">
+        <input type="text" name="input" required minlength="3" maxlength="5">
+        <input type="number" name="number" id="number" min="2" max="6">
+        <button type="submit">Kirim</button>
+    </form>
+
+    <!-- Validasi digunakan agar end-user mengisikan input-an sesuai yg kita harapkan. Untuk validasi kita bisa gunakan seperti contohnya:
+    a. required, digunakan agar end-user tidak men-skip input tersebut, jadi seperti wajib di isi.
+    b. minlength <number>, digunakan untuk menentukan berapa minimal pendeknya teks yang harus diinput.
+    c. maxlength <number>, digunakan untuk menentukan berapa maksimal panjang teks yang bisa diinput.
+    d. min <number>, digunakan pada input dengan type misal number, untuk menentukan nilai terkecil yang bisa di input.
+    e. max <number>, digunakan pada input dengan type misal number, untuk menentukan nilai terbesar yang bisa di input.
+    
+    -->
 </body>
 </html>
