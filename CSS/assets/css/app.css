@@ -5,8 +5,8 @@ h3 {
 }
 
 button {
-    color: darkviolet;
-    background-color: lightskyblue;
+    color: rgb(128, 0, 0);
+    background-color: rgb(255, 248, 220);
 }
 
 p {
