@@ -3,3 +3,13 @@ h3 {
     color: lawngreen;
     font-size: 40px;
 }
+
+button {
+    color: darkviolet;
+    background-color: lightskyblue;
+}
+
+p {
+    color: white;
+    background-color: grey;
+}
