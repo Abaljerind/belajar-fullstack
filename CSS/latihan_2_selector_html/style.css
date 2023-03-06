@@ -1,0 +1,9 @@
+/* universal selector digunakan agar semua elemen html yg ada di file html bisa diubah secara global. */
+* {
+    background-color: lightskyblue;
+}
+
+h1, h2, h3 {
+    color: white;
+    background-color: salmon;
+}
