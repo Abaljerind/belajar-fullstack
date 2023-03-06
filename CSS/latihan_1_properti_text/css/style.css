@@ -15,3 +15,22 @@ a {
 }
 
 /* font-weight: lighter or bolder, akan mengikuti ketebalan dari font-family yg dipakai */
+
+/* ukuran font pada css:
+- Relative:
+em
+rem
+vh
+vw
+%
+dll
+
+
+- Absolute:
+px
+pt
+cm
+in
+mm
+
+*/
