@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+    font-weight: 900;
+    text-decoration: underline overline dotted salmon;
+}
+
+p {
+    line-height: 1.5;
+    letter-spacing: -1px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* font-weight: lighter or bolder, akan mengikuti ketebalan dari font-family yg dipakai */
