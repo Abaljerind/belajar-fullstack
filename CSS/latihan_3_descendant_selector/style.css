@@ -1,4 +1,16 @@
-.jokes p {
+/* contoh direct descendant, dimana selector yg kita ingin ubah berada di dalam / dibungkus di dalam suatu elemen lainnya. */
+.jokes > p {
     font-size: 14px;
     color: royalblue;
+}
+
+/* contoh adjacent selector, dimana seletor yg kita ingin ubah ada setelah suatu elemen seperti dibawah.
+
+Cara baca selector dibawah:
+css tolong ubah elemen button yang ada setelah tag a saja. 
+
+Itu kenapa button lain yang ada diatasnya tag p tidak ikut berubah.
+*/
+a + button {
+    background-color: salmon;
 }
