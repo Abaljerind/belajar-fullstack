@@ -1,6 +1,11 @@
 div {
     width: 300px;
-    border: 10px solid lawngreen;
     padding: 50px;
     margin: 20px;
+}
+
+div {
+    border-style: double inset ridge groove;
+    border-width: 5px 10px 15px 20px;
+    border-color: salmon;
 }
