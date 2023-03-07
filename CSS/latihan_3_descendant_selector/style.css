@@ -37,3 +37,32 @@ section button:hover {
 section:nth-of-type(2n) {
     background-color: azure;
 }
+
+/* pseudo-elements adalah kata kunci yg ditambahkan pada selector untuk memilih bagian element yg ingin dipilih. Berikut beberapa contoh pseudo-elements:
+1. ::after, memberikan suatu isi / konten tambahan SETELAH suatu elemen.
+
+2. ::before, memberikan suatu isi / konten tambahan SEBELUM suatu elemen.
+
+3. ::first-letter, mengubah kata / huruf pertama pada kalimat.
+
+4. ::first-line, mengubah baris pertama yg ada di display laptop / gadget kita.
+
+5. ::selection
+
+*/
+/* contoh penggunaan pseudo-elements */
+section h3::first-letter {
+    font-size: xx-large;
+}
+
+section p::first-line {
+    color: salmon;
+}
+
+section h3::after {
+    content: '*';
+}
+
+section h3::before {
+    content: '*';
+}
