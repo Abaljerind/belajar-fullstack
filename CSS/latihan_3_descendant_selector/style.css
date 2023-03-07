@@ -14,3 +14,12 @@ Itu kenapa button lain yang ada diatasnya tag p tidak ikut berubah.
 a + button {
     background-color: salmon;
 }
+
+/* contoh penggunaan selector pada input dengan type yg berbeda */
+input[type="search"], input[type="password"] {
+    color: salmon;
+   }
+
+button[type="submit"] {
+    background-color: lightskyblue;
+}
