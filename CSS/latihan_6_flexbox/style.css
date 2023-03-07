@@ -5,12 +5,12 @@ h1 {
 #container {
     background-color: #003049;
     width: 90%;
-    height: 500px;
+    height: 50%;
     margin: 0 auto;
     border: 5px solid #003049;
     display: flex;
     /* flex-direction: row-reverse; */
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
 #container div {
