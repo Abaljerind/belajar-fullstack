@@ -23,3 +23,17 @@ input[type="search"], input[type="password"] {
 button[type="submit"] {
     background-color: lightskyblue;
 }
+
+/* contoh penggunaan pseudo-classes */
+.jokes > p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+section button:hover {
+    background-color: salmon;
+}
+
+section:nth-of-type(2n) {
+    background-color: azure;
+}
