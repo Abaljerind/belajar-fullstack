@@ -3,7 +3,7 @@ h1 {
 }
 
 #container {
-    width: 1400px;
+    max-width: 1400px;
     /* height: 600px; */
     margin: 0 auto;
     border: 5px solid #003049;
@@ -18,7 +18,7 @@ h1 {
 }
 
 #container div {
-    width: 200px;
+    max-width: 200px;
     height: 200px;
     /* line-height: 200px;
     text-align: center; */
@@ -41,4 +41,23 @@ h1 {
     /* height: 500px; */
     /* font-size: 70px; */
     flex-shrink: 1;
+}
+
+/* main */
+main {
+    width: 80%;
+    margin: 0 auto;
+    border: 5px solid black;
+    height: 500px;
+    display: flex;
+}
+
+main .sidebar {
+    background-color: #003049;
+    flex: 1 2 300px;
+}
+
+main .content {
+    background-color: cadetblue;
+    flex: 2 1 800px;
 }
