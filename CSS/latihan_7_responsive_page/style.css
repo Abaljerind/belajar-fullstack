@@ -17,3 +17,33 @@ ul, li {
     margin: 0;
     padding: 0;
 }
+
+/* media query */
+
+/* @media ( width:500px ) {
+    h1 {
+        color: aqua;
+    }
+} */
+/* ketika lebar layar browser 500px maka h1 dengan color aqua akan diimplementasikan sehingga warna h1 akan berubah. */
+
+@media screen and ( min-width:600px ) {
+    h1 {
+        color: deepskyblue;
+        font-size: 20px;
+    }
+}
+
+@media screen and ( min-width:800px ) {
+    h1 {
+        color: turquoise;
+        font-size: 35px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    h1 {
+        color: dodgerblue;
+        font-size: 50px;
+    }
+}
