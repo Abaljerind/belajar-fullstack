@@ -48,14 +48,16 @@ table {
 }
 
 /* end css reset */
-
+html {
+    box-sizing: border-box;
+}
 /* body */
 body {
     background-color: #529ffa;
     font-family: 'Open Sans', sans-serif;
-    box-sizing: border-box;
     display: flex;
     justify-content: center;
+    align-items: center;
     min-height: 100vh;
 }
 
@@ -90,6 +92,11 @@ body {
     color: #888;
     font-weight: 600;
     letter-spacing: 1px;
+}
+
+.pricing-plan img {
+    width: 250px;
+    height: 250px;
 }
 
 /* pricing-features */
@@ -141,4 +148,22 @@ body {
 .pricing-button.is-featured:hover, .pricing-button.is-featured:focus {
     background-color: #269aff;
     color: white;
+}
+
+
+/* media responsive */
+@media (min-width:900px) {
+    .panel {
+        flex-direction: row;
+    }
+
+    .pricing-plan {
+        border-bottom: none;
+        border-right: 1px solid #e1f1ff;
+        padding: 25px 50px;
+    }
+
+    .pricing-plan:last-child {
+        border-right: none;
+    }
 }
