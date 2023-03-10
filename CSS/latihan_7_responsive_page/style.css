@@ -41,14 +41,24 @@ ul, li {
     }
 }
 
+@media screen and ( min-width: 900px) and (max-width: 1000px) {
+    h1 {
+        color: salmon;
+        font-size: 4em;
+    }
+}
+
 @media screen and (min-width: 1200px) {
+    body {
+        background-color: white;
+    }
     h1 {
         color: dodgerblue;
         font-size: 50px;
     }
 }
 
-@media screen and ( orientation: landscape ) {
+@media ( orientation: landscape ) {
     body {
         background-color: blanchedalmond;
     }
