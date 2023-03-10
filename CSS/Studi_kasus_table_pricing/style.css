@@ -59,6 +59,7 @@ body {
     min-height: 100vh;
 }
 
+/* panel */
 .panel {
     background-color: white;
     border-radius: 10px;
@@ -71,6 +72,7 @@ body {
     text-transform: uppercase;
 }
 
+/* pricing-plan */
 .pricing-plan {
     border-bottom: 1px solid #e1f1ff;
 }
@@ -90,6 +92,7 @@ body {
     letter-spacing: 1px;
 }
 
+/* pricing-features */
 .pricing-features {
     margin: 50px 0 25px;
     color: #015ff9;
@@ -115,6 +118,7 @@ body {
     font-weight: 700;
 }
 
+/* pricing-button */
 .pricing-button {
     border: 1px solid #9dd1ff;
     border-radius: 10px;
