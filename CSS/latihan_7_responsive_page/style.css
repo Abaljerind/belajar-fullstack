@@ -10,10 +10,18 @@ h1 {
 
 nav {
     font-size: 1.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    flex-grow: 1;
+    max-width: 50%;
+    justify-content: space-evenly;
 }
 
 ul, li {
-    display: inline;
+    display: flex;
     margin: 0;
     padding: 0;
 }
@@ -27,7 +35,7 @@ ul, li {
 } */
 /* ketika lebar layar browser 500px maka h1 dengan color aqua akan diimplementasikan sehingga warna h1 akan berubah. */
 
-@media screen and ( min-width:600px ) {
+/* @media screen and ( min-width:600px ) {
     h1 {
         color: deepskyblue;
         font-size: 20px;
@@ -61,5 +69,26 @@ ul, li {
 @media ( orientation: landscape ) {
     body {
         background-color: blanchedalmond;
+    }
+} */
+
+@media ( max-width: 768px ) {
+    h1 {
+        font-size: 4em;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+}
+
+@media ( max-width: 576px ) {
+    h1 {
+        font-size: 2em;
     }
 }
