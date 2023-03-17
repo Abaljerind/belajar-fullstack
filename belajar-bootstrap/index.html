@@ -16,11 +16,24 @@
   <body>
     <!-- bagian container & button -->
     <div class="container">
+      <!-- bagian grid row & column -->
+      <div class="row">
+        <div class="col bg-primary col-sm-4 col-md-7 col-lg-3">Column 1</div>
+        <div class="col bg-success col-sm-3 col-md-3 col-lg-6">Column 3</div>
+        <div class="col bg-warning col-sm-auto col md-2 col-lg-3">Column 2</div>
+      </div>
+
+      <!-- untuk class col-<lebar>-<angka> nya diatas itu disesuaikan dengan lebar dari browser nya ketika di buka. jadi misal kalau di buka di tablet maka yg akan digunakan adalah lebar yang md, kalau di desktop yg akan digunakan adalah yang lg, kalau di hp maka yg sm. Ada juga lebar lainnya seperti xs, xl, dan xxl. kita juga bisa menggunakan auto agar browser / bootstrap nya yg akan mengatur lebarnya secara otomatis. -->
+
+      <!-- end bagian grid -->
+
       <h1>Hello, world!</h1>
       <button type="button" class="btn btn-primary">Notifications <span class="badge text-bg-secondary">4</span></button>
       <!-- untuk button jika ingin diberi warna hanya ada text "btn-<warna>" nya, karna kalau tidak diketikkan tidak akan ada warnanya. -->
+
       <button type="button" class="btn btn-warning text-white">Warning</button>
       <!-- untuk memberikan warna pada text bisa menggunakan "text-<warna>" -->
+
       <button type="button" class="btn btn-outline-secondary">Secondary</button>
       <button type="button" class="btn btn-primary btn-lg">Large button</button>
       <button type="button" class="btn btn-danger btn-sm">Small button</button>
@@ -39,6 +52,7 @@
         <button class="btn btn-primary" type="button">Button</button>
       </div>
       <!-- end bagian container & button -->
+
       <!-- bagian typography -->
       <h3>
         Fancy display heading
