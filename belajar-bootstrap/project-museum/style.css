@@ -23,7 +23,9 @@ body {
 
 .navbar.scrolled {
   background-color: #c2ded1;
-  /* transition: background 500ms; */
+  transition: background-color 0.5s;
+  -webkit-transition: background-color 0.5s;
+  -moz-transition: background-color 0.5s;
 }
 
 #title-head {

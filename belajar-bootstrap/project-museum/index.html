@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg" id="navbar">
+    <nav class="navbar fixed-top navbar-expand-lg" id="navbar">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">MUSEUM</a>
         <button
@@ -45,7 +45,7 @@
     </nav>
 
     <section class="container-fluid px-0">
-      <div class="row align-items-center content">
+      <div class="row align-items-center content" id="home">
         <div class="col-lg-6">
           <div class="text-white text-center d-none d-lg-block" id="title-head">
             <h1>Museum of Dinosaurus</h1>
@@ -61,7 +61,7 @@
         </div>
       </div>
 
-      <div class="row align-items-center content">
+      <div class="row align-items-center content" id="about">
         <div class="col-md-6 order-2 order-md-1">
           <img src="img/rhino.jpg" alt="Rhinosaurus" class="img-fluid" />
         </div>
@@ -79,7 +79,7 @@
         </div>
       </div>
 
-      <div class="row align-items-center content">
+      <div class="row align-items-center content" id="ticket">
         <div class="col-md-6 order-2 order-md-1">
           <img src="img/t-rex.jpg" alt="Rhinosaurus" class="img-fluid" />
         </div>
@@ -103,5 +103,13 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+    <!-- script sederhana untuk menambahkan background di navbar ketika halaman di scroll ke bawah. perlu ditambahkan juga fixed-top pada bagian navbar agar navbar ikut juga saat di scroll -->
+    <script>
+      $(function () {
+        let $nav = $("#navbar");
+        $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height);
+      });
+    </script>
   </body>
 </html>
