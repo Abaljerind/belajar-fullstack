@@ -1,0 +1,80 @@
+tipe data primitif di dalam js:
+- number, ciri ciri nya di dalam javascript:
+a. hanya memiliki 1 jenis tipe data yaitu number
+b. nilainya bisa bilangan positif
+c. nilainya bisa bilangan negatif
+d. nilainya bisa seluruh angka (int)
+e. nilainya bisa angka desimal
+
+NaN, not a number merepresentasikan bahwa suatu input / hasil proses itu bukan sebuah number / angka, tapi NaN ini juga adalah bagian dari number. NaN akan muncul jika kita mengetikkan seperti dibawah ini di dalam console browser:
+0 / 0 menghasilkan NaN.
+1 + NaN menghasilkan NaN.
+
+- boolean, hanya berisi true dan false saja.
+
+- string, untuk mengetikkan nilai berupa teks (huruf, nilai, simbol dll) yang dibungkus oleh kutip, baik satu kutip atau dua kutip.
+contoh string:
+> 'selamat "yaa kamu" hahaha'
+> "coba ini' ya"
+
+* string memiliki nilai indeks, seperti pada array. nilai indeks nya dimulai dari 0, contoh:
+string    C O D E
+indeks    0 1 2 3
+
+cara penggunaan indeks:
+
+
+
+- null
+- undefined
+
+--------------------------------------------------------------------
+
+* variable pada javascript ->
+penulisan variable di javascript:
+let namaVariable = nilai;
+
+atau bisa ditulis seperti ini juga
+
+let abadKekosongan;
+// lalu kita berikan nilai ke variable abadKekosongan
+abadKekosongan = 4000;
+
+## aturan penggunaan nama pada variable di javascript:
+1. tidak boleh di awali dengan angka
+2. boleh di awali dengan simbol
+3. di dalam nama variable nya boleh mengandung simbol, angka, huruf besar dan huruf kecil
+4. nama variable dapat dibaca dan dimengerti oleh orang lain
+
+
+pada variable terutama untuk tipe data number, ada shorthand yg memudahkan kita seperti berikut:
+
+versi awal tanpa shorthand;
+let score = 0
+score = score + 1
+score = score - 1
+score = score * 1
+score = score / 1
+score = score % 1
+
+versi shorthand;
+let score = 0
+score += 1
+score -= 1
+score *= 1
+score /= 1
+score %= 1
+
+di dalam variable juga terdapat increment dan decrement;
+score++ adalah increment (penambahan 1)
+score-- adalah decrement (pengurangan 1)
+
+score++
+score--
+
+* variable const mirip seperti konstanta variable yg nilainya tetap tidak bisa diubah di bahasa pemrograman lain.
+
+penulisan di javascript nya:
+const namaVariable = nilai;
+
+const di javascript tidak bisa di deklarasikan tanpa nilai awal.
