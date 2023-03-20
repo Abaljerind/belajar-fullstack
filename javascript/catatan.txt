@@ -118,3 +118,12 @@ const di javascript tidak bisa di deklarasikan tanpa nilai awal.
 ------------------------------------------------
 
 math object, memiliki banyak fungsi dan properti yg berguna untuk operasi matematika. seperti pembulatan, nilai konstan dan lainnya. untuk mengecek secara langsung ada method apa saja di dalam math object, kita bisa gunakan console di browser dan ketikkan "Math".
+
+-------------------------------------------------
+
+pada javascript dikenal juga beberapa tools yg bermanfaat seperti berikut ini:
+* console.log(), punya banyak fungsi dalamnya selain log(), ada warn() untuk peringatan, error() untuk error, dan lain lain. Untuk melihat ada fungsi apa saja bisa ketikkan console pada console di dalam browser, nantinya akan muncul fungsi fungsi nya.
+
+* alert, untuk memberikan peringatan tetapi alert akan muncul di halaman tab yg dibuka dengan sebuah pop up.
+
+* prompt, seperti alert tapi pada prompt kita bisa melakukan input data yg nantinya data tersebut akan muncul di dalam log.
