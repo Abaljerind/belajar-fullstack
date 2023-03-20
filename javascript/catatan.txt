@@ -1,3 +1,22 @@
+Template literals:
+contoh:
+`Hasil 1 + 1 adalah ${2 + 1}`
+
+harus menggunakan backtick ``
+
+------------------------------------------------
+
+NOTE: tiap tipe data primitif di dalam js, masing masing nya memiliki methods nya sendiri yg bisa di cek di ndn mozilla / web lain.
+
+beberapa method menerima argument yg bisa mengubah hasilnya. Argument itu mirip seperti inputan yang kita isikan tetapi argument disini kita isikan di dalam tanda kurung. 
+
+contoh:
+let movie = 'blacklist'
+movie.indexOf('k')
+output> 4
+
+-------------------------------------------------
+
 tipe data primitif di dalam js:
 - number, ciri ciri nya di dalam javascript:
 a. hanya memiliki 1 jenis tipe data yaitu number
@@ -22,11 +41,28 @@ string    C O D E
 indeks    0 1 2 3
 
 cara penggunaan indeks:
+let x = "code"
+x[0]
+output> c
+
+untuk mengetahui panjang indeks dari suatu text:
+<namaVariable>.length
+
+contoh concate (penggabungan) teks string:
+x = x + 'html'
+or
+y = x + 'javascript'
+
+    ## String Methods, adalah suatu aksi yg disediakan javascript, saat kita ingin:
+    - mencari sebuah huruf / kata
+    - menggantikan karakter 
+    - mengubah huruf besar / kecil
 
 
+- null, nilai kosong yg sengaja dibuat karna perlu untuk dibuat.
 
-- null
-- undefined
+- undefined, variable yg dibuat tapi belum ada isinya / tidak ada sama sekali. contoh:
+let nama;
 
 --------------------------------------------------------------------
 
@@ -78,3 +114,7 @@ penulisan di javascript nya:
 const namaVariable = nilai;
 
 const di javascript tidak bisa di deklarasikan tanpa nilai awal.
+
+------------------------------------------------
+
+math object, memiliki banyak fungsi dan properti yg berguna untuk operasi matematika. seperti pembulatan, nilai konstan dan lainnya. untuk mengecek secara langsung ada method apa saja di dalam math object, kita bisa gunakan console di browser dan ketikkan "Math".
