@@ -21,7 +21,7 @@ if (angka <= 0.5) {
 // contoh else if statement
 console.log("contoh contoh penggunaan else if");
 
-const iniHari = "sabtu";
+const iniHari = "rabu";
 
 if (iniHari === "senin") {
   console.log("selamat bekerja lagi!");
@@ -41,4 +41,17 @@ if (nilai < 50) {
   console.log("B");
 } else if (nilai < 100) {
   console.log("A");
+}
+
+// contoh penggunaan else
+console.log("contoh penggunaan else untuk opsi terakhir");
+
+const hariIni = prompt("isikan hari ini!").toLowerCase();
+
+if (hariIni === "senin") {
+  console.log("selamat bekerja lagi!");
+} else if (hariIni === "sabtu") {
+  console.log("semoga tidak cepat berlalu!");
+} else {
+  console.log("yah biasa ajalah!");
 }
