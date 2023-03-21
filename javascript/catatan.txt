@@ -127,3 +127,13 @@ pada javascript dikenal juga beberapa tools yg bermanfaat seperti berikut ini:
 * alert, untuk memberikan peringatan tetapi alert akan muncul di halaman tab yg dibuka dengan sebuah pop up.
 
 * prompt, seperti alert tapi pada prompt kita bisa melakukan input data yg nantinya data tersebut akan muncul di dalam log.
+
+--------------------------------------------------
+
+Array
+
+array adalah deretan / urutan data dari sekumpulan nilai. contoh daftar putar lagu, deretan komentar pada aplikasi tiktok dan lain sebagainya.
+cara penulisan array:
+
+let namaArray = [];
+NOTE: didalam [] bisa di isikan kumpulan string, kumpulan number, bahkan kumpulan campuran antar string, number dan tipe data lainnya.
