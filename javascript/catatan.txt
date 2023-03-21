@@ -137,3 +137,12 @@ cara penulisan array:
 
 let namaArray = [];
 NOTE: didalam [] bisa di isikan kumpulan string, kumpulan number, bahkan kumpulan campuran antar string, number dan tipe data lainnya.
+
+* cara mengubah nilai pada array:
+namaArray[<posisi yang ingin diganti, berupa number>] = "nilai barunya";
+
+* cara menambah nilai pada array:
+namaArray[<posisi yang ingin ditempati nilai baru, berupa number>] = "nilai barunya";
+
+--------------------------------------------------
+
