@@ -150,3 +150,13 @@ namaArray[<posisi yang ingin ditempati nilai baru, berupa number>] = "nilai baru
     - pop, menghapus item dari paling akhir array. contoh: namaArray.pop();
     - shift, menghapus item dari paling awal array. contoh: namaArray.shift();
     - unshift, menambahkan item pada awal array. contoh: namaArray.unshift( <nilai> || <nilai1>, <nilai2>, ... <nilaiN );
+
+    % Method lain pada array yg sering digunakan.
+    - concat, menggabungkan array
+    - includes, mencari suatu nilai di dalam array
+    - indexOf, sama seperti penggunaan indexOf pada string
+    - join, membuat suatu string dari sebuah array
+    - reverse, membalikkan urutan nilai dari array
+    - slice, menyalin sebagian nilai dari array
+    - splice, menghapus / mengubah element array
+    - sort, mengurutkan nilai pada array
