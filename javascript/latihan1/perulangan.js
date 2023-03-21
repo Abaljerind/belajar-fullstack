@@ -31,8 +31,18 @@ console.log("contoh perulangan");
 // }
 
 // perulangan dengan array
-const games = ["rdr2", "god of war 2018", "spider-man 2018", "subnautica"];
+// const games = ["rdr2", "god of war 2018", "spider-man 2018", "subnautica"];
 
-for (i = 0; i < games.length; i++) {
-  console.log("index ke - " + i, "berisi " + games[i]);
+// for (i = 0; i < games.length; i++) {
+//   console.log("index ke - " + i, "berisi " + games[i]);
+// }
+
+// perulangan nested loop
+const jawaban = ["a", "b", "c", "d"];
+
+for (i = 1; i <= 10; i++) {
+  console.log("soal ke - " + i);
+  for (j = 0; j < jawaban.length; j++) {
+    console.log("      jawaban " + jawaban[j]);
+  }
 }
