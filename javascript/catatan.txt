@@ -234,3 +234,40 @@ namaObject['properti'] = 'nilai baru';
 
 - format menambah data baru di object:
 namaObject.<properti baru> = <nilainya>;
+
+# Object di dalam array dan cara mengakses nya
+
+- contoh kita membuat array yg memiliki object seperti dibawah ini:
+const shoppingCart1 = [
+    {
+    product: 'vue js',
+    price: 1.22,
+    quantity: 3
+},
+    {
+    product: 'react js',
+    price: 2.32,
+    quantity: 1
+},
+    {
+    product: 'angular.js',
+    price: 3.32,
+    quantity: 2
+}
+]
+
+- cara mengakses data object tersebut bisa dengan cara seperti berikut:
+shoppingCart1[0];
+output>> Object { product: "vue js", price: 1.22, quantity: 3 }
+
+shoppingCart1[1];
+output>> Object { product: "react js", price: 2.32, quantity: 1 }
+
+shoppingCart1[1].product;
+output>> "react js"
+
+shoppingCart1[1].price;
+output>> 2.32 
+
+shoppingCart1[1].quantity;
+output>> 1
