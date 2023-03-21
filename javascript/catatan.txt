@@ -161,3 +161,12 @@ ada banyak method pada array yang bisa dilihat dan dibaca dari website website d
     - slice, menyalin sebagian nilai dari array
     - splice, menghapus / mengubah element array
     - sort, mengurutkan nilai pada array
+
+NOTE: const / konstanta pada array.
+const memang bersifat tetap / isi dari variable nya tidak bisa diubah, tapi ini tidak berlaku untuk object dan array, ini karena object pada javascript bersifat mutable, sehingga value dan properti pada object bisa diubah. 
+    Kalau kita mengetikkan typeOf di console pada browser seperti berikut:
+        let nilai = [20, 30, 40, 50]
+        undefined
+        typeof nilai
+        "object" 
+    bisa dilihat bahwa array nilai memiliki tipe object. jadi pada dasarnya array itu adalah object.
