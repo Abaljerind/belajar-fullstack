@@ -26,6 +26,13 @@ console.log("contoh perulangan");
 // }
 
 // perulangan dengan increment perkalian
-for (let i = 10; i <= 100000; i *= 10) {
-  console.log("perulangan perkalian ke - " + i);
+// for (let i = 10; i <= 100000; i *= 10) {
+//   console.log("perulangan perkalian ke - " + i);
+// }
+
+// perulangan dengan array
+const games = ["rdr2", "god of war 2018", "spider-man 2018", "subnautica"];
+
+for (i = 0; i < games.length; i++) {
+  console.log("index ke - " + i, "berisi " + games[i]);
 }
