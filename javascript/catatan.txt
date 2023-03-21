@@ -224,3 +224,13 @@ namaObject.<properti>;
     barang.location.indonesia;
     barang.size[0];
 
+# Cara mengubah data / nilai dan menambah data baru di suatu object
+
+- format mengubah data di object:
+namaObject.<properti> = <nilai baru>;
+or
+namaObject['properti'] = 'nilai baru';
+
+
+- format menambah data baru di object:
+namaObject.<properti baru> = <nilainya>;
