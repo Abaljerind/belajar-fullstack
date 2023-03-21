@@ -201,3 +201,17 @@ const fitnessData = {
     totalMiles      :   22.24,
     avgCaloriesBurn :   4233,44
 }
+
+contoh pembuatan object:
+const barang = {
+  judul: 'Sepatu',
+harga: 200000,
+isReady: true,
+size: [38, 39, 40, 41, 42, 43, 44],
+location: {
+  indonesia: 49,
+singapore: 33,
+malaysia: 42,
+brunei: 43
+}
+}
