@@ -319,3 +319,7 @@ while (num < 10) {
     console.log(num);
     num++;
 }
+
+--------------------------------------------------
+
+* Break, digunakan untuk menghentikan perulangan baik jika ada kondisi yang harus terpenuhi ataupun jika tidak ada kondisi, yang artinya kita bebas menggunakan break. Tapi di sarankan untuk menggunakan kondisi saja agar lebih aman.
