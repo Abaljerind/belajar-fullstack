@@ -38,11 +38,26 @@ console.log("contoh perulangan");
 // }
 
 // perulangan nested loop
-const jawaban = ["a", "b", "c", "d"];
+// const jawaban = ["a", "b", "c", "d"];
 
-for (i = 1; i <= 10; i++) {
-  console.log("soal ke - " + i);
-  for (j = 0; j < jawaban.length; j++) {
-    console.log("      jawaban " + jawaban[j]);
+// for (i = 1; i <= 10; i++) {
+//   console.log("soal ke - " + i);
+//   for (j = 0; j < jawaban.length; j++) {
+//     console.log("      jawaban " + jawaban[j]);
+//   }
+// }
+
+// perulangan nested loop dengan array di dalam array
+const rowStudent = [
+  ["olivia", "liam", "emma", "ussop"],
+  ["amelia", "oliver", "ava", "eli"],
+  ["sophia", "mateo", "isabela", "lucas"],
+];
+
+for (i = 0; i < rowStudent.length; i++) {
+  let row = rowStudent[i];
+  console.log("baris ke - " + i);
+  for (j = 0; j < row.length; j++) {
+    console.log("     " + row[j]);
   }
 }
