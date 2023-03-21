@@ -170,3 +170,12 @@ const memang bersifat tetap / isi dari variable nya tidak bisa diubah, tapi ini 
         typeof nilai
         "object" 
     bisa dilihat bahwa array nilai memiliki tipe object. jadi pada dasarnya array itu adalah object.
+
+
+* nested array / array berlapis / bersarang / multidimension array
+contoh nested array:
+    const board = [
+        [null, null, '0'],
+        ['X', '0', null],
+        ['0', null, 'X']
+    ]
