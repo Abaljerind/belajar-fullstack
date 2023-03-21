@@ -215,3 +215,12 @@ malaysia: 42,
 brunei: 43
 }
 }
+
+# Cara memanggil data dari suatu object
+namaObject.<properti>;
+
+    contoh:
+    barang.judul;
+    barang.location.indonesia;
+    barang.size[0];
+
