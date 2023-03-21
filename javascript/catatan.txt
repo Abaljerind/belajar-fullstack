@@ -144,5 +144,9 @@ namaArray[<posisi yang ingin diganti, berupa number>] = "nilai barunya";
 * cara menambah nilai pada array:
 namaArray[<posisi yang ingin ditempati nilai baru, berupa number>] = "nilai barunya";
 
---------------------------------------------------
 
+# Method pada array
+    - push, menambahkan item pada akhir array. contoh: namaArray.push( <nilai> || <nilai1>, <nilai2>, ... <nilaiN>);
+    - pop, menghapus item dari paling akhir array. contoh: namaArray.pop();
+    - shift, menghapus item dari paling awal array. contoh: namaArray.shift();
+    - unshift, menambahkan item pada awal array. contoh: namaArray.unshift( <nilai> || <nilai1>, <nilai2>, ... <nilaiN );
