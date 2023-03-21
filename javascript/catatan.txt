@@ -202,19 +202,20 @@ const fitnessData = {
     avgCaloriesBurn :   4233,44
 }
 
-contoh pembuatan object:
+# contoh pembuatan object:
 const barang = {
   judul: 'Sepatu',
-harga: 200000,
-isReady: true,
-size: [38, 39, 40, 41, 42, 43, 44],
-location: {
-  indonesia: 49,
-singapore: 33,
-malaysia: 42,
-brunei: 43
+    harga: 200000,
+    isReady: true,
+    size: [38, 39, 40, 41, 42, 43, 44],
+    location: {
+                indonesia: 49,
+                singapore: 33,
+                malaysia: 42,
+                brunei: 43
+            }
 }
-}
+
 
 # Cara memanggil data dari suatu object
 namaObject.<properti>;
@@ -223,6 +224,7 @@ namaObject.<properti>;
     barang.judul;
     barang.location.indonesia;
     barang.size[0];
+
 
 # Cara mengubah data / nilai dan menambah data baru di suatu object
 
@@ -234,6 +236,7 @@ namaObject['properti'] = 'nilai baru';
 
 - format menambah data baru di object:
 namaObject.<properti baru> = <nilainya>;
+
 
 # Object di dalam array dan cara mengakses nya
 
@@ -271,3 +274,6 @@ output>> 2.32
 
 shoppingCart1[1].quantity;
 output>> 1
+
+--------------------------------------------------
+
