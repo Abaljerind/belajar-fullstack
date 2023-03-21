@@ -303,3 +303,7 @@ for (let i = 0; i < animals.length; i++) {
 }
 
 NOTE: setiap melakukan perulangan dengan array, selalu awali "nilai awal dengan 0" dan "batasnya sampai panjang data array" yg akan digunakan.
+
+--------------------------------------------------
+
+* nested loop, bisa terjadi jika kita mendapatkan suatu data array yang di dalamnya ada array lagi.
