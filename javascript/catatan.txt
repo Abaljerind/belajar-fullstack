@@ -179,3 +179,25 @@ contoh nested array:
         ['X', '0', null],
         ['0', null, 'X']
     ]
+
+--------------------------------------------------
+
+* Object, adalah sekumpulan properti yg merupakan sebuah key-value. object ini mirip seperti array tapi bukan array. Cara mengakses suatu object dengan menggunakan custom keys.
+format penulisan object nya seperti berikut:
+const namaObject = {
+    properti-1 / key-1 : value-1,
+    properti-2 / key-2 : value-2,
+    properti-3 / key-3 : value-3,
+    .
+    .
+    .
+    properti-N : value-N,
+}
+
+contoh:
+
+const fitnessData = {
+    totalSteps      :   21323,
+    totalMiles      :   22.24,
+    avgCaloriesBurn :   4233,44
+}
