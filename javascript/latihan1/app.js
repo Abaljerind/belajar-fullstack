@@ -120,19 +120,22 @@ console.log();
 // }
 
 // contoh penggunaan switch sebagai pengganti if else yg banyak
-console.log("contoh penggunaan Switch");
-const balonku = prompt("masukkan warna balon kamu!");
+// console.log("contoh penggunaan Switch");
+// const balonku = prompt("masukkan warna balon kamu!");
 
-switch (balonku) {
-  case "merah":
-    console.log("warna merah");
-    break;
-  case "hijau":
-    console.log("dooorrrrr");
-    break;
-  case "biru":
-    console.log("warna biru");
-    break;
-  default:
-    console.log("bukan balonku");
-}
+// switch (balonku) {
+//   case "merah":
+//     console.log("warna merah");
+//     break;
+//   case "hijau":
+//     console.log("dooorrrrr");
+//     break;
+//   case "biru":
+//     console.log("warna biru");
+//     break;
+//   default:
+//     console.log("bukan balonku");
+// }
+
+// contoh mengubah nilai pada array
+console.log("contoh mengubah nilai pada array");
