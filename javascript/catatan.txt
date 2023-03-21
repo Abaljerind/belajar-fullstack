@@ -307,3 +307,15 @@ NOTE: setiap melakukan perulangan dengan array, selalu awali "nilai awal dengan 
 --------------------------------------------------
 
 * nested loop, bisa terjadi jika kita mendapatkan suatu data array yang di dalamnya ada array lagi.
+
+--------------------------------------------------
+
+* Perulangan menggunakan perintah WHILE.
+perulangan while akan terus berjalan selama kondisi tesnya bernilai true.
+
+penulisan nya:
+let num = 0;
+while (num < 10) {
+    console.log(num);
+    num++;
+}
