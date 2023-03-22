@@ -323,3 +323,12 @@ while (num < 10) {
 --------------------------------------------------
 
 * Break, digunakan untuk menghentikan perulangan baik jika ada kondisi yang harus terpenuhi ataupun jika tidak ada kondisi, yang artinya kita bebas menggunakan break. Tapi di sarankan untuk menggunakan kondisi saja agar lebih aman.
+
+--------------------------------------------------
+
+* For..of, cara cantik dan mudah untuk melakukan perulangan dengan tipe data array / object
+
+cara penulisan:
+for ( namaVariable of data_array / data_object ) {
+    statement
+}
