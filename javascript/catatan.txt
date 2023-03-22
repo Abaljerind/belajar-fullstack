@@ -334,3 +334,7 @@ for ( namaVariable of data_array ) {
 }
 
 * For..in, perulangan yang mirip dengan for..of tapi digunakan dengan tipe data object
+
+--------------------------------------------------
+
+* Function, potongan kode yang memungkinkan untuk digunakan kembali.
