@@ -101,17 +101,39 @@ console.log("contoh penggunaan function");
 
 //#
 // contoh penggunaan keyword this
-const saya = {
-  nama: "naruto",
-  hobi: "berlatih ninjutsu",
-  salam: function () {
-    return `Halo, saya ${this.nama}. Hobi saya ${this.hobi}.`;
-  },
-};
+// const saya = {
+//   nama: "naruto",
+//   hobi: "berlatih ninjutsu",
+//   salam: function () {
+//     return `Halo, saya ${this.nama}. Hobi saya ${this.hobi}.`;
+//   },
+// };
 
-console.log(saya.nama);
-console.log(saya.salam());
+// console.log(saya.nama);
+// console.log(saya.salam());
 
-console.log((saya.nama = "sasuke"));
-console.log((saya.hobi = "berlatih taijutsu"));
-console.log(saya.salam());
+// console.log((saya.nama = "sasuke"));
+// console.log((saya.hobi = "berlatih taijutsu"));
+// console.log(saya.salam());
+
+//#
+// contoh try and catch
+// try {
+//   saya.kenalan();
+// } catch {
+//   console.log("error!!");
+// }
+
+// console.log("setelah proses try and catch");
+
+function teriak(msg) {
+  try {
+    console.log(msg.toUpperCase());
+  } catch (error) {
+    console.log(error);
+    console.log("masukkan tipe data string pada argument teriak()");
+  }
+}
+
+console.log(teriak("ojek!"));
+console.log(teriak(2132));
