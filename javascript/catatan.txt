@@ -326,9 +326,11 @@ while (num < 10) {
 
 --------------------------------------------------
 
-* For..of, cara cantik dan mudah untuk melakukan perulangan dengan tipe data array / object
+* For..of, cara cantik dan mudah untuk melakukan perulangan dengan tipe data array
 
 cara penulisan:
-for ( namaVariable of data_array / data_object ) {
+for ( namaVariable of data_array ) {
     statement
 }
+
+* For..in, perulangan yang mirip dengan for..of tapi digunakan dengan tipe data object
