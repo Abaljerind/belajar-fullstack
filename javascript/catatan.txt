@@ -342,3 +342,5 @@ cara penulisan:
 function namaFunction() {
     isi statement yang diinginkan;
 }
+
+untuk menggunakan function nya, kita bisa memanggil namaFunction(); saja.
