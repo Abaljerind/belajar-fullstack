@@ -353,3 +353,8 @@ function namaFunction(parameter) {
 
 contoh argument
 namaFunction(argument);
+
+--------------------------------------------------
+
+* Return, akan mengakhiri proses di dalam fungsi dan akan memberikan nilai yg di definisikan pada saat fungsi dipanggil.
+Jika sudah memberikan return pada suatu function maka baris baris statement setelah return tidak akan di jalankan, karna return akan menjadi akhirnya.
