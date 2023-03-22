@@ -35,37 +35,51 @@ console.log("contoh penggunaan function");
 // }
 
 // contoh function scope
-console.log("contoh 1");
+// console.log("contoh 1");
 
-let nama = "naruto";
-function namaAnggota() {
-  let nama = "sasuke";
-  console.log(nama);
-}
+// let nama = "naruto";
+// function namaAnggota() {
+//   let nama = "sasuke";
+//   console.log(nama);
+// }
 
-namaAnggota();
-console.log(nama);
-
-//
-console.log();
-console.log("contoh 2");
-
-let a = "tas";
-function barang() {
-  console.log(a);
-}
-
-barang();
-console.log(a);
+// namaAnggota();
+// console.log(nama);
 
 //
-console.log();
-console.log("contoh 3");
+// console.log();
+// console.log("contoh 2");
 
-function system() {
-  let os = "linux";
-  //   console.log(os);
+// let a = "tas";
+// function barang() {
+//   console.log(a);
+// }
+
+// barang();
+// console.log(a);
+
+//
+// console.log();
+// console.log("contoh 3");
+
+// function system() {
+//   let os = "linux";
+//   console.log(os);
+// }
+
+// system();
+// console.log(os); // ini akan kosong karna tidak ada variable yg dibuat di luar function.
+
+//#
+// function sebagai argument / function di dalam function
+function duaKali(func) {
+  func();
+  func();
 }
 
-system();
-console.log(os); // ini akan kosong karna tidak ada variable yg dibuat di luar function.
+function dadu() {
+  const hasil = Math.floor(Math.random() * 6) + 1;
+  console.log(hasil);
+}
+
+// di console pada browser, bisa ketikkan "duaKali(dadu)"
