@@ -48,11 +48,11 @@ let fruits = ["banana", "apple", "watermelon", "orange"];
 // }
 
 // for..of dengan array di dalam array
-const rowStudent = [
-  ["olivia", "liam", "emma", "ussop"],
-  ["amelia", "oliver", "ava", "eli"],
-  ["sophia", "mateo", "isabela", "lucas"],
-];
+// const rowStudent = [
+//   ["olivia", "liam", "emma", "ussop"],
+//   ["amelia", "oliver", "ava", "eli"],
+//   ["sophia", "mateo", "isabela", "lucas"],
+// ];
 
 //   for (i = 0; i < rowStudent.length; i++) {
 //     let row = rowStudent[i];
@@ -61,9 +61,37 @@ const rowStudent = [
 //       console.log("     " + row[j]);
 //     }
 //   }
-for (baris of rowStudent) {
-  console.log("ketua kelompok - " + baris[0]);
-  for (kolom of baris) {
-    console.log("     " + kolom);
-  }
+
+// for (baris of rowStudent) {
+//   console.log("ketua kelompok - " + baris[0]);
+//   for (kolom of baris) {
+//     console.log("     " + kolom);
+//   }
+// }
+
+// for..in dengan object
+const studentAge = {
+  olivia: 13,
+  liam: 12,
+  emma: 14,
+  ussop: 14,
+  amelia: 13,
+  oliver: 12,
+  ava: 13,
+  eli: 14,
+  sophia: 11,
+  mateo: 12,
+};
+
+// for (let student in studentAge) {
+//   console.log(`${student} berumur ${studentAge[student]} tahun`);
+// }
+
+// menghitung umur rata rata student dengan for..in dan mengubah object menjadi array
+let total = 0;
+let umur = Object.values(studentAge);
+for (let age of umur) {
+  total += age;
 }
+
+console.log(total / umur.length);
