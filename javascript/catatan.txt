@@ -397,3 +397,20 @@ easyLinux()
 console.log('linux');
 
 Contoh 3 diatas, adalah contoh ketika variable linux dibuat di dalam function tapi tidak dipanggil lewat console di dalam function nya, melainkan variable linux di panggil dari luar function, dan hasilnya akan error karena variable linux yang ada di dalam function itu tidak bisa diakses dari luar function nya, walaupun sebelum di console.log sudah dipanggil function nya seperti diatas.
+
+--------------------------------------------------
+
+* Method, adalah suatu function yang berada di dalam suatu object, misal seperti Math.random() adalah function yang ada di object Math / bisa dibilang juga random() adalah method yg ada di object Math.
+
+--------------------------------------------------
+
+* this, keyword atau cara untuk memanggil suatu properti yang dimiliki oleh object yang sama dengan tujuan untuk mendapatkan nilainya.
+
+contoh:
+const saya = {
+    nama: 'naruto',
+    hobi: 'berlatih ninjutsu',
+    salam: function() {
+        return `saya adalah ${this.nama}. Hobi saya adalah ${this.hobi}`
+    }
+}

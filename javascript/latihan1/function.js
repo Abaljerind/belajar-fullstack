@@ -86,15 +86,32 @@ console.log("contoh penggunaan function");
 
 //#
 // function sebagai nilai return
-function sbgFunction() {
-  const nilaiAwal = Math.random();
-  if (nilaiAwal > 0.01) {
-    return function () {
-      console.log("nilai nya lebih besar");
-    };
-  } else {
-    return function () {
-      console.log("nilai nya lebih kecil");
-    };
-  }
-}
+// function sbgFunction() {
+//   const nilaiAwal = Math.random();
+//   if (nilaiAwal > 0.01) {
+//     return function () {
+//       console.log("nilai nya lebih besar");
+//     };
+//   } else {
+//     return function () {
+//       console.log("nilai nya lebih kecil");
+//     };
+//   }
+// }
+
+//#
+// contoh penggunaan keyword this
+const saya = {
+  nama: "naruto",
+  hobi: "berlatih ninjutsu",
+  salam: function () {
+    return `Halo, saya ${this.nama}. Hobi saya ${this.hobi}.`;
+  },
+};
+
+console.log(saya.nama);
+console.log(saya.salam());
+
+console.log((saya.nama = "sasuke"));
+console.log((saya.hobi = "berlatih taijutsu"));
+console.log(saya.salam());
