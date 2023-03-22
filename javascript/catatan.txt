@@ -358,3 +358,42 @@ namaFunction(argument);
 
 * Return, akan mengakhiri proses di dalam fungsi dan akan memberikan nilai yg di definisikan pada saat fungsi dipanggil.
 Jika sudah memberikan return pada suatu function maka baris baris statement setelah return tidak akan di jalankan, karna return akan menjadi akhirnya.
+
+--------------------------------------------------
+
+* Scope, visibilitas dari suatu variable yang tergantung dari ruang lingkup nya.
+
+contoh 1:
+let linux = 'Redhat';
+
+function easyLinux() {
+    let linux = 'Debian';
+    console.log('linux'); // Debian
+}
+
+console.log('linux'); // Redhat
+
+Contoh 1 diatas adalah contoh dari scope, dimana variable linux ada 2 yaitu di dalam dan diluar function, maka hasil ketika function dan variable diluar nya dipanggil akan menghasilkan output yg berbeda.
+
+
+contoh 2:
+let linux = 'Redhat';
+
+function easyLinux() {
+    console.log('linux'); // Redhat
+}
+
+console.log('linux'); // Redhat
+
+Contoh 2 diatas, adalah contoh ketika variable yg ada diluar function di deklarasikan dan dipanggil ke dalam function maka output nya akan sama, ini dikarenakan di dalam function tidak di deklarasikan ulang variabel tersebut seperti di contoh 1.
+
+
+contoh 3:
+function easyLinux() {
+    let linux = 'Debian';
+}
+
+easyLinux()
+console.log('linux');
+
+Contoh 3 diatas, adalah contoh ketika variable linux dibuat di dalam function tapi tidak dipanggil lewat console di dalam function nya, melainkan variable linux di panggil dari luar function, dan hasilnya akan error karena variable linux yang ada di dalam function itu tidak bisa diakses dari luar function nya, walaupun sebelum di console.log sudah dipanggil function nya seperti diatas.
