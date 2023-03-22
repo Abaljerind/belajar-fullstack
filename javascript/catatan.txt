@@ -338,3 +338,7 @@ for ( namaVariable of data_array ) {
 --------------------------------------------------
 
 * Function, potongan kode yang memungkinkan untuk digunakan kembali.
+cara penulisan:
+function namaFunction() {
+    isi statement yang diinginkan;
+}
