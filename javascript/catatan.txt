@@ -414,3 +414,19 @@ const saya = {
         return `saya adalah ${this.nama}. Hobi saya adalah ${this.hobi}`
     }
 }
+
+--------------------------------------------------
+
+* try and catch
+try digunakan untuk menjalankan perintah perintah / statement program, sedangkan catch digunakan untuk menangkap error ketika ada kesalahan sehingga tidak akan membuat program break code / blocking.
+
+contoh:
+try {
+    saya.kenalan();
+} catch {
+    console.log('error!!');
+}
+
+console.log('setelah proses try and catch);
+
+penjelasan: dengan menggunakan try and catch, maka baris console.log dibawah nya akan tetap dijalankan walaupun ada kesalahan / error di bagian try and catch nya dikarenakan object saya dan function / method kenalan belum dibuat.
