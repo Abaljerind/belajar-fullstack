@@ -12,10 +12,24 @@ console.log("contoh penggunaan function");
 // salam("naruto");
 
 // contoh multiple parameter & argument & default value
-function penjumlahan(a = 0, b = 0) {
+// function penjumlahan(a = 0, b = 0) {
+//   let total = a + b;
+//   console.log(total);
+// }
+
+// penjumlahan();
+// penjumlahan(2, 2);
+
+// contoh penggunaan return
+function jumlah(a = 0, b = 0) {
   let total = a + b;
-  console.log(total);
+  return total;
 }
 
-penjumlahan();
-penjumlahan(2, 2);
+// contoh penggunaan return dengan kondisi yg memiliki return juga
+function kurang(a, b) {
+  if (typeof a !== "number" || typeof b !== "number") {
+    return "bukan number, masukkan number";
+  }
+  return a - b;
+}
