@@ -344,3 +344,12 @@ function namaFunction() {
 }
 
 untuk menggunakan function nya, kita bisa memanggil namaFunction(); saja.
+
+# parameter & argument, sama tapi tidak serupa. Parameter digunakan pada tanda kurung setelah nama function, sedangkan argument digunakan saat kita memanggil function dengan namanya dan di dalam tanda kurung nya ada argument.
+contoh parameter
+function namaFunction(parameter) {
+
+}
+
+contoh argument
+namaFunction(argument);
