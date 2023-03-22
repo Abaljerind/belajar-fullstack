@@ -72,14 +72,29 @@ console.log("contoh penggunaan function");
 
 //#
 // function sebagai argument / function di dalam function
-function duaKali(func) {
-  func();
-  func();
-}
+// function duaKali(func) {
+//   func();
+//   func();
+// }
 
-function dadu() {
-  const hasil = Math.floor(Math.random() * 6) + 1;
-  console.log(hasil);
-}
+// function dadu() {
+//   const hasil = Math.floor(Math.random() * 6) + 1;
+//   console.log(hasil);
+// }
 
 // di console pada browser, bisa ketikkan "duaKali(dadu)"
+
+//#
+// function sebagai nilai return
+function sbgFunction() {
+  const nilaiAwal = Math.random();
+  if (nilaiAwal > 0.01) {
+    return function () {
+      console.log("nilai nya lebih besar");
+    };
+  } else {
+    return function () {
+      console.log("nilai nya lebih kecil");
+    };
+  }
+}
