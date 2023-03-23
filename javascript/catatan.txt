@@ -433,7 +433,7 @@ penjelasan: dengan menggunakan try and catch, maka baris console.log dibawah nya
 
 --------------------------------------------------
 
-For Each method, dapat menggunakan callback function yang berarti dapat memanggil sebuah fungsi sebanyak jumlah element yang dimiliki array.
+* For Each method, dapat menggunakan callback function yang berarti dapat memanggil sebuah fungsi sebanyak jumlah element yang dimiliki array.
 
 contoh:
 
@@ -445,3 +445,17 @@ angka.forEach(function(n) {
 })
 
 untuk method forEach ini bisa menggunakan anonymous function ataupun function yang kita buat sendiri. contoh diatas adalah forEach dengan anonymous function.
+
+--------------------------------------------------
+
+* Map, adalah suatu function yg dimiliki juga oleh tipe data array dimana map juga salah satu function yg bisa menerima callback function dari suatu array. Callback function / nilai balik adalah array baru yang sudah dimodifikasi melalui callback function dari suatu array / function yang kita buat.  Jadi output dari map adalah array lagi dan array ini memiliki nilai yg bisa berbeda dari sumber array yang digunakan.
+
+contoh:
+
+const expression = ['rofl', 'lol', 'omg', 'ttyl'];
+const capsExpression = expression.map(function(exprs) {
+    return exprs.toUpperCase();
+});
+
+expression; //['rofl', 'lol', 'omg', 'ttyl']
+capsExpression; //['ROFL', 'LOL', 'OMG', 'TTYL']
