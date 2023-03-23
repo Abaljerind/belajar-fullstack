@@ -139,29 +139,68 @@ console.log("contoh penggunaan function");
 // console.log(teriak(2132));
 
 // forEach Method dengan function buatan
-console.log("forEach Method dengan function buatan");
-const angka = [1, 2, 3, 4, 5, 6];
+// console.log("forEach Method dengan function buatan");
+// const angka = [1, 2, 3, 4, 5, 6];
 
-function print(elemen) {
-  console.log(elemen);
-}
+// function print(elemen) {
+//   console.log(elemen);
+// }
 
-angka.forEach(print);
+// angka.forEach(print);
 
 // forEach Method dengan function anonymous
-console.log("forEach Method dengan function anonymous");
-const nilai = [1, 2, 3, 4, 5];
+// console.log("forEach Method dengan function anonymous");
+// const nilai = [1, 2, 3, 4, 5];
 
-nilai.forEach(function (value) {
-  if (value % 2 === 0) {
-    console.log(value);
-  } else {
-    console.log("nilai " + value + " tidak bisa dibagi 2");
-  }
+// nilai.forEach(function (value) {
+//   if (value % 2 === 0) {
+//     console.log(value);
+//   } else {
+//     console.log("nilai " + value + " tidak bisa dibagi 2");
+//   }
+// });
+
+// forEach Method dengan function anonymous
+// console.log("forEach Method dengan function anonymous 2");
+
+// const animes = [
+//   {
+//     title: "One piece",
+//     rating: 90,
+//   },
+//   {
+//     title: "Naruto",
+//     rating: 87,
+//   },
+//   {
+//     title: "Bleach",
+//     rating: 85,
+//   },
+//   {
+//     title: "New game!!",
+//     rating: 85,
+//   },
+//   {
+//     title: "Detective conan",
+//     rating: 84,
+//   },
+// ];
+
+// animes.forEach(function (anime) {
+//   console.log(`${anime.title} - Rating ${anime.rating}/100`);
+// });
+
+// #
+// contoh penggunaan function map
+const nilai = [1, 2, 3, 4, 5, 6, 7];
+
+const nilaiDouble = nilai.map(function (nums) {
+  total = nums * 2;
+  return total;
 });
 
-// forEach Method dengan function anonymous
-console.log("forEach Method dengan function anonymous 2");
+console.log(nilai);
+console.log(nilaiDouble);
 
 const animes = [
   {
@@ -186,6 +225,14 @@ const animes = [
   },
 ];
 
-animes.forEach(function (anime) {
-  console.log(`${anime.title} - Rating ${anime.rating}/100`);
+const animeTitle = animes.map(function (anime) {
+  return anime.title.toUpperCase();
 });
+
+const animeRating = animes.map(function (rates) {
+  return rates.rating;
+});
+
+console.log(animes);
+console.log(animeTitle);
+console.log(animeRating);
