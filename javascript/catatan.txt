@@ -430,3 +430,18 @@ try {
 console.log('setelah proses try and catch);
 
 penjelasan: dengan menggunakan try and catch, maka baris console.log dibawah nya akan tetap dijalankan walaupun ada kesalahan / error di bagian try and catch nya dikarenakan object saya dan function / method kenalan belum dibuat.
+
+--------------------------------------------------
+
+For Each method, dapat menggunakan callback function yang berarti dapat memanggil sebuah fungsi sebanyak jumlah element yang dimiliki array.
+
+contoh:
+
+const angka = [1,2,3,4,5,6,7,8,9];
+
+angka.forEach(function(n) {
+    console.log(n * n);
+    // output: 1,4,9,16...
+})
+
+untuk method forEach ini bisa menggunakan anonymous function ataupun function yang kita buat sendiri. contoh diatas adalah forEach dengan anonymous function.
