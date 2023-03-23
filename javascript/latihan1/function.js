@@ -139,6 +139,7 @@ console.log("contoh penggunaan function");
 // console.log(teriak(2132));
 
 // forEach Method dengan function buatan
+console.log("forEach Method dengan function buatan");
 const angka = [1, 2, 3, 4, 5, 6];
 
 function print(elemen) {
@@ -146,3 +147,15 @@ function print(elemen) {
 }
 
 angka.forEach(print);
+
+// forEach Method dengan function anonymous
+console.log("forEach Method dengan function anonymous");
+const nilai = [1, 2, 3, 4, 5];
+
+nilai.forEach(function (value) {
+  if (value % 2 === 0) {
+    console.log(value);
+  } else {
+    console.log("nilai " + value + " tidak bisa dibagi 2");
+  }
+});
