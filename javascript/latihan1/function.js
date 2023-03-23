@@ -159,3 +159,33 @@ nilai.forEach(function (value) {
     console.log("nilai " + value + " tidak bisa dibagi 2");
   }
 });
+
+// forEach Method dengan function anonymous
+console.log("forEach Method dengan function anonymous 2");
+
+const animes = [
+  {
+    title: "One piece",
+    rating: 90,
+  },
+  {
+    title: "Naruto",
+    rating: 87,
+  },
+  {
+    title: "Bleach",
+    rating: 85,
+  },
+  {
+    title: "New game!!",
+    rating: 85,
+  },
+  {
+    title: "Detective conan",
+    rating: 84,
+  },
+];
+
+animes.forEach(function (anime) {
+  console.log(`${anime.title} - Rating ${anime.rating}/100`);
+});
