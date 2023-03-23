@@ -192,47 +192,62 @@ console.log("contoh penggunaan function");
 
 // #
 // contoh penggunaan function map
-const nilai = [1, 2, 3, 4, 5, 6, 7];
+// const nilai = [1, 2, 3, 4, 5, 6, 7];
 
-const nilaiDouble = nilai.map(function (nums) {
-  total = nums * 2;
-  return total;
-});
+// const nilaiDouble = nilai.map(function (nums) {
+//   total = nums * 2;
+//   return total;
+// });
 
-console.log(nilai);
-console.log(nilaiDouble);
+// console.log(nilai);
+// console.log(nilaiDouble);
 
-const animes = [
-  {
-    title: "One piece",
-    rating: 90,
-  },
-  {
-    title: "Naruto",
-    rating: 87,
-  },
-  {
-    title: "Bleach",
-    rating: 85,
-  },
-  {
-    title: "New game!!",
-    rating: 85,
-  },
-  {
-    title: "Detective conan",
-    rating: 84,
-  },
-];
+// const animes = [
+//   {
+//     title: "One piece",
+//     rating: 90,
+//   },
+//   {
+//     title: "Naruto",
+//     rating: 87,
+//   },
+//   {
+//     title: "Bleach",
+//     rating: 85,
+//   },
+//   {
+//     title: "New game!!",
+//     rating: 85,
+//   },
+//   {
+//     title: "Detective conan",
+//     rating: 84,
+//   },
+// ];
 
-const animeTitle = animes.map(function (anime) {
-  return anime.title.toUpperCase();
-});
+// const animeTitle = animes.map(function (anime) {
+//   return anime.title.toUpperCase();
+// });
 
-const animeRating = animes.map(function (rates) {
-  return rates.rating;
-});
+// const animeRating = animes.map(function (rates) {
+//   return rates.rating;
+// });
 
-console.log(animes);
-console.log(animeTitle);
-console.log(animeRating);
+// console.log(animes);
+// console.log(animeTitle);
+// console.log(animeRating);
+
+// contoh penggunaan arrow function
+console.log("contoh arrow function");
+
+const random = () => {
+  return Math.floor(Math.random() * 1000);
+};
+
+console.log(random());
+
+const kali = (x, y) => {
+  return x * y;
+};
+
+console.log(kali(4, 2));
