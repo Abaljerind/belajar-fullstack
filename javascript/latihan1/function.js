@@ -126,14 +126,23 @@ console.log("contoh penggunaan function");
 
 // console.log("setelah proses try and catch");
 
-function teriak(msg) {
-  try {
-    console.log(msg.toUpperCase());
-  } catch (error) {
-    console.log(error);
-    console.log("masukkan tipe data string pada argument teriak()");
-  }
+// function teriak(msg) {
+//   try {
+//     console.log(msg.toUpperCase());
+//   } catch (error) {
+//     console.log(error);
+//     console.log("masukkan tipe data string pada argument teriak()");
+//   }
+// }
+
+// console.log(teriak("ojek!"));
+// console.log(teriak(2132));
+
+// forEach Method dengan function buatan
+const angka = [1, 2, 3, 4, 5, 6];
+
+function print(elemen) {
+  console.log(elemen);
 }
 
-console.log(teriak("ojek!"));
-console.log(teriak(2132));
+angka.forEach(print);
