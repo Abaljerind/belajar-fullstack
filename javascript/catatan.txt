@@ -484,3 +484,23 @@ const angka = [1,2,3,4,5,6,7];
 const ganjil = angka.filter(n => {
     return n % 2 === 1;
 });
+
+--------------------------------------------------
+
+* every, sebuah function yg akan mengembalikan nilai boolean. true jika seluruh nilai yg ada pada suatu array memiliki kriteria yg sama. false jika sebaliknya.
+
+* some, mirip dengan every, tapi lebih fleksibel. hasilnya akan true jika salah satu isi dari array memiliki kriteria yg sama. akan false jika sama sekali tidak ada yg sesuai kriteria.
+
+contoh every:
+
+const kataKata = ['kita', 'kamu', 'saya', 'aku'];
+kata.every(kata => {
+    return kata.length === 4;
+}); // true
+
+contoh some:
+
+const kataKata = ['kita', 'kamu', 'saya', 'aku'];
+kata.some(kata => {
+    return kata.length === 4;
+}); // true
