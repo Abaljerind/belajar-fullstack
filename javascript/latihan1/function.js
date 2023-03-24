@@ -238,16 +238,36 @@ console.log("contoh penggunaan function");
 // console.log(animeRating);
 
 // contoh penggunaan arrow function
-console.log("contoh arrow function");
+// console.log("contoh arrow function");
 
-const random = () => {
-  return Math.floor(Math.random() * 1000);
-};
+// const random = () => {
+//   return Math.floor(Math.random() * 1000);
+// };
 
-console.log(random());
+// console.log(random());
 
-const kali = (x, y) => {
-  return x * y;
-};
+// const kali = (x, y) => {
+//   return x * y;
+// };
 
-console.log(kali(4, 2));
+// console.log(kali(4, 2));
+
+// #
+// contoh setTimeout & setInterval
+
+setTimeout(() => {
+  console.log("heii...");
+}, 5000);
+console.log("whatsupp brother????");
+
+// setInterval(() => {
+//   for (x = 0; x < 10; x++) console.log("nilai x saat ini " + x);
+// }, 2500);
+
+// cara menghentikan interval
+const stop = setInterval(() => {
+  for (x = 0; x < 10; x++) console.log("nilai x saat ini " + x);
+}, 2500);
+
+// untuk menghentikan interval,
+// clearInterval(stop);
