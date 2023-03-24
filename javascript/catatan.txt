@@ -473,3 +473,14 @@ setTimeout(() => {
 setInterval(() => {
     // proses
 }, 2000) // akan melakukan perulangan proses setiap 2 detik
+
+--------------------------------------------------
+
+* filter, function yg akan mengembalikan nilai array lagi yg sudah di manipulasi sesuai dengan kriteria yang ditetapkan.
+
+contoh:
+
+const angka = [1,2,3,4,5,6,7];
+const ganjil = angka.filter(n => {
+    return n % 2 === 1;
+});
