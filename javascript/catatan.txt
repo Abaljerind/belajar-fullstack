@@ -459,3 +459,17 @@ const capsExpression = expression.map(function(exprs) {
 
 expression; //['rofl', 'lol', 'omg', 'ttyl']
 capsExpression; //['ROFL', 'LOL', 'OMG', 'TTYL']
+
+--------------------------------------------------
+
+* setTimeout & setInterval, callback function yg bukan berasal dari array. fungsi nya untuk memberi waktu jeda dan melakukan perulangan di setiap waktu yang ditentukan.
+
+contoh:
+
+setTimeout(() => {
+    // proses
+}, 3000) // proses akan dieksekusi setelah 3 detik
+
+setInterval(() => {
+    // proses
+}, 2000) // akan melakukan perulangan proses setiap 2 detik
