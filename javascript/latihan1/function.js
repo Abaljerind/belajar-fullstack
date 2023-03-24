@@ -255,19 +255,63 @@ console.log("contoh penggunaan function");
 // #
 // contoh setTimeout & setInterval
 
-setTimeout(() => {
-  console.log("heii...");
-}, 5000);
-console.log("whatsupp brother????");
+// setTimeout(() => {
+//   console.log("heii...");
+// }, 5000);
+// console.log("whatsupp brother????");
 
 // setInterval(() => {
 //   for (x = 0; x < 10; x++) console.log("nilai x saat ini " + x);
 // }, 2500);
 
 // cara menghentikan interval
-const stop = setInterval(() => {
-  for (x = 0; x < 10; x++) console.log("nilai x saat ini " + x);
-}, 2500);
+// const stop = setInterval(() => {
+//   for (x = 0; x < 10; x++) console.log("nilai x saat ini " + x);
+// }, 2500);
 
 // untuk menghentikan interval,
 // clearInterval(stop);
+
+// #
+// contoh filter
+const angka = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const ganjil = angka.filter((n) => {
+  return n % 2 === 1;
+});
+
+console.log(ganjil);
+
+const animes = [
+  {
+    title: "One piece",
+    rating: 90,
+  },
+  {
+    title: "Naruto",
+    rating: 87,
+  },
+  {
+    title: "Bleach",
+    rating: 85,
+  },
+  {
+    title: "New game!!",
+    rating: 85,
+  },
+  {
+    title: "Detective conan",
+    rating: 84,
+  },
+];
+
+const animeBagus = animes.filter((rates) => {
+  hasil = rates.rating >= 85;
+  return hasil;
+});
+
+const judulAnimeBagus = animeBagus.map(function (anime) {
+  return anime.title.toUpperCase();
+});
+
+console.log(animeBagus);
+console.log(judulAnimeBagus);
