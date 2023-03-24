@@ -274,12 +274,54 @@ console.log("contoh penggunaan function");
 
 // #
 // contoh filter
-const angka = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const ganjil = angka.filter((n) => {
-  return n % 2 === 1;
-});
+// const angka = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const ganjil = angka.filter((n) => {
+//   return n % 2 === 1;
+// });
 
-console.log(ganjil);
+// console.log(ganjil);
+
+// const animes = [
+//   {
+//     title: "One piece",
+//     rating: 90,
+//   },
+//   {
+//     title: "Naruto",
+//     rating: 87,
+//   },
+//   {
+//     title: "Bleach",
+//     rating: 85,
+//   },
+//   {
+//     title: "New game!!",
+//     rating: 85,
+//   },
+//   {
+//     title: "Detective conan",
+//     rating: 84,
+//   },
+// ];
+
+// const animeBagus = animes.filter((rates) => {
+//   hasil = rates.rating >= 85;
+//   return hasil;
+// });
+
+// const judulAnimeBagus = animeBagus.map(function (anime) {
+//   return anime.title.toUpperCase();
+// });
+
+// console.log(animeBagus);
+// console.log(judulAnimeBagus);
+
+// #
+// contoh every dan some
+const nilaiLulus = [88, 83, 90, 77, 80];
+const lulus = nilaiLulus.every((nilai) => nilai >= 75);
+
+console.log(lulus);
 
 const animes = [
   {
@@ -304,14 +346,6 @@ const animes = [
   },
 ];
 
-const animeBagus = animes.filter((rates) => {
-  hasil = rates.rating >= 85;
-  return hasil;
-});
-
-const judulAnimeBagus = animeBagus.map(function (anime) {
-  return anime.title.toUpperCase();
-});
+const animeBagus = animes.some((anime) => anime.rating >= 87);
 
 console.log(animeBagus);
-console.log(judulAnimeBagus);
