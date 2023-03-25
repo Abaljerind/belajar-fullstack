@@ -516,3 +516,7 @@ const subtotal = [1500, 2000, 2500, 3000, 3500];
 const total = subtotal.reduce((currentTotal, singleSubTotal) => {
     return currentTotal + singleSubTotal;
 });
+
+--------------------------------------------------
+
+*** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
