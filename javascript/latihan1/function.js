@@ -318,34 +318,53 @@ console.log("contoh penggunaan function");
 
 // #
 // contoh every dan some
-const nilaiLulus = [88, 83, 90, 77, 80];
-const lulus = nilaiLulus.every((nilai) => nilai >= 75);
+// const nilaiLulus = [88, 83, 90, 77, 80];
+// const lulus = nilaiLulus.every((nilai) => nilai >= 75);
 
-console.log(lulus);
+// console.log(lulus);
 
-const animes = [
-  {
-    title: "One piece",
-    rating: 90,
-  },
-  {
-    title: "Naruto",
-    rating: 87,
-  },
-  {
-    title: "Bleach",
-    rating: 85,
-  },
-  {
-    title: "New game!!",
-    rating: 85,
-  },
-  {
-    title: "Detective conan",
-    rating: 84,
-  },
-];
+// const animes = [
+//   {
+//     title: "One piece",
+//     rating: 90,
+//   },
+//   {
+//     title: "Naruto",
+//     rating: 87,
+//   },
+//   {
+//     title: "Bleach",
+//     rating: 85,
+//   },
+//   {
+//     title: "New game!!",
+//     rating: 85,
+//   },
+//   {
+//     title: "Detective conan",
+//     rating: 84,
+//   },
+// ];
 
-const animeBagus = animes.some((anime) => anime.rating >= 87);
+// const animeBagus = animes.some((anime) => anime.rating >= 87);
 
-console.log(animeBagus);
+// console.log(animeBagus);
+
+// #
+// contoh penggunaan reduce
+const subtotal = [1500, 20000, 4000, 19000, 32000];
+
+const total = subtotal.reduce((currentTotal, singleSubTotal) => {
+  return currentTotal + singleSubTotal;
+});
+
+console.log(total);
+
+// #
+const nilaiLulus = [80, 85, 70, 90, 93, 77];
+
+const score = nilaiLulus.reduce((totalAwal, scores) => {
+  return totalAwal + scores;
+});
+
+console.log(score);
