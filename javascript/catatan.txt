@@ -507,7 +507,7 @@ kata.some(kata => {
 
 --------------------------------------------------
 
-* reduce, melakukan proses pengulangan sebanyaknya element milik suatu array. nilai baliknya adalah single value. mirip dengan for loop.
+* reduce, melakukan proses pengulangan sebanyaknya element milik suatu array. nilai baliknya adalah single value. mirip dengan for loop. bedanya reduce function ini bisa digunakan untuk kondisi seperti if else juga dan lain lain mungkin, bisa dicari lebih tau lagi di internet.
 
 contoh:
 
