@@ -1,0 +1,5 @@
+* Pengertian DOM
+
+DOM, document object model => sebuah representasi dari struktur dokumen HTML atau XML dalam bentuk tree oleh javascript. Dom memungkinkan kita untuk mengubah struktur dan isi dari dokumen tersebut melalui kode javascript. DOM memiliki struktur hirarki, dimana setiap elemen dokumen merupakan child node dari elemen lain / root node.
+
+------------------------------------------------------------------------------
