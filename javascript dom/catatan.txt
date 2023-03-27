@@ -2,4 +2,18 @@
 
 DOM, document object model => sebuah representasi dari struktur dokumen HTML atau XML dalam bentuk tree oleh javascript. Dom memungkinkan kita untuk mengubah struktur dan isi dari dokumen tersebut melalui kode javascript. DOM memiliki struktur hirarki, dimana setiap elemen dokumen merupakan child node dari elemen lain / root node.
 
-------------------------------------------------------------------------------
+Jadi penggunaan DOM ini untuk mengubah isi dari file HTML baik dengan file javascript / dengan console di browser, tanpa perlu mengubah isi file HTML yg ada di dalam file HTML tersebut.
+
+-----------------------------------------------------------------------
+
+* Contoh perintah perintah DOM
+
+document.all => untuk melihat semua elemen html yg ada di dalam file document html nya.
+
+document.all[nomor index] => kita bisa melihat berdasarkan index ke berapa dari file document tersebut.
+
+document.all[nomor index].innerText => untuk melihat text yang ada di dalam document berdasarkan index yang diinginkan.
+
+document.all[nomor index].innerHTML => untuk melihat tag tag html apa saja yang ada di dalam document berdasarkan inde yang diinginkan.
+
+document.all[nomor index].innerText = "<nilai baru yang ingin ditambahkan di tag html dengan index tersebut>"
