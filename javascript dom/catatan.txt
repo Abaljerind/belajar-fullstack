@@ -37,3 +37,36 @@ maka outputnya akan menghasilkan data berupa HTMLCollection(sejumlah tag nya)
 
 
 3. getElementsByClassName, sama seperti getELementById tetapi getElementsByClassName hanya akan menggunakan nama dari class yang kita berikan, terlepas dari tag nya itu sendiri, misal ada tag img dan tag p yang memiliki class dengan nama yang sama, maka keduanya akan terkena efek dari getElementsByClassName tersebut. Oleh karena itu, kita harus berhati hati dalam memberikan nama pada class di file HTML.
+
+-----------------------------------------------------------------------
+
+* Query selector, swiss army knife milik dom untuk menyeleksi elemen. karna bisa digunakan untuk mencari elemen berdasarkan tag name, id dan juga class nya serta bisa digunakan untuk mencari seluruh elemen bahkan dengan type atau atribut yang ada di dalamnya agar lebih spesifik. tetapi hanya bisa menampilkan 1 buah elemen saja.
+
+contoh:
+// cari elemen h1 pertama
+document.querySelector('h1');
+
+// cari elemen pertama dengan id bernilai 'red'
+document.querySelector('#red');
+
+// cari elemen pertama dengan class bernilai 'big'
+document.querySelector('.big');
+
+// menampilkan input dengan type checkbox
+document.querySelector('input[type="checkbox"]');
+
+// menampilkan atribut div dengan language english 
+document.querySelector('div[lang="en"]');
+
+
+* Query Selector All, sama dengan querySelector biasa, yang berbeda querySelectorAll ini bisa mengambil / mengubah data secara keseluruhan dari elemen elemen yang sama berdasarkan tag name, id dan juga class nya serta bisa digunakan untuk mencari seluruh elemen bahkan dengan type atau atribut yang ada di dalamnya agar lebih spesifik. output dari querySelectorAll ini berupa NodeList(n);
+
+contoh:
+// cari semua elemen p
+document.querySelectorAll('p');
+
+// menampilkan seluruh elemen a yang ada di dalam elemen p pada paragraf pertama saja
+document.querySelectorAll('p a');
+
+-----------------------------------------------------------------------
+
