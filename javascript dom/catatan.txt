@@ -17,3 +17,12 @@ document.all[nomor index].innerText => untuk melihat text yang ada di dalam docu
 document.all[nomor index].innerHTML => untuk melihat tag tag html apa saja yang ada di dalam document berdasarkan inde yang diinginkan.
 
 document.all[nomor index].innerText = "<nilai baru yang ingin ditambahkan di tag html dengan index tersebut>"
+
+-----------------------------------------------------------------------
+
+* Selecting dengan DOM
+
+1. getElementById, menggunakan id yang kita berikan pada sebuah tag HTML.
+
+2. getElementByTagName
+3. getElementByClassName
