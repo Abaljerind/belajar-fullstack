@@ -24,5 +24,16 @@ document.all[nomor index].innerText = "<nilai baru yang ingin ditambahkan di tag
 
 1. getElementById, menggunakan id yang kita berikan pada sebuah tag HTML.
 
-2. getElementByTagName
-3. getElementByClassName
+contoh:
+document.getElementById('banner')
+
+2. getElementsByTagName, menggunakan nama dari tag HTML yang kita berikan, biasanya kita gunakan untuk mencari / mengubah sekumpulan tag HTML yang memiliki tag name yang sama.
+
+Contoh:
+document.getElementsByTagName('img')
+output>> HTMLCollection(4) .....
+
+maka outputnya akan menghasilkan data berupa HTMLCollection(sejumlah tag nya)
+
+
+3. getElementsByClassName, sama seperti getELementById tetapi getElementsByClassName hanya akan menggunakan nama dari class yang kita berikan, terlepas dari tag nya itu sendiri, misal ada tag img dan tag p yang memiliki class dengan nama yang sama, maka keduanya akan terkena efek dari getElementsByClassName tersebut. Oleh karena itu, kita harus berhati hati dalam memberikan nama pada class di file HTML.
