@@ -70,3 +70,55 @@ document.querySelectorAll('p a');
 
 -----------------------------------------------------------------------
 
+* Properties dan Methods yang penting diketahui
+
+1. classList
+2. getAttribute()
+3. setAttribute()
+4. appendChild()
+5. append()
+6. prepend()
+7. removeChild()
+8. remove()
+9. createElement()
+
+
+10. innerText, akan menampilkan text yang kita masukkan ke dalam file html secara jelas, maksudnya text yang ditampilkan hanya text biasa saja seperti text pada buku pelajaran / text pada suatu paragraf. kita bisa juga menambahkan / mengganti text baru tetapi tidak dapat menambahkan style nya.
+
+contoh 1:
+'The cat (Felis catus) is a domestic species of small carnivorous mammal.[1][2] It is the only domesticated species in the family Felidae and is commonly referred to as the domestic cat or house cat to distinguish it from the wild members of the family.'
+
+contoh 2:
+para.innerText = 'ini kita <b>ubah</b> paragrafnya';
+output>> ini kita <b>ubah</b> paragrafnya
+
+
+11. textContent, akan menampilkan text yang kita ketikkan di dalam text editor / di dalam file html nya, jadi kalau ada tab atau baris baru, akan ditampilkan juga dengan tambahan berupa \t untuk tab, dan \n untuk baris baru sesuai yang ada di dalam file html nya. kita bisa juga menambahkan / mengganti text baru tetapi tidak dapat menambahkan style nya.
+
+contoh 1:
+'\n      The cat (Felis catus) is a\n      domestic\n      species of small\n      carnivorous\n      mammal.[1][2]\n      It is the only domesticated species in the family\n      Felidae and is commonly referred to as the domestic cat or house cat to distinguish it from the wild members of the\n      family.'
+
+contoh 2:
+para.textContent = 'ini kita <b>ubah</b> paragrafnya';
+output>> ini kita <b>ubah</b> paragrafnya
+
+
+12. innerHTML, akan menampilkan text berdasarkan text di dalam text editor / file html nya dengan elemen elemen beserta class dan id serta atribut lainnya yang dimiliki, ditambah akan menampilkan juga style css yang diberikan pada text nya.
+Dengan innerHTML, kita dapat menambahkan / mengganti text baru bahkan dengan style seperti tag b atau lain lain.
+
+contoh 1:
+'\n      The <b>cat</b> (<i><b>Felis catus</b></i>) is a\n      <a href="/wiki/Domestication_of_the_cat" title="Domestication of the cat" style="color: rgb(0, 108, 134); text-decoration-color: magenta; text-decoration-style: wavy;">domestic</a>\n      <a href="/wiki/Species" title="Species" style="color: rgb(0, 108, 134); text-decoration-color: magenta; text-decoration-style: wavy;">species</a> of small\n      <a href="/wiki/Carnivorous" class="mw-redirect" title="Carnivorous" style="color: rgb(0, 108, 134); text-decoration-color: magenta; text-decoration-style: wavy;">carnivorous</a>\n      <a href="/wiki/Mammal" title="Mammal" style="color: rgb(0, 108, 134); text-decoration-color: magenta; text-decoration-style: wavy;">mammal</a>.<sup id="cite_ref-Linnaeus1758_1-1" class="reference"><a href="#cite_note-Linnaeus1758-1" style="color: rgb(0, 108, 134); text-decoration-color: magenta; text-decoration-style: wavy;">[1]</a></sup><sup id="cite_ref-MSW3fc_2-1" class="reference"><a href="#cite_note-MSW3fc-2" style="color: rgb(0, 108, 134); text-decoration-color: magenta; text-decoration-style: wavy;">[2]</a></sup>\n      It is the only domesticated species in the family\n      <a href="/wiki/Felidae" title="Felidae" style="color: rgb(0, 108, 134); text-decoration-color: magenta; text-decoration-style: wavy;">Felidae</a> and is commonly referred to as the <b>domestic cat</b> or <b>house cat</b> to distinguish it from the wild members of the\n      family.<sup id="cite_ref-Clutton-Brock1999_4-0" class="reference"><a href="#cite_note-Clutton-Brock1999-4" style="color: rgb(0, 108, 134); text-decoration-color: magenta; text-decoration-style: wavy;">
+
+contoh 2:
+para.innerHTML = 'ini kita <b>ubah</b> paragrafnya';
+output>> ini kita ubah paragrafnya
+
+
+13. value
+14. parentElement
+15. children
+16. nextSibling
+17. previousSibling
+18. style
+
+-----------------------------------------------------------------------
