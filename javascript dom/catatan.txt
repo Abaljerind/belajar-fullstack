@@ -73,8 +73,24 @@ document.querySelectorAll('p a');
 * Properties dan Methods yang penting diketahui
 
 1. classList
-2. getAttribute()
-3. setAttribute()
+
+2. getAttribute(), digunakan untuk mengambil data atribut yang ada pada suatu tag html.
+contoh:
+const banner = document.querySelector('#banner');
+banner.getAttribute('id');
+banner.getAttribute('src');
+banner.getAttribute('class');
+
+
+3. setAttribute(), digunakan untuk menambahkan atribut baru pada suatu tag html, berikut contoh penggunaan nya.
+contoh:
+const banner = document.querySelector('#banner');
+banner.setAttribute('class', 'isian-class');
+
+keterangan:
+bagian 'class' bisa juga digunakan untuk id atau atribut lain yg ada di dalam tag html, lalu untuk 'isian-class' adalah value yang dimiliki oleh class / atribut lainnya.
+
+
 4. appendChild()
 5. append()
 6. prepend()
