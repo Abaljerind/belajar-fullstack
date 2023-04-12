@@ -159,8 +159,30 @@ h1.insertAdjacentElement('afterend', h3)
 
 
 6. prepend()
-7. removeChild()
-8. remove()
+7. removeChild(), adalah metode untuk menghapus suatu elemen tag html. Cara menghapusnya cukup kompleks karena kita harus mengakses parentElement nya dulu lalu kita baru bisa menambahkan metode removeChild tersebut.
+
+contoh:
+const firstLi = document.querySelector('li');
+
+// cek parentElement dari firstLi
+firstLi.parentElement;
+
+// baru kita bisa hapus elemen firstLi dengan removeChild
+firstLi.parentElement.removeChild(firstLi);
+
+NOTE: removeChild bisa digunakan dari browser versi lama sampai yang terbaru.
+
+
+8. remove(), metode baru untuk menghapus suatu elemen tag html. Cara menghapusnya lebih mudah karena kita hanya perlu menambahkan method remove() tanpa perlu mengisi parameter nya.
+
+contoh:
+const img = document.querySelector('img');
+
+// hapus const img dengan remove
+img.remove();
+
+NOTE: remove() bisa digunakan dari browser versi terbaru, bisa cek di website mdn / website lainnya.
+
 
 
 9. createElement(), digunakan untuk membuat elemen tag html baru.
