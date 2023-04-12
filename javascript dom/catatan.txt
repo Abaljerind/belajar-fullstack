@@ -176,8 +176,28 @@ paragraf.children[6].children;
 
 
 
-16. nextSibling
-17. previousSibling
+16. nextSibling, digunakan untuk melihat data yang dituliskan sesudah suatu elemen seperti class, id, tag html dll. Dalam hal ini data yang ditampilkan akan dilihat berdasarkan source code nya. contoh:
+
+const squareImages = document.querySelector('.square');
+
+squareImages.nextSibling;
+output: #text
+jika di klik segitiga nya, kita bisa lihat bagian data: akan menampilkan text berupa '\n\t\t\t\t' yang berasal dari source code nya, bukan elemen html nya.
+
+untuk melihat elemen setelah suatu tag html kita gunakan:
+squareImages.nextElementSibling;
+
+
+17. previousSibling, digunakan untuk melihat data yang dituliskan sebelum suatu elemen seperti class, id, tag html dll. Dalam hal ini data yang ditampilkan akan dilihat berdasarkan source code nya. contoh:
+
+const squareImages = document.querySelector('.square');
+
+squareImages.previousSibling;
+output: #text
+jika di klik segitiga nya, kita bisa lihat bagian data: akan menampilkan text berupa '\n\n\t\t\t' yang berasal dari source code nya, bukan elemen html nya.
+
+untuk melihat elemen sebelum suatu tag html kita gunakan:
+squareImages.previousElementSibling;
 
 
 18. style, digunakan untuk memberikan style css dengan javascript. tapi hanya sebatas style nya saja, untuk pseudo-code nya tidak bisa lewat javascript. Contoh penggunaan:
