@@ -104,7 +104,7 @@ keterangan:
 bagian 'class' bisa juga digunakan untuk id atau atribut lain yg ada di dalam tag html, lalu untuk 'isian-class' adalah value yang dimiliki oleh class / atribut lainnya.
 
 
-4. appendChild(), digunakan untuk menambahkan tag html baik di dalam tag body ataupun di dalam tag lainnya, misal seperti tag ul / ol, tag p, yang intinya kita bisa menambahakn tag html baru di dalam tag html lain.
+4. appendChild(), digunakan untuk menambahkan tag html baik di dalam tag body ataupun di dalam tag lainnya, misal seperti tag ul / ol, tag p, yang intinya kita bisa menambahkan tag html baru atau bahkan text dan lain lain di dalam tag html lain atau elemen lainnya.
 
 contoh:
 const newImage = document.createElement('img');
@@ -125,10 +125,44 @@ newImage.classList.add('square');
 newImage;
 
 
-5. append()
+5. append(), mirip dengan innerText dimana kita misalnya menambahkan text pada suatu paragraf dengan tag b yang akan menghasilkan text biasa tanpa di render / di ubah menjadi efek bold / efek apapun yang kita inginkan.
+
+contoh:
+const paragraf = document.querySelector('p');
+paragraf.append( '<b> Cats </b>');
+
+
+    ### insertAdjacentElement() ###
+digunakan untuk menambahkan elemen baru diposisi tertentu, tidak seperti append dan appendChild. ada 4 lokasi yang bisa digunakan yaitu:
+
+    a. 'beforebegin': sebelum elemen target.
+    b. 'afterbegin': di dalam elemen target, tapi sebelum child pertama elemen target.
+    c. 'beforeend': di dalam elemen target, tapi setelah child terakhir elemen target.
+    d. 'afterend': setelah elemen target.
+
+contoh:
+// membuat elemen h3
+const h3 = document.createElement('h3');
+
+// menambahkan text dengan append
+h3.append('ini adalah web mengenai kucing');
+
+// mengecek isi h3
+h3;
+
+// membuat tag h1 menjadi const agar lebih mudah sebagai elemen target
+const h1 = document.querySelector('h1')
+
+// menambahkan elemen h3 setelah h1 dengan afterend
+h1.insertAdjacentElement('afterend', h3)
+
+
+
 6. prepend()
 7. removeChild()
 8. remove()
+
+
 9. createElement(), digunakan untuk membuat elemen tag html baru.
 
 contoh:
