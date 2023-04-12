@@ -144,8 +144,38 @@ output>> ini kita ubah paragrafnya
 
 
 13. value
-14. parentElement
-15. children
+14. parentElement, digunakan untuk mengetahui elemen pembungkus suatu tag html. properti parentElement ini bisa digunakan berulang kali.
+
+contoh:
+const textBold = document.querySelector('b');
+
+// untuk melihat pembungkus tag b (textBold)
+textBold.parentElement
+
+// untuk melihat pembungkus tag yang membungkus tag b (textBold)
+textBold.parentElement.parentElement
+
+sampai dengan posisi teratas yaitu tag html nya yang menjadi pembungkus keseluruhan tag tag html.
+
+
+15. children, digunakan untuk mengetahui elemen yang ada di dalam suatu tag html. properti children ini juga bisa digunakan berulang kali.
+
+contoh:
+const textBold = document.querySelector('b');
+
+const paragraf = textBold.parentElement;
+
+paragraf;
+output>> menampilkan tag pembungkus dari tag html b (textBold).
+
+paragraf.children;
+output>> menampilkan HTMLCollection yang berisikan tag tag yang ada di dalam tag p (paragraf) dengan index nya, sehingga kita bisa mengakses child dari elemen tag tersebut. 
+
+paragraf.children[6];
+paragraf.children[6].children;
+
+
+
 16. nextSibling
 17. previousSibling
 
