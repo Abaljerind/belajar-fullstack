@@ -72,7 +72,20 @@ document.querySelectorAll('p a');
 
 * Properties dan Methods yang penting diketahui
 
-1. classList
+1. classList, digunakan untuk menambahkan / menghapus class yang ada pada suatu tag html. Biasanya classList digunakan untuk memberikan style dengan selector class. Sebenarnya classList ini sama dengan properti setAttribute, yang membedakan adalah kita bisa langsung menambahkan / menghapus class tanpa perlu bersusah payah dengan setAttribute. Selain menambahkan / menghapus juga ada fungsi lain dari classList ini seperti replace, contains, entries dan lain lain.
+
+contoh:
+const h1 = document.querySelector('h1');
+
+h1.classList;
+
+h1.classList.add('text-white');
+
+h1.classList.remove('text-white');
+
+h1.classList.contains('bg-info');
+output>> true jika ada class bg-info, false jika tidak ada
+
 
 2. getAttribute(), digunakan untuk mengambil data atribut yang ada pada suatu tag html.
 contoh:
