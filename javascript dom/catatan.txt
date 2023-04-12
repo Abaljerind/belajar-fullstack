@@ -135,6 +135,16 @@ output>> ini kita ubah paragrafnya
 15. children
 16. nextSibling
 17. previousSibling
-18. style
+
+
+18. style, digunakan untuk memberikan style css dengan javascript. tapi hanya sebatas style nya saja, untuk pseudo-code nya tidak bisa lewat javascript. Contoh penggunaan:
+
+const heading = document.querySelector('h1');
+heading.style
+
+maka outputnya akan menampilkan properti css apa saja yang bisa digunakan lewat javascript dalam bentuk object dengan nama CSSStyleDeclaration.
+
+contoh lain:
+heading.style.color = 'salmon', maka akan mengubah warna h1 menjadi salmon.
 
 -----------------------------------------------------------------------
