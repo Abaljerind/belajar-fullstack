@@ -104,12 +104,35 @@ keterangan:
 bagian 'class' bisa juga digunakan untuk id atau atribut lain yg ada di dalam tag html, lalu untuk 'isian-class' adalah value yang dimiliki oleh class / atribut lainnya.
 
 
-4. appendChild()
+4. appendChild(), digunakan untuk menambahkan tag html baik di dalam tag body ataupun di dalam tag lainnya, misal seperti tag ul / ol, tag p, yang intinya kita bisa menambahakn tag html baru di dalam tag html lain.
+
+contoh:
+const newImage = document.createElement('img');
+
+// menambahkan source gambar nya
+newImage.src = 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2021/10/28064854/12.-Tips-Merawat-Anak-Kucing-Munchkin.jpg';
+
+// untuk melihat isi dari tag img apakah sudah ada src nya
+newImage;
+
+// menambahkan newImage ke dalam document di dalam tag body.
+document.body.appendChild(newImage);
+
+// menambahkan class pada newImage
+newImage.classList.add('square');
+
+// untuk melihat lagi isi dari tag img apakah sudah ada src nya
+newImage;
+
+
 5. append()
 6. prepend()
 7. removeChild()
 8. remove()
-9. createElement()
+9. createElement(), digunakan untuk membuat elemen tag html baru.
+
+contoh:
+const newImage = document.createElement('img');
 
 
 10. innerText, akan menampilkan text yang kita masukkan ke dalam file html secara jelas, maksudnya text yang ditampilkan hanya text biasa saja seperti text pada buku pelajaran / text pada suatu paragraf. kita bisa juga menambahkan / mengganti text baru tetapi tidak dapat menambahkan style nya.
