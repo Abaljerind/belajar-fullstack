@@ -37,7 +37,7 @@ function colorize() {
   this.style.color = generateRandomColor();
 }
 
-// lanjut kita buat for of yg baru
+// lanjut kita buat for of yg baru dengan function colorize bukan lagi anonymous function seperti sebelumnya.
 for (let button of buttons) {
   button.addEventListener("click", colorize);
 }
