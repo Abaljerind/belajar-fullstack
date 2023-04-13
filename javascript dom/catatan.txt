@@ -293,6 +293,8 @@ heading.style.color = 'salmon', maka akan mengubah warna h1 menjadi salmon.
 
 * Contoh beberapa event pada DOM.
 
+NOTE: untuk onclick & ondblclick, kita bisa gunakan event event tersebut dengan tag html lainnya misal h1 atau p dan lain lain, tergantung kebutuhan kita.
+
 1. click
 2. drag
 3. drop
