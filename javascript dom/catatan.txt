@@ -290,3 +290,21 @@ contoh lain:
 heading.style.color = 'salmon', maka akan mengubah warna h1 menjadi salmon.
 
 -----------------------------------------------------------------------
+
+* Contoh beberapa event pada DOM.
+
+1. click
+2. drag
+3. drop
+4. hover
+5. scroll
+6. form submission
+7. key press
+8. focus / blur
+9. mouse wheel
+10. double click
+11. copy
+12. paste
+13. audio
+14. screen resize
+15. print
