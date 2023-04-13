@@ -42,3 +42,31 @@ const heading = document.querySelector("h1");
 heading.onclick = function () {
   console.log("h1 di klik!");
 };
+
+// ------------------------------------------------------------------------
+
+// function dengan menggunakan addEventListener. Berbeda dengan function biasa seperti yang ada diatas, dengan menggunakan addEventListener kita bisa menambahkan beberapa function tanpa perlu khawatir function yang baru akan menggantikan (replace) function yang lama, contoh seperti dibawah ini.
+
+const eventbtn = document.querySelector("#eventbtn");
+
+function stepSatu() {
+  console.log("step satu");
+}
+
+function stepDua() {
+  console.log("step dua");
+}
+
+eventbtn.addEventListener("click", stepSatu);
+eventbtn.addEventListener("click", stepDua);
+
+// kalau menggunakan function biasa seperti diatas hasilnya function stepDua akan menimpa function stepSatu sehingga stepSatu tidak akan muncul.
+// bisa di komentari bagian addEventListener / bagian function dibawah untuk hasil yang berbeda.
+
+// eventbtn.onclick = function stepSatu() {
+//   console.log("step 1");
+// };
+
+// eventbtn.onclick = function stepDua() {
+//   console.log("step 2");
+// };
