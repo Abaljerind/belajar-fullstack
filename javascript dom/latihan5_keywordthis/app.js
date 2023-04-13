@@ -17,3 +17,12 @@ for (let button of buttons) {
     button.style.color = generateRandomColor();
   });
 }
+
+const headings = document.querySelectorAll("h1");
+
+for (let heading of headings) {
+  heading.addEventListener("click", () => {
+    heading.style.backgroundColor = generateRandomColor();
+    heading.style.color = generateRandomColor();
+  });
+}
