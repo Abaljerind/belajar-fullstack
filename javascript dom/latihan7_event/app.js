@@ -30,3 +30,14 @@ link.addEventListener("click", (e) => {
   e.preventDefault();
   console.log("harusnya ke web google");
 });
+
+// ----------------------------------------------------------------------
+// dibawah ini adalah contoh penggunaan event input dan event change
+// input.addEventListener("change", (e) => {
+//   console.log("berhasil diubah");
+// });
+
+input.addEventListener("input", (e) => {
+  document.querySelector("h1").innerText = input.value;
+  console.log("berhasil di input");
+});
