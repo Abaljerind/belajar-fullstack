@@ -41,3 +41,16 @@ input.addEventListener("input", (e) => {
   document.querySelector("h1").innerText = input.value;
   console.log("berhasil di input");
 });
+
+// ----------------------------------------------------------------------
+// dibawah ini contoh penggunaan event untuk menghapus (remove) data yang ada di list (li).
+
+list.addEventListener("click", (e) => {
+  // e.target.remove();
+
+  // baris dibawah untuk mengecek nodeName yg digunakan di dalam browser
+  // console.dir(e.target);
+
+  // dengan remove() diatas maka semua elemen yang ada di dalam ul akan diremove tanpa terkecuali, agar kita hanya dapat melakukan remove hanya pada elemen tertentu saja, kita bisa gunakan kode dibawah ini untuk me-remove hanya tag li saja
+  e.target.nodeName === "LI" && e.target.remove();
+});
