@@ -23,34 +23,34 @@
     <link rel="stylesheet" href="app.css" />
   </head>
   <body>
-    <div>
-      <div>
-        <div>
+    <div class="scoreboard container d-flex flex-column justify-content-center">
+      <div class="row row-cols-1 row-cols-md-2 text-center py-5 justify-content-center">
+        <div class="points col col-auto py-3 d-flex flex-column align-items-center">
           <h2>Player 1</h2>
-          <p id="p1-display">0</p>
-          <div>
-            <button id="p1-button">+1</button>
+          <p class="px-3 rounded" id="p1-display">0</p>
+          <div class="score-btns">
+            <button class="btn btn-primary" id="p1-button">+1</button>
           </div>
         </div>
-        <div>
+        <div class="points col col-auto py-3 d-flex flex-column align-items-center">
           <h2>Player 2</h2>
-          <p id="p2-display">0</p>
+          <p class="px-3 rounded" id="p2-display">0</p>
           <div>
-            <button id="p2-button">+1</button>
+            <button class="btn btn-primary" id="p2-button">+1</button>
           </div>
         </div>
       </div>
 
-      <div>
-        <select name="" id="winpoint">
+      <div class="d-grid gap-2 col-lg-2 col-md-4 mx-auto pb-5">
+        <select name="" id="winpoint" class="form-select">
           <option value="3">3</option>
           <option value="5">5</option>
           <option value="10">10</option>
         </select>
       </div>
 
-      <div>
-        <button id="reset">Reset</button>
+      <div class="d-grid gap-2 col-lg-2 col-md-4 mx-auto pb-5">
+        <button class="btn btn-primary" id="reset">Reset</button>
       </div>
     </div>
 
