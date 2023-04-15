@@ -9,7 +9,7 @@ let p1Score = 0;
 let p2Score = 0;
 
 // create var untuk batas poin (winPoint) dan isGameOver untuk mengakhiri skor
-let winPoint = 5; //batas nya 5
+let winPoint = 3; //batas nya 3
 let isGameOver = false; // isinya false karna kalau true score sudah tidak bisa ditambah
 
 // add addEventListener di p1Button agar tiap kali button p1 di klik nilainya bertambah. Penambahan kondisi pengecekan batas dan game over
@@ -50,3 +50,12 @@ function reset() {
 
 // lanjut tambahkan addEventListener di button reset
 resetButton.addEventListener("click", reset);
+
+// tambah const untuk id winpoint
+const pointMax = document.querySelector("#winpoint");
+
+// tambah addEventListener di pointMax dengan event 'change' untuk mengubah nilai yg didapat dari select di index.html.
+pointMax.addEventListener("change", function () {
+  winPoint = parseInt(this.value);
+  reset();
+});
