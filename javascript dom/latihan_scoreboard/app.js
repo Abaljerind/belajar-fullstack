@@ -8,14 +8,28 @@ const p2Display = document.querySelector("#p2-display");
 let p1Score = 0;
 let p2Score = 0;
 
-// add addEventListener di p1Button agar tiap kali button p1 di klik nilainya bertambah
+// create var untuk batas poin (winPoint) dan isGameOver untuk mengakhiri skor
+let winPoint = 5; //batas nya 5
+let isGameOver = false; // isinya false karna kalau true score sudah tidak bisa ditambah
+
+// add addEventListener di p1Button agar tiap kali button p1 di klik nilainya bertambah. Penambahan kondisi pengecekan batas dan game over
 p1Button.addEventListener("click", function () {
-  p1Score += 1;
-  p1Display.textContent = p1Score;
+  if (!isGameOver) {
+    p1Score += 1;
+    if (p1Score === winPoint) {
+      isGameOver = true;
+    }
+    p1Display.textContent = p1Score;
+  }
   // textContent akan mengubah isi dari span dgn id p1Display sehingga text 0 di index.html akan berubah nilainya
 });
 
 p2Button.addEventListener("click", function () {
-  p2Score += 1;
-  p2Display.textContent = p2Score;
+  if (!isGameOver) {
+    p2Score += 1;
+    if (p2Score === winPoint) {
+      isGameOver = true;
+    }
+    p2Display.textContent = p2Score;
+  }
 });
