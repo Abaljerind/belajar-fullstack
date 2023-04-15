@@ -33,3 +33,20 @@ p2Button.addEventListener("click", function () {
     p2Display.textContent = p2Score;
   }
 });
+
+// tambah const reset
+const resetButton = document.querySelector("#reset");
+
+// create function reset untuk mengembalikan value isGameOver, p1 & p2 serta kedua display jadi 0
+
+function reset() {
+  isGameOver = false;
+  p1Score = 0;
+  p2Score = 0;
+
+  p1Display.textContent = 0;
+  p2Display.textContent = 0;
+}
+
+// lanjut tambahkan addEventListener di button reset
+resetButton.addEventListener("click", reset);
