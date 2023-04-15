@@ -54,7 +54,7 @@ resetButton.addEventListener("click", reset);
 // tambah const untuk id winpoint
 const pointMax = document.querySelector("#winpoint");
 
-// tambah addEventListener di pointMax dengan event 'change' untuk mengubah nilai yg didapat dari select di index.html.
+// tambah addEventListener di pointMax dengan event 'change' untuk mengubah nilai yg dipilih dari select & options di index.html nya.
 pointMax.addEventListener("change", function () {
   winPoint = parseInt(this.value);
   reset();
