@@ -106,6 +106,7 @@ const barang = {
   pantofel: 80,
 };
 
+// Object.values(<nama object>) -> untuk mengubah object menjadi array
 let price = Object.values(barang);
 
 for (let item in barang) {
