@@ -1,0 +1,1 @@
+* Call Stack Function -> mekanisme untuk interpreter (seperti interpreter javascript di browser web) untuk melacak lokasi skrip yang memanggil banyak fungsi - fungsi yang sedang dijalankan dan fungsi apa yang dipanggil dari dalam fungsi itu.
