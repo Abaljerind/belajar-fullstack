@@ -2,3 +2,7 @@
 
 * Single thread -> sebuah program yang hanya dapat menjalankan satu proses dalam satu waktu. 
     - Javascript tidak menggunakan single thread melainkan multi  thread, yang mana javascript ini memanfaatkan bahasa pemrograman C++ yang dimiliki oleh browser sehingga yang awalnya javascript hanya bisa single thread jadi bisa 'multi thread'.
+
+* Callback hell -> sebuah function yang ada di dalam sebuah function dan bisa lebih dari 1 function.
+
+* Promise (pengganti dari callback hell) -> respon object apakah proses function sebelumnya berhasil atau tidak, kalau berhasil kita bisa lanjut lakukan function yang lain, dan kalau gagal kita masih bisa lakukan function yang lainnya tapi dengan cara yang lebih elegan lagi daripada callback hell.
