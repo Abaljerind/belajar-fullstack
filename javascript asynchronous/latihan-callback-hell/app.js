@@ -1,30 +1,77 @@
-// setTimeout(function () {
-//   document.body.style.backgroundColor = "lightskyblue";
-// }, 2000);
+// callback version, alasan kenapa tidak disarankan menggunakannya
+const requestCallback = (url, success, failure) => {
+  const delay = Math.floor(Math.random() * 4500) + 500;
+  setTimeout(() => {
+    if (delay > 4000) {
+      failure("Error: connection timeout");
+    } else {
+      success(`Success ${url} (${delay}ms)`);
+    }
+  }, delay);
+};
 
-// setTimeout(function () {
-//   document.body.style.backgroundColor = "salmon";
-// }, 4000);
+// metode memanggil requestCallback diatas 1 kali
+// requestCallback(
+//   "movie.com", // param pertama dari url
+//   function (response) {
+//     // param kedua dari success
+//     console.log(`success ${response}`);
+//   },
+//   function (error) {
+//     // param ketiga dari failure
+//     console.log(`failed ${error}`);
+//   }
+// );
 
-// setTimeout(function () {
-//   document.body.style.backgroundColor = "lime";
-// }, 6000);
+//
+// memanggil requestCallback sebanyak 5 kali, dimana ketika terjadi success requestCallback nya akan terus berlanjut sampai proses ke 5 atau sampai error terjadi
 
-// bisa diubah jadi seperti dibawah ini
-// kode dibawah ini disebut "callback hell"
-// dan ini "tidak disarankan"
+requestCallback(
+  "one-piece.com",
+  function (response) {
+    console.log(`success ${response}`);
 
-setTimeout(function () {
-  document.body.style.backgroundColor = "lightskyblue";
-  setTimeout(function () {
-    document.body.style.backgroundColor = "salmon";
-    setTimeout(() => {
-      document.body.style.backgroundColor = "lime";
-      setTimeout(() => {
-        document.body.style.backgroundColor = "lightgreen";
-      }, 2000);
-    }, 2000);
-  }, 2000);
-}, 2000);
+    requestCallback(
+      "one-piece.com",
+      function (response) {
+        console.log(`success ${response}`);
 
-// pengganti dari "callback hell" adalah "promise"
+        requestCallback(
+          "one-piece.com",
+          function (response) {
+            console.log(`success ${response}`);
+
+            requestCallback(
+              "one-piece.com",
+              function (response) {
+                console.log(`success ${response}`);
+
+                requestCallback(
+                  "one-piece.com",
+                  function (response) {
+                    console.log(`success ${response}`);
+                  },
+                  function (error) {
+                    console.log(`failed ${error}`);
+                  }
+                );
+              },
+              function (error) {
+                console.log(`failed ${error}`);
+              }
+            );
+          },
+          function (error) {
+            console.log(`failed ${error}`);
+          }
+        );
+      },
+      function (error) {
+        console.log(`failed ${error}`);
+      }
+    );
+  },
+  function (error) {
+    console.log(`failed ${error}`);
+  }
+);
