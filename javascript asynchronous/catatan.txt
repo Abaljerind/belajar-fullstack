@@ -15,6 +15,10 @@
 Feed back dari async:
     a. kalau kita menambahkan kata 'async' sebelum sebuah function, maka  function nya akan otomatis berubah menjadi promise secara instan.
     b. kalau fungsi nya punya data, maka resolve - nya akan mengirimkan data juga yang bisa diolah.
-    c. kalau di dalam function ada object throw error (exception), maka akan menjalankan bagian reject. Reject adalah suatu kondisi kalau proses nya gagal.
+    c. kalau di dalam function ada object throw error (exception), maka akan menjalankan bagian reject. Reject adalah suatu kondisi kalau proses nya gagal. Agar kita bisa jelas mendapatkan pesan error nya, maka kita bisa tambahkan '.catch'.
+
+I. Note tambahan:
+.then -> akan menjalankan proses untuk kondisi yang berhasil.
+.catch -> akan menjalankan proses untuk menangkap error yang didapat dari 'throw'.
 
 2. await,
