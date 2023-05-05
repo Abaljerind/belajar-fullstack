@@ -7,11 +7,14 @@
 
 * Promise (pengganti dari callback hell) -> respon object apakah proses function sebelumnya berhasil atau tidak, kalau berhasil kita bisa lanjut lakukan function yang lain, dan kalau gagal kita masih bisa lakukan function yang lainnya tapi dengan cara yang lebih elegan lagi daripada callback hell.
 
+* Reject adalah suatu kondisi kalau proses nya gagal.
+* Resolve adalah suatu kondisi kalau proses nya berhasil.
+
 * Di dalam "asynchronous function" ada 2 bagian:
 1. async.
 Feed back dari async:
     a. kalau kita menambahkan kata 'async' sebelum sebuah function, maka  function nya akan otomatis berubah menjadi promise secara instan.
     b. kalau fungsi nya punya data, maka resolve - nya akan mengirimkan data juga yang bisa diolah.
-    c. kalau di dalam function ada object throw error, maka akan menjalankan bagian reject
+    c. kalau di dalam function ada object throw error (exception), maka akan menjalankan bagian reject. Reject adalah suatu kondisi kalau proses nya gagal.
 
 2. await,
