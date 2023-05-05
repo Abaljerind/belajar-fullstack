@@ -1,1 +1,4 @@
 * Call Stack Function -> mekanisme untuk interpreter (seperti interpreter javascript di browser web) untuk melacak lokasi skrip yang memanggil banyak fungsi - fungsi yang sedang dijalankan dan fungsi apa yang dipanggil dari dalam fungsi itu.
+
+* Single thread -> sebuah program yang hanya dapat menjalankan satu proses dalam satu waktu. 
+    - Javascript tidak menggunakan single thread melainkan multi  thread, yang mana javascript ini memanfaatkan bahasa pemrograman C++ yang dimiliki oleh browser sehingga yang awalnya javascript hanya bisa single thread jadi bisa 'multi thread'.
