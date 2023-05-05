@@ -8,7 +8,7 @@ const delayColorChange = (color, delay) => {
   });
 };
 
-// dengan menambahkan 'await' seperti dibawah, maka baris kedua yang lightskyblue tidak akan dijalankan 'sebelum' baris pertama lightgreen berhasil dijalankan.
+// dengan menambahkan 'await' seperti dibawah, maka baris kedua yang lightskyblue dan seterusnya tidak akan dijalankan 'sebelum' baris pertama lightgreen berhasil dijalankan.
 async function changeColor() {
   await delayColorChange("lightgreen", 1000);
   await delayColorChange("lightskyblue", 1000);
