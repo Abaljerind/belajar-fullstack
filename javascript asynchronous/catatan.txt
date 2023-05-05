@@ -21,4 +21,4 @@ I. Note tambahan:
 .then -> akan menjalankan proses untuk kondisi yang berhasil.
 .catch -> akan menjalankan proses untuk menangkap error yang didapat dari 'throw'.
 
-2. await,
+2. await, hanya bisa digunakan di dalam function yang memiliki 'async'. Await akan melakukan jeda proses selanjutnya di dalam function, sambil menunggu promise yang dijalankan oleh 'resolve'
