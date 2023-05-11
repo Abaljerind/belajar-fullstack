@@ -1,0 +1,8 @@
+* Request di dalam javascript sering disebut dengan AJAX (Asynchronous Javascript and XML), jadi ajax ini merupakan fitur dari javascript untuk melakukan request diluar dari input yang dilakukan oleh user baik dengan keyboard atau dengan mouse yang dilakukan dari sisi programming bukan dari sisi client (pengguna). Teknologi yang akan kita gunakan antara lain:
+    - XMLHTTP,
+    - FETCH,
+    - AXIOS,
+
+* Perbedaan antara request yang dilakukan dengan ajax dan request biasa adalah, kalau request yang biasa dilakukan seperti melakukan pencarian di google itu adalah pencarian atau request ke server nya google dan akan mengembalikan semua nilai yang sesuai dengan kata kunci pencariannya berupa 'resource document' yang tidak bisa kita olah atau edit, sedangkan untuk request ajax disini yang dikembalikan adalah data data tertentu saja berupa 'format json' yang nantinya bisa diolah dan ditampilkan di browser, jadi memang murni merupakan data yang dimiliki oleh client / pengguna. 
+
+* Penjelasan lebih lanjut mengenai API bisa cek ke folder Belajar Website Frontend di folder API.
