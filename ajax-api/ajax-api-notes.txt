@@ -6,3 +6,5 @@
 * Perbedaan antara request yang dilakukan dengan ajax dan request biasa adalah, kalau request yang biasa dilakukan seperti melakukan pencarian di google itu adalah pencarian atau request ke server nya google dan akan mengembalikan semua nilai yang sesuai dengan kata kunci pencariannya berupa 'resource document' yang tidak bisa kita olah atau edit, sedangkan untuk request ajax disini yang dikembalikan adalah data data tertentu saja berupa 'format json' yang nantinya bisa diolah dan ditampilkan di browser, jadi memang murni merupakan data yang dimiliki oleh client / pengguna. 
 
 * Penjelasan lebih lanjut mengenai API bisa cek ke folder Belajar Website Frontend di folder API.
+
+* Fetch merupakan cara baru untuk melakukan request via javascript. Berbeda dengan XMLHttpRequest yang tidak mendukung adanya promise, sehingga kita bisa saja mengalami callback hell. Fetch mendukung penggunaan promise walaupun Fetch sendiri tidak support pada browser Internet Explorer.
