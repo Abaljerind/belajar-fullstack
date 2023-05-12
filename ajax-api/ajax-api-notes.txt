@@ -8,3 +8,13 @@
 * Penjelasan lebih lanjut mengenai API bisa cek ke folder Belajar Website Frontend di folder API.
 
 * Fetch merupakan cara baru untuk melakukan request via javascript. Berbeda dengan XMLHttpRequest yang tidak mendukung adanya promise, sehingga kita bisa saja mengalami callback hell. Fetch mendukung penggunaan promise walaupun Fetch sendiri tidak support pada browser Internet Explorer.
+
+* Axios -> library pihak ketiga untuk melakukan request HTTP. Untuk menggunakan axios kita bisa cari di google 'github axios', untuk penggunaan nya sendiri ada 2 yaitu untuk backend dan juga frontend, untuk backend kita bisa menginstall nya dengan npm, sedangkan untuk frontend kita bisa copy paste baris javascript cdn nya berikut ini:
+Using jsDelivr CDN (ES5 UMD browser module):
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+Using unpkg CDN:
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
+Keduanya sama saja.
+
