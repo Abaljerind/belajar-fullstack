@@ -7,7 +7,43 @@
     <title>Latihan Manipulation</title>
   </head>
   <body>
+    <h1>Your destination please!</h1>
+
+    <ul class="lokasi">
+      <li class="bandung">Bandung</li>
+      <li class="surabaya"><strong>Surabaya</strong></li>
+      <li>Jakarta</li>
+      <li>
+        <input type="text" class="inputan" value="100" />
+      </li>
+    </ul>
     <!-- jQuery script -->
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function () {
+        // contoh DOM Manipulation
+        // var jogja = $("<li>Jogja</li>");
+        // var bali = $("<li>Bali</li>");
+        // var subJudul = $("<h2>Please Choose.</h2>");
+        // $(".lokasi").prepend(jogja);
+        // $(".lokasi").append(bali);
+        // subJudul.insertBefore(".lokasi");
+
+        // contoh penggunaan GET
+        // console.log($(".surabaya").text());
+        // console.log($(".surabaya").html());
+        // console.log($(".inputan").val());
+
+        // contoh penggunaan SET
+        // $(".bandung").text("Cimahi");
+        // $(".surabaya").html("<em>Surabaya</em>");
+        // $(".inputan").val(150);
+
+        // contoh penggunaan remove dan empty
+        $(".bandung").remove();
+        $(".surabaya").empty();
+      });
+    </script>
   </body>
 </html>
