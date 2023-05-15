@@ -4,21 +4,54 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Latihan Event Handler</title>
+    <title>Latihan Fitur Effect</title>
   </head>
   <body>
     <h1>Select your destination</h1>
     <ul class="lokasi">
-      <li class="bandung">bandung <button id="keBandung">Kuy!</button> <button id="hapusBandung">X</button></li>
+      <li class="bandung">bandung <button id="keBandung">Kuy!</button> <button id="hapusBandung">X</button> <button id="hideBandung">Hide</button></li>
       <li class="surabaya">surabaya</li>
       <li class="jakarta">jakarta</li>
     </ul>
+
+    <button id="toggleBandung">Hide / Show Bandung</button>
+
+    <p id="teks">Teks ini akan berpindah.</p>
+
+    <button id="pindahTeks">Pindah</button>
 
     <!-- jQuery script -->
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
     <script>
-      $(document).ready(function () {});
+      $(document).ready(function () {
+        $("#keBandung").on("click", function () {
+          alert("OTW ke Bandung!");
+        });
+
+        $("#hapusBandung").on("dblclick", function () {
+          $(".bandung").remove();
+          alert("Bandung dihapus!");
+        });
+
+        $("#hideBandung").on("click", function () {
+          //   $(".bandung").hide();
+          //   $(".bandung").fadeOut(2000);
+          $(".bandung").slideUp(2000);
+        });
+
+        $("#toggleBandung").on("click", function () {
+          //   $(".bandung").toggle();
+          //   $(".bandung").fadeToggle();
+          $(".bandung").slideToggle();
+        });
+
+        $("#pindahTeks").on("click", function () {
+          $("#teks").animate({
+            marginLeft: 120,
+          });
+        });
+      });
     </script>
   </body>
 </html>
