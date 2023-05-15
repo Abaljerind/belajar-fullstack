@@ -14,6 +14,8 @@
     // kode jQuery
  })
 
+* Tujuan dari penggunaan $(document).ready() adalah untuk memastikan bahwa kode JavaScript atau jQuery di dalamnya dieksekusi setelah dokumen HTML selesai dimuat.
+
 * Untuk mengetahui apakah jQuery sudah bisa digunakan atau tidak setelah dihubungkan dengan file jQuery nya, bisa dengan membuka website nya dibagian console dan ketikkan '$', jika hasil kembaliannya adalah sebuah function (e, t){return new k.fn.init(e,t)} maka itu berarti jQuery sudah berhasil dimuat. 
 
 * Sama dengan javascript biasa, pada jQuery kita bisa melakukan selection pada tiap tiap elemen HTML seperti nama tag, id, atau class. 
@@ -55,3 +57,114 @@ Berikut contohnya:
     atau digabung seperti dibawah ini
     
     $("li").first().next().prev().last();
+
+* DOM Manipulation dengan jquery.
+ ada beberapa fungsi yang bisa digunakan antara lain;
+  - add yang digunakan untuk menambahkan elemen. Add sendiri punya beberapa fungsi di dalam nya;
+    # .before(<elemen>) -> digunakan untuk menyisipkan konten tertentu 'sebelum' elemen yang dipilih.
+        contoh:
+        $(document).ready(function() {
+            var price = $('<p>From $399.99</p>');
+            $('.vacation').before(price);
+        })
+
+    # .after(<elemen>) -> digunakan untuk menyisipkan konten tertentu 'setelah' elemen yang dipilih.
+        contoh:
+        $(document).ready(function() {
+            var price = $('<p>From $399.99</p>');
+            $('.vacation').after(price);
+        })
+
+    # .append(<elemen>) -> digunakan untuk menyisipkan konten tertentu 'di dalam' elemen yang dipilih dan diletakkan 'dibagian akhirnya'.
+        contoh:
+        $(document).ready(function() {
+            var price = $('<p>From 399.99</p>');
+            $('.vacation').append(price);
+        })
+
+    # .prepend(<elemen>) -> digunakan untuk menyisipkan konten tertentu 'di dalam' elemen yang dipilih dan diletakkan 'dibagian awalnya'.
+        contoh:
+        $(document).ready(function() {
+            var price = $('<p>From 399.99</p>');
+            $('.vacation').prepend(price);
+        })
+
+* Alternatif dari fungsi fungsi diatas, hanya dengan penyusunan pemakaian yang berbeda.
+    # .insertBefore(<elemen>) = .before()
+        contoh:
+            price.insertBefore($('.vacation'));
+
+    # .insertAfter(<elemen>) = .after()
+        contoh:
+            price.insertAfter($('.vacation'));
+
+    # .prependTo(<elemen>) = .prepend()
+        contoh:
+            price.prependTo($('.vacation));
+
+    # .appendTo(<elemen>) = .append()
+        contoh:
+            price.appendTo($('.vacation'));
+
+* Get -> digunakan untuk mengambil data elemen di jQuery.
+    - .text -> mengembalikan konten teks dari elemen yang dipilih, maksudnya bisa mengganti atau memasukkan teks ke dalam elemen html seperti h1-h6, p dan lain lain
+    - .html -> mengembalikan konten elemen yang dipilih, termasuk markup HTML.
+        contoh: 
+            <h1>Kemana Anda ingin pergi ?</h1>
+            <ul class="lokasi">
+                <li>Bandung</li>
+                <li class="surabaya"><strong>Surabaya</strong></li>
+                <li>Jakarta</li>
+            </ul>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function()
+                    {
+                        console.log($('.surabaya').html());
+                    });
+            </script>
+        output => <strong>Surabaya</strong>
+    
+    - .val -> mengembalikan value pada form
+        contoh:
+            <h1>Kemana Anda ingin pergi ?</h1>
+            <ul class="lokasi">
+                <li>Bandung</li>
+                <li class="surabaya"><strong>Surabaya</strong></li>
+                <li>Jakarta</li>
+                <li><input type="text" class="inputan" value="Malang"></li>
+            </ul>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function()
+                    {
+                        console.log($('.inputan').val());
+                    });
+            </script>
+        output => Malang
+
+* SET
+    .text(konten) -> mengatur konten teks dari elemen yang dipilih.
+    .html(konten) -> mengatur konten elemen yang dipilih termasuk markup HTML nya.
+    .val(konten) -> menetapkan atau mengembalikan value pada form.
+
+* Remove -> digunakan untuk mengambil data di jQuery.
+    - .remove() -> menghapus elemen (elemen parent) dan elemen di dalamnya / child.
+    - .empty() -> menghapus elemen / teks di dalam elemen pembungkusnya saja.
+        contoh:
+            <h1>Kemana Anda ingin pergi ?</h1>
+            <ul class="lokasi">
+                <li class="bandung">Bandung</li>
+                <li class="surabaya"><strong>Surabaya</strong></li>
+                <li>Jakarta</li>
+                <li><input type="text" class="inputan" value="Malang"></li>
+            </ul>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function()
+                {
+                $('.bandung').remove();
+                $('.surabaya').empty();
+                });
+            </script>
+        output => elemen dengan class .bandung akan dihapus, lalu elemen class .surabaya hanya akan dikosongkan tetapi listnya masih dibiarkan.
