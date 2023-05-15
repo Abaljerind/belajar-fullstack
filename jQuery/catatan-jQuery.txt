@@ -27,6 +27,10 @@ Berikut contohnya:
     - class
     $(".articles");
 
+* jquery juga bisa melakukan selection seperti pada css, Berikut contohnya;
+        $("li:nth-child(1)").text("indonesia"); -> hanya akan mengubah elemen li yang pertama saja.
+        $("li.pantai").text("yogya"); -> hanya akan mengubah elemen li yang punya class pantai saja.
+
 * Beberapa contoh fungsi pada jQuery:
 -    $("p").text("Orlando"); -> jika ada lebih dari 1 tag 'p' maka semua tag p tersebut akan diganti teks nya menjadi 'Orlando'.
 
