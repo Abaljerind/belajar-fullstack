@@ -5,6 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Latihan Fitur Effect CSS</title>
+
+    <style>
+      .merah {
+        color: salmon;
+      }
+
+      .biru {
+        color: lightskyblue;
+      }
+    </style>
   </head>
   <body>
     <h1>Select your destination</h1>
@@ -14,11 +24,44 @@
       <li class="jakarta">jakarta</li>
     </ul>
 
+    <button id="ganti-merah">Merah</button>
+    <button id="ganti-biru">Biru</button>
+    <button id="uppercase">Uppercase</button>
+    <button id="animate">Animate</button>
+
     <!-- jQuery script -->
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
     <script>
-      $(document).ready(function () {});
+      $(document).ready(function () {
+        // menambah class merah dan remove class biru dgn style diatas
+        $("#ganti-merah").on("click", function () {
+          $(".bandung").removeClass("biru");
+          $(".bandung").addClass("merah");
+        });
+
+        // menambah class biru dan remove class merah dgn style diatas
+        $("#ganti-biru").on("click", function () {
+          $(".bandung").removeClass("merah");
+          $(".bandung").addClass("biru");
+        });
+
+        // menambah font-size dan margin-left dengan style kostum dibawah
+        $("#uppercase").on("click", function () {
+          $(".bandung").css({
+            fontSize: 40,
+            marginLeft: 35,
+          });
+        });
+
+        // menambah fitur animate dengan font-size dan margin-left dgn style kostum dibawah
+        $("#animate").on("click", function () {
+          $(".bandung").animate({
+            fontSize: 35,
+            marginLeft: 100,
+          });
+        });
+      });
     </script>
   </body>
 </html>
