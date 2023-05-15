@@ -168,3 +168,28 @@ Berikut contohnya:
                 });
             </script>
         output => elemen dengan class .bandung akan dihapus, lalu elemen class .surabaya hanya akan dikosongkan tetapi listnya masih dibiarkan.
+
+* Event Handler -> semua tindakan dari user yang berbeda dimana dapat ditanggapi oleh javascript / jquery disebut sebagai 'event'.
+    contoh:
+        - menggerakkan mouse diatas elemen.
+        - memilih tombol radio.
+        - mengklik elemen.
+
+* Beberapa contoh event handler:
+    - mouse events -> click, dblclick, mouseenter, mouseleave, dll.
+    - keyboard events -> keypress, keydown, keyup dll.
+    - form events -> submit, change, focus, blur dll.
+    - document / window events -> load, resize, scroll, unload.
+
+    contoh:
+        $('#tombolKirim').click(function() {
+            // kode
+        });
+
+        atau
+
+        $('#tombolKirim').on('click', function() {
+            // kode
+        });
+
+        NOTE: disarankan menggunakan yang kedua.
