@@ -193,3 +193,23 @@ Berikut contohnya:
         });
 
         NOTE: disarankan menggunakan yang kedua.
+
+* Jenis fitur effect di jQuery
+    - Tanpa animasi
+        .hide(kecepatan) -> digunakan untuk 'menyembunyikan' elemen yang dipilih
+        .show(kecepatan) -> digunakan untuk 'memunculkan' elemen yang dipilih
+        .toggle(kecepatan) -> beralih antara 'hide' dan 'show' 
+
+    - Animasi fade
+        .fadeIn(kecepatan) -> digunakan untuk 'memunculkan' elemen yang dipilih dengan efek transisi 'muncul' secara perlahan
+        .fadeOut(kecepatan) -> digunakan untuk 'menyembunyikan' elemen yang diipili dengan efek transisi 'disembunyikan' secara perlahan
+        .fadeToggle(kecepatan) -> beralih antara 'fadeIn' dan 'fadeOut'
+        .fadeTo(kecepatan) -> memberikan efek 'opacity' / transparansi suatu elemen.
+
+    - Animasi slide
+        .slideDown(kecepatan) -> 'memunculkan' elemen yang dipilih dengan 'efek slide kebawah dari atas'.
+        .slideUp(kecepatan) -> 'menyembunyikan' elemen yang dipilih dengan 'efek slide ke atas dari bawah'.
+        .slideToggle(kecepatan) -> gabungan antara metode 'slideDown' dan 'slideUp'
+    
+    - Animasi via CSS
+        .animate(parameter css, kecepatan) -> menjalankan animasi pada elemen yang dipilih
