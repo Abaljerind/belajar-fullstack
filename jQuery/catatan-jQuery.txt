@@ -258,3 +258,12 @@ Berikut contohnya:
             marginLeft: 100,
           });
         });
+
+* Menggunakan library untuk jQuery. Saat ini sudah banyak komunitas yang mengembangkan library jQuery sehingga kita dapat dengan mudah melakukan pengembangan aplikasi / web dengan menggunakan jQuery. Contoh situs yang dapat membantu kita antara lain:
+    - https://jqueryui.com/ => banyak pilihan library yang dapat kita gunakan seperti autocomplete, button, accordion dan lain lain. 
+
+ # NOTE: untuk penggunaan tiap tiap library bisa kita baca pada dokumentasi masing masing library nya.
+
+    - autocomplete -> ketika kita mengetikkan suatu kata kunci, maka kata kunci yang cocok dengan data yang disediakan akan muncul secara otomatis.
+    - https://kenwheeler.github.io/slick/ jQuery slick -> slick / slider, untuk menggeser kumpulan image / teks yang kita tentukan tinggi dan lebarnya.
+    - popup -> digunakan untuk memunculkan kotak dialog yang memiliki button close ketika muncul yang digunakan untuk menutup / close popup tersebut.
