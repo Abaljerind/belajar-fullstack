@@ -30,8 +30,28 @@ Berikut contohnya:
 * jquery juga bisa melakukan selection seperti pada css, Berikut contohnya;
         $("li:nth-child(1)").text("indonesia"); -> hanya akan mengubah elemen li yang pertama saja.
         $("li.pantai").text("yogya"); -> hanya akan mengubah elemen li yang punya class pantai saja.
+        
+        NOTE: untuk odd dan even, dihitung mulai dari '0 sebagai ganjil' lalu '1 sebagai genap' dan seterusnya.
+        $("li:odd").text('indo'); -> hanya akan mengubah elemen li yang 'ganjil'. 
+        $("li:even").text('konoha'); -> hanya akan mengubah elemen li yang 'genap'.
 
 * Beberapa contoh fungsi pada jQuery:
 -    $("p").text("Orlando"); -> jika ada lebih dari 1 tag 'p' maka semua tag p tersebut akan diganti teks nya menjadi 'Orlando'.
 
 -    $("p").hide(); -> maka semua tag p akan di hide.
+
+* Menggunakan fungsi traversing untuk melakukan selection.
+    - .first() -> memilih 'elemen pertama' dari sekumpulan elemen yang sama.
+    - .last() -> kebalikan dari first().
+    - .prev() -> memilih elemen 'sebelumnya' dari elemen yang dipilih sebagai titik awal.
+    - .next() -> memilih eleemn 'selanjutnya' dari elemen yang dipilih sebagai titik awal.
+    - .children() -> memilih elemen anak dari elemen yang dipilih.
+    - .find() -> memilih elemen anak (children) dan juga elemen elemen dibawahnya dari elemen anak (children) yang dipilih.
+    - .parent() -> memilih elemen parent dari elemen yang dipilih sebagai titik awal.
+
+* Untuk menggunakan fungsi traversing bisa dengan cara seperti berikut:
+    $("li").first();
+
+    atau digabung seperti dibawah ini
+    
+    $("li").first().next().prev().last();
