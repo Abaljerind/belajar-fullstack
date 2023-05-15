@@ -212,4 +212,23 @@ Berikut contohnya:
         .slideToggle(kecepatan) -> gabungan antara metode 'slideDown' dan 'slideUp'
     
     - Animasi via CSS
-        .animate(parameter css, kecepatan) -> menjalankan animasi pada elemen yang dipilih
+        .animate({parameterCss, kecepatan}) -> menjalankan animasi pada elemen yang dipilih
+
+    Contoh:
+        $("#hideBandung").on("click", function () {
+          //   $(".bandung").hide();
+          //   $(".bandung").fadeOut(2000);
+          $(".bandung").slideUp(2000);
+        });
+
+        $("#toggleBandung").on("click", function () {
+          //   $(".bandung").toggle();
+          //   $(".bandung").fadeToggle();
+          $(".bandung").slideToggle();
+        });
+
+        $("#pindahTeks").on("click", function () {
+          $("#teks").animate({
+            marginLeft: 120,        // untuk animate, penulisan parameterCss harus dgn camelCase
+          });
+        });
