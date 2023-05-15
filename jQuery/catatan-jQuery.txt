@@ -232,3 +232,9 @@ Berikut contohnya:
             marginLeft: 120,        // untuk animate, penulisan parameterCss harus dgn camelCase
           });
         });
+
+* Manipulasi CSS dalam jQuery ada beberapa fitur effect yang disediakan, antara lain:
+    - addClass(namaClass) -> digunakan untuk 'menambahkan' satu atau lebih class ke elemen yang dipilih
+    - removeClass(namaClass) -> digunakan untuk 'menghapus' satu atau lebih class dari elemen yang dipilih
+    - toggleClass(namaClass) -> beralih antara 'menambah' dan 'menghapus' class dari elemen yang dipilih
+    - css( css dalam bentuk object ) -> menetapkan / mengembalikan attribut style
