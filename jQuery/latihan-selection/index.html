@@ -7,7 +7,20 @@
     <title>Latihan Selection JQuery</title>
   </head>
   <body>
+    <h1>Destinasi liburan</h1>
+    <ul>
+      <li>Bandung</li>
+      <li class="pantai">Surabaya</li>
+      <li>Jakarta</li>
+    </ul>
+
     <!-- jQuery script -->
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function () {
+        $("li:nth-child(1)").text("indonesia");
+        $("li.pantai").text("yogya");
+      });
+    </script>
   </body>
 </html>
