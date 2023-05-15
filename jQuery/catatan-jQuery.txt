@@ -1,0 +1,17 @@
+* jQuery adalah kumpulan fungsi fungsi javascript yang berguna untuk memudahkan penulisan kode javascript. jQuery punya fitur fitur seperti menyederhanakan document traversing, event handling, animating dan interaksi AJAX untuk mengembangkan sebuah web dengan cepat.
+
+* Manfaat jQuery antara lain:
+ - menemukan elemen dalam dokumen HTML
+ - mengubah konten HTML
+ - mendengarkan (listen) apa yang dilakukan pengguna dan melakukan tindakan yang sesuai (event listener)
+ - membuat animasi konten di halaman website
+ - berbicara melalui jaringan untuk mengambil konten baru menggunakan AJAX.
+
+* Cara memanggil jQuery -> bisa dengan download file jQuery dari website cdn jQuery atau dengan copas link nya saja berdasarkan versi yang dibutuhkan.
+
+* Contoh penulisan jQuery;
+ $(document).ready(function() {
+    // kode jQuery
+ })
+
+* Untuk mengetahui apakah jQuery sudah bisa digunakan atau tidak setelah dihubungkan dengan file jQuery nya, bisa dengan membuka website nya dibagian console dan ketikkan '$', jika hasil kembaliannya adalah sebuah function (e, t){return new k.fn.init(e,t)} maka itu berarti jQuery sudah berhasil dimuat. 
