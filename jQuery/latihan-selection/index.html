@@ -8,18 +8,32 @@
   </head>
   <body>
     <h1>Destinasi liburan</h1>
-    <ul>
+    <ul id="destinasi">
       <li>Bandung</li>
       <li class="pantai">Surabaya</li>
       <li>Jakarta</li>
+      <ul>
+        <li>Jakarta Timur</li>
+        <li>Jakarta Selatan</li>
+        <li>Jakarta Pusat</li>
+      </ul>
+      <li>Bekasi</li>
+      <li>Depok</li>
     </ul>
+
+    <button>Click</button>
 
     <!-- jQuery script -->
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
       $(document).ready(function () {
-        $("li:nth-child(1)").text("indonesia");
-        $("li.pantai").text("yogya");
+        // $("li:nth-child(1)").text("indonesia");
+        // $("li.pantai").text("yogya");
+
+        $("button").click(function () {
+          $("#destinasi li:odd").css("background-color", "salmon");
+          $("#destinasi li:even").css("background-color", "lightskyblue");
+        });
       });
     </script>
   </body>
