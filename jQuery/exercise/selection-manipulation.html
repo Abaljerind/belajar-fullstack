@@ -9,7 +9,52 @@
   <body>
     <h1>Latihan Menambah dan Menghapus dengan List</h1>
 
+    <ul class="daftar-menu">
+      <li>Nasi Goreng</li>
+      <li>Mie Goreng</li>
+      <li>Mie Soto</li>
+    </ul>
+
+    <button class="add1">Add menu1</button>
+    <button class="add2">Add menu2</button>
+    <button class="add3">Add sub-menu1</button>
+    <button class="add4">Add thank-you</button>
+    <button class="remove">Remove</button>
+
     <!-- jQuery script -->
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function () {
+        let menu1 = $("<li>Nasi Uduk Spesial</li>");
+        let menu2 = $("<li>Nasi Rames</li>");
+        let subMenu1 = $("<h3>Selamat menikmati.</h3>");
+        let thankyou = $("<h4>Terima kasih sudah memilih restoran kami.</h4>");
+        // button add1
+        $(".add1").click(function () {
+          $(".daftar-menu").append(menu1);
+        });
+
+        // button add2
+        $(".add2").click(function () {
+          $(".daftar-menu").prepend(menu2);
+        });
+
+        // button add3
+        $(".add3").click(function () {
+          subMenu1.insertBefore(".daftar-menu");
+        });
+
+        // button add4
+        $(".add4").click(function () {
+          thankyou.insertAfter(".daftar-menu");
+        });
+
+        // button remove
+        $(".remove").click(function () {
+          $(".daftar-menu").remove();
+        });
+      });
+    </script>
   </body>
 </html>
