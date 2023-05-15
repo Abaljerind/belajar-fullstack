@@ -238,3 +238,23 @@ Berikut contohnya:
     - removeClass(namaClass) -> digunakan untuk 'menghapus' satu atau lebih class dari elemen yang dipilih
     - toggleClass(namaClass) -> beralih antara 'menambah' dan 'menghapus' class dari elemen yang dipilih
     - css( css dalam bentuk object ) -> menetapkan / mengembalikan attribut style
+
+    Contoh: 
+        $("#ganti-merah").on("click", function () {
+          $(".bandung").removeClass("biru");
+          $(".bandung").addClass("merah");
+        });
+
+        $("#uppercase").on("click", function () {
+          $(".bandung").css({
+            fontSize: 40,
+            marginLeft: 35,
+          });
+        });
+
+        $("#animate").on("click", function () {
+          $(".bandung").animate({
+            fontSize: 35,
+            marginLeft: 100,
+          });
+        });
