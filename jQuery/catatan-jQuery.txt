@@ -15,3 +15,19 @@
  })
 
 * Untuk mengetahui apakah jQuery sudah bisa digunakan atau tidak setelah dihubungkan dengan file jQuery nya, bisa dengan membuka website nya dibagian console dan ketikkan '$', jika hasil kembaliannya adalah sebuah function (e, t){return new k.fn.init(e,t)} maka itu berarti jQuery sudah berhasil dimuat. 
+
+* Sama dengan javascript biasa, pada jQuery kita bisa melakukan selection pada tiap tiap elemen HTML seperti nama tag, id, atau class. 
+Berikut contohnya: 
+    - nama tag html
+    $("p");
+
+    - id
+    $("#container");
+
+    - class
+    $(".articles");
+
+* Beberapa contoh fungsi pada jQuery:
+-    $("p").text("Orlando"); -> jika ada lebih dari 1 tag 'p' maka semua tag p tersebut akan diganti teks nya menjadi 'Orlando'.
+
+-    $("p").hide(); -> maka semua tag p akan di hide.
