@@ -9,7 +9,7 @@
   <body>
     <h1>Select your destination</h1>
     <ul class="lokasi">
-      <li class="bandung">bandung <button id="keBandung">Kuy!</button></li>
+      <li class="bandung">bandung <button id="keBandung">Kuy!</button> <button id="hapusBandung">X</button></li>
       <li class="surabaya">surabaya</li>
       <li class="jakarta">jakarta</li>
     </ul>
@@ -18,7 +18,15 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
     <script>
-      $(document).ready(function () {});
+      $(document).ready(function () {
+        $("#keBandung").on("click", function () {
+          alert("OTW ke Bandung!");
+        });
+        $("#hapusBandung").on("dblclick", function () {
+          $(".bandung").remove();
+          alert("Bandung dihapus!");
+        });
+      });
     </script>
   </body>
 </html>
