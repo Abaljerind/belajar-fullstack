@@ -65,3 +65,6 @@ Kita juga bisa isikan dengan cara berikut tanpa menggunakan 'v-bind' seperti ber
 
 Untuk menggunakan perulangan pada vue.js, kita perlu menggunakan v-for, dengan isinya berupa variable sementara yang mengambil data dari dalam array, walaupun array tersebut misalnya berada didalam object seperti di file app.js. Nah "item in products" diatas sama dengan perulangan "for..in" pada javascript biasa, dimana "item" adalah nama variable sementara jadi kita bisa ubah menjadi nama lainnya, lalu "in products" dimaksudkan untuk mengambil data pada array "products" walaupun data array tersebut disimpan di dalam suatu object.
 
+* Contoh pengkondisian dengan vue.js, digunakan sama seperti pada javascript dan bahasa lainnya, berikut contohnya:
+    <div v-if="item.price <= maximum">
+kita gunakan 'item' diatas karena sebelumnya kita telah menambahkan pengulangan dengan v-for, sehingga kita bisa gunakan pengkondisian dengan variable 'item'. Kode diatas dibaca 'vue.js tolong tampilkan data dengan syarat, jika ada item yang memiliki harga kurang dari atau sama dengan nilai maximum yang sudah kita tentukan pada file app.js nya'. Number kita gunakan untuk melakukan parsing dari string ke tipe number.
