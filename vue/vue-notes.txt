@@ -1,0 +1,5 @@
+Ada 2 cara untuk menambahkan vue.js ke dalam website buatan kita:
+    - dengan npm
+    - dengan cdn
+
+Dengan menggunakan vue.js kita bisa dengan mudah memanipulasi dom yang akan langsung terjadi di dalam vue.js nya, tanpa perlu melakukan selection pada elemennya menggunakan getElementById dan sebagainya. 
