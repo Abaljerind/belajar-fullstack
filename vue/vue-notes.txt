@@ -1,5 +1,52 @@
+NOTE: versi vue.js yang dipelajari sekarang adalah versi yang ke - 2, bukan yang terbaru yaitu versi 3 nya.
+
 Ada 2 cara untuk menambahkan vue.js ke dalam website buatan kita:
     - dengan npm
     - dengan cdn
 
 Dengan menggunakan vue.js kita bisa dengan mudah memanipulasi dom yang akan langsung terjadi di dalam vue.js nya, tanpa perlu melakukan selection pada elemennya menggunakan getElementById dan sebagainya. 
+
+* Contoh vue.js versi 2 dan cara penulisannya:
+
+di script / file app.js bisa diisikan berikut:
+var app = new Vue({
+  el: "#app", // el: artinya elemen yang punya id "app".
+  data: {
+    name: "Naruto Uzumaki",
+  },
+});
+
+Lalu di index.html bisa diisikan berikut:
+    <div id="app">
+      <h2>{{ name }}</h2>
+    </div>
+
+Nantinya scriptnya akan mencari elemen dengan 'id' app dan mengubah isi datanya dengan data yang dituliskan di dalam key dari 'name' yaitu Naruto Uzumaki.
+
+Contoh diatas disebut dengan 'Reactive Data' yang artinya ketika kita menghubungkan suatu elemen dengan data atau properti yang ada di dalam vue js nya, maka secara otomatis akan terus terhubung dan data yang ada di dalam properti tersebut dapat kita ubah secara real time tanpa perlu loading ulang halaman web nya dan proses perubahannya akan langsung ditampilkan ke halaman web nya.
+
+Berikut contoh ketika menggunakan data object yang terpisah pada app.js:
+    const narutoShippuden = {
+    name: "naruto uzumaki shippuden",
+    deskripsi: "bercerita tentang naruto uzumaki, seorang ninja asal konoha yang ingin menjadi hokage",
+    price: "25000",
+    image: "https://upload.wikimedia.org/wikipedia/id/9/94/NarutoCoverTankobon1.jpg",
+    };
+
+    var app = new Vue({
+    el: "#app",
+    data: narutoShippuden,
+    });
+
+Di file index.html nya bisa diisikan berikut:
+    <div id="app">
+      <h2>{{ name }}</h2>
+      <p>{{ deskripsi }}</p>
+      <p>{{ price }}</p>
+    </div>
+
+* cara melakukan binding data / menambahkan suatu value ke dalam attribute HTML dengan cara: 
+    'directive v-bind', dimana kita bisa isikan sebelum nama attribute nya, contoh <img v-bind:src="image" v-bind:alt="name" class="img-fluid" />
+
+Kita juga bisa isikan dengan cara berikut tanpa menggunakan 'v-bind' seperti berikut:
+    <img :src="image" :alt="name" class="img-fluid" />
