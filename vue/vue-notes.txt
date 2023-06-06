@@ -50,3 +50,18 @@ Di file index.html nya bisa diisikan berikut:
 
 Kita juga bisa isikan dengan cara berikut tanpa menggunakan 'v-bind' seperti berikut:
     <img :src="image" :alt="name" class="img-fluid" />
+
+* Contoh perulangan pada vue.js yang digunakan untuk mengambil data di dalam bentuk array:
+        <div class="row d-flex mb-3 align-items-center" v-for="item in products">
+            <div class="col-sm-4">
+                <img :src="item.image" :alt="item.name" class="img-fluid d-block" />
+            </div>
+            <div class="col">
+                <h3 class="text-info">{{ item.name }}</h3>
+                <p class="mb-0">{{ item.description }}</p>
+                <div class="h5 float-right">Rp{{ item.price }}</div>
+            </div>
+      </div>
+
+Untuk menggunakan perulangan pada vue.js, kita perlu menggunakan v-for, dengan isinya berupa variable sementara yang mengambil data dari dalam array, walaupun array tersebut misalnya berada didalam object seperti di file app.js. Nah "item in products" diatas sama dengan perulangan "for..in" pada javascript biasa, dimana "item" adalah nama variable sementara jadi kita bisa ubah menjadi nama lainnya, lalu "in products" dimaksudkan untuk mengambil data pada array "products" walaupun data array tersebut disimpan di dalam suatu object.
+
