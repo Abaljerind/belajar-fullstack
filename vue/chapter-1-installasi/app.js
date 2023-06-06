@@ -8,6 +8,7 @@
 
 // contoh data lagi
 const dataProducts = {
+  maximum: 10,
   products: [
     {
       id: "429",
