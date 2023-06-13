@@ -16,7 +16,7 @@
       <nav class="navbar navbar-light bg-light">
         <div class="navbar-text ml-auto">
           <b>cart:</b>
-          <span class="badge badge-pill badge-success"></span>
+          <span class="badge badge-pill badge-success text-info">{{ cart.length }}</span>
         </div>
       </nav>
 
@@ -28,7 +28,8 @@
       <div class="row d-flex mb-3 align-items-center" v-for="item in products">
         <div v-if="item.price <= maximum">
           <div class="col-1 m-auto">
-            <button class="btn btn-info">+</button>
+            <button class="btn btn-info" v-on:click="addItem(item)">+</button>
+            <!-- addItem(item) adalah function yang ada didalam object app, dengan parameter variable sementara yg berasal dari for in diatas. -->
           </div>
           <div class="col-sm-4">
             <img :src="item.image" :alt="item.name" class="img-fluid d-block" />
