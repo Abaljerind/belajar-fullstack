@@ -90,3 +90,21 @@ var app = new Vue({
 });
 
 Pada contoh diatas, kita buat sebuah properti object baru berupa key - value, dengan nama mounted yang berisi value nya adalah function, lalu dengan 'fetch' kita mengambil data api dari alamat web tersebut, lalu hasilnya yang berupa response akan diubah menjadi bentuk 'json', lalu setelah itu response tadi akan disisipkan ke dalam variable 'data' dimana variable data tersebut akan disimpan 'value' nya ke dalam properti 'products' yang ada di dalam properti object dari 'key' dengan nama 'data' tersebut.
+
+* Event dan Method pada Vue,
+- Event pada Vue.js ini, tidak berbeda jauh seperti di javascript biasa, contoh ada 'v-on:click' yang sama dengan 'onclick=myFunction()'. Contoh lengkapnya:
+    v-on:click="cart.push(item)"
+        - cart adalah property yang ada di dalam variable 'app' pada file app.js yang nilainya array kosong,
+        - push() adalah contoh function bawaan dari javascript,
+        - (item) adalah variable sementara dari perulangan for yang ada di dalam file index.html.
+
+- Lalu method juga sama, yaitu sebuah function yang ada didalam sebuah object. Contoh method nya:
+      methods: {
+            addItem: function (product) {
+            this.cart.push(product);
+            },
+        },
+
+    - addItem adalah nama function / method,
+    - product adalah parameter nya di file app.js, kalau di file index.html parameter nya akan diisi dengan variable sementara 'item',
+    - this.cart.push(product) akan melakukan penambahan data pada array cart yang kosong dengan function bawaan push yang berisi nilai parameter / argumen nya yaitu 'item.
