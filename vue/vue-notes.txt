@@ -68,3 +68,8 @@ Untuk menggunakan perulangan pada vue.js, kita perlu menggunakan v-for, dengan i
 * Contoh pengkondisian dengan vue.js, digunakan sama seperti pada javascript dan bahasa lainnya, berikut contohnya:
     <div v-if="item.price <= maximum">
 kita gunakan 'item' diatas karena sebelumnya kita telah menambahkan pengulangan dengan v-for, sehingga kita bisa gunakan pengkondisian dengan variable 'item'. Kode diatas dibaca 'vue.js tolong tampilkan data dengan syarat, jika ada item yang memiliki harga kurang dari atau sama dengan nilai maximum yang sudah kita tentukan pada file app.js nya'. Number kita gunakan untuk melakukan parsing dari string ke tipe number.
+
+* Contoh directive v-model, yang sama seperti directive lain diatas, tetapi pada v-model akan kita isikan suatu object data berupa key nya. Berikut contohnya:
+    <input type="number" class="form-control w-25" v-model="maximum">
+    Tag input diatas akan berisikan data yang nilainya bisa kita sesuaikan dan nilai nya tersebut akan disimpan ke dalam property object dari key 'maximum'.
+
