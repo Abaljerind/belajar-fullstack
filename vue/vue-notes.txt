@@ -73,3 +73,20 @@ kita gunakan 'item' diatas karena sebelumnya kita telah menambahkan pengulangan 
     <input type="number" class="form-control w-25" v-model="maximum">
     Tag input diatas akan berisikan data yang nilainya bisa kita sesuaikan dan nilai nya tersebut akan disimpan ke dalam property object dari key 'maximum'.
 
+* Contoh mengakses data menggunakan api
+var app = new Vue({
+  el: "#app",
+  data: {
+    maximum: 50,
+    products: null,
+  },
+  mounted: function () {
+    fetch("https://hplussport.com/api/products/order/price")
+      .then((response) => response.json())
+      .then((data) => {
+        this.products = data;
+      });
+  },
+});
+
+Pada contoh diatas, kita buat sebuah properti object baru berupa key - value, dengan nama mounted yang berisi value nya adalah function, lalu dengan 'fetch' kita mengambil data api dari alamat web tersebut, lalu hasilnya yang berupa response akan diubah menjadi bentuk 'json', lalu setelah itu response tadi akan disisipkan ke dalam variable 'data' dimana variable data tersebut akan disimpan 'value' nya ke dalam properti 'products' yang ada di dalam properti object dari 'key' dengan nama 'data' tersebut.
