@@ -147,3 +147,22 @@ Penjelasan pada class diatas: imgClass adalah properti dari object data di file 
       />
 
 Dengan directive v-bind seperti diatas, kita bisa secara langsung menuliskan properti dari tag HTML dan juga properti dari javascript nya secara langsung sehingga lebih mudah untuk dibaca.
+
+* Computed property, untuk menyimpan banyak function yang dapat kita gunakan didalam vue js.
+
+* Fungsi slug, biasanya akan mengubah suatu string atau digunakan pada situs blog untuk mengubah title agar dapat digunakan didalam title agar lebih rapih. Seperti contohnya white-space akan diubah menjadi dash ( - ), beberapa simbol akan dihapus yang jadinya akan terlihat lebih rapih pada saat kita gunakan didalam url, dan slug ini juga mempengaruhi bagaimana mesin pencari mengambil data / melihat suatu struktur website yang kita buat.
+
+Contoh computed property & function slug,
+({.......
+  ........
+  computed: {
+    slugetize: function () {
+      return this.slugText
+        .toLowerCase() // isi slugText akan diubah jadi lowercase
+        .replace(/[^\w ]+/g, "") // setiap simbol akan dihapus dengan string kosong. baris kode didalam tanda kurung menggunakan regular expression.
+        .replace(/ +/g, "-"); // mengubah setiap whitespace menjadi dash / -
+    },
+  },
+});
+
+// output dari function slugetize: the-quick-brown-29
