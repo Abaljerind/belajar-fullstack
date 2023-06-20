@@ -10,6 +10,8 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <!-- link animate css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="app.css" />
   </head>
   <body>
@@ -34,7 +36,8 @@
       <br />
 
       <h1>My Shop</h1>
-      <transition name="fade">
+      <transition name="custom" enter-active-class="animate__animated animate__fadeInDown" leave-active-class="animate__animated animate__slideOutRight">
+        <!-- enter-active-class="animate__animated" adalah default css yang harus ditambahkan untuk mengaktifkan library animate dari link diatas. -->
         <div v-if="style.sliderStatus">
           <div class="d-flex align-items-center" :class="sliderState">
             <label for="" v-bind:class="style.label">Max</label>
