@@ -121,6 +121,12 @@ Pada contoh diatas, kita buat sebuah properti object baru berupa key - value, de
   Tetapi jika menggunakan v-html, text 'Fluffy' akan memiliki efek tebal / bold, begitu juga jika diberikan tag i akan jadi italic / miring.
     Fluffy ski coat
 
+* Penggunaan `v-html` pada Vue.js dapat berbahaya jika tidak digunakan dengan hati-hati atau jika data yang di-render melalui `v-html` tidak diverifikasi dengan baik. Hal ini dapat mengakibatkan serangan keamanan yang dikenal sebagai Cross-Site Scripting (XSS). XSS terjadi ketika input pengguna tidak di-filter atau di-validasi dengan benar, dan kemudian di-render melalui `v-html` tanpa sanitasi yang memadai. Dalam situasi seperti itu, pengguna jahat dapat memasukkan kode skrip yang akan dieksekusi pada halaman web, yang dapat membahayakan keamanan pengguna dan situs tersebut.
+
+  Misalnya, jika Anda menggunakan `v-html` untuk merender komentar pengguna pada halaman, dan komentar tersebut tidak diverifikasi atau dibersihkan dengan benar, seorang pengguna jahat dapat memasukkan skrip yang akan dieksekusi saat halaman dimuat oleh pengguna lain. Skrip ini dapat mencuri informasi pribadi pengguna atau bahkan mengubah tampilan halaman.
+
+  Untuk mencegah risiko XSS, penting untuk selalu memverifikasi dan membersihkan data sebelum merender melalui `v-html`. Vue.js sendiri tidak memberikan sanitasi otomatis untuk data yang di-render melalui `v-html`, sehingga tanggung jawab untuk membersihkan dan memastikan keamanan data ada pada pengembang. Sebagai langkah pencegahan, gunakan metode sanitasi yang disediakan oleh kerangka kerja atau pustaka keamanan yang sesuai sebelum merender data yang masuk melalui `v-html`. Jangan pernah memasukkan data langsung dari input pengguna ke dalam `v-html` tanpa validasi dan sanitasi yang memadai.
+
 * Dengan menggunakan directive v-once, maka nilai yang sudah dideklarasikan dari awal tidak akan bisa dirubah rubah lagi kedepannya. Contohnya,
 
   <span v-once>{{ name }}</span>
