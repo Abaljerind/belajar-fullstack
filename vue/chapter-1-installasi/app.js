@@ -60,7 +60,7 @@ var app = new Vue({
     cart: [],
     style: {
       label: ["font-weight-bold", "mr-2"],
-      sliderStatus: true,
+      sliderStatus: false,
     },
   },
   mounted: function () {
