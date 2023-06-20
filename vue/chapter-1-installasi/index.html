@@ -29,7 +29,7 @@
         <div v-if="item.price <= maximum">
           <div class="col-1 m-auto">
             <button class="btn btn-info" v-on:click="addItem(item)">+</button>
-            <!-- addItem(item) adalah function yang ada didalam object app, dengan parameter variable sementara yg berasal dari for in diatas. -->
+            <!-- addItem(item) adalah function yang ada didalam object app, dengan argument variable bernama 'item' sementara yg berasal dari for in diatas. -->
           </div>
           <div class="col-sm-4">
             <img :src="item.image" :alt="item.name" class="img-fluid d-block" />
