@@ -206,3 +206,26 @@ Contoh computed property & function slug,
   - pada computed, terdapat function catch yang berfungsi untuk menyimpan nilai sebelumnya dan pada saat nilai sebelumnya ini tidak ada perubahan atau tidak kita ubah maka hasilnya akan tetap.
 
   - berbeda pada methods, nilai / hasil dari function yang disimpan didalam methods akan selalu diubah / dijalankan lagi dari awal sehingga perubahannya akan terus terjadi.
+
+* Binding Attribute dengan Array dan Object, berikut contohnya:
+
+  contoh array:
+    <label for="" v-bind:class="['font-weight-bold', 'mr-2']">Max</label>
+
+  bisa juga ditulis seperti ini,
+    di file app.js
+      var app = new Vue({
+        el: "#app",
+        data: {
+          .......
+          style: {
+            label: ["font-weight-bold", "mr-2"],
+          },
+        },
+      })
+
+    lalu di file index.html bisa dipanggil property style nya dengan value label seperti berikut:
+      <label for="" v-bind:class="style.label">Max</label>
+
+  contoh object:
+    <input type="number" class="form-control mx-2" :style="{'width': '75px', 'text-align': 'center'}" v-model="maximum" />
