@@ -131,3 +131,19 @@ Dengan v-once ini juga kita bisa berikan pada elemen parent nya, yang bisa membu
         <strong>Unchangeable:</strong><br />
         <span>{{ name }}</span>
       </p>
+
+* <img :src="products[0].image" :alt="products[0].name" :class="imgClass + ' ' + 'w-25'" />
+
+Penjelasan pada class diatas: imgClass adalah properti dari object data di file app.js yang berisi class bootstrap 'img-fluid', lalu untuk menambah class dari bootstrap yang lainnya kita bisa gunakan fungsi 'concatenation' seperti diatas, dimana class w-25 ditambahkan untuk memberikan efek lebar / width sebesar 25 rem.
+
+** Berikut adalah contoh binding data secara langsung dengan tag HTML menggunakan v-bind,
+
+      <img
+        v-bind="{
+        class: imgClass + ' ' + 'w-25',
+        src: products[0].image,
+        alt: products[0].name
+      }"
+      />
+
+Dengan directive v-bind seperti diatas, kita bisa secara langsung menuliskan properti dari tag HTML dan juga properti dari javascript nya secara langsung sehingga lebih mudah untuk dibaca.
