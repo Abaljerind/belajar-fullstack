@@ -108,3 +108,26 @@ Pada contoh diatas, kita buat sebuah properti object baru berupa key - value, de
     - addItem adalah nama function / method,
     - product adalah parameter nya di file app.js, kalau di file index.html parameter nya akan diisi dengan variable sementara 'item',
     - this.cart.push(product) akan melakukan penambahan data pada array cart yang kosong dengan function bawaan push yang berisi nilai parameter / argumen nya yaitu 'item.
+
+* Ada beberapa cara untuk kita melakukan parsing data inputan pada saat data tersebut memiliki elemen / tag HTML maka bisa ditampilkan dengan 'format HTML', intinya adalah tag html seperti b, i, atau strong dapat kita gunakan dan akan memberikan efek yang seharusnya, ini disebut dengan Interpolation template. Caranya bisa kita gunakan directive v-html="name" / bisa juga menggunakan nama key yang ada di dalam object pada file javascript / dari data API. Contohnya:
+  Pada file app.js di value pada key 'name' kita isikan seperti berikut,
+    data: {
+      name: "<b>Fluffy</b> ski coat",
+    },
+
+  Maka hasilnya akan menjadi seperti ini jika tidak menggunakan v-html,
+    <b>Fluffy</b> ski coat
+
+  Tetapi jika menggunakan v-html, text 'Fluffy' akan memiliki efek tebal / bold, begitu juga jika diberikan tag i akan jadi italic / miring.
+    Fluffy ski coat
+
+* Dengan menggunakan directive v-once, maka nilai yang sudah dideklarasikan dari awal tidak akan bisa dirubah rubah lagi kedepannya. Contohnya,
+
+  <span v-once>{{ name }}</span>
+
+Dengan v-once ini juga kita bisa berikan pada elemen parent nya, yang bisa membuat 'seluruh text' yang ada didalam elemen parent tersebut akan tetap dan tidak dapat diubah ubah. Contohnya,
+
+      <p v-once>
+        <strong>Unchangeable:</strong><br />
+        <span>{{ name }}</span>
+      </p>
