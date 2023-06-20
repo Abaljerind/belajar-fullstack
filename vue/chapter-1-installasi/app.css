@@ -1,7 +1,10 @@
-.fade-enter {
+/* seperti yg dilihat dibawah dan di file index.html, kita hanya memberikan 'tag transition' dengan nama 'fade', lalu pada kode dibawah ini kita langsung menggunakan nama fade tersebut dengan efek dari vue js yang bisa dilihat di dokumentasi nya bagian 'Transitioning Single Elements / Components' di sub bagian 'Transition Classes', terdapat 6 class transisi untuk enter dan leave. Secara umum awalnya class class tersebut akan diberikan nama v-enter, v-enter-active, v-enter-leave dst, nah bagian v nya ini bisa kita ganti seperti pada contoh kali ini. */
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
-.fade-enter-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: all 1s ease-in-out;
 }
