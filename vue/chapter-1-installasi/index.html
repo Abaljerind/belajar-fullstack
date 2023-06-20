@@ -23,7 +23,7 @@
 
       <h1>My Shop</h1>
 
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center" :class="sliderState">
         <label for="" v-bind:class="style.label">Max</label>
         <input type="number" class="form-control mx-2" :style="{'width': '75px', 'text-align': 'center'}" v-model="maximum" />
         <input type="range" class="custom-range" min="0" max="200" v-model="maximum" />

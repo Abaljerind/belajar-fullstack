@@ -60,6 +60,7 @@ var app = new Vue({
     cart: [],
     style: {
       label: ["font-weight-bold", "mr-2"],
+      sliderStatus: true,
     },
   },
   mounted: function () {
@@ -68,6 +69,12 @@ var app = new Vue({
       .then((data) => {
         this.products = data;
       });
+  },
+  computed: {
+    sliderState: function () {
+      return this.style.sliderStatus ? "d-flex" : "d-none";
+      // kalau nilai sliderStatus nya bernilai true maka display nya flex, tapi jika slideStatus nya bernilai false maka display nya none dan slider dari HTML tidak akan muncul.
+    },
   },
   methods: {
     addItem: function (product) {
