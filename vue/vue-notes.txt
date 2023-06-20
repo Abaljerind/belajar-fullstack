@@ -166,3 +166,37 @@ Contoh computed property & function slug,
 });
 
 // output dari function slugetize: the-quick-brown-29
+
+* Methods & Computed:
+  - methods: Properti methods digunakan untuk mendefinisikan fungsi-fungsi dalam komponen Vue.js. Fungsi-fungsi ini dapat dipanggil dari tampilan atau dari bagian lain dalam komponen. Mereka dapat melakukan logika, memanipulasi data, atau melakukan operasi lain yang diperlukan. Ketika fungsi dijalankan, mereka akan mengembalikan nilai yang sesuai. Namun, perlu diperhatikan bahwa fungsi-fungsi dalam methods akan selalu dieksekusi ulang ketika ada perubahan dalam komponen, bahkan jika nilai yang digunakan oleh fungsi tersebut tidak berubah.
+
+  - computed: Properti computed digunakan untuk mendefinisikan properti komputasi dalam komponen Vue.js. Properti ini secara otomatis menghitung nilai berdasarkan dependensi yang telah ditentukan. Dependensi ini adalah data yang digunakan dalam properti komputasi. Jika salah satu dependensi berubah nilainya, properti komputasi akan diperbarui secara otomatis. Hasil dari properti komputasi dapat diakses seperti properti biasa dalam tampilan.
+
+  - Perbedaan utama antara methods dan computed adalah dalam cara kerjanya. Fungsi dalam methods harus dipanggil secara eksplisit dari tampilan atau dari fungsi lain, sedangkan properti dalam computed diperbarui secara otomatis ketika dependensinya berubah. Dengan menggunakan computed, Vue.js dapat mengoptimalkan kinerja dengan hanya memperbarui nilai properti yang diperlukan, sementara fungsi dalam methods akan selalu dieksekusi ulang. Oleh karena itu, 'computed sering digunakan untuk perhitungan sederhana yang membutuhkan pembaruan otomatis', sementara 'methods digunakan untuk logika yang lebih kompleks atau tugas yang memerlukan pemanggilan manual'.
+
+
+* Perbedaan lain antara Methods dan Computed Property:
+  - untuk mengakses function yang ada didalam properti methods maka kita 'perlu' menggunakan tanda kurung () pada akhir nama function nya.
+
+  - untuk mengakses function yang ada didalam properti computed, kita 'tidak perlu' lagi menggunakan tanda kurung () pada akhir nama function, contoh:
+    
+  computed: {
+    now: function () {
+      var date = new Date();
+      return String(date.getHours()) + String(date.getMinutes()) + String(date.getSeconds());
+    },
+    slugetize: function () {
+      return (
+        this.slugText
+          .toLowerCase()
+          .replace(/[^\w ]+/g, "")
+          .replace(/ +/g, "-") +
+        "-" +
+        this.now // bagian now ini bisa ditulis seperti itu karena function now ada di dalam properti computed.
+      );
+    },
+  },
+
+  - pada computed, terdapat function catch yang berfungsi untuk menyimpan nilai sebelumnya dan pada saat nilai sebelumnya ini tidak ada perubahan atau tidak kita ubah maka hasilnya akan tetap.
+
+  - berbeda pada methods, nilai / hasil dari function yang disimpan didalam methods akan selalu diubah / dijalankan lagi dari awal sehingga perubahannya akan terus terjadi.
