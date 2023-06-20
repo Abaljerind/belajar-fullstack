@@ -15,7 +15,8 @@
     <div class="container" id="app">
       <nav class="navbar navbar-light bg-light">
         <div class="navbar-text ml-auto d-flex">
-          <button class="btn btn-sm btn-outline-success">
+          <button class="btn btn-sm btn-outline-success" @click="style.sliderStatus = !style.sliderStatus">
+            <!-- @click untuk menambah event onclick dengan isinya mengubah display dari class directive sliderState yang ada dibawah. sliderState adalah function pada file app.js yang mengembalikan class display flex atau none jika value dari properti sliderStatus nya adalah true maka display nya flex atau false maka display nya none. Sehingga ketika button ini diklik akan membuat div dengan class directive sliderState() dapat hilang dan muncul. -->
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
               <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
               <path
