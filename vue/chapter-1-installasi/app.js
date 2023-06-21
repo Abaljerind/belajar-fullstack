@@ -73,7 +73,7 @@ var app = new Vue({
 
   filters: {
     currencyFormat: function (value) {
-      return "Rp." + Number.parseFloat(value).toFixed(2);
+      return "Rp. " + Number.parseFloat(value).toFixed(2);
     },
   },
 
