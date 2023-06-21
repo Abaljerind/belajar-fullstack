@@ -47,6 +47,10 @@
                   <span class="badge badge-pill badge-warning align-text-top mr-1"> {{ item.qty }} </span>
                   {{ item.product.name }}
                   <b> {{ item.product.price * item.qty | currencyFormat }}</b>
+
+                  <!-- memanggil fungsi deleteItem -->
+                  <a href="#" class="badge badge-danger text-white" @click.stop="deleteItem(index)">-</a>
+                  <!-- @click.stop, dibagian .stop tersebut sama dengan prevent default yang akan menghentikan behavior / tingkah laku dari suatu tag html seperti tag a misalnya jika diberi prevent default maka tidak akan berpindah ke halaman yang dituju. -->
                 </div>
               </div>
             </div>
