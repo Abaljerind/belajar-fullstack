@@ -82,6 +82,24 @@ var app = new Vue({
       return this.style.sliderStatus ? "d-flex" : "d-none";
       // kalau nilai sliderStatus nya bernilai true maka display nya flex, tapi jika slideStatus nya bernilai false maka display nya none dan slider dari HTML tidak akan muncul.
     },
+
+    // membuat fungsi total
+    cartTotal: function () {
+      let sum = 0;
+      for (key in this.cart) {
+        sum = sum + this.cart[key].product.price * this.cart[key].qty;
+      }
+      return sum;
+    },
+
+    // membuat fungsi quantitas barang
+    cartQty: function () {
+      let qty = 0;
+      for (key in this.cart) {
+        qty = qty + this.cart[key].qty;
+      }
+      return qty;
+    },
   },
   methods: {
     before: function (el) {
