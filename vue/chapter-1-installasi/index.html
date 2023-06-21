@@ -27,7 +27,8 @@
               />
             </svg>
           </button>
-          <div class="ml-2">
+          <!-- menambah kondisi jika cart nya masih kosong maka dropdown tidak akan tampil, perlu diberikan class dropdown seperti dibawah. -->
+          <div class="dropdown ml-2" v-if="cart.length > 0">
             <!-- memuat data pada toggle element, agar ketika data di tambahkan ke dalam cart maka akan tampil jumlah item, nama item dan harganya. -->
             <button class="btn btn-success btn-sm dropdown-toggle" id="dropdownCart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <!-- memanggil fungsi cartQty -->
