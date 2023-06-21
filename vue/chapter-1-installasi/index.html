@@ -47,9 +47,9 @@
         </div>
       </transition>
 
-      <transition-group name="fade" tag="div" enter-active-class="animate__animated animate__fadeInRight" leave-active-class="animate__animated animate__fadeOutRight">
+      <transition-group name="fade" tag="div" @beforeEnter="before" @enter="enter" @leave="leave">
         <!-- tag menunjukkan bahwa efek transisi ini akan kita berikan didalam elemen div, karena transition-group secara default akan mencari elemen span dan kita akan arahkan transition-group ini di dalam elemen div didalamnya. Jadi harus diberikan tag dengan value 'div' -->
-        <div class="row d-flex mb-3 align-items-center" v-for="(item, index) in products" :key="item.id" v-if="item.price <= maximum">
+        <div class="row d-none mb-3 align-items-center" v-for="(item, index) in products" :key="item.id" v-if="item.price <= maximum">
           <!-- :key="item.id" digunakan untuk memberikan nilai unik dari id / nilai unik lain didalam temporary variable nya. Karena disini ada id maka kita bisa gunakan id. -->
           <div class="col-1 m-auto">
             <button class="btn btn-info" v-on:click="addItem(item)">+</button>
