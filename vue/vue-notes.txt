@@ -255,3 +255,11 @@ Contoh computed property & function slug,
 
   <price v-bind:value="item.price" v-bind:prefix="'$'" :precision="3"></price>
   => maka prefix nya akan menjadi $ bukan Rp lalu jumlah angka dibelakang koma ada 3 bukan 2 lagi.
+
+* Menggunakan event method dari parent component / var app di file app.js,
+
+    <button class="btn btn-info" @click="$emit('add', item)">+</button>
+      Kita menggunakan yang namanya $emit, $emit memiliki nama 'add' dan memiliki data yang diambil dari variable sementara item yang berasal dari products di parent component nya, sehingga ketika dipanggil emit nya di index.html akan menjadi seperti berikut,
+
+    <product-list :products="products" :maximum="maximum" @add="addItem"></product-list>
+      Seperti dilihat diatas, @add="addItem", @add adalah nama emit yang digunakan, lalu addItem adalah fungsi yang ada di dalam methods di dalam parent component vue js nya, kita bisa memanggilnya tanpa menggunakan tanda kurung ()
