@@ -55,12 +55,15 @@
 Vue.component("price", {
   data: function () {
     return {
-      prefix: "Rp",
-      value: 34.09,
-      precision: 2, // jumlah angka dibelakang koma
+      // prefix: "Rp",
+      // value: 34.09,
+      // precision: 2, // jumlah angka dibelakang koma
     };
   },
+  // membuat properti props, karena di file index.html yang digunakan pada v-bind adalah value, prefix, dan precision maka isi array didalam props nya adalah value, prefix, dan precision juga.
+  props: ["value", "prefix", "precision"],
   template: "<span>{{ this.prefix + Number.parseFloat(this.value).toFixed(this.precision) }}</span>",
+  // sekarang value, prefix, dan precision yang ada di dalam template akan mengarah ke value, prefix, dan precision milik dari props tersebut.
 });
 
 // contoh akses data menggunakan api

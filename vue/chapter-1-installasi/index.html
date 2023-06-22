@@ -88,8 +88,8 @@
             <p class="mb-0">{{ item.description }}</p>
 
             <div class="h5 float-right">
-              <!-- memanggil component dari app.js, karena nama component nya price maka kita buat tag html dengan nama price juga.  -->
-              <price></price>
+              <!-- memanggil component dari app.js, karena nama component nya price maka kita buat tag html dengan nama price juga. Menambah banyak props dengan v-bind.  -->
+              <price v-bind:value="item.price" v-bind:prefix="'Rp'" :precision="2"></price>
             </div>
           </div>
         </div>
