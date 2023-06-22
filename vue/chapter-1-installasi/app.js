@@ -109,7 +109,7 @@ Vue.component("product-list", {
         <div class="row d-none mb-3 align-items-center" v-for="(item, index) in products" :key="item.id" v-if="item.price <= maximum" :data-index="index">
           <!-- :key="item.id" digunakan untuk memberikan nilai unik dari id / nilai unik lain didalam temporary variable nya. Karena disini ada id maka kita bisa gunakan id. -->
           <div class="col-1 m-auto">
-            <button class="btn btn-info" v-on:click="addItem(item)">+</button>
+            <button class="btn btn-info" @click="$emit('add', item)">+</button>
             <!-- addItem(item) adalah function yang ada didalam object app, dengan argument variable bernama 'item' sementara yg berasal dari for in diatas. -->
           </div>
           <div class="col-sm-4">

@@ -74,8 +74,8 @@
         </div>
       </transition>
 
-      <!-- memanggil component product-list -->
-      <product-list :products="products" :maximum="maximum"></product-list>
+      <!-- memanggil component product-list & menggunakan emit dari component product-list, agar dapat menggunakan methods dari parent component -->
+      <product-list :products="products" :maximum="maximum" @add="addItem"></product-list>
     </div>
 
     <!-- jquery script -->
