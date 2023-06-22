@@ -263,3 +263,25 @@ Contoh computed property & function slug,
 
     <product-list :products="products" :maximum="maximum" @add="addItem"></product-list>
       Seperti dilihat diatas, @add="addItem", @add adalah nama emit yang digunakan, lalu addItem adalah fungsi yang ada di dalam methods di dalam parent component vue js nya, kita bisa memanggilnya tanpa menggunakan tanda kurung ()
+
+** Cara installasi project dengan Vue CLI
+gunakan CMD, lalu ketikkan perintah berikut:
+  npm install -g @vue/cli
+  vue create vue-cli
+
+vue-cli adalah nama folder yang akan dijadikan folder penyimpanan project nya.
+
+Pilih sesuai jawaban dibawah ini untuk saat ini:
+  ? Please pick a preset: Manually select features
+  ? Check the features needed for your project: Babel, Linter
+  ? Choose a version of Vue.js that you want to start the project with 2.x
+  ? Pick a linter / formatter config: Prettier
+  ? Pick additional lint features: Lint on save
+  ? Where do you prefer placing config for Babel, ESLint, etc.? In package.json
+  ? Save this as a preset for future projects? No
+
+Nantinya akan muncul perintah setelah proses installasi nya selesai, kedua perintah tersebut bisa langsung dijalankan;
+    $ cd vue-cli
+    $ npm run serve
+
+Setelah itu nantinya akan muncul alamat local dan network dimana keduanya bisa diakses langsung melalui browser. Itulah cara installasi project dengan Vue CLI.
