@@ -51,6 +51,18 @@
 //   data: dataProducts,
 // });
 
+// membuat component dengan vue
+Vue.component("price", {
+  data: function () {
+    return {
+      prefix: "Rp",
+      value: 34.09,
+      precision: 2, // jumlah angka dibelakang koma
+    };
+  },
+  template: "<span>{{ this.prefix + Number.parseFloat(this.value).toFixed(this.precision) }}</span>",
+});
+
 // contoh akses data menggunakan api
 var app = new Vue({
   el: "#app",
