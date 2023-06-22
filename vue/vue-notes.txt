@@ -234,3 +234,24 @@ Contoh computed property & function slug,
   <price v-bind:value="item.price" v-bind:prefix="'Rp'" :precision="2"></price>
   
   :value, :prefix, dan :precision adalah props yang digunakan pada tag atau komponen milik price.
+
+* Menambahkan default value pada props di dalam komponen. Contoh:
+  props: {
+    value: Number, 
+    prefix: {
+      type: String,
+      default: 'Rp'
+    },
+    precision: {
+      type: Number,
+      default: 2
+    }
+  },
+
+  Dengan begitu, maka isi dari tag price di index.html bisa diubah ubah seperti berikut:
+  <price v-bind:value="item.price"></price> => hanya memiliki value saja sedangkan prefix dan precision menggunakan default value.
+
+  atau
+
+  <price v-bind:value="item.price" v-bind:prefix="'$'" :precision="3"></price>
+  => maka prefix nya akan menjadi $ bukan Rp lalu jumlah angka dibelakang koma ada 3 bukan 2 lagi.
