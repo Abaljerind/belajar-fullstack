@@ -286,6 +286,8 @@ Nantinya akan muncul perintah setelah proses installasi nya selesai, kedua perin
 
 Setelah itu nantinya akan muncul alamat local dan network dimana keduanya bisa diakses langsung melalui browser. Itulah cara installasi project dengan Vue CLI.
 
-* Cara install modul / package di Vue.js
+* Cara install modul / package dan library di Vue.js
   ketikkan perintah berikut:
     npm i --save animate.css bootstrap jquery popper.js vue-router
+
+    npm i --save @fortawesome/fontawesome-free @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/vue-fontawesome
