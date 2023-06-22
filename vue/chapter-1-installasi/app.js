@@ -80,6 +80,55 @@ Vue.component("price", {
   // sekarang value, prefix, dan precision yang ada di dalam template akan mengarah ke value, prefix, dan precision milik dari props tersebut.
 });
 
+// membuat component baru
+Vue.component("product-list", {
+  props: ["products", "maximum"],
+  // karena function before, enter dan leave sebelumnya ada di bagian parent (var app) maka perlu dipindahkan ketiga fungsi tersebut ke dalam component product-list, karena jika tidak dipindahkan ketiganya akan ada error.
+  methods: {
+    before: function (el) {
+      el.className = "d-none";
+    },
+
+    enter: function (el) {
+      var delay = el.dataset.index * 100;
+      setTimeout(function () {
+        el.className = "row d-flex mb-3 align-items-center animate_animated animate_fadeInRight";
+      }, delay);
+    },
+
+    leave: function (el) {
+      var delay = el.dataset.index * 100;
+      setTimeout(function () {
+        el.className = "row d-flex mb-3 align-items-center animate_animated animate_fadeOutRight";
+      }, delay);
+    },
+  },
+  template: `
+  <transition-group name="fade" tag="div" @beforeEnter="before" @enter="enter" @leave="leave">
+        <!-- tag menunjukkan bahwa efek transisi ini akan kita berikan didalam elemen div, karena transition-group secara default akan mencari elemen span dan kita akan arahkan transition-group ini di dalam elemen div didalamnya. Jadi harus diberikan tag dengan value 'div' -->
+        <div class="row d-none mb-3 align-items-center" v-for="(item, index) in products" :key="item.id" v-if="item.price <= maximum" :data-index="index">
+          <!-- :key="item.id" digunakan untuk memberikan nilai unik dari id / nilai unik lain didalam temporary variable nya. Karena disini ada id maka kita bisa gunakan id. -->
+          <div class="col-1 m-auto">
+            <button class="btn btn-info" v-on:click="addItem(item)">+</button>
+            <!-- addItem(item) adalah function yang ada didalam object app, dengan argument variable bernama 'item' sementara yg berasal dari for in diatas. -->
+          </div>
+          <div class="col-sm-4">
+            <img :src="item.image" :alt="item.name" class="img-fluid d-block" />
+          </div>
+          <div class="col">
+            <h3 class="text-info">{{ item.name }}</h3>
+            <p class="mb-0">{{ item.description }}</p>
+
+            <div class="h5 float-right">
+              <!-- memanggil component dari app.js, karena nama component nya price maka kita buat tag html dengan nama price juga. Menambah banyak props dengan v-bind.  -->
+              <price v-bind:value="Number(item.price)" v-bind:prefix="'Rp'" :precision="2"></price>
+            </div>
+          </div>
+        </div>
+      </transition-group>
+  `,
+});
+
 // contoh akses data menggunakan api
 var app = new Vue({
   el: "#app",
@@ -131,23 +180,6 @@ var app = new Vue({
     },
   },
   methods: {
-    before: function (el) {
-      el.className = "d-none";
-    },
-
-    enter: function (el) {
-      var delay = el.dataset.index * 100;
-      setTimeout(function () {
-        el.className = "row d-flex mb-3 align-items-center animate_animated animate_fadeInRight";
-      }, delay);
-    },
-
-    leave: function (el) {
-      var delay = el.dataset.index * 100;
-      setTimeout(function () {
-        el.className = "row d-flex mb-3 align-items-center animate_animated animate_fadeOutRight";
-      }, delay);
-    },
     addItem: function (product) {
       // this.cart.push(product);
 
