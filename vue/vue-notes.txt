@@ -229,3 +229,8 @@ Contoh computed property & function slug,
 
   contoh object:
     <input type="number" class="form-control mx-2" :style="{'width': '75px', 'text-align': 'center'}" v-model="maximum" />
+
+* Props, untuk mengirim suatu data ke dalam komponen. Contoh:
+  <price v-bind:value="item.price" v-bind:prefix="'Rp'" :precision="2"></price>
+  
+  :value, :prefix, dan :precision adalah props yang digunakan pada tag atau komponen milik price.
