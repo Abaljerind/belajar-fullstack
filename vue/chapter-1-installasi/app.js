@@ -61,7 +61,21 @@ Vue.component("price", {
     };
   },
   // membuat properti props, karena di file index.html yang digunakan pada v-bind adalah value, prefix, dan precision maka isi array didalam props nya adalah value, prefix, dan precision juga.
-  props: ["value", "prefix", "precision"],
+  // props: ["value", "prefix", "precision"],
+
+  // props dengan default value menggunakan tipe object
+  props: {
+    value: Number,
+    prefix: {
+      type: String,
+      default: "Rp",
+    },
+    precision: {
+      type: Number,
+      default: 2,
+    },
+  },
+
   template: "<span>{{ this.prefix + Number.parseFloat(this.value).toFixed(this.precision) }}</span>",
   // sekarang value, prefix, dan precision yang ada di dalam template akan mengarah ke value, prefix, dan precision milik dari props tersebut.
 });
