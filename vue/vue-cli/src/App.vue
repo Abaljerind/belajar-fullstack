@@ -1,28 +1,21 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="app" class="container mt-5">
+    <h1>IDShop</h1>
+    <!-- eslint-disable-next-line -->
+    <p class="animate fadeInRight">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet mollitia vel nobis magnam. Eos nihil labore mollitia tempora amet assumenda.</p>
+
+    <!-- memanggil icon faShoppingCart dari file main.js yang diimport dari font awesome -->
+    <font-awesome-icon icon="shopping-cart"></font-awesome-icon>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    FontAwesomeIcon,
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
