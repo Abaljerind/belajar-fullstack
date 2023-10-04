@@ -285,15 +285,105 @@ output>> 1
 
 Tipe tipe perulangan:
 1. for
-contoh penulisan:
+for (expression 1; expression 2; expression 3) {
+  // code block to be executed
+}
+
+- contoh:
 for   inisial; | kondisi; | increment / decrement
 for (let i = 1; i <= 10; i++) {
     console.log(i);
 }
 
-2. while
-3. for..of
-4. for..in
+2. while -> melakukan perulangan pada sebuah blok kode selama kondisi yang dicek bernilai true.
+
+while (condition) {
+  // code block to be executed
+}
+
+- contoh:
+while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}
+
+2a. Do while loop -> varian dari while loop. Perulangan ini akan menjalankan blok kode sekali sebelum melakukan pengecekan apakah kondisi nya bernilai true, lalu akan diulang selama kondisi nya bernilai true.
+do {
+  // code block to be executed
+}
+while (condition);
+
+- contoh:
+do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10); 
+
+
+
+3. for..of -> melakukan perulangan pada values / isi dari sebuah object yang dapat diubah (iterable). Contohnya arrays, strings, maps, NodeLists dan lainnya
+
+for (variable of iterable) {
+  // code block to be executed
+}
+
+# variable - For every iteration the value of the next property is assigned to the variable. Variable can be declared with const, let, or var.
+# iterable - An object that has iterable properties.
+
+- contoh:
+// array
+const cars = ["BMW", "Volvo", "Mini"];
+
+let text = "";
+for (let x of cars) {
+  text += x;
+}
+
+// string
+let language = "JavaScript";
+
+let text = "";
+for (let x of language) {
+text += x;
+}
+
+
+4. for..in -> melakukan perulangan pada properti sebuah object. Bisa juga untuk perulangan pada properti sebuah array.
+for (key in object) {
+  // code block to be executed
+}
+
+for (variable in array) {
+  code
+}
+
+- contoh:
+// object
+const person = {fname:"John", lname:"Doe", age:25};
+
+let text = "";
+for (let x in person) {
+  text += person[x];
+} 
+
+Example Explained
+
+    The for in loop iterates over a person object
+    Each iteration returns a key (x)
+    The key is used to access the value of the key
+    The value of the key is person[x]
+
+
+// array
+const numbers = [45, 4, 9, 16, 25];
+
+let txt = "";
+for (let x in numbers) {
+  txt += numbers[x];
+}
+
+
 
 --------------------------------------------------
 
@@ -437,7 +527,7 @@ penjelasan: dengan menggunakan try and catch, maka baris console.log dibawah nya
 
 --------------------------------------------------
 
-* For Each method, dapat menggunakan callback function yang berarti dapat memanggil sebuah fungsi sebanyak jumlah element yang dimiliki array.
+* ForEach method, dapat menggunakan callback function yang berarti dapat memanggil sebuah fungsi sebanyak jumlah element yang dimiliki array.
 
 contoh:
 
