@@ -155,6 +155,10 @@ ada banyak method pada array yang bisa dilihat dan dibaca dari website website d
     % Method lain pada array yg sering digunakan.
     - concat, menggabungkan array
     - includes, mencari suatu nilai di dalam array
+        contoh:
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        fruits.includes("Mango"); // is true 
+        
     - indexOf, sama seperti penggunaan indexOf pada string
     - join, membuat suatu string dari sebuah array
     - reverse, membalikkan urutan nilai dari array
