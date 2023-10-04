@@ -638,7 +638,7 @@ contoh:
 
 --------------------------------------------------
 
-* javascript if, else, dan else if
+* javascript if, else, dan else if, switch
 
 You can use conditional statements in your code to do this.
 
