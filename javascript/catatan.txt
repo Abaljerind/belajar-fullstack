@@ -416,8 +416,25 @@ while (num < 10) {
 
 --------------------------------------------------
 
-* Break, digunakan untuk menghentikan perulangan baik jika ada kondisi yang harus terpenuhi ataupun jika tidak ada kondisi, yang artinya kita bebas menggunakan break. Tapi di sarankan untuk menggunakan kondisi saja agar lebih aman.
+* Break & Continue
 
+- Break, digunakan untuk menghentikan perulangan baik jika ada kondisi yang harus terpenuhi ataupun jika tidak ada kondisi, yang artinya kita bebas menggunakan break. Tapi di sarankan untuk menggunakan kondisi saja agar lebih aman. Biasanya break digunakan pada switch() statement. Break juga bisa digunakan untuk keluar dari sebuah perulangan,
+
+- contoh:
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { break; }
+  text += "The number is " + i + "<br>";
+} 
+
+- Continue, digunakan untuk melakukan break pada 1 buah pengulangan, jika ada kondisi yang terpenuhi terjadi dan berlanjut dengan pengulangan selanjutnya yang ada di dalam loop.
+
+- contoh:
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { continue; }
+  text += "The number is " + i + "<br>";
+}
+
+contoh diatas akan melakukan skip pada nilai 3.
 --------------------------------------------------
 
 * For..of, cara cantik dan mudah untuk melakukan perulangan dengan tipe data array
