@@ -638,4 +638,86 @@ contoh:
 
 --------------------------------------------------
 
+* javascript if, else, dan else if
+
+You can use conditional statements in your code to do this.
+
+In JavaScript we have the following conditional statements:
+
+    - Gunakan if untuk menspesifikasikan sebuah blok kode yang akan dijalankan, if untuk kondisi bernilai true.
+    - Gunakan else untuk menspesifikasikan blok kode yang akan dijalankan, jika kondisi yang sebelumnya pada blok if bernilai false.
+    - Gunakan else if untuk menspesifikasikan kondisi baru untuk di test, jika kondisi pertama nya salah.
+    - Gunakan switch untuk memiliih satu dari banyak nya alternative blok kode untuk dijalankan.
+
+# If statement:
+if (condition) {
+  //  block of code to be executed if the condition is true
+}
+
+- contoh:
+if (hour < 18) {
+  greeting = "Good day";
+} 
+
+# Else statement:
+if (condition) {
+  //  block of code to be executed if the condition is true
+} else {
+  //  block of code to be executed if the condition is false
+}
+
+- contoh:
+if (hour < 18) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}
+
+# Else if statement:
+if (condition1) {
+  //  block of code to be executed if condition1 is true
+} else if (condition2) {
+  //  block of code to be executed if the condition1 is false and condition2 is true
+} else {
+  //  block of code to be executed if the condition1 is false and condition2 is false
+}
+
+- contoh:
+if (time < 10) {
+  greeting = "Good morning";
+} else if (time < 20) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}
+
+# Switch statement:
+switch(expression) {
+  case x:
+    // code block
+    break;
+  case y:
+    // code block
+    break;
+  default:
+    // code block
+} 
+
+- contoh:
+switch (new Date().getDay()) {
+  case 6:
+    text = "Today is Saturday";
+    break;
+  case 0:
+    text = "Today is Sunday";
+    break;
+  default:
+    text = "Looking forward to the Weekend";
+}
+
+// default keyword -> untuk menspesifikasikan pilihan kode terakhir jika tidak ditemukan adanya persamaan pada blok blok kode sebelumnya.
+
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
