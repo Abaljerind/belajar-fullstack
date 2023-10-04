@@ -348,6 +348,24 @@ for (let x of language) {
 text += x;
 }
 
+// set
+const letters = new Set(["a","b","c"]);
+
+for (const x of letters) {
+  // code block to be executed
+}
+
+// map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+for (const x of fruits) {
+  // code block to be executed
+}
+
 
 4. for..in -> melakukan perulangan pada properti sebuah object. Bisa juga untuk perulangan pada properti sebuah array.
 for (key in object) {
@@ -435,16 +453,6 @@ for (let i = 0; i < 10; i++) {
 }
 
 contoh diatas akan melakukan skip pada nilai 3.
---------------------------------------------------
-
-* For..of, cara cantik dan mudah untuk melakukan perulangan dengan tipe data array
-
-cara penulisan:
-for ( namaVariable of data_array ) {
-    statement
-}
-
-* For..in, perulangan yang mirip dengan for..of tapi digunakan dengan tipe data object
 
 --------------------------------------------------
 
