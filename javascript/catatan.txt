@@ -537,6 +537,14 @@ const saya = {
 --------------------------------------------------
 
 * try and catch
+
+try {
+  Block of code to try
+}
+catch(err) {
+  Block of code to handle errors
+} 
+
 try digunakan untuk menjalankan perintah perintah / statement program, sedangkan catch digunakan untuk menangkap error ketika ada kesalahan sehingga tidak akan membuat program break code / blocking.
 
 contoh:
@@ -549,6 +557,34 @@ try {
 console.log('setelah proses try and catch);
 
 penjelasan: dengan menggunakan try and catch, maka baris console.log dibawah nya akan tetap dijalankan walaupun ada kesalahan / error di bagian try and catch nya dikarenakan object saya dan function / method kenalan belum dibuat.
+
+--------------------------------------------------
+
+* Throw, and Try...Catch...Finally
+
+1. statement try mendefinisikan sebuah blok kode untuk dijalankan (dicoba).
+
+
+2. statement catch mendefinisikan sebuah blok kode untuk menangani error apapun yang muncul.
+
+
+3. statement finally mendefinisikan sebuah blok kode untuk dijalankan terlepas dari hasilnya seperti apa. Baru bisa dijalankan setelah try dan catch. Contoh di blok finally, kita jadikan untuk menghapus / mereset isi dari tag input setelah di klik button nya.
+try {
+  Block of code to try
+}
+catch(err) {
+  Block of code to handle errors
+}
+finally {
+  Block of code to be executed regardless of the try / catch result
+} 
+
+
+4. statement throw mendefinisikan sebuah error yang dibuat secara manual oleh developer. Terjadi ketika error muncul maka kode javascript yang dijalankan akan berhenti secara normal dan membuat sebuah pesan error. Kondisi teknis nya disebut: Javascript akan melakukan 'throw an exception' / 'throw an error'. Kemudian, javascript akan membuat 'Error Object' dengan 2 buah properti, 'name' dan 'message'. Exception tadi bisa berupa String, Number, Boolean atau sebuah object, contohnya:
+  throw "Too big";    // throw a text
+  throw 500;         // throw a number
+
+# jika menggunakan 'throw' bersamaan dengan try dan catch, kita bisa mengontrol alur program dan membuat pesan error buatan.
 
 --------------------------------------------------
 
