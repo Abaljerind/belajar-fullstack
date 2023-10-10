@@ -961,4 +961,70 @@ switch (new Date().getDay()) {
 
 --------------------------------------------------
 
+* Class -> Template untuk javascript object.
+
+Untuk membuat class, gunakan keyword class dan selalu tambahkan method bernama constructor():
+class ClassName {
+  constructor() { ... }
+}
+
+  - contoh:
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+}
+
+NOTE: name & year diatas adalah properti nya.
+
+Untuk menggunakan sebuah class, kita bisa gunakan class untuk membuat object seperti berikut:
+const myCar1 = new Car("Ford", 2014);
+const myCar2 = new Car("Audi", 2019);
+
+## Class Methods -> dibuat dengan sintaks kode yang sama seperti method pada object. 
+Gunakan keyword class untuk membuat class. Selalu gunakan method constructor lalu tambahkan sejumlah method yang diinginkan.
+class ClassName {
+  constructor() { ... }
+  method_1() { ... }
+  method_2() { ... }
+  method_3() { ... }
+}
+
+  - contoh membuat class method dengan nama 'age', yang mengembalikan umur Car / Car age:
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  age() {
+    const date = new Date();
+    return date.getFullYear() - this.year;
+  }
+}
+
+const myCar = new Car("Ford", 2014);
+document.getElementById("demo").innerHTML =
+"My car is " + myCar.age() + " years old.";
+
+// bisa juga mengirimkan parameter ke method pada class:
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  age(x) {
+    return x - this.year;
+  }
+}
+
+const date = new Date();
+let year = date.getFullYear();
+
+const myCar = new Car("Ford", 2014);
+document.getElementById("demo").innerHTML=
+"My car is " + myCar.age(year) + " years old."; 
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
