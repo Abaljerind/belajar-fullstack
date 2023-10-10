@@ -1027,4 +1027,51 @@ document.getElementById("demo").innerHTML=
 
 --------------------------------------------------
 
+* Modules -> javascript modules memudahkan kita untuk membagi bagi kode kita ke beberapa file yang berbeda. Ini memudahkan untuk mengatur sebuah basis kode / base code. Modules bisa diimport dari file external dengan statement 'import'. Modules juga bergantung pada 'type="module"' pada tag script.
+
+  - contoh:
+<script type="module">
+import message from "./message.js";
+</script> 
+
+
+# export -> modules yang beriisikan function atau variable bisa disimpan pada file external. Ada 2 tipe export: Named export & Default export.
+
+  #- Named export,
+  contoh kita membuat sebuah file bernama person.js dan mengisinya dengan hal hal yang mau kita export. Kita bisa membuatnya dengan 2 cara, 'In-line individually' atau 'all at once at the bottom'.
+    - contoh In-line individually:
+    person.js
+      export const name = "Jesse";
+      export const age = 40;
+
+    - contoh All at once at the bottom:
+    person.js
+      const name = "Jesse";
+      const age = 40;
+
+      export {name, age};
+
+  #- Default export,
+  contoh kita buat sebuah file bernama message.js, untuk default export kita hanya boleh punya 1 saja pada sebuah file. 
+    - contoh:
+    message.js
+      const message = () => {
+      const name = "Jesse";
+      const age = 40;
+      return name + ' is ' + age + 'years old.';
+      };
+
+      export default message;
+
+
+# import -> kita bisa melakukan import dengan 2 cara, berdasarkan file nya apakah dibuat dengan nama 'export' atau 'default export'.
+Dengan named export, bisa menggunakan kurung kurawal {}, sedangkan default export tidak bisa menggunakan kurung kurawal.
+  - contoh import dari named export dari file person.js diatas tadi:
+    import { name, age } from "./person.js";
+
+  - contoh import dari default export dari file message.js diatas tadi:
+    import message from "./message.js";
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
