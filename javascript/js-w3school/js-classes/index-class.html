@@ -8,5 +8,50 @@
   <body>
     <h1>Membuat class pada Javascript</h1>
     <p id="demo"></p>
+    <p id="dota"></p>
+
+    <script>
+      // membuat class dengan method review
+      class Games {
+        constructor(namaGame, tahunKeluar) {
+          this.namaGame = namaGame;
+          this.tahunKeluar = tahunKeluar;
+        }
+        // contoh method dengan parameter pada class
+        review(score) {
+          return (score + score) / 2;
+        }
+        // contoh method tanpa parameter pada class
+        waktuBerlalu() {
+          return 2023 - this.tahunKeluar;
+        }
+      }
+
+      // menggunakan class Games
+      const projectZomboid = new Games("Project Zomboid", 2022);
+
+      document.getElementById("demo").innerHTML =
+        projectZomboid.namaGame +
+        " adalah game yang dirilis pada tahun " +
+        projectZomboid.tahunKeluar +
+        ". Review yang diterima adalah " +
+        projectZomboid.review(10) +
+        "/10";
+
+      // menggunakan class Games pada element p dengan id dota
+      const Dota2 = new Games("Dota 2", 2014);
+
+      document.getElementById("dota").innerHTML =
+        Dota2.namaGame +
+        " adalah game yang dirilis pada tahun " +
+        Dota2.tahunKeluar +
+        ". Review yang diterima selama ini adalah " +
+        Dota2.review(9) +
+        "/10. Setelah " +
+        Dota2.waktuBerlalu() +
+        " tahun, game " +
+        Dota2.namaGame +
+        " masih merupakan game yang paling banyak diminati diseluruh negara.";
+    </script>
   </body>
 </html>
