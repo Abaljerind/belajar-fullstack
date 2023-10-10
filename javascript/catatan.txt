@@ -473,6 +473,50 @@ function namaFunction(parameter) {
 contoh argument
 namaFunction(argument);
 
+## contoh arrow function:
+hello = () => {
+  return "Hello World!";
+} 
+
+// dengan parameter
+let myFunction = (a, b) => a * b;
+
+// dengan keyword this
+Dengan arrow function, keyword this tidak akan dilakukan binding. sedangkan pada function biasa keyword this merepresentasikan object yang dipanggil function, yang mana bisa jadi window, document, sebuah button atau lainnya. Pada arrow function, keyword this akan selalu merepresentasikan object yang mendefinisikan arrow function itu sendiri. Contoh:
+
+  -- kedua contoh dibawah ini, sama sama memanggil sebuah method 2 kali, yang pertama saat halaman selesai dimuat (loads), dan yang kedua saat user mengklik sebuah button.
+
+  -# contoh 1:
+Dengan sebuah function biasa / regular, 'this' merepresentasikan object yang memanggil function nya:
+// Regular Function:
+hello = function() {
+  document.getElementById("demo").innerHTML += this;
+}
+
+// The window object calls the function:
+window.addEventListener("load", hello);
+
+// A button object calls the function:
+document.getElementById("btn").addEventListener("click", hello); 
+
+Hasilnya -> 2 object berbeda, window dan button.
+
+
+  -# contoh 2:
+Dengan sebuah arrow function, 'this merepresentasikan pemilik dari function nya:
+// Arrow Function:
+hello = () => {
+  document.getElementById("demo").innerHTML += this;
+}
+
+// The window object calls the function:
+window.addEventListener("load", hello);
+
+// A button object calls the function:
+document.getElementById("btn").addEventListener("click", hello); 
+
+Hasilnya -> object yang sama, yaitu window, karena window object adalah pemilik function nya.
+
 --------------------------------------------------
 
 * Return, akan mengakhiri proses di dalam fungsi dan akan memberikan nilai yg di definisikan pada saat fungsi dipanggil.
