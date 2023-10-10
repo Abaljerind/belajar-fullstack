@@ -523,9 +523,10 @@ Contoh 3 diatas, adalah contoh ketika variable linux dibuat di dalam function ta
 
 --------------------------------------------------
 
-* this, keyword atau cara untuk memanggil suatu properti yang dimiliki oleh object yang sama dengan tujuan untuk mendapatkan nilainya.
+* this -> mengarah pada sebuah object yang tergantung bagaimana 'this' ini digunakan / dipanggil. Bisa juga dikatakan this adalah keyword atau cara untuk memanggil suatu properti yang dimiliki oleh object yang sama dengan tujuan untuk mendapatkan nilainya. Keyword this merujuk pada object object berbeda tergantung bagaimana this itu digunakan, contoh:
 
-contoh:
+  - Pada sebuah object method (function yang ada didalam sebuah object), this merujuk pada object itu.
+## contoh this pada object method bisa dilihat pada properti salam:
 const saya = {
     nama: 'naruto',
     hobi: 'berlatih ninjutsu',
@@ -533,6 +534,51 @@ const saya = {
         return `saya adalah ${this.nama}. Hobi saya adalah ${this.hobi}`
     }
 }
+
+  - Jika 'this' sendiri saja, maka merujuk pada global object.
+## contoh this dibawah akan merujuk pada global window:
+let x = this;
+merujuk pada object window.
+
+
+  - Pada sebuah function, this merujuk pada global object nya.
+## contoh this dibawah akan merujuk pada global window juga:
+function myFunction() {
+  return this;
+}
+
+  - Pada sebuah function, dalam 'strict mode', this bernilai 'undefined'.
+## contoh:
+"use strict";
+function myFunction() {
+  return this;
+}
+
+  - Pada sebuah event, this merujuk pada elemen yang menerima event nya.
+## contoh:
+<button onclick="this.style.display='none'">
+  Click to Remove Me!
+</button> 
+
+  - Method Method seperti call(), apply(), dan bind() bisa merujuk pada object manapun.
+## contoh dibawah, memanggil person1.fullName() dengan person2 sebagai argument nya. 'this' pada method fullName di person1 akan di isi berdasarkan pada person2, bahkan jika fullName adalah sebuah method dari person1 juga bisa digunakan dengan value dari object lain seperti person2:
+const person1 = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const person2 = {
+  firstName:"John",
+  lastName: "Doe",
+}
+
+// Return "John Doe":
+person1.fullName.call(person2);
+
+
+
+  NOTE: this tidak bisa diubah nilainya.
 
 --------------------------------------------------
 
