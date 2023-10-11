@@ -1074,4 +1074,65 @@ Dengan named export, bisa menggunakan kurung kurawal {}, sedangkan default expor
 
 --------------------------------------------------
 
+* Properti Getter & Setter
+ES5 memperbolehkan kita untuk mendefinisikan object method dengan sebuah sintaks seperti getting / setting sebuah properti.
+
+- Berikut contoh membuat sebuah getter untuk property bernama fullName:
+
+// Create an object:
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  get fullName() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+// Display data from the object using a getter:
+document.getElementById("demo").innerHTML = person.fullName; 
+
+// Perlu diperhatikan bahwa digunakan keyword 'get' diatas untuk method fullName nya.
+
+- Berikut contoh membuat sebuah setter dan getter untuk properti language:
+
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO",
+  get lang() {
+    return this.language;
+  },
+  set lang(value) {
+    this.language = value;
+  }
+};
+
+// Set an object property using a setter:
+person.lang = "en";
+
+// Display data from the object using a getter:
+document.getElementById("demo").innerHTML = person.lang;
+
+// Perlu diperhatikan bahwa diatas ada penggunaan keyword 'set' dan 'get pada method lang() nya. Untuk parameter value pada method set, untuk mendeklarasikan variable yang akan digunakan untuk memasukkan nilai dari method set ke properti language nya. Pada saat data language di display di contoh diatas, kita juga bisa mengganti kode person.lang menjadi person.language, bahkan bisa juga diberikan method uppercase.
+
+- Berikut contoh penggunaan setter untuk mengubah language yang akan di set oleh user dengan uppercase:
+
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO",
+  set lang(value) {
+    this.language = value.toUpperCase();
+  }
+};
+
+// Set an object property using a setter:
+person.lang = "en";
+
+// Display data from the object:
+document.getElementById("demo").innerHTML = person.language;
+
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
