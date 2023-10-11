@@ -1255,4 +1255,27 @@ Object.isFrozen(object)
 
 --------------------------------------------------
 
+* Function Bind()
+
+dengan method bind(), sebuah object bisa meminjam sebuah method dari object lain.
+
+ - contoh 1, membuat 2 object (person & member). member object akan meminjam method fullName dari object person:
+
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const member = {
+  firstName:"Hege",
+  lastName: "Nilsen",
+}
+
+let fullName = person.fullName.bind(member);
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
