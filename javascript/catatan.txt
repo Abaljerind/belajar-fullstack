@@ -1135,4 +1135,124 @@ document.getElementById("demo").innerHTML = person.language;
 
 --------------------------------------------------
 
+* Object.defineProperty() -> object baru di ES5. Dengan method ini, kita bisa mendefinisikan object properti / mengubah nilai properti (value) / metadata nya.
+
+  - contoh:
+
+// Create an Object:
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO",
+};
+
+// Change a Property:
+Object.defineProperty(person, "language", {
+  value: "EN",
+  writable : true,
+  enumerable : true,
+  configurable : true
+});
+
+// memecah / menguraikan isi dari object Properties
+var txt = "";
+for (var x in person) {
+  txt += person[x] + "<br>";
+}
+document.getElementById("demo").innerHTML = txt;
+
+
+ - contoh 2, sama seperti diatas hanya saja properti language nya akan di sembunyikan dari enumaration / pengubahan object properti.
+
+// Create an Object:
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO",
+};
+
+// Change a Property:
+Object.defineProperty(person, "language", {
+  value: "EN",
+  writable : true,
+  enumerable : false,
+  configurable : true
+});
+
+// Enumerate Properties
+var txt = "";
+for (var x in person) {
+  txt += person[x] + "<br>";
+}
+document.getElementById("demo").innerHTML = txt;
+
+ - contoh 3, membuat setter dan getter untuk mengubah language nya menjadi uppercase:
+
+// Create an Object:
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO"
+};
+
+// Change a Property:
+Object.defineProperty(person, "language", {
+  get : function() { return language },
+  set : function(value) { language = value.toUpperCase()}
+});
+
+// Change Language
+person.language = "en";
+
+// Display Language
+document.getElementById("demo").innerHTML = person.language; 
+
+--------------------------------------------------
+
+* ES5 Object Methods
+
+--Managing Objects--
+// Create object with an existing object as prototype
+Object.create(parent, donor)
+
+// Adding or changing an object property
+Object.defineProperty(object, property, descriptor)
+
+// Adding or changing object properties
+Object.defineProperties(object, descriptors)
+
+// Accessing Properties
+Object.getOwnPropertyDescriptor(object, property)
+
+// Returns all properties as an array
+Object.getOwnPropertyNames(object)
+
+// Accessing the prototype
+Object.getPrototypeOf(object)
+
+// Returns enumerable properties as an array
+Object.keys(object)
+
+
+--Protecting Objects--
+// Prevents adding properties to an object
+Object.preventExtensions(object)
+
+// Returns true if properties can be added to an object
+Object.isExtensible(object)
+
+// Prevents changes of object properties (not values)
+Object.seal(object)
+
+// Returns true if object is sealed
+Object.isSealed(object)
+
+// Prevents any changes to an object
+Object.freeze(object)
+
+// Returns true if object is frozen
+Object.isFrozen(object)
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
