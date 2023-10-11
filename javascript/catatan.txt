@@ -130,7 +130,7 @@ pada javascript dikenal juga beberapa tools yg bermanfaat seperti berikut ini:
 
 --------------------------------------------------
 
-Array
+* Array
 
 array adalah deretan / urutan data dari sekumpulan nilai. contoh daftar putar lagu, deretan komentar pada aplikasi tiktok dan lain sebagainya.
 cara penulisan array:
@@ -138,11 +138,28 @@ cara penulisan array:
 let namaArray = [];
 NOTE: didalam [] bisa di isikan kumpulan string, kumpulan number, bahkan kumpulan campuran antar string, number dan tipe data lainnya.
 
-* cara mengubah nilai pada array:
+ -* cara mengubah nilai pada array:
 namaArray[<posisi yang ingin diganti, berupa number>] = "nilai barunya";
 
-* cara menambah nilai pada array:
+ -* cara menambah nilai pada array:
 namaArray[<posisi yang ingin ditempati nilai baru, berupa number>] = "nilai barunya";
+
+ -* cara mengambil elemen dari array:
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+// bisa dengan function at() seperti dibawah ini
+let fruit = fruits.at(2);
+
+atau
+
+// bisa dengan [] seperti ini
+let fruit = fruits[2];
+
+NOTE: function at() juga bisa digunakan pada string, contoh:
+const name = "W3Schools";
+let letter = name.at(2);
+// atau
+let letter = name[2];   // cara biasa
 
 
 ada banyak method pada array yang bisa dilihat dan dibaca dari website website dokumentasi nya.
@@ -176,7 +193,7 @@ const memang bersifat tetap / isi dari variable nya tidak bisa diubah, tapi ini 
     bisa dilihat bahwa array nilai memiliki tipe object. jadi pada dasarnya array itu adalah object.
 
 
-* nested array / array berlapis / bersarang / multidimension array
+ -* nested array / array berlapis / bersarang / multidimension array
 contoh nested array:
     const board = [
         [null, null, '0'],
