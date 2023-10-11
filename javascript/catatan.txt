@@ -1278,4 +1278,13 @@ let fullName = person.fullName.bind(member);
 
 --------------------------------------------------
 
+* The Optional Chaining Operator (?.)
+-> mengembalikan undefined jika sebuah object tidak memiliki properti yang dimaksud (jadi tidak mengembalikan sebuah error)
+
+Example
+const car = {type:"Fiat", model:"500", color:"white"};
+let name = car?.name;
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
