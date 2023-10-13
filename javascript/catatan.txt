@@ -237,6 +237,7 @@ const barang = {
             }
 }
 
+--------------------------------------------------
 
 # Cara memanggil data dari suatu object
 namaObject.<properti>;
@@ -246,6 +247,7 @@ namaObject.<properti>;
     barang.location.indonesia;
     barang.size[0];
 
+--------------------------------------------------
 
 # Cara mengubah data / nilai dan menambah data baru di suatu object
 
@@ -254,6 +256,13 @@ namaObject.<properti> = <nilai baru>;
 or
 namaObject['properti'] = 'nilai baru';
 
+contoh:
+myFather.nationality = "English";
+
+- contoh menambah method baru di object:
+myFather.name = function () {
+  return this.firstName + " " + this.lastName;
+};
 
 - format menambah data baru di object:
 namaObject.<properti baru> = <nilainya>;
@@ -269,6 +278,8 @@ const person = {
 delete person.age;
 // atau bisa dengan ini,
 delete person["age"];
+
+--------------------------------------------------
 
 # Object di dalam array dan cara mengakses nya
 
@@ -308,8 +319,10 @@ shoppingCart1[1].quantity;
 output>> 1
 
 
+--------------------------------------------------
+
 # Properti Getter & Setter
-ES5 memperbolehkan kita untuk mendefinisikan object method dengan sebuah sintaks seperti getting / setting sebuah properti.
+ES5 memperbolehkan kita untuk mendefinisikan object method dengan sebuah sintaks seperti getting / setting sebuah properti. Dengan menggunakan get untuk mengakses properti function dari dalam object, memudahkan kita untuk membuat kode sintaks yang sederhana. Dengan getter dan setter juga, javascript bisa mengamankan kualitas data nya.
 
 - Berikut contoh membuat sebuah getter untuk property bernama fullName:
 
@@ -327,7 +340,7 @@ document.getElementById("demo").innerHTML = person.fullName;
 
 // Perlu diperhatikan bahwa digunakan keyword 'get' diatas untuk method fullName nya.
 
-- Berikut contoh membuat sebuah setter dan getter untuk properti language:
+- Berikut contoh membuat sebuah setter dan getter untuk properti language dan bisa mengamankan kualitas datanya:
 
 var person = {
   firstName: "John",
@@ -366,6 +379,8 @@ person.lang = "en";
 // Display data from the object:
 document.getElementById("demo").innerHTML = person.language;
 
+
+--------------------------------------------------
 
 # Object.defineProperty() -> object baru di ES5. Dengan method ini, kita bisa mendefinisikan object properti / mengubah nilai properti (value) / metadata nya.
 
@@ -418,6 +433,7 @@ for (var x in person) {
 }
 document.getElementById("demo").innerHTML = txt;
 
+
  - contoh 3, membuat setter dan getter untuk mengubah language nya menjadi uppercase:
 
 // Create an Object:
@@ -439,6 +455,168 @@ person.language = "en";
 // Display Language
 document.getElementById("demo").innerHTML = person.language; 
 
+
+ - contoh 4, untuk menambah getters dan setters:
+// Define object
+const obj = {counter : 0};
+
+// Define setters and getters
+Object.defineProperty(obj, "reset", {
+  get : function () {this.counter = 0;}
+});
+Object.defineProperty(obj, "increment", {
+  get : function () {this.counter++;}
+});
+Object.defineProperty(obj, "decrement", {
+  get : function () {this.counter--;}
+});
+Object.defineProperty(obj, "add", {
+  set : function (value) {this.counter += value;}
+});
+Object.defineProperty(obj, "subtract", {
+  set : function (value) {this.counter -= value;}
+});
+
+// Play with the counter:
+obj.reset;
+obj.add = 5;
+obj.subtract = 1;
+obj.increment;
+obj.decrement;
+
+--------------------------------------------------
+
+* Class -> Template untuk javascript object.
+
+Untuk membuat class, gunakan keyword class dan selalu tambahkan method bernama constructor():
+class ClassName {
+  constructor() { ... }
+}
+
+  - contoh:
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+}
+
+NOTE: name & year diatas adalah properti nya.
+
+Untuk menggunakan sebuah class, kita bisa gunakan class untuk membuat object seperti berikut:
+const myCar1 = new Car("Ford", 2014);
+const myCar2 = new Car("Audi", 2019);
+
+## Class Methods -> dibuat dengan sintaks kode yang sama seperti method pada object. 
+Gunakan keyword class untuk membuat class. Selalu gunakan method constructor lalu tambahkan sejumlah method yang diinginkan.
+class ClassName {
+  constructor() { ... }
+  method_1() { ... }
+  method_2() { ... }
+  method_3() { ... }
+}
+
+  - contoh membuat class method dengan nama 'age', yang mengembalikan umur Car / Car age:
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  age() {
+    const date = new Date();
+    return date.getFullYear() - this.year;
+  }
+}
+
+const myCar = new Car("Ford", 2014);
+document.getElementById("demo").innerHTML =
+"My car is " + myCar.age() + " years old.";
+
+// bisa juga mengirimkan parameter ke method pada class:
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  age(x) {
+    return x - this.year;
+  }
+}
+
+const date = new Date();
+let year = date.getFullYear();
+
+const myCar = new Car("Ford", 2014);
+document.getElementById("demo").innerHTML=
+"My car is " + myCar.age(year) + " years old."; 
+
+--------------------------------------------------
+
+# JavaScript Object Constructors
+
+ - contoh:
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+}
+
+--- object types (blueprints) (classes)
+Pada contoh class diatas, yang dapat kita buat dengan class itu terbatas karna hanya bisa membuat 1 buah objects. Terkadang kita membutuhkan sebuah blueprint untuk membuat banyak object dengan tipe yang sama. Untuk membuat sebuah 'tipe object / object type', dengan menggunakan sebuah 'object constructor function'. Pada contoh function Person() diatas adalah contoh 'object constructor function' nya. Object dengan tipe yang sama dibuat dengan memanggil si constructor function dengan tambahan keyword 'new' seperti contoh berikut:
+
+const myFather = new Person("John", "Doe", 50, "blue");
+const myMother = new Person("Sally", "Rally", 48, "green");
+
+--- menambah sebuah properti pada sebuah constructor, harus ditambahkan ke constructor function, contoh:
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+  this.nationality = "English";   // sama dengan default value
+}
+
+--- menambah sebuah method pada sebuah constructor, contoh:
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+  this.name = function() {
+    return this.firstName + " " + this.lastName;
+  };
+}
+
+--------------------------------------------------
+
+* Using the prototype Property
+Properti Javascript 'prototype' mengijinkan kita untuk menambahkan properti baru ke object constructor, contoh:
+
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+Person.prototype.nationality = "English";
+
+Dengan menambahkan prototype seperti contoh diatas, maka ketika kita mengakses data dengan properti nationality nya akan tampil value "English", tetapi jika tidak ditambahkan 'prototype' nya, walaupun bisa diinput ke dalam constructor tetapi ketika kita akses maka tidak akan tampil value apa apa kecuali 'undefined'.
+
+Properti Javascript 'prototype' juga mengijinkan kita untuk menambahkan method baru ke object constructor, contoh:
+
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+Person.prototype.name = function() {
+  return this.firstName + " " + this.lastName;
+};
+--------------------------------------------------
 
 # ES5 Object Methods
 
@@ -1193,72 +1371,6 @@ switch (new Date().getDay()) {
 
 // default keyword -> untuk menspesifikasikan pilihan kode terakhir jika tidak ditemukan adanya persamaan pada blok blok kode sebelumnya.
 
-
---------------------------------------------------
-
-* Class -> Template untuk javascript object.
-
-Untuk membuat class, gunakan keyword class dan selalu tambahkan method bernama constructor():
-class ClassName {
-  constructor() { ... }
-}
-
-  - contoh:
-class Car {
-  constructor(name, year) {
-    this.name = name;
-    this.year = year;
-  }
-}
-
-NOTE: name & year diatas adalah properti nya.
-
-Untuk menggunakan sebuah class, kita bisa gunakan class untuk membuat object seperti berikut:
-const myCar1 = new Car("Ford", 2014);
-const myCar2 = new Car("Audi", 2019);
-
-## Class Methods -> dibuat dengan sintaks kode yang sama seperti method pada object. 
-Gunakan keyword class untuk membuat class. Selalu gunakan method constructor lalu tambahkan sejumlah method yang diinginkan.
-class ClassName {
-  constructor() { ... }
-  method_1() { ... }
-  method_2() { ... }
-  method_3() { ... }
-}
-
-  - contoh membuat class method dengan nama 'age', yang mengembalikan umur Car / Car age:
-class Car {
-  constructor(name, year) {
-    this.name = name;
-    this.year = year;
-  }
-  age() {
-    const date = new Date();
-    return date.getFullYear() - this.year;
-  }
-}
-
-const myCar = new Car("Ford", 2014);
-document.getElementById("demo").innerHTML =
-"My car is " + myCar.age() + " years old.";
-
-// bisa juga mengirimkan parameter ke method pada class:
-class Car {
-  constructor(name, year) {
-    this.name = name;
-    this.year = year;
-  }
-  age(x) {
-    return x - this.year;
-  }
-}
-
-const date = new Date();
-let year = date.getFullYear();
-
-const myCar = new Car("Ford", 2014);
-document.getElementById("demo").innerHTML=
-"My car is " + myCar.age(year) + " years old."; 
 
 --------------------------------------------------
 
