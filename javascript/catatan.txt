@@ -258,6 +258,17 @@ namaObject['properti'] = 'nilai baru';
 - format menambah data baru di object:
 namaObject.<properti baru> = <nilainya>;
 
+- cara menghapus sebuah properti dari sebuah object:
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+
+delete person.age;
+// atau bisa dengan ini,
+delete person["age"];
 
 # Object di dalam array dan cara mengakses nya
 
@@ -295,6 +306,213 @@ output>> 2.32
 
 shoppingCart1[1].quantity;
 output>> 1
+
+
+# Properti Getter & Setter
+ES5 memperbolehkan kita untuk mendefinisikan object method dengan sebuah sintaks seperti getting / setting sebuah properti.
+
+- Berikut contoh membuat sebuah getter untuk property bernama fullName:
+
+// Create an object:
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  get fullName() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+// Display data from the object using a getter:
+document.getElementById("demo").innerHTML = person.fullName; 
+
+// Perlu diperhatikan bahwa digunakan keyword 'get' diatas untuk method fullName nya.
+
+- Berikut contoh membuat sebuah setter dan getter untuk properti language:
+
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO",
+  get lang() {
+    return this.language;
+  },
+  set lang(value) {
+    this.language = value;
+  }
+};
+
+// Set an object property using a setter:
+person.lang = "en";
+
+// Display data from the object using a getter:
+document.getElementById("demo").innerHTML = person.lang;
+
+// Perlu diperhatikan bahwa diatas ada penggunaan keyword 'set' dan 'get pada method lang() nya. Untuk parameter value pada method set, untuk mendeklarasikan variable yang akan digunakan untuk memasukkan nilai dari method set ke properti language nya. Pada saat data language di display di contoh diatas, kita juga bisa mengganti kode person.lang menjadi person.language, bahkan bisa juga diberikan method uppercase.
+
+- Berikut contoh penggunaan setter untuk mengubah language yang akan di set oleh user dengan uppercase:
+
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO",
+  set lang(value) {
+    this.language = value.toUpperCase();
+  }
+};
+
+// Set an object property using a setter:
+person.lang = "en";
+
+// Display data from the object:
+document.getElementById("demo").innerHTML = person.language;
+
+
+# Object.defineProperty() -> object baru di ES5. Dengan method ini, kita bisa mendefinisikan object properti / mengubah nilai properti (value) / metadata nya.
+
+  - contoh:
+
+// Create an Object:
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO",
+};
+
+// Change a Property:
+Object.defineProperty(person, "language", {
+  value: "EN",
+  writable : true,
+  enumerable : true,
+  configurable : true
+});
+
+// memecah / menguraikan isi dari object Properties
+var txt = "";
+for (var x in person) {
+  txt += person[x] + "<br>";
+}
+document.getElementById("demo").innerHTML = txt;
+
+
+ - contoh 2, sama seperti diatas hanya saja properti language nya akan di sembunyikan dari enumaration / pengubahan object properti.
+
+// Create an Object:
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO",
+};
+
+// Change a Property:
+Object.defineProperty(person, "language", {
+  value: "EN",
+  writable : true,
+  enumerable : false,
+  configurable : true
+});
+
+// Enumerate Properties
+var txt = "";
+for (var x in person) {
+  txt += person[x] + "<br>";
+}
+document.getElementById("demo").innerHTML = txt;
+
+ - contoh 3, membuat setter dan getter untuk mengubah language nya menjadi uppercase:
+
+// Create an Object:
+var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO"
+};
+
+// Change a Property:
+Object.defineProperty(person, "language", {
+  get : function() { return language },
+  set : function(value) { language = value.toUpperCase()}
+});
+
+// Change Language
+person.language = "en";
+
+// Display Language
+document.getElementById("demo").innerHTML = person.language; 
+
+
+# ES5 Object Methods
+
+--Managing Objects--
+// Create object with an existing object as prototype
+Object.create(parent, donor)
+
+// Adding or changing an object property
+Object.defineProperty(object, property, descriptor)
+
+// Adding or changing object properties
+Object.defineProperties(object, descriptors)
+
+// Accessing Properties
+Object.getOwnPropertyDescriptor(object, property)
+
+// Returns all properties as an array
+Object.getOwnPropertyNames(object)
+
+// Accessing the prototype
+Object.getPrototypeOf(object)
+
+// Returns enumerable properties as an array
+Object.keys(object)
+
+
+--Protecting Objects--
+// Prevents adding properties to an object
+Object.preventExtensions(object)
+
+// Returns true if properties can be added to an object
+Object.isExtensible(object)
+
+// Prevents changes of object properties (not values)
+Object.seal(object)
+
+// Returns true if object is sealed
+Object.isSealed(object)
+
+// Prevents any changes to an object
+Object.freeze(object)
+
+// Returns true if object is frozen
+Object.isFrozen(object)
+
+
+# Function Bind()
+
+dengan method bind(), sebuah object bisa meminjam sebuah method dari object lain.
+
+ - contoh 1, membuat 2 object (person & member). member object akan meminjam method fullName dari object person:
+
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const member = {
+  firstName:"Hege",
+  lastName: "Nilsen",
+}
+
+let fullName = person.fullName.bind(member);
+
+
+# The Optional Chaining Operator (?.)
+-> mengembalikan undefined jika sebuah object tidak memiliki properti yang dimaksud (jadi tidak mengembalikan sebuah error)
+
+Example
+const car = {type:"Fiat", model:"500", color:"white"};
+let name = car?.name;
 
 --------------------------------------------------
 
@@ -1088,219 +1306,6 @@ Dengan named export, bisa menggunakan kurung kurawal {}, sedangkan default expor
 
   - contoh import dari default export dari file message.js diatas tadi:
     import message from "./message.js";
-
---------------------------------------------------
-
-* Properti Getter & Setter
-ES5 memperbolehkan kita untuk mendefinisikan object method dengan sebuah sintaks seperti getting / setting sebuah properti.
-
-- Berikut contoh membuat sebuah getter untuk property bernama fullName:
-
-// Create an object:
-var person = {
-  firstName: "John",
-  lastName : "Doe",
-  get fullName() {
-    return this.firstName + " " + this.lastName;
-  }
-};
-
-// Display data from the object using a getter:
-document.getElementById("demo").innerHTML = person.fullName; 
-
-// Perlu diperhatikan bahwa digunakan keyword 'get' diatas untuk method fullName nya.
-
-- Berikut contoh membuat sebuah setter dan getter untuk properti language:
-
-var person = {
-  firstName: "John",
-  lastName : "Doe",
-  language : "NO",
-  get lang() {
-    return this.language;
-  },
-  set lang(value) {
-    this.language = value;
-  }
-};
-
-// Set an object property using a setter:
-person.lang = "en";
-
-// Display data from the object using a getter:
-document.getElementById("demo").innerHTML = person.lang;
-
-// Perlu diperhatikan bahwa diatas ada penggunaan keyword 'set' dan 'get pada method lang() nya. Untuk parameter value pada method set, untuk mendeklarasikan variable yang akan digunakan untuk memasukkan nilai dari method set ke properti language nya. Pada saat data language di display di contoh diatas, kita juga bisa mengganti kode person.lang menjadi person.language, bahkan bisa juga diberikan method uppercase.
-
-- Berikut contoh penggunaan setter untuk mengubah language yang akan di set oleh user dengan uppercase:
-
-var person = {
-  firstName: "John",
-  lastName : "Doe",
-  language : "NO",
-  set lang(value) {
-    this.language = value.toUpperCase();
-  }
-};
-
-// Set an object property using a setter:
-person.lang = "en";
-
-// Display data from the object:
-document.getElementById("demo").innerHTML = person.language;
-
-
---------------------------------------------------
-
-* Object.defineProperty() -> object baru di ES5. Dengan method ini, kita bisa mendefinisikan object properti / mengubah nilai properti (value) / metadata nya.
-
-  - contoh:
-
-// Create an Object:
-var person = {
-  firstName: "John",
-  lastName : "Doe",
-  language : "NO",
-};
-
-// Change a Property:
-Object.defineProperty(person, "language", {
-  value: "EN",
-  writable : true,
-  enumerable : true,
-  configurable : true
-});
-
-// memecah / menguraikan isi dari object Properties
-var txt = "";
-for (var x in person) {
-  txt += person[x] + "<br>";
-}
-document.getElementById("demo").innerHTML = txt;
-
-
- - contoh 2, sama seperti diatas hanya saja properti language nya akan di sembunyikan dari enumaration / pengubahan object properti.
-
-// Create an Object:
-var person = {
-  firstName: "John",
-  lastName : "Doe",
-  language : "NO",
-};
-
-// Change a Property:
-Object.defineProperty(person, "language", {
-  value: "EN",
-  writable : true,
-  enumerable : false,
-  configurable : true
-});
-
-// Enumerate Properties
-var txt = "";
-for (var x in person) {
-  txt += person[x] + "<br>";
-}
-document.getElementById("demo").innerHTML = txt;
-
- - contoh 3, membuat setter dan getter untuk mengubah language nya menjadi uppercase:
-
-// Create an Object:
-var person = {
-  firstName: "John",
-  lastName : "Doe",
-  language : "NO"
-};
-
-// Change a Property:
-Object.defineProperty(person, "language", {
-  get : function() { return language },
-  set : function(value) { language = value.toUpperCase()}
-});
-
-// Change Language
-person.language = "en";
-
-// Display Language
-document.getElementById("demo").innerHTML = person.language; 
-
---------------------------------------------------
-
-* ES5 Object Methods
-
---Managing Objects--
-// Create object with an existing object as prototype
-Object.create(parent, donor)
-
-// Adding or changing an object property
-Object.defineProperty(object, property, descriptor)
-
-// Adding or changing object properties
-Object.defineProperties(object, descriptors)
-
-// Accessing Properties
-Object.getOwnPropertyDescriptor(object, property)
-
-// Returns all properties as an array
-Object.getOwnPropertyNames(object)
-
-// Accessing the prototype
-Object.getPrototypeOf(object)
-
-// Returns enumerable properties as an array
-Object.keys(object)
-
-
---Protecting Objects--
-// Prevents adding properties to an object
-Object.preventExtensions(object)
-
-// Returns true if properties can be added to an object
-Object.isExtensible(object)
-
-// Prevents changes of object properties (not values)
-Object.seal(object)
-
-// Returns true if object is sealed
-Object.isSealed(object)
-
-// Prevents any changes to an object
-Object.freeze(object)
-
-// Returns true if object is frozen
-Object.isFrozen(object)
-
---------------------------------------------------
-
-* Function Bind()
-
-dengan method bind(), sebuah object bisa meminjam sebuah method dari object lain.
-
- - contoh 1, membuat 2 object (person & member). member object akan meminjam method fullName dari object person:
-
-const person = {
-  firstName:"John",
-  lastName: "Doe",
-  fullName: function () {
-    return this.firstName + " " + this.lastName;
-  }
-}
-
-const member = {
-  firstName:"Hege",
-  lastName: "Nilsen",
-}
-
-let fullName = person.fullName.bind(member);
-
---------------------------------------------------
-
-* The Optional Chaining Operator (?.)
--> mengembalikan undefined jika sebuah object tidak memiliki properti yang dimaksud (jadi tidak mengembalikan sebuah error)
-
-Example
-const car = {type:"Fiat", model:"500", color:"white"};
-let name = car?.name;
 
 --------------------------------------------------
 
