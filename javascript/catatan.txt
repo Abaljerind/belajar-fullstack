@@ -1137,8 +1137,8 @@ Dengan arrow function, keyword this tidak akan dilakukan binding. sedangkan pada
   -- kedua contoh dibawah ini, sama sama memanggil sebuah method 2 kali, yang pertama saat halaman selesai dimuat (loads), dan yang kedua saat user mengklik sebuah button.
 
   -# contoh 1:
-Dengan sebuah function biasa / regular, 'this' merepresentasikan object yang memanggil function nya:
-// Regular Function:
+Dengan sebuah function expression / anonymous function, 'this' merepresentasikan object yang memanggil function nya:
+// anonymous Function:
 hello = function() {
   document.getElementById("demo").innerHTML += this;
 }
