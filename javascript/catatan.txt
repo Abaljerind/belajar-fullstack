@@ -605,6 +605,111 @@ document.getElementById("demo").innerHTML=
 
 --------------------------------------------------
 
+# Class inheritance, dibuat menggunakan keyword 'extends'. Sebuah class yang dibuat dengan class inheritance akan mewarisi semua method dari class lain. Inheritance berguna untuk penggunaan kode berulang / reusability, juga penggunaan ulang pada properti dan method dari class yang ada (parent class) ketika kita membuat class yang baru (child class).
+- contoh class Model dibawah ini akan mewarisi method method dari class Car:
+class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+  present() {
+    return 'I have a ' + this.carname;
+  }
+}
+
+class Model extends Car {
+  constructor(brand, mod) {
+    super(brand);
+    this.model = mod;
+  }
+  show() {
+    return this.present() + ', it is a ' + this.model;
+  }
+}
+
+let myCar = new Model("Ford", "Mustang");
+document.getElementById("demo").innerHTML = myCar.show();
+
+// output:
+I have a Ford, it is a Mustang
+
+// penjelasan:
+method super() diatas merujuk pada parent class nya yaitu Car.
+Dengan memanggil method super() di dalam constructor method, kita memanggil method constructor dari parent nya dan mendapat akses ke seluruh properti dan method dari parent class nya.
+
+--------------------------------------------------
+
+* Getters & Setters, pada class juga bisa digunakan. Untuk menambahkan getters dan setters pada class, gunakan 'get' dan 'set' keyword. Bahkan jika getter nya adalah sebuah method, jangan gunakan tanda kurung () ketika mau melakukan get dari nilai properti.
+- contoh membuat sebuah getter dan sebuah setter untuk properti 'carname':
+
+class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+  get cnam() {
+    return this.carname;
+  }
+  set cnam(x) {
+    this.carname = x;
+  }
+}
+
+const myCar = new Car("Ford");
+
+document.getElementById("demo").innerHTML = myCar.cnam; 
+
+// output:
+Ford
+
+// penjelasan:
+Nama dari method getter dan setter tidak bisa sama dengan nama dari properti nya, dalam hal ini 'carname'. Banyak programmer menggunakan underscore / _ sebelum nama properti nya untuk memisahkan getter/setter dari properti yang asli.
+
+- contoh penggunaan karakter underscore untuk memisahkan getter dan setter dari properti aslinya:
+class Car {
+  constructor(brand) {
+    this._carname = brand;
+  }
+  get carname() {
+    return this._carname;
+  }
+  set carname(x) {
+    this._carname = x;
+  }
+}
+
+const myCar = new Car("Ford");
+
+document.getElementById("demo").innerHTML = myCar.carname; 
+
+// output:
+Ford
+
+- contoh untuk menggunakan setter, gunakan kode yang sama seperti saat melakukan set pada sebuah properti value, yaitu tanpa tanda kurung. Berikut contoh penggunaan sebuah setter untuk mengubah carname menjadi 'Volvo':
+
+const myCar = new Car("Ford");
+myCar.carname = "Volvo";
+document.getElementById("demo").innerHTML = myCar.carname; 
+
+// output:
+Volvo
+
+--------------------------------------------------
+
+* Hoisting -> tidak seperti function dan deklarasi kode javascript yang lain, class inheritance tidak bisa dinaikkan ke atas / hoisted. Ini berarti kita wajib mendeklarasikan sebuah class sebelum menggunakannya.
+- contoh:
+//You cannot use the class yet.
+//myCar = new Car("Ford") will raise an error.
+
+class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+}
+
+//Now you can use the class:
+const myCar = new Car("Ford") 
+
+--------------------------------------------------
+
 # JavaScript Object Constructors
 
  - contoh:
