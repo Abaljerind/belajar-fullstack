@@ -1254,8 +1254,9 @@ function myFunction() {
   Click to Remove Me!
 </button> 
 
-  - Method Method seperti call(), apply(), dan bind() bisa merujuk pada object manapun.
-## contoh dibawah, memanggil person1.fullName() dengan person2 sebagai argument nya. 'this' pada method fullName di person1 akan di isi berdasarkan pada person2, bahkan jika fullName adalah sebuah method dari person1 juga bisa digunakan dengan value dari object lain seperti person2:
+  - Method Method seperti call(), apply(), dan bind() bisa merujuk pada object manapun. Ini artinya dengan call(), apply() dan bind(), kita bisa menggunakan method method dari object lain untuk object object lainnya.
+  
+## call(), contoh dibawah, memanggil person1.fullName() dengan person2 sebagai argument nya. 'this' pada method fullName di person1 akan di isi berdasarkan pada person2, bahkan jika fullName adalah sebuah method dari person1 juga bisa digunakan dengan value dari object lain seperti person2:
 const person1 = {
   fullName: function() {
     return this.firstName + " " + this.lastName;
@@ -1270,9 +1271,68 @@ const person2 = {
 // Return "John Doe":
 person1.fullName.call(person2);
 
+NOTE: this tidak bisa diubah nilainya.
+
+- contoh call() dengan arguments:
+const person = {
+  fullName: function(city, country) {
+    return this.firstName + " " + this.lastName + "," + city + "," + country;
+  }
+}
+
+const person1 = {
+  firstName:"John",
+  lastName: "Doe"
+}
+
+person.fullName.call(person1, "Oslo", "Norway");
 
 
-  NOTE: this tidak bisa diubah nilainya.
+## apply(), mirip dengan method call() sebelumnya, bedanya method call() mengambil argument argument secara terpisah, sedangkan method apply() mengambil argument argument sebagai sebuah array.
+const person = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const person1 = {
+  firstName: "Mary",
+  lastName: "Doe"
+}
+
+// This will return "Mary Doe":
+person.fullName.apply(person1);
+
+- contoh apply() dengan arguments:
+const person = {
+  fullName: function(city, country) {
+    return this.firstName + " " + this.lastName + "," + city + "," + country;
+  }
+}
+
+const person1 = {
+  firstName:"John",
+  lastName: "Doe"
+}
+
+person.fullName.apply(person1, ["Oslo", "Norway"]);
+
+
+## bind(), contoh dibawah ini object member meminjam method fullName dari object person:
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const member = {
+  firstName:"Hege",
+  lastName: "Nilsen",
+}
+
+let fullName = person.fullName.bind(member);
 
 --------------------------------------------------
 
