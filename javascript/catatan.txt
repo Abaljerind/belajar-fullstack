@@ -779,7 +779,7 @@ Property	      Description
 size	          Returns the number elements in a Set
 
  - cara membuat sebuah set
-1. Method new Set() -> mnengubah sebuah array menjadi constructor 'new Set()':
+1. Method new Set() -> mengubah sebuah array menjadi constructor 'new Set()':
 
 const letters = new Set(["a","b","c"]);
 
@@ -865,15 +865,102 @@ b,b
 c,c
 
 
-// map
+// map -> menyimpan pasangan key-value dimana key nya bisa tipe data apapun. Sebuah map mengingat urutan asli dari penyisipan / penginputan dari keys nya, dan sebuah map punya sebuah properti yang mewakili ukuran dari map tersebut.
+
+Map Methods
+Method	              Description
+new Map()	            Creates a new Map object
+set()	                Sets the value for a key in a Map
+get()	                Gets the value for a key in a Map
+clear()	              Removes all the elements from a Map
+delete()	            Removes a Map element specified by a key
+has()	                Returns true if a key exists in a Map
+forEach()	            Invokes a callback for each key/value pair in a Map
+entries()	            Returns an iterator object with the [key, value] pairs in a Map
+keys()	              Returns an iterator object with the keys in a Map
+values()	            Returns an iterator object of the values in a Map
+
+Property	            Description
+size	                Returns the number of Map elements
+
+
+  a. new Map() -> membuat map dengan mengubah sebuah array ke constructor 'new Map()':
 const fruits = new Map([
   ["apples", 500],
   ["bananas", 300],
   ["oranges", 200]
 ]);
 
-for (const x of fruits) {
-  // code block to be executed
+
+  b. Map.set() -> menambahkan elemen elemen ke sebuah map dengan method set():
+// Create a Map
+const fruits = new Map();
+
+// Set Map Values
+fruits.set("apples", 500);
+fruits.set("bananas", 300);
+fruits.set("oranges", 200);
+
+Method set() juga bisa digunakan untuk mengubah value dari map yang sudah dibuat:
+  fruits.set("apples", 500);
+
+
+  c. Map.get() -> mengambil value dari sebuah key di dalam sebuah map:
+fruits.get("apples");    // Returns 500 karna 500 adalah key nya.
+
+
+  d. Map.size -> mengembalikan nilai dari elemen elemen di dalam sebuah map:
+fruits.size;
+
+
+  e. Map.delete() -> menghapus sebuah elemen dari map:
+fruits.delete("apples");
+
+
+  f. Map.clear() -> menghapus semua elemen dari map:
+fruits.clear();
+
+
+  g. Map.has() -> mengembalikan nilai true jika sebuah key ada di dalam sebuah map:
+fruits.has("apples");
+
+
+  h. Map.forEach() -> memanggil sebuah callback untuk tiap pasangan key value di dalam sebuah map:
+// List all entries
+let text = "";
+fruits.forEach (function(value, key) {
+  text += key + ' = ' + value;
+})
+
+
+  i. Map.entries() -> mengembalikan sebuah object iterator dengan [key, value] di dalam sebuah map:
+// Create a Map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+// List all entries
+let text = "";
+for (const x of fruits.entries()) {
+  text += x + "<br>";
+}
+
+
+  j. Map.keys() -> mengembalikan sebuah object iterator dengan keys di dalam sebuah map:
+// List all keys
+let text = "";
+for (const x of fruits.keys()) {
+  text += x;
+}
+
+
+  k. Map.values() -> mengembalikan sebuah object iterator dengan values di dalam sebuah map:
+// List all values
+let text = "";
+for (const x of fruits.values()) {
+  text += x;
 }
 
 
