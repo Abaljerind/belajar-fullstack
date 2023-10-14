@@ -761,12 +761,109 @@ for (let x of language) {
 text += x;
 }
 
-// set
+// set -> koleksi dari nilai nilai yang unik. Tiap nilai hanya bisa ada 1 saja didalam sebuah set. Sebuah set dapat menyimpan nilai apapun dari tipe data manapun.
+
+Set Methods
+Method	        Description
+new Set()	      Creates a new Set
+add()	          Adds a new element to the Set
+delete()	      Removes an element from a Set
+has()	          Returns true if a value exists
+clear()	        Removes all elements from a Set
+forEach()	      Invokes a callback for each element
+values()	      Returns an Iterator with all the values in a Set
+keys()	        Same as values()
+entries()	      Returns an Iterator with the [value,value] pairs from a Set
+
+Property	      Description
+size	          Returns the number elements in a Set
+
+ - cara membuat sebuah set
+1. Method new Set() -> mnengubah sebuah array menjadi constructor 'new Set()':
+
 const letters = new Set(["a","b","c"]);
 
-for (const x of letters) {
-  // code block to be executed
+2. Membuat set dan menambah nilai nilainya:
+
+// Create a Set
+const letters = new Set();
+
+// Add Values to the Set
+letters.add("a");
+letters.add("b");
+letters.add("c");
+
+3. Membuat set dan menambah variabel:
+
+// Create Variables
+const a = "a";
+const b = "b";
+const c = "c";
+
+// Create a Set
+const letters = new Set();
+
+// Add Variables to the Set
+letters.add(a);
+letters.add(b);
+letters.add(c);
+
+
+ - method add() -> jika menambah elemen yang sama maka hanya elemen pertamanya saja yang akan disimpan.
+letters.add("d");
+letters.add("e");
+
+
+ - method forEach() -> memanggil sebuah function untuk tiap set elemen:
+// Create a Set
+const letters = new Set(["a","b","c"]);
+
+// List all entries
+let text = "";
+letters.forEach (function(value) {
+  text += value;
+})
+
+
+ - method values() -> mengembalikan sebuah iterator object berisi semua nilai didalam sebuah set:
+
+letters.values()   // Returns [object Set Iterator] 
+
+berikut cara untuk menggunakan iterator object untuk mengakses elemen elemennya:
+// Create a Set
+const letters = new Set(["a","b","c"]);
+
+// List all Elements
+let text = "";
+for (const x of letters.values()) {
+  text += x + "<br>";
 }
+
+document.getElementById("demo").innerHTML = text;
+
+
+ - method keys() -> sebuah set tidak memiliki keys. keys() mengembalikan nilai yang sama dengan values(). Ini membuat Set kompatibel dengan Maps.
+letters.keys()   // Returns [object Set Iterator] 
+
+
+ - method entries() -> sebuah set tidak memiliki keys. entries() mengembalikan [value, value] dan bukan [key, value]. Ini membuat Set kompatibel dengan Maps.
+// Create a Set
+const letters = new Set(["a","b","c"]);
+
+// List all entries
+const iterator = letters.entries();
+let text = "";
+for (const entry of iterator) {
+  text += entry + "<br>";
+}
+
+document.getElementById("demo").innerHTML = text;
+
+// output
+a,a 
+b,b 
+c,c
+
 
 // map
 const fruits = new Map([
