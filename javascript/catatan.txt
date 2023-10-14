@@ -636,7 +636,7 @@ I have a Ford, it is a Mustang
 method super() diatas merujuk pada parent class nya yaitu Car.
 Dengan memanggil method super() di dalam constructor method, kita memanggil method constructor dari parent nya dan mendapat akses ke seluruh properti dan method dari parent class nya.
 
---------------------------------------------------
+----------------------
 
 * Getters & Setters, pada class juga bisa digunakan. Untuk menambahkan getters dan setters pada class, gunakan 'get' dan 'set' keyword. Bahkan jika getter nya adalah sebuah method, jangan gunakan tanda kurung () ketika mau melakukan get dari nilai properti.
 - contoh membuat sebuah getter dan sebuah setter untuk properti 'carname':
@@ -692,7 +692,7 @@ document.getElementById("demo").innerHTML = myCar.carname;
 // output:
 Volvo
 
---------------------------------------------------
+----------------------
 
 * Hoisting -> tidak seperti function dan deklarasi kode javascript yang lain, class inheritance tidak bisa dinaikkan ke atas / hoisted. Ini berarti kita wajib mendeklarasikan sebuah class sebelum menggunakannya.
 - contoh:
@@ -707,6 +707,47 @@ class Car {
 
 //Now you can use the class:
 const myCar = new Car("Ford") 
+
+--------------------------------------------------
+
+* Javascript static methods -> didefinisikan pada class itu sendiri. Kita tidak bisa memanggil sebuah method static pada sebuah object, hanya bisa pada sebuah class object.
+
+- contoh:
+class Car {
+  constructor(name) {
+    this.name = name;
+  }
+  static hello() {
+    return "Hello!!";
+  }
+}
+
+const myCar = new Car("Ford");
+
+// You can call 'hello()' on the Car Class:
+document.getElementById("demo").innerHTML = Car.hello();
+
+// But NOT on a Car Object:
+// document.getElementById("demo").innerHTML = myCar.hello();
+// this will raise an error. 
+
+
+Jika kita ingin memanggil method static pada sebuah object, seperti contoh diatas myCar.hello(), kita bisa mengirim object nya yaitu 'myCar' sebagai sebuah parameter:
+
+- contoh:
+class Car {
+  constructor(name) {
+    this.name = name;
+  }
+  static hello(x) {
+    return "Hello " + x.name;
+  }
+}
+const myCar = new Car("Ford");
+document.getElementById("demo").innerHTML = Car.hello(myCar); 
+
+// output:
+Hello Ford
 
 --------------------------------------------------
 
