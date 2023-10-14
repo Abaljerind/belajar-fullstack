@@ -401,6 +401,59 @@ Object.defineProperty(person, "language", {
   configurable : true
 });
 
+// Change a Property value:
+Object.defineProperty(object, property, {value : value}) 
+
+contoh:
+const person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "EN"
+};
+
+// Change a property
+Object.defineProperty(person, "language", {value : "NO"}); 
+
+// Changing Meta Data
+writable : true      // Property value can be changed
+enumerable : true    // Property can be enumerated
+configurable : true  // Property can be reconfigured 
+
+writable : false     // Property value can not be changed
+enumerable : false   // Property can be not enumerated
+configurable : false // Property can be not reconfigured 
+
+contoh language menjadi read-only:
+Object.defineProperty(person, "language", {writable:false});
+
+
+contoh language tidak bisa di hitung:
+Object.defineProperty(person, "language", {enumerable:false});
+
+
+// Listing All Properties dari sebuah object:
+ const person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "EN"
+};
+
+Object.defineProperty(person, "language", {enumerable:false});
+Object.getOwnPropertyNames(person);  // Returns an array of properties 
+
+
+// Adding a Property ke sebuah object:
+// Create an object:
+const person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "EN"
+};
+
+// Add a property
+Object.defineProperty(person, "year", {value:"2008"}); 
+
+
 // memecah / menguraikan isi dari object Properties
 var txt = "";
 for (var x in person) {
