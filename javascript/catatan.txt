@@ -1969,7 +1969,59 @@ dari contoh diatas, (x) => x >= 0 adalah sebuah callback function. function anon
 berdasarkan contoh contoh diatas, semuanya sesederhana mungkin dibuat untuk mengajarkan kita kode dari callback.
 Callback akan bersinar dengan penggunaan function asynchronous, dimana 1 function harus menunggu untuk function lainnya (seperti menunggu untuk sebuah file dimuat.)
 
+--------------------------------------------------
 
+* Asynchronous Javascript -> function yang berjalan secara bersamaan dengan function lain disebut asynchronous. Contoh nya javascript setTimeout(). Dalam kehidupan nyata, callback paling sering digunakan dengan function asynchronous. contoh tipe nya adalah javascript setTimeout().
+
+# Waiting for a timeout
+Ketika menggunakan function setTimeout(), kita bisa menspesifikasikan sebuah function callback untuk dijalankan pada waktu tertentu, contohnya:
+
+setTimeout(myFunction, 3000);
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "I love You !!";
+}
+
+Dari contoh diatas, myFunction digunakan sebagai sebuah callback. myFunction digunakan sebagai argument pada function setTimeout(). 3000 adalah angka milliseconds sebelum waktu yang ditentukan, jadi myFunction() akan dipanggil setelah 3 detik.
+
+NOTE: Ketika menjadikan sebuah function sebagai sebuah argument, ingat untuk jangan menggunakan tanda kurung ().
+contoh yang benar: setTimeout(myFunction, 3000);
+contoh yang salah: setTimeout(myFunction(), 3000);
+
+Daripada mendeklarasikan function dengan namanya sebagai argument di dalam function lain, kita selalu bisa mendeklarasikan function tersebut secara keseluruhan di dalam function lainnya:
+
+setTimeout(function() { myFunction("I love You !!!"); }, 3000);
+
+function myFunction(value) {
+  document.getElementById("demo").innerHTML = value;
+}
+
+Dari contoh diatas, function() { myFunction("I love You !!!"); } digunakan sebagai sebuah callback dan merupakan sebuah function yang utuh. Function yang utuh tersebut diberikan kepada function setTimeout() sebagai sebuah argument. 3000 adalah angka milliseconds sebelum waktu yang ditentukan, jadi myFunction() akan dipanggil setelah 3 detik.
+
+
+# Waiting for intervals
+ketika menggunakan function setInterval(), kita bisa menspesifikasikan sebuah callback function untuuk dijalankan pada tiap tiap interval / selang waktu tertentu. Contoh:
+
+setInterval(myFunction, 1000);
+
+function myFunction() {
+  let d = new Date();
+  document.getElementById("demo").innerHTML=
+  d.getHours() + ":" +
+  d.getMinutes() + ":" +
+  d.getSeconds();
+}
+
+Dari contoh diatas, myFunction digunakan sebagai sebuah callback. myFunction digunakan sebagai argument pada function setInterval(). 1000 adalah angka milliseconds diantara interval nya, jadi myFunction() akan dipanggil setiap 1 detik.
+
+
+# Callback alternatives
+Dengan penggunaan asynchronous, program program javascript bisa menjalankan tugas tugas yang lama dan meneruskan tugas tugas lain secara bersamaan. Tetapi, dengan asynchronous, program program tersebut sulit untuk ditulis dan dilakukan debug. Karena hal ini, kebanyakan metode metode javascript asynchronous modern tidak menggunakan callback, melainkan pada javascript, pemrograman asynchronous tersebut diselesaikan dengan menggunakan yang namanya 'Promises'
+
+
+--------------------------------------------------
+
+* Javascript Promises
 
 --------------------------------------------------
 
