@@ -2172,6 +2172,131 @@ myPromise.then(
 --------------------------------------------------
 
 * Javascript Async / Await
+async dan await membuat penulisan promises lebih mudah. 
+Async membuat sebuah function yang mengembalikan sebuah promise. 
+Await membuat sebuah function menunggu untuk sebuah promise.
+
+# Async syntax, keyword async sebelum sebuah function membuat function mengembalikan sebuah promise:
+contoh:
+
+async function myFunction() {
+  return "Hello";
+}
+
+sama dengan:
+
+function myFunction() {
+  return Promise.resolve("Hello");
+}
+
+-------
+
+Begini caranya menggunakan promise:
+
+myFunction().then(
+  function(value) { /* code if successful */ },
+  function(error) { /* code if some error */ }
+);
+
+-------
+
+contoh:
+
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+async function myFunction() {return "Hello";}
+
+myFunction().then(
+  function(value) {myDisplayer(value);},
+  function(error) {myDisplayer(error);}
+);
+
+atau jika lebih simple lagi, karna kita mengharapkan sebuah value yang normal (response normal, bukan sebuah error):
+
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+async function myFunction() {return "Hello";}
+
+myFunction().then(
+  function(value) {myDisplayer(value);}
+);
+
+-------
+
+# Await syntax -> keyword await hanya bisa digunakan di dalam sebuah function async. Keyword await tersebut membuat function tersebut menjeda proses berjalannya dan menunggu untuk sebuah 'resolved promise' sebelum dilanjutkan:
+
+let value = await promise;
+
+contoh penggunaan nya:
+
+async function myDisplay() {
+  let myPromise = new Promise(function(resolve, reject) {
+    resolve("I love You !!");
+  });
+  document.getElementById("demo").innerHTML = await myPromise;
+}
+
+myDisplay();
+
+-------
+
+kedua argument diatas (resolve dan reject) di definisikan di awal oleh javascript. Kita tidak akan membuat mereka, tetapi kita memanggil salah satunya ketika function eksekutor sudah siap. Sangat jarang kita akan membutuhkan sebuah function reject.
+
+contoh tanpa reject:
+
+async function myDisplay() {
+  let myPromise = new Promise(function(resolve) {
+    resolve("I love You !!");
+  });
+  document.getElementById("demo").innerHTML = await myPromise;
+}
+
+myDisplay();
+
+>> output: I love You !!
+
+-------
+
+contoh menunggu untuk sebuah timeout:
+
+async function myDisplay() {
+  let myPromise = new Promise(function(resolve) {
+    setTimeout(function() {resolve("I love You !!");}, 3000);
+  });
+  document.getElementById("demo").innerHTML = await myPromise;
+}
+
+myDisplay();
+
+>> <setelah 3 detik> output: I love You !!
+
+-------
+
+contoh menunggu untuk sebuah file:
+
+async function getFile() {
+  let myPromise = new Promise(function(resolve) {
+    let req = new XMLHttpRequest();
+    req.open('GET', "mycar.html");
+    req.onload = function() {
+      if (req.status == 200) {
+        resolve(req.response);
+      } else {
+        resolve("File not Found");
+      }
+    };
+    req.send();
+  });
+  document.getElementById("demo").innerHTML = await myPromise;
+}
+
+getFile();
+
+>> output: halaman website mycar.html
 
 --------------------------------------------------
 
