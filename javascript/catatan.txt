@@ -340,6 +340,8 @@ document.getElementById("demo").innerHTML = person.fullName;
 
 // Perlu diperhatikan bahwa digunakan keyword 'get' diatas untuk method fullName nya.
 
+-------
+
 - Berikut contoh membuat sebuah setter dan getter untuk properti language dan bisa mengamankan kualitas datanya:
 
 var person = {
@@ -359,6 +361,8 @@ person.lang = "en";
 
 // Display data from the object using a getter:
 document.getElementById("demo").innerHTML = person.lang;
+
+-------
 
 // Perlu diperhatikan bahwa diatas ada penggunaan keyword 'set' dan 'get pada method lang() nya. Untuk parameter value pada method set, untuk mendeklarasikan variable yang akan digunakan untuk memasukkan nilai dari method set ke properti language nya. Pada saat data language di display di contoh diatas, kita juga bisa mengganti kode person.lang menjadi person.language, bahkan bisa juga diberikan method uppercase.
 
@@ -461,6 +465,7 @@ for (var x in person) {
 }
 document.getElementById("demo").innerHTML = txt;
 
+-------
 
  - contoh 2, sama seperti diatas hanya saja properti language nya akan di sembunyikan dari enumaration / pengubahan object properti.
 
@@ -486,6 +491,7 @@ for (var x in person) {
 }
 document.getElementById("demo").innerHTML = txt;
 
+-------
 
  - contoh 3, membuat setter dan getter untuk mengubah language nya menjadi uppercase:
 
@@ -508,6 +514,7 @@ person.language = "en";
 // Display Language
 document.getElementById("demo").innerHTML = person.language; 
 
+-------
 
  - contoh 4, untuk menambah getters dan setters:
 // Define object
@@ -560,6 +567,8 @@ Untuk menggunakan sebuah class, kita bisa gunakan class untuk membuat object sep
 const myCar1 = new Car("Ford", 2014);
 const myCar2 = new Car("Audi", 2019);
 
+-------
+
 ## Class Methods -> dibuat dengan sintaks kode yang sama seperti method pada object. 
 Gunakan keyword class untuk membuat class. Selalu gunakan method constructor lalu tambahkan sejumlah method yang diinginkan.
 class ClassName {
@@ -584,6 +593,8 @@ class Car {
 const myCar = new Car("Ford", 2014);
 document.getElementById("demo").innerHTML =
 "My car is " + myCar.age() + " years old.";
+
+-------
 
 // bisa juga mengirimkan parameter ke method pada class:
 class Car {
@@ -663,6 +674,8 @@ Ford
 // penjelasan:
 Nama dari method getter dan setter tidak bisa sama dengan nama dari properti nya, dalam hal ini 'carname'. Banyak programmer menggunakan underscore / _ sebelum nama properti nya untuk memisahkan getter/setter dari properti yang asli.
 
+-------
+
 - contoh penggunaan karakter underscore untuk memisahkan getter dan setter dari properti aslinya:
 class Car {
   constructor(brand) {
@@ -682,6 +695,8 @@ document.getElementById("demo").innerHTML = myCar.carname;
 
 // output:
 Ford
+
+-------
 
 - contoh untuk menggunakan setter, gunakan kode yang sama seperti saat melakukan set pada sebuah properti value, yaitu tanpa tanda kurung. Berikut contoh penggunaan sebuah setter untuk mengubah carname menjadi 'Volvo':
 
@@ -761,11 +776,15 @@ function Person(first, last, age, eye) {
   this.eyeColor = eye;
 }
 
+-------
+
 --- object types (blueprints) (classes)
 Pada contoh class diatas, yang dapat kita buat dengan class itu terbatas karna hanya bisa membuat 1 buah objects. Terkadang kita membutuhkan sebuah blueprint untuk membuat banyak object dengan tipe yang sama. Untuk membuat sebuah 'tipe object / object type', dengan menggunakan sebuah 'object constructor function'. Pada contoh function Person() diatas adalah contoh 'object constructor function' nya. Object dengan tipe yang sama dibuat dengan memanggil si constructor function dengan tambahan keyword 'new' seperti contoh berikut:
 
 const myFather = new Person("John", "Doe", 50, "blue");
 const myMother = new Person("Sally", "Rally", 48, "green");
+
+-------
 
 --- menambah sebuah properti pada sebuah constructor, harus ditambahkan ke constructor function, contoh:
 function Person(first, last, age, eyecolor) {
@@ -775,6 +794,8 @@ function Person(first, last, age, eyecolor) {
   this.eyeColor = eyecolor;
   this.nationality = "English";   // sama dengan default value
 }
+
+-------
 
 --- menambah sebuah method pada sebuah constructor, contoh:
 function Person(first, last, age, eyecolor) {
@@ -841,6 +862,7 @@ Object.getPrototypeOf(object)
 // Returns enumerable properties as an array
 Object.keys(object)
 
+-------
 
 --Protecting Objects--
 // Prevents adding properties to an object
@@ -861,6 +883,7 @@ Object.freeze(object)
 // Returns true if object is frozen
 Object.isFrozen(object)
 
+-------
 
 # Function Bind()
 
@@ -883,6 +906,7 @@ const member = {
 
 let fullName = person.fullName.bind(member);
 
+-------
 
 # The Optional Chaining Operator (?.)
 -> mengembalikan undefined jika sebuah object tidak memiliki properti yang dimaksud (jadi tidak mengembalikan sebuah error)
@@ -907,6 +931,8 @@ for (let i = 1; i <= 10; i++) {
     console.log(i);
 }
 
+-------
+
 2. while -> melakukan perulangan pada sebuah blok kode selama kondisi yang dicek bernilai true.
 
 while (condition) {
@@ -918,6 +944,8 @@ while (i < 10) {
   text += "The number is " + i;
   i++;
 }
+
+-------
 
 2a. Do while loop -> varian dari while loop. Perulangan ini akan menjalankan blok kode sekali sebelum melakukan pengecekan apakah kondisi nya bernilai true, lalu akan diulang selama kondisi nya bernilai true.
 do {
@@ -932,7 +960,7 @@ do {
 }
 while (i < 10); 
 
-
+-------
 
 3. for..of -> melakukan perulangan pada values / isi dari sebuah object yang dapat diubah (iterable). Contohnya arrays, strings, maps, NodeLists dan lainnya
 
@@ -960,6 +988,8 @@ for (let x of language) {
 text += x;
 }
 
+-------
+
 // set -> koleksi dari nilai nilai yang unik. Tiap nilai hanya bisa ada 1 saja didalam sebuah set. Sebuah set dapat menyimpan nilai apapun dari tipe data manapun.
 
 Set Methods
@@ -977,10 +1007,14 @@ entries()	      Returns an Iterator with the [value,value] pairs from a Set
 Property	      Description
 size	          Returns the number elements in a Set
 
+-------
+
  - cara membuat sebuah set
 1. Method new Set() -> mengubah sebuah array menjadi constructor 'new Set()':
 
 const letters = new Set(["a","b","c"]);
+
+-------
 
 2. Membuat set dan menambah nilai nilainya:
 
@@ -991,6 +1025,8 @@ const letters = new Set();
 letters.add("a");
 letters.add("b");
 letters.add("c");
+
+-------
 
 3. Membuat set dan menambah variabel:
 
@@ -1007,11 +1043,13 @@ letters.add(a);
 letters.add(b);
 letters.add(c);
 
+-------
 
  - method add() -> jika menambah elemen yang sama maka hanya elemen pertamanya saja yang akan disimpan.
 letters.add("d");
 letters.add("e");
 
+-------
 
  - method forEach() -> memanggil sebuah function untuk tiap set elemen:
 // Create a Set
@@ -1023,6 +1061,7 @@ letters.forEach (function(value) {
   text += value;
 })
 
+-------
 
  - method values() -> mengembalikan sebuah iterator object berisi semua nilai didalam sebuah set:
 
@@ -1040,6 +1079,7 @@ for (const x of letters.values()) {
 
 document.getElementById("demo").innerHTML = text;
 
+-------
 
  - method keys() -> sebuah set tidak memiliki keys. keys() mengembalikan nilai yang sama dengan values(). Ini membuat Set kompatibel dengan Maps.
 letters.keys()   // Returns [object Set Iterator] 
@@ -1063,6 +1103,7 @@ a,a
 b,b 
 c,c
 
+-------
 
 // map -> menyimpan pasangan key-value dimana key nya bisa tipe data apapun. Sebuah map mengingat urutan asli dari penyisipan / penginputan dari keys nya, dan sebuah map punya sebuah properti yang mewakili ukuran dari map tersebut.
 
@@ -1162,6 +1203,7 @@ for (const x of fruits.values()) {
   text += x;
 }
 
+-------
 
 4. for..in -> melakukan perulangan pada properti sebuah object. Bisa juga untuk perulangan pada properti sebuah array.
 for (key in object) {
@@ -1188,6 +1230,7 @@ Example Explained
     The key is used to access the value of the key
     The value of the key is person[x]
 
+-------
 
 // array
 const numbers = [45, 4, 9, 16, 25];
@@ -1240,6 +1283,8 @@ for (let i = 0; i < 10; i++) {
   text += "The number is " + i + "<br>";
 } 
 
+-------
+
 - Continue, digunakan untuk melakukan break pada 1 buah pengulangan, jika ada kondisi yang terpenuhi terjadi dan berlanjut dengan pengulangan selanjutnya yang ada di dalam loop.
 
 - contoh:
@@ -1259,6 +1304,8 @@ function namaFunction() {
 }
 
 untuk menggunakan function nya, kita bisa memanggil namaFunction(); saja.
+
+-------
 
 # parameter & argument, sama tapi tidak serupa. Parameter digunakan pada tanda kurung setelah nama function, sedangkan argument digunakan saat kita memanggil function dengan namanya dan di dalam tanda kurung nya ada argument.
 contoh parameter
@@ -1282,6 +1329,8 @@ Dengan arrow function, keyword this tidak akan dilakukan binding. sedangkan pada
 
   -- kedua contoh dibawah ini, sama sama memanggil sebuah method 2 kali, yang pertama saat halaman selesai dimuat (loads), dan yang kedua saat user mengklik sebuah button.
 
+-------
+
   -# contoh 1:
 Dengan sebuah function expression / anonymous function, 'this' merepresentasikan object yang memanggil function nya:
 // anonymous Function:
@@ -1297,6 +1346,7 @@ document.getElementById("btn").addEventListener("click", hello);
 
 Hasilnya -> 2 object berbeda, window dan button.
 
+-------
 
   -# contoh 2:
 Dengan sebuah arrow function, 'this merepresentasikan pemilik dari function nya:
@@ -1334,6 +1384,7 @@ console.log('linux'); // Redhat
 
 Contoh 1 diatas adalah contoh dari scope, dimana variable linux ada 2 yaitu di dalam dan diluar function, maka hasil ketika function dan variable diluar nya dipanggil akan menghasilkan output yg berbeda.
 
+-------
 
 contoh 2:
 let linux = 'Redhat';
@@ -1346,6 +1397,7 @@ console.log('linux'); // Redhat
 
 Contoh 2 diatas, adalah contoh ketika variable yg ada diluar function di deklarasikan dan dipanggil ke dalam function maka output nya akan sama, ini dikarenakan di dalam function tidak di deklarasikan ulang variabel tersebut seperti di contoh 1.
 
+-------
 
 contoh 3:
 function easyLinux() {
@@ -1402,6 +1454,8 @@ function myFunction() {
 
   - Method Method seperti call(), apply(), dan bind() bisa merujuk pada object manapun. Ini artinya dengan call(), apply() dan bind(), kita bisa menggunakan method method dari object lain untuk object object lainnya.
   
+-------
+
 ## call(), contoh dibawah, memanggil person1.fullName() dengan person2 sebagai argument nya. 'this' pada method fullName di person1 akan di isi berdasarkan pada person2, bahkan jika fullName adalah sebuah method dari person1 juga bisa digunakan dengan value dari object lain seperti person2:
 const person1 = {
   fullName: function() {
@@ -1419,6 +1473,8 @@ person1.fullName.call(person2);
 
 NOTE: this tidak bisa diubah nilainya.
 
+-------
+
 - contoh call() dengan arguments:
 const person = {
   fullName: function(city, country) {
@@ -1433,6 +1489,7 @@ const person1 = {
 
 person.fullName.call(person1, "Oslo", "Norway");
 
+-------
 
 ## apply(), mirip dengan method call() sebelumnya, bedanya method call() mengambil argument argument secara terpisah, sedangkan method apply() mengambil argument argument sebagai sebuah array.
 const person = {
@@ -1449,6 +1506,8 @@ const person1 = {
 // This will return "Mary Doe":
 person.fullName.apply(person1);
 
+-------
+
 - contoh apply() dengan arguments:
 const person = {
   fullName: function(city, country) {
@@ -1463,6 +1522,7 @@ const person1 = {
 
 person.fullName.apply(person1, ["Oslo", "Norway"]);
 
+-------
 
 ## bind(), contoh dibawah ini object member meminjam method fullName dari object person:
 const person = {
@@ -1590,14 +1650,16 @@ const ganjil = angka.filter(n => {
 
 * every, sebuah function yg akan mengembalikan nilai boolean. true jika seluruh nilai yg ada pada suatu array memiliki kriteria yg sama. false jika sebaliknya.
 
-* some, mirip dengan every, tapi lebih fleksibel. hasilnya akan true jika salah satu isi dari array memiliki kriteria yg sama. akan false jika sama sekali tidak ada yg sesuai kriteria.
-
 contoh every:
 
 const kataKata = ['kita', 'kamu', 'saya', 'aku'];
 kata.every(kata => {
     return kata.length === 4;
 }); // true
+
+-------
+
+* some, mirip dengan every, tapi lebih fleksibel. hasilnya akan true jika salah satu isi dari array memiliki kriteria yg sama. akan false jika sama sekali tidak ada yg sesuai kriteria.
 
 contoh some:
 
@@ -1756,6 +1818,8 @@ if (hour < 18) {
   greeting = "Good day";
 } 
 
+-------
+
 # Else statement:
 if (condition) {
   //  block of code to be executed if the condition is true
@@ -1769,6 +1833,8 @@ if (hour < 18) {
 } else {
   greeting = "Good evening";
 }
+
+-------
 
 # Else if statement:
 if (condition1) {
@@ -1787,6 +1853,8 @@ if (time < 10) {
 } else {
   greeting = "Good evening";
 }
+
+-------
 
 # Switch statement:
 switch(expression) {
@@ -1824,6 +1892,7 @@ switch (new Date().getDay()) {
 import message from "./message.js";
 </script> 
 
+-------
 
 # export -> modules yang beriisikan function atau variable bisa disimpan pada file external. Ada 2 tipe export: Named export & Default export.
 
@@ -1853,6 +1922,7 @@ import message from "./message.js";
 
       export default message;
 
+-------
 
 # import -> kita bisa melakukan import dengan 2 cara, berdasarkan file nya apakah dibuat dengan nama 'export' atau 'default export'.
 Dengan named export, bisa menggunakan kurung kurawal {}, sedangkan default export tidak bisa menggunakan kurung kurawal.
@@ -1866,6 +1936,7 @@ Dengan named export, bisa menggunakan kurung kurawal {}, sedangkan default expor
 
 * JavaScript Callback -> sebuah function yang dijadikan sebuah argument ke function lain. Teknik ini memperbolehkan sebuah function untuk memanggil function lain. Sebuah callback function bisa berjalan setelah function lain selesai dijalankan.
 
+-------
 
 # Function sequence
 function function pada JavaScript di eksekusi / dijalankan sesuai urutan pemanggilannya. Tidak berdasarkan urutan function function tersebut di definisikan. Berikut contoh function yang akan berakhir dengan menampilkan 'Goodbye':
@@ -1886,6 +1957,7 @@ mySecond();
 mySecond();
 myFirst(); 
 
+-------
 
 # Sequence control
 Kadang kita mau kontrol yang lebih baik pada saat mau menjalankan sebuah function. Misalnya jika kita mau melakukan perhitungan dan menampilkan hasilnya. Berikut contohnya, kita memanggil sebuah function calculator (myCalculator), lalu menyimpan hasilnya, lalu memanggil function lain (myDisplayer) untuk menampilkan hasilnya:
@@ -1902,6 +1974,7 @@ function myCalculator(num1, num2) {
 let result = myCalculator(5, 5);
 myDisplayer(result); 
 
+-------
 
 // atau kita bisa memanggil sebuah calculator function (myCalculator), dan membiarkan calculator function memanggil function display (myDisplayer):
 
@@ -1919,6 +1992,7 @@ myCalculator(5, 5);
 
 // masalah dengan contoh pertama diatas adalah kita harus memanggil 2 function untuk menampilkan hasilnya. Sedangkan pada contoh kedua, kita tidak bisa mencegah function calculator dari menampilkan hasilnya. Sekaranglah waktunya untuk membawah sebuah callback.
 
+-------
 
 # JavaScript Callbacks -> sebuah function yang dijadikan sebagai argument di function lain.
 Dengan callback kita bisa memanggil function calculator (myCalculator) dengan sebuah callback (myCallback), dan membiarkan function calculator menjalankan callback nya setelah perhitungan nya selesai:
@@ -1941,6 +2015,7 @@ NOTE: Ketika menjadikan sebuah function sebagai sebuah argument, ingat untuk jan
 contoh yang benar: myCalculator(5, 5, myDisplayer);
 contoh yang salah: myCalculator(5, 5, myDisplayer());
 
+-------
 
 // Create an Array
 const myNumbers = [4, 1, -20, -7, 5, 9, -6];
@@ -1964,6 +2039,7 @@ function removeNeg(numbers, callback) {
 
 dari contoh diatas, (x) => x >= 0 adalah sebuah callback function. function anonymous tersebut dijadikan sebuah argument pada function removeNeg().
 
+-------
 
 # When to use a callback?
 berdasarkan contoh contoh diatas, semuanya sesederhana mungkin dibuat untuk mengajarkan kita kode dari callback.
@@ -1972,6 +2048,8 @@ Callback akan bersinar dengan penggunaan function asynchronous, dimana 1 functio
 --------------------------------------------------
 
 * Asynchronous Javascript -> function yang berjalan secara bersamaan dengan function lain disebut asynchronous. Contoh nya javascript setTimeout(). Dalam kehidupan nyata, callback paling sering digunakan dengan function asynchronous. contoh tipe nya adalah javascript setTimeout().
+
+-------
 
 # Waiting for a timeout
 Ketika menggunakan function setTimeout(), kita bisa menspesifikasikan sebuah function callback untuk dijalankan pada waktu tertentu, contohnya:
@@ -1998,6 +2076,7 @@ function myFunction(value) {
 
 Dari contoh diatas, function() { myFunction("I love You !!!"); } digunakan sebagai sebuah callback dan merupakan sebuah function yang utuh. Function yang utuh tersebut diberikan kepada function setTimeout() sebagai sebuah argument. 3000 adalah angka milliseconds sebelum waktu yang ditentukan, jadi myFunction() akan dipanggil setelah 3 detik.
 
+-------
 
 # Waiting for intervals
 ketika menggunakan function setInterval(), kita bisa menspesifikasikan sebuah callback function untuuk dijalankan pada tiap tiap interval / selang waktu tertentu. Contoh:
@@ -2014,6 +2093,7 @@ function myFunction() {
 
 Dari contoh diatas, myFunction digunakan sebagai sebuah callback. myFunction digunakan sebagai argument pada function setInterval(). 1000 adalah angka milliseconds diantara interval nya, jadi myFunction() akan dipanggil setiap 1 detik.
 
+-------
 
 # Callback alternatives
 Dengan penggunaan asynchronous, program program javascript bisa menjalankan tugas tugas yang lama dan meneruskan tugas tugas lain secara bersamaan. Tetapi, dengan asynchronous, program program tersebut sulit untuk ditulis dan dilakukan debug. Karena hal ini, kebanyakan metode metode javascript asynchronous modern tidak menggunakan callback, melainkan pada javascript, pemrograman asynchronous tersebut diselesaikan dengan menggunakan yang namanya 'Promises'
@@ -2025,6 +2105,8 @@ Dengan penggunaan asynchronous, program program javascript bisa menjalankan tuga
 "Producing Code" adalah kode yang bisa membutuhkan waktu.
 "Consuming Code" adalah kode yang wajib menunggu untuk hasilnya.
 Sebuah promise adalah sebuah javascript object yang menghubungkan producing code dengan consuming code.
+
+-------
 
 # Javascript Promise Object -> berisi kedua hal yaitu producing code dan memanggil untuk consuming code:
 
@@ -2047,6 +2129,8 @@ Result	        Call
 Success	        myResolve(result value)
 Error	          myReject(error object)
 
+-------
+
 # Promise Object Properties
 - Pending
 - Fulfilled
@@ -2058,6 +2142,7 @@ Ketika sebuah object promise statusnya 'pending' (working), hasilnya adalah unde
 Ketika sebuah object promise statusnya 'fulfilled', hasilnya adalah sebuah nilai / value.
 Ketika sebuah object promise statusnya 'rejected', hasilnya adalah sebuah object error.
 
+-------
 
 # Promise how to use it
 
@@ -2093,6 +2178,7 @@ myPromise.then(
 
 // output: OK
 
+-------
 
 # Javascript Promise Examples
 untuk mendemonstrasikan kegunaan dari promise, kita akan menggunakan contoh callback dari chapter sebelumnya:
@@ -2107,6 +2193,8 @@ function myFunction(value) {
 
 >> output: I love You !!!
 
+-------
+
 // contoh penggunaan promise:
 let myPromise = new Promise(function(myResolve, myReject) {
   setTimeout(function() { myResolve("I love You !!"); }, 3000);
@@ -2118,6 +2206,7 @@ myPromise.then(function(value) {
 
 >> output: I love You !!!
 
+-------
 
 - Waiting for a file
 // contoh penggunaan callback:
@@ -2142,6 +2231,8 @@ function getFile(myCallback) {
 getFile(myDisplayer); 
 
 >> output: halaman website mycar.html
+
+-------
 
 // contoh penggunaan promise:
 
@@ -2297,6 +2388,10 @@ async function getFile() {
 getFile();
 
 >> output: halaman website mycar.html
+
+--------------------------------------------------
+
+
 
 --------------------------------------------------
 
