@@ -2391,6 +2391,34 @@ getFile();
 
 --------------------------------------------------
 
+* HTML DOM -> sebuah standar untuk mendapatkan, mengubah, menambah atau menghapus elemen elemen HTML.
+
+-------
+
+* HTML DOM Methods
+HTML DOM methods -> aksi aksi yang bisa dilakukan pada elemen elemen HTML. Seperti menambah atau menghapus sebuah elemen HTML.
+HTML DOM properti -> nilai nilai dari elemen elemen HTML yang bisa diatur atau diubah. Seperti mengubah isi dari suatu elemen HTML.
+
+contoh dibawah mengubah isi dari elemen p dengan id demo:
+
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = "Hello World!";
+</script>
+
+</body>
+</html>
+
+Pada contoh diatas, getElementById adalah sebuah 'method', sedangkan innerHTML adalah sebuah properti yang sangat berguna untuk mengubah atau mendapatkan isi dari elemen elemen HTML. Bahkan innerHTML juga bisa digunakan untuk mendapatkan atau mengubah elemen HTML manapun termasuk <html> dan <body>.
+
+--------------------------------------------------
+
+* HTML DOM Document
+
 
 
 --------------------------------------------------
