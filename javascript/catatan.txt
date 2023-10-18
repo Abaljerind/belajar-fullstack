@@ -1864,4 +1864,113 @@ Dengan named export, bisa menggunakan kurung kurawal {}, sedangkan default expor
 
 --------------------------------------------------
 
+* JavaScript Callback -> sebuah function yang dijadikan sebuah argument ke function lain. Teknik ini memperbolehkan sebuah function untuk memanggil function lain. Sebuah callback function bisa berjalan setelah function lain selesai dijalankan.
+
+
+# Function sequence
+function function pada JavaScript di eksekusi / dijalankan sesuai urutan pemanggilannya. Tidak berdasarkan urutan function function tersebut di definisikan. Berikut contoh function yang akan berakhir dengan menampilkan 'Goodbye':
+
+function myFirst() {
+  myDisplayer("Hello");
+}
+
+function mySecond() {
+  myDisplayer("Goodbye");
+}
+
+myFirst();
+mySecond();
+
+// jika posisi pemanggilannya dibalik, maka akan berakhir dengan menampilkan 'hello':
+
+mySecond();
+myFirst(); 
+
+
+# Sequence control
+Kadang kita mau kontrol yang lebih baik pada saat mau menjalankan sebuah function. Misalnya jika kita mau melakukan perhitungan dan menampilkan hasilnya. Berikut contohnya, kita memanggil sebuah function calculator (myCalculator), lalu menyimpan hasilnya, lalu memanggil function lain (myDisplayer) untuk menampilkan hasilnya:
+
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+function myCalculator(num1, num2) {
+  let sum = num1 + num2;
+  return sum;
+}
+
+let result = myCalculator(5, 5);
+myDisplayer(result); 
+
+
+// atau kita bisa memanggil sebuah calculator function (myCalculator), dan membiarkan calculator function memanggil function display (myDisplayer):
+
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+function myCalculator(num1, num2) {
+  let sum = num1 + num2;
+  myDisplayer(sum);
+}
+
+myCalculator(5, 5);
+
+
+// masalah dengan contoh pertama diatas adalah kita harus memanggil 2 function untuk menampilkan hasilnya. Sedangkan pada contoh kedua, kita tidak bisa mencegah function calculator dari menampilkan hasilnya. Sekaranglah waktunya untuk membawah sebuah callback.
+
+
+# JavaScript Callbacks -> sebuah function yang dijadikan sebagai argument di function lain.
+Dengan callback kita bisa memanggil function calculator (myCalculator) dengan sebuah callback (myCallback), dan membiarkan function calculator menjalankan callback nya setelah perhitungan nya selesai:
+
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+function myCalculator(num1, num2, myCallback) {
+  let sum = num1 + num2;
+  myCallback(sum);
+}
+
+myCalculator(5, 5, myDisplayer);
+
+
+// contoh diatas, myDisplayer disebut function callback. myDisplayer tersebut dijadikan sebagai argument pada function myCalculator().
+
+NOTE: Ketika menjadikan sebuah function sebagai sebuah argument, ingat untuk jangan menggunakan tanda kurung ().
+contoh yang benar: myCalculator(5, 5, myDisplayer);
+contoh yang salah: myCalculator(5, 5, myDisplayer());
+
+
+// Create an Array
+const myNumbers = [4, 1, -20, -7, 5, 9, -6];
+
+// Call removeNeg with a callback
+const posNumbers = removeNeg(myNumbers, (x) => x >= 0);
+
+// Display Result
+document.getElementById("demo").innerHTML = posNumbers;
+
+// Keep only positive numbers
+function removeNeg(numbers, callback) {
+  const myArray = [];
+  for (const x of numbers) {
+    if (callback(x)) {
+      myArray.push(x);
+    }
+  }
+  return myArray;
+}
+
+dari contoh diatas, (x) => x >= 0 adalah sebuah callback function. function anonymous tersebut dijadikan sebuah argument pada function removeNeg().
+
+
+# When to use a callback?
+berdasarkan contoh contoh diatas, semuanya sesederhana mungkin dibuat untuk mengajarkan kita kode dari callback.
+Callback akan bersinar dengan penggunaan function asynchronous, dimana 1 function harus menunggu untuk function lainnya (seperti menunggu untuk sebuah file dimuat.)
+
+
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
