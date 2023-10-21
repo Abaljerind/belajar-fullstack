@@ -2568,9 +2568,51 @@ Click Me!</button>
 
 --------------------------------------------------
 
-* JS HTML DOM Animations
+* JS HTML DOM Events
 
+# Reacting to Events
 
+contoh HTML Events:
+- ketika user klik dengan mouse
+- ketika sebuah website selesai di muat
+- ketika sebuah gambar selesai di muat
+- ketika mouse diarahkan ke sebuah elemen
+- ketika terjadi perubahan pada kolom input
+- ketika sebuah form HTML dikirim (submit)
+- ketika user klik sebuah tombol di keyboard
+
+----------
+
+# The onload and onunload Events, akan dijalankan ketika user masuk atau keluar dari halaman website.
+Onload event bisa digunakan untuk mengecek tipe browser yang digunakan oleh visitor (pengunjung) dan juga versi browser nya, lalu memuat versi halaman website yang sesuai berdasarkan informasi tersebut. Onload dan onunload events bisa digunakan untuk berurusan dengan cookies.
+
+- contoh:
+
+ <body onload="checkCookies()"> 
+
+----------
+
+# The onchange event, sering digunakan untuk kombinasi dengan validation dari elemen HTML input.
+
+- contoh dibawah ini, function upperCase() akan dipanggil ketika user mengubah isi dari sebuah kolom input:
+
+Enter your name: <input type="text" id="fname" onchange="upperCase()">
+<p>When you leave the input field, a function is triggered which transforms the input text to upper case.</p>
+
+<script>
+function upperCase() {
+  const x = document.getElementById("fname");
+  x.value = x.value.toUpperCase();
+}
+</script>
+
+----------
+
+# The onmouseover dan onmouseout events, bisa digunakan dan akan dijalankan ketika user mengarahkan mouse ke dalam suatu elemen HTML dan keluar dari elemen HTML tersebut. 
+
+----------
+
+# The onmousedown, onmouseup dan onclick events, adalah bagian dari sebuah mouse-click. Pertama ketika sebuah tombol pada mouse di klik, event onmousedown akan dijalankan, lalu ketika tombol mouse tadi dilepas maka event onmouseup akan dijalankan, dan terakhir ketika mouse-click selesai, event onclick baru dijalankan.
 
 --------------------------------------------------
 
