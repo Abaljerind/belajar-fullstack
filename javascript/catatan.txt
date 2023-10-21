@@ -2532,6 +2532,44 @@ full list: https://www.w3schools.com/css/css_pseudo_classes.asp
 
 * JS DOM CSS
 
+# Changing HTML Style, untuk mengubah style dari sebuah elemen HTML, gunakan sintaks berikut:
+
+document.getElementById(id).style.property = new style
+
+- contoh dibawah ini untuk mengubah style dari elemen <p>:
+<body>
+
+<p id="p2">Hello World!</p>
+
+<script>
+document.getElementById("p2").style.color = "blue";
+</script>
+
+</body>
+
+----------
+
+# Using Event, event akan dijalankan oleh browser ketika 'sesuatu terjadi' pada elemen HTML nya, antara lain:
+- sebuah elemen di klik
+- halaman website nya selesai di muat
+- terjadi perubahan pada kolom input
+
+- contoh dibawah ini untuk mengubah style dari elemen HTML dengan id = id1, yang terjadi ketika user klik sebuah button:
+
+<body>
+
+<h1 id="id1">My Heading 1</h1>
+
+<button type="button"
+onclick="document.getElementById('id1').style.color = 'red'">
+Click Me!</button>
+
+</body>
+
+--------------------------------------------------
+
+* JS HTML DOM Animations
+
 
 
 --------------------------------------------------
