@@ -2616,4 +2616,54 @@ function upperCase() {
 
 --------------------------------------------------
 
+* JS HTML DOM EventListener
+
+# Method addEventListener(), dibawah ini contoh menambah sebuah event listener yang berjalan ketika user klik sebuah button:
+
+document.getElementById("myBtn").addEventListener("click", displayDate);
+
+- Method addEventListener() mengikat sebuah event handler dengan sebuah elemen khusus.
+- Method addEventListener() mengikat sebuah event handler dengan sebuah elemen tanpa menimpa event handler yang sudah ada.
+- Kita bisa menambahkan banyak event handler pada 1 elemen, bahkan dengan tipe event handler yang sama, contoh ada 2 buah event 'click'.
+- Kita bisa menambahkan event listener ke object DOM manapun tidak hanya pada elemen elemen HTML, contohnya object window.
+- Method addEventListener() bisa membuat kita lebih mudah mengatur bagaimana event terjadi sampai ke detailnya.
+- Ketika menggunakan addEventListener(), javascript terpisah dari HTML, untuk memudahkan dalam membacanya dan mengijinkan kita untuk menambah event listener bahkan ketika kita tidak mengkontrol HTML nya.
+- Kita bisa dengan mudah menghapus sebuah event listener menggunakan method removeEventListener()
+
+----------
+
+# Syntax
+
+element.addEventListener(event, function, useCapture);
+
+- parameter pertama adalah tipe event nya, seperti click atau mousedown atau yang lainnya. Pastikan bahwa tidak ada kata 'on' pada event nya, hanya gunakan 'click' saja bukan 'onclick'.
+- parameter kedua adalah function yang mau kita panggil ketika event terjadi.
+- parameter ketiga adalah sebuah boolean value yang menspesifikasikan untuk menggunakan event bubbling atau event capturing, parameter ini bersifat opsional.
+
+----------
+
+# Event Bubbling atau Event Capturing, keduanya adalah 2 cara dari event propagation pada HTML DOM. Event propagation adalah sebuah cara untuk mendefinisikan urutan elemen ketika terjadinya event. Jika kita punya sebuah elemen <p> didalam elemen <div> dan user mengklik elemen <p> tersebut, yang manakah elemen yang event 'click' nya harus di handle duluan?
+
+Pada bubbling, event milik elemen terdalam yang akan di handle lebih dulu, lalu elemen di luarnya, berarti event click pada elemen <p> yang akan di handle lebih dulu, lalu event click pada elemen <div>.
+
+Pada capturing, event milik elemen yang diluar dulu yang akan dihandle, lalu elemen di dalamnya. berarti event click pada elemen <div> yang akan di handle lebih dulu, lalu event click pada elemen <p>.
+
+Dengan addEventListener() kita bisa menspesifikasikan tipe propagation dengan menggunakan parameter 'useCapture', berikut penulisannya:
+
+addEventListener(event, function, useCapture);
+
+default value nya adalah false, yang mana akan menggunakan bubbling, ketika di ubah menjadi true maka event nya menggunakan capturing.
+
+- contoh:
+
+document.getElementById("myP").addEventListener("click", myFunction, true);
+
+----------
+
+# The removeEventListener() method, akan menghapus event handler yang sudah ditambahkan dengan method addEventListener(), contohnya:
+
+element.removeEventListener("mousemove", myFunction); 
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
