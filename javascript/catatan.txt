@@ -2666,4 +2666,23 @@ element.removeEventListener("mousemove", myFunction);
 
 --------------------------------------------------
 
+* Web Fetch API
+dengan menggunakan fetch api interface mengijinkan webs browser untuk membuat request HTTP ke server server web. Dengan fetch api ini, kita tidak perlu lagi menggunakan XMLHttpRequest.
+
+contoh dibawah ini kita melakukan fetch pada sebuah file dan menampilkan isinya:
+
+<p id="demo">Fetch a file to change this text.</p>
+
+<script>
+getText("fetch_info.txt");
+
+async function getText(file) {
+  let myObject = await fetch(file);
+  let myText = await myObject.text();
+  document.getElementById("demo").innerHTML = myText;
+}
+</script>
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
