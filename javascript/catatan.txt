@@ -2685,4 +2685,60 @@ async function getText(file) {
 
 --------------------------------------------------
 
+* AJAX Introduction
+dengan menggunakan ajax, kita bisa melakukan hal hal berikut:
+
+- membaca data dari sebuah web server setelah halaman website selesai di muat / loading.
+- melakukan update pada sebuah halaman web tanpa melakukan reload / loading halaman website nya. Ini berarti kita bisa mengganti isi dari suatu halaman tanpa perlu menunggu halaman website nya loading.
+- mengirim data ke sebuah server web di background nya.
+
+Ajax sendiri bukanlah sebuah bahasa pemrograman, melainkan sebuah teknik untuk mengakses server server web dari sebuah halaman website. AJAX adalah kependekan dari Asynchronous JavaScript And XML.
+
+- contoh:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo">
+  <h2>Let AJAX change this text</h2>
+  <button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+
+</body>
+</html> 
+
+
+- penjelasan:
+halaman html diatas berisi sebuah div section dan sebuah button. 
+div section digunakan untuk menampilkan informasi dari sebuah server. 
+button nya digunakan untuk memanggil sebuah function ketika di klik. 
+
+berikut adalah function untuk merequest data dari sebuah server web dan menampilkan nya:
+
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML = this.responseText;
+    }
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+}
+
+----------
+
+# How AJAX Works
+1. sebuah event terjadi di sebuah halaman website. event nya terjadi setelah halaman website sebelumnya sudah dimuat / selesai loading, lalu sebuah button di klik.
+2. sebuah object XMLHttpRequest dibuat oleh javascript.
+3. object XMLHttpRequest tadi mengirim sebuah request ke sebuah server web.
+4. server nya kemudian memproses request yang dikirimkan.
+5. server kemudian mengirim sebuah response kembali ke halaman website.
+6. response nya kemudian dibaca oleh JavaScript.
+7. tindakan yang diperlukan (seperti update halaman website) dilakukan oleh javascript.
+
+bisa juga menggunakan fetch api, karna lebih simple.
+
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
