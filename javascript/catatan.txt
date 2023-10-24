@@ -2962,6 +2962,137 @@ function loadDoc() {
 
 --------------------------------------------------
 
+* AJAX - XMLHttpRequest, digunakan untuk melakukan request data dari sebuah server.
+
+# Send a request to a server, kita menggunakan method open() dan send() dari XMLHttpRequest object:
+
+xhttp.open("GET", "ajax_info.txt", true);
+xhttp.send();
+
+
+Method 	                      Description
+open(method, url, async) 	    Specifies the type of request
+                              method: the type of request: GET or POST
+                              url: the server (file) location
+                              async: true (asynchronous) or false (synchronous)
+send() 	                      Sends the request to the server (used for GET)
+send(string) 	                Sends the request to the server (used for POST)
+
+----------
+
+# The url - a file on a server
+parameter url dari method open(), adalah sebuah alamat untuk ke sebuah file pada sebuah server:
+
+xhttp.open("GET", "ajax_test.asp", true);
+
+file itu bisa jenis file apa saja, seperti .txt dan .xml, atau file server scripting seperti .asp dan .php (yang mana bisa menjalankan aksi aksi pada server tersebut sebelum mengirim response balik).
+
+----------
+
+# Asynchronous - True or False?
+server melakukan request yang banyak seharusnya dikirim secara asynchronous (tidak bersamaan / tidak serentak). 
+
+parameter aysnc dari method open() seharusnya di atur menjadi true seperti berikut:
+
+xhttp.open("GET", "ajax_test.asp", true);
+
+dengan mengirimkan nya secara asynchronous / tidak serentak, javascript tidak harus menunggu untuk response server nya, tapi bisa melakukan:
+1. menjalankan script lain ketika menunggu untuk response server nya.
+2. menangani respons setelah respons siap.
+
+NOTE: nilai default untuk parameter aysnc adalah true. Jadi bisa dikatakan parameter ketiga nya tersebut opsional untuk ditulis atau tidak. synchronous XMLHttpRequest (async = false) tidak direkomendasikan karena javascript akan berhenti menjalankan kodenya sampai response server siap. Jika server sedang sibuk / lambat, aplikasi nya bisa hang atau bahkan stop.
+
+----------
+
+# Get or Post?
+Get itu lebih simple dan cepat dibandingkan dengan Post, dan bisa digunakan dalam banyak kasus.
+
+Tetapi, selalu gunakan Post request ketika:
+1. sebuah file di cache bukanlah suatu pilihan (sebaiknya perbaharui file atau database di server).
+2. mengirim sebuah data yang berukuran besar ke server (Post tidak memiliki batasan untuk ukuran).
+3. mengirim input dari user (yang mana bisa berisikan karakter yang tidak diketahui), Post lebih kokoh / kuat dan aman daripada Get.
+
+NOTE: cache -> ruang penyimpanan di hardware, software atau browser yang menyimpan data sementara, yang kemudian digunakan untuk membantu mempercepat loading sistem, aplikasi atau website.
+
+----------
+
+# Get Requests
+
+- contoh sebuah request Get yang simple:
+
+xhttp.open("GET", "demo_get.asp");
+xhttp.send(); 
+
+
+dari contoh diatas, kita mungkin akan mendapatkan hasil sebuah file yang di cache (cache -> ruang penyimpanan di hardware, software atau browser yang menyimpan data sementara, yang kemudian digunakan untuk membantu mempercepat loading sistem, aplikasi atau website). Untuk menghindari ini, tambahkan sebuah ID unik ke URL nya, menjadi seperti berikut:
+
+xhttp.open("GET", "demo_get.asp?t=" + Math.random());
+xhttp.send(); 
+
+
+Jika kita mau mengirim informasi dengan method Get, tambahkan informasi nya ke bagian URL, seperti contoh berikut:
+
+xhttp.open("GET", "demo_get2.asp?fname=Henry&lname=Ford");
+xhttp.send(); 
+
+----------
+
+# Post Requests
+
+- contoh sebuah request Post yang simple:
+
+xhttp.open("POST", "demo_post.asp");
+xhttp.send(); 
+
+untuk melakukan post data seperti sebuah form HTML, tambahkan sebuah HTTP header dengan setRequestHeader(). Spesifikasikan / jelaskan data yang mau dikirim dalam method send() nya, seperti berikut:
+
+xhttp.open("POST", "ajax_test.asp");
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xhttp.send("fname=Henry&lname=Ford"); 
+
+
+Method 	                              Description
+setRequestHeader(header, value) 	    Adds HTTP headers to the request
+                                      header: specifies the header name
+                                      value: specifies the header value
+
+----------
+
+# Synchronous Request
+
+untuk menjalankan sebuah request synchronous, ubah parameter ketiga didalam method open() menjadi false, seperti berikut:
+
+xhttp.open("GET", "ajax_info.txt", false);
+
+
+Terkadang async = false, digunakan untuk melakukan test cepat. Kita juga akan menemukan request request synchronous di kode javascript yang lama.
+
+Sejak kode akan menunggu untuk penyelesaian server, tidak ada kebutuhan untuk sebuah function onreadystatechange, seperti dibawah ini:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+
+<p id="demo">Let AJAX change this text.</p>
+
+<button type="button" onclick="loadDoc()">Change Content</button>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "ajax_info.txt", false);
+  xhttp.send();
+  document.getElementById("demo").innerHTML = xhttp.responseText;
+}
+</script>
+
+</body>
+</html>
+
+
+NOTE: Synchronous XMLHttpRequest (async = false) tidak direkomendasikan karna javascript akan berhenti melakukan eksekusi sampai response dari server nya ready. Jika server sedang sibuk atau lambat, aplikasi akan hang atau stop. Tools developer modern diingatkan mengenai penggunaan request synchronous dan mungkin menyebabkan sebuah exception InvalidAccessError ketika terjadi.
 
 
 
