@@ -2962,4 +2962,9 @@ function loadDoc() {
 
 --------------------------------------------------
 
+
+
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
