@@ -3095,6 +3095,118 @@ function loadDoc() {
 NOTE: Synchronous XMLHttpRequest (async = false) tidak direkomendasikan karna javascript akan berhenti melakukan eksekusi sampai response dari server nya ready. Jika server sedang sibuk atau lambat, aplikasi akan hang atau stop. Tools developer modern diingatkan mengenai penggunaan request synchronous dan mungkin menyebabkan sebuah exception InvalidAccessError ketika terjadi.
 
 
+--------------------------------------------------
+
+* AJAX - Server Response
+
+Server response properties
+
+Property 	      Description
+responseText 	  get the response data as a string
+responseXML 	  get the response data as XML data
+
+----------
+
+# The responseText Property, mengembalikan response si server sebagai sebuah javascript string, dan bisa digunakan berdasarkan seperti dibawah ini:
+
+document.getElementById("demo").innerHTML = xhttp.responseText; 
+
+----------
+
+# The responseXML Property
+XMLHttpRequest object memiliki sebuah parser XML bawaan.
+parser -> program yang merupakan bagian dari compiler, dan parsing adalah bagian dari proses kompilasi
+
+property responseXML mengembalikan response si server sebagai sebuah XML DOM Object.
+dengan menggunakan properti ini, kita bisa melakukan parse response nya sebagai sebuah XML DOM object, seperti dibawah ini, yang melakukan request file cd_catalog.xml dan melakukan parse pada response nya:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+<p id="demo"></p>
+ 
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const xmlDoc = this.responseXML;                  >>> disini bagian parse nya.
+  const x = xmlDoc.getElementsByTagName("ARTIST");
+  let txt = "";
+  for (let i = 0; i < x.length; i++) {
+    txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+xhttp.open("GET", "cd_catalog.xml");
+xhttp.send();
+</script>
+
+</body>
+</html>
+
+
+----------
+
+# Server Response Methods
+
+Method 	                    Description
+getResponseHeader() 	      Returns specific header information from the server response
+getAllResponseHeaders() 	  Returns all the header information from the server response
+
+----------
+
+# The getAllResponseHeaders() Method, mengembalikan semua informasi header dari response server nya.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+<p>The getAllResponseHeaders() function returns all the header information of a resource, like length, server-type, content-type, last-modified, etc:</p>
+
+<p id="demo"></p>
+
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  document.getElementById("demo").innerHTML =
+  this.getAllResponseHeaders();
+}
+xhttp.open("GET", "ajax_info.txt");
+xhttp.send();
+</script>
+
+</body>
+</html>
+
+----------
+
+# The getResponseHeader() Method, mengembalikan informasi header tertentu secara spesifik dari response server nya.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+
+<p>The getResponseHeader() function is used to return specific header information from a resource, like length, server-type, content-type, last-modified, etc:</p>
+
+<p>Last modified: <span id="demo"></span></p>
+
+<script>
+const xhttp=new XMLHttpRequest();
+xhttp.onload = function() {
+  document.getElementById("demo").innerHTML =
+  this.getResponseHeader("Last-Modified");
+}
+xhttp.open("GET", "ajax_info.txt");
+xhttp.send();
+</script>
+
+</body>
+</html>
+
 
 --------------------------------------------------
 
