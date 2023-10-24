@@ -2741,4 +2741,225 @@ bisa juga menggunakan fetch api, karna lebih simple.
 
 --------------------------------------------------
 
+* AJAX XMLHttpRequest Object
+
+Dasar dari AJAX adalah XMLHttpRequest object. Berikut cara kerjanya:
+
+1. membuat sebuah XMLHttpRequest object.
+2. mendefinisikan sebuah callback function.
+3. mengirim XMLHttpRequest object nya.
+4. mengirim sebuah request ke sebuah server.
+
+----------
+
+# XMLHttpRequest object, bisa digunakan untuk bertukar data dengan sebuah server web dibelakang layar. Ini berarti ada kemungkinan untuk mengupdate bagian bagian dari suatu halaman website tanpa perlu melakukan reload ulang seluruh halaman.
+
+----------
+
+# Create an XMLHttpRequest object, berikut adalah sintaks untuk membuat XMLHttpRequest object:
+
+variable = new XMLHttpRequest();
+
+----------
+
+# Define a callback function
+callback function adalah sebuah function yang dijadikan sebagai sebuah parameter kepada function lainnya. Dalam hal ini, callback function seharusnya berisikan code untuk dijalankan ketika response nya sudah siap. berikut sintaks pembuatannya:
+
+xhttp.onload = function() {
+  // What to do when the response is ready
+}
+
+----------
+
+# Send a request
+Untuk mengirim sebuah request ke sebuah server, kita bisa menggunakan method open() dan send() dari XMLHttpRequest object. Berikut sintaks pembuatannya:
+
+xhttp.open("GET", "ajax_info.txt");
+xhttp.send(); 
+
+
+- contoh membuat XMLHttpRequest object, mendefinisikan callback function dan mengirim sebuah request:
+
+// Create an XMLHttpRequest object
+const xhttp = new XMLHttpRequest();
+
+// Define a callback function
+xhttp.onload = function() {
+  // Here you can use the Data
+}
+
+// Send a request
+xhttp.open("GET", "ajax_info.txt");
+xhttp.send();
+
+
+- contoh demo nya:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+
+<div id="demo">
+<p>Let AJAX change this text.</p>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "ajax_info.txt");
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
+
+----------
+
+# Access across domains
+
+untuk alasan keamanan, browser browser modern tidak di ijinkan untuk mengakses ke seluruh domain domain. ini berarti bahwa kedua halaman website dan file XML yang dicoba untuk dimuat / ditampilkan, wajib diletakkan pada server yang sama. Contoh di W3Schools, semua file file open XML berada di domain W3Schools. Jika kita mau untuk menggunakan contoh diatas tadi pada salah satu halaman website kita, file xml yang di muat wajib diletakkan di server kita sendiri.
+
+----------
+
+# XMLHttpRequest object methods
+
+Method 	                              Description
+new XMLHttpRequest() 	                Creates a new XMLHttpRequest object
+abort() 	                            Cancels the current request
+getAllResponseHeaders() 	            Returns header information
+getResponseHeader() 	                Returns specific header information
+open(method, url, async, user, psw) 	Specifies the request
+                                      method: the request type GET or POST
+                                      url: the file location
+                                      async: true (asynchronous) or false (synchronous)
+                                      user: optional user name
+                                      psw: optional password
+send() 	                              Sends the request to the server. Used for GET requests
+send(string) 	                        Sends the request to the server. Used for POST requests
+setRequestHeader() 	                  Adds a label/value pair to the header to be sent
+
+----------
+
+# XMLHttpRequest object properties
+
+Property 	                            Description
+onload 	                              Defines a function to be called when the request is received (loaded)
+onreadystatechange 	                  Defines a function to be called when the readyState property changes
+readyState 	                          Holds the status of the XMLHttpRequest.
+                                      0: request not initialized
+                                      1: server connection established
+                                      2: request received
+                                      3: processing request
+                                      4: request finished and response is ready
+responseText 	                        Returns the response data as a string
+responseXML 	                        Returns the response data as XML data
+status 	                              Returns the status-number of a request
+                                      200: "OK"
+                                      403: "Forbidden"
+                                      404: "Not Found"
+                                      For a complete list go to the Http Messages Reference
+statusText 	                          Returns the status-text (e.g. "OK" or "Not Found")
+
+----------
+
+# The onload Property
+
+dengan XMLHttpRequest object, kita bisa mendefinisikan sebuah callback function untuk dijalankan ketika request nya menerima sebuah jawaban. Function nya di definisikan di dalam properti 'onload' dari XMLHttpRequest object, seperti contoh dibawah ini:
+
+xhttp.onload = function() {
+  document.getElementById("demo").innerHTML = this.responseText;
+}
+xhttp.open("GET", "ajax_info.txt");
+xhttp.send(); 
+
+----------
+
+# Multiple callback functions
+
+jika kita punya lebih dari 1 tugas AJAX di dalam sebuah website, kita seharusnya membuat 1 function untuk menjalankan XMLHttpRequest object, dan 1 callback function untuk tiap tiap tugas AJAX. pemanggilan dari function nya seharusnya berisikan URL dan function apa yang dipanggil ketika response nya sudah siap.
+
+- contohnya seperti ini:
+
+loadDoc("url-1", myFunction1);
+
+loadDoc("url-2", myFunction2);
+
+function loadDoc(url, cFunction) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {cFunction(this);}
+  xhttp.open("GET", url);
+  xhttp.send();
+}
+
+function myFunction1(xhttp) {
+  // action goes here
+}
+function myFunction2(xhttp) {
+  // action goes here
+}
+
+----------
+
+# The onreadystatechange property
+properti readyState menyimpan status dari XMLHttpRequest.
+
+properti onreadystatechange mendefinisikan sebuah callback function untuk dijalankan ketika readyState berubah.
+
+properti status dan properti statusText menyimpan status dari XMLHttpRequest object.
+
+Property 	                            Description
+onreadystatechange 	                  Defines a function to be called when the readyState property changes
+readyState 	                          Holds the status of the XMLHttpRequest.
+                                      0: request not initialized
+                                      1: server connection established
+                                      2: request received
+                                      3: processing request
+                                      4: request finished and response is ready
+status 	                              200: "OK"
+                                      403: "Forbidden"
+                                      404: "Page not found"
+                                      For a complete list go to the Http Messages Reference
+statusText 	                          Returns the status-text (e.g. "OK" or "Not Found")
+
+function onreadystatechange dipanggil tiap kali readyState berubah.
+
+
+ketika readyState nya bernilai 4 dan status nya 200, response nya sudah siap, berikut contohnya:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo">
+<h2>The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt");
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
+
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
