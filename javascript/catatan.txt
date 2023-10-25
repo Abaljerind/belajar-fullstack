@@ -2820,6 +2820,22 @@ function loadDoc() {
 </body>
 </html>
 
+contoh isi file teks yang bisa Anda gunakan untuk mengambil data dengan menggunakan AJAX. Anda dapat menggunakan file teks ini sebagai contoh simulasi data yang diperoleh melalui permintaan AJAX:
+
+```plaintext
+Ini adalah contoh isi file teks yang dapat diambil dengan menggunakan AJAX.
+
+Data ini adalah contoh data yang dapat digunakan untuk menguji permintaan AJAX pada proyek Anda. Anda dapat menggantikan konten file ini dengan data sebenarnya yang akan Anda ambil dari server melalui permintaan AJAX.
+
+Pastikan file ini tersedia di server atau lokasi yang dapat diakses melalui permintaan AJAX dalam proyek Anda.
+
+Anda dapat memformat data dalam file ini sesuai dengan kebutuhan proyek Anda, seperti data dalam format JSON, XML, atau format data lainnya yang sesuai.
+
+Ini adalah contoh teks akhir.
+```
+
+Anda dapat menyimpan isi file di atas dalam sebuah file teks dengan ekstensi `.txt` di server atau di lokasi yang dapat diakses melalui permintaan AJAX di proyek web Anda. Kemudian, Anda dapat menggunakan permintaan AJAX untuk mengambil isi file tersebut dan menggunakannya dalam aplikasi web Anda sesuai kebutuhan.
+
 ----------
 
 # Access across domains
@@ -3608,8 +3624,7 @@ echo "</table>";
 
 --------------------------------------------------
 
-* AJAX XML Applications
-
+* 
 
 
 
