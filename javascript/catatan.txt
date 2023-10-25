@@ -3495,6 +3495,123 @@ end if
 * AJAX Database Example
 AJAX bisa digunakan untuk komunikasi yang interaktif dengan sebuah database.
 
+# AJAX Database Example
+dibawah ini adalah contoh demonstrasi bagaimana sebuah halaman website bisa mendapatkan informasi dari sebuah database dengan AJAX:
+
+<!DOCTYPE html>
+<html>
+<style>
+th,td {
+  padding: 5px;
+}
+</style>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+
+<form action=""> 
+  <select name="customers" onchange="showCustomer(this.value)">
+    <option value="">Select a customer:</option>
+    <option value="ALFKI">Alfreds Futterkiste</option>
+    <option value="NORTS ">North/South</option>
+    <option value="WOLZA">Wolski Zajazd</option>
+  </select>
+</form>
+<br>
+<div id="txtHint">Customer info will be listed here...</div>
+
+<script>
+function showCustomer(str) {
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("txtHint").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "getcustomer.php?q="+str);
+  xhttp.send();
+}
+</script>
+</body>
+</html>
+
+----------
+
+# Example Explained - The showCustomer() function
+ketika user memilih seorang customer di daftar dropdown nya, sebuah function yaitu showCustomer() dijalankan. function nya terpicu oleh event onchange, berikut kode javascript nya:
+
+function showCustomer(str) {
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("txtHint").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "getcustomer.php?q="+str);
+  xhttp.send();
+}
+
+function showCustomer() diatas melakukan hal hal sebagai berikut:
+- mengecek jika seorang customer dipilih oleh user dari menu select dropdown.
+- membuat sebuah XMLHttpRequest object.
+- membuat function untuk dijalankan ketika response server sudah siap.
+- mengirim request ke sebuah file di dalam server.
+- perhatikan bahwa sebuah parameter q ditambahkan ke URL (dengan isi dari menu select dropdown nya).
+
+----------
+
+# The AJAX Server Page
+halaman yang beerada di dalam server yang dipanggil oleh javascript diatas adalah sebuah file PHP yang diberi nama 'getcustomer.php'.
+kode kode di dalam file getcustomer.php menjalankan sebuah query pada sebuah database, dan mengembalikan hasilnya dalam bentuk table HTML, berikut source code nya:
+
+<?php
+$mysqli = new mysqli("servername", "username", "password", "dbname");
+if($mysqli->connect_error) {
+  exit('Could not connect');
+}
+
+$sql = "SELECT customerid, companyname, contactname, address, city, postalcode, country
+FROM customers WHERE customerid = ?";
+
+$stmt = $mysqli->prepare($sql);
+$stmt->bind_param("s", $_GET['q']);
+$stmt->execute();
+$stmt->store_result();
+$stmt->bind_result($cid, $cname, $name, $adr, $city, $pcode, $country);
+$stmt->fetch();
+$stmt->close();
+
+echo "<table>";
+echo "<tr>";
+echo "<th>CustomerID</th>";
+echo "<td>" . $cid . "</td>";
+echo "<th>CompanyName</th>";
+echo "<td>" . $cname . "</td>";
+echo "<th>ContactName</th>";
+echo "<td>" . $name . "</td>";
+echo "<th>Address</th>";
+echo "<td>" . $adr . "</td>";
+echo "<th>City</th>";
+echo "<td>" . $city . "</td>";
+echo "<th>PostalCode</th>";
+echo "<td>" . $pcode . "</td>";
+echo "<th>Country</th>";
+echo "<td>" . $country . "</td>";
+echo "</tr>";
+echo "</table>";
+?> 
+
+
+--------------------------------------------------
+
+* AJAX XML Applications
+
+
+
 
 --------------------------------------------------
 
