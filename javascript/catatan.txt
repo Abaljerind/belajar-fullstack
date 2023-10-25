@@ -3210,4 +3210,75 @@ xhttp.send();
 
 --------------------------------------------------
 
+* AJAX XML Example
+AJAX bisa digunakan untuk komunikasi secara interaktif dengan sebuah file XML.
+
+- contoh berikut akan mendemonstrasikan bagaimana sebuah halaman website bisa melakukan mendapatkan (fetch) informasi dari sebuah file XML dengan AJAX:
+
+<!DOCTYPE html>
+<html>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+
+<button type="button" onclick="loadDoc()">Get my CD collection</button>
+<br><br>
+<table id="demo"></table>
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    myFunction(this);
+  }
+  xhttp.open("GET", "cd_catalog.xml");
+  xhttp.send();
+}
+function myFunction(xml) {
+  const xmlDoc = xml.responseXML;
+  const x = xmlDoc.getElementsByTagName("CD");
+  let table="<tr><th>Artist</th><th>Title</th></tr>";
+  for (let i = 0; i <x.length; i++) { 
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+
+</body>
+</html>
+
+
+penjelasan:
+ketika seorang user melakukan klik pada button bertuliskan "Get my CD collection" diatas, function loadDoc() dijalankan.
+
+function loadDoc() tersebut membuat sebuah XMLHttpRequest object, ditambah function untuk dijalankan ketika response server ready, dan mengirim request ke server nya.
+
+ketika response server sudah siap, sebuah table HTML dibuat, nodes / elements di ekstrak (diambil) dari file XML, dan akhirnya mengupdate elemen 'demo' dengan table HTML yang diisi dengan data XML.
+
+file XML yang digunakan pada contoh diatas dibuat seperti pada link berikut:
+https://www.w3schools.com/js/cd_catalog.xml
+
+
+--------------------------------------------------
+
+
+
+
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
