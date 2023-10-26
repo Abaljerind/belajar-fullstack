@@ -3896,6 +3896,134 @@ NOTE: kita diharuskan menghindari penggunaan function didalam JSON, karena funct
 
 * JSON.stringify()
 
+penggunaan paling umum dari JSON adalah untuk bertukar data ke atau dari sebuah web server.
+ketika mengirim data ke sebuah web server, data tersebut harus dalam bentuk sebuah string.
+mengubah sebuah object javascript menjadi sebuah string dengan JSON.stringify().
+
+----------
+
+# Stringify a JavaScript Object
+
+- bayangkan kita punya sebuah object ini di javascript:
+
+const obj = {name: "John", age: 30, city: "New York"};
+
+- gunakan function javascript JSON.stringify untuk mengubahnya menjadi sebuah string.
+
+const myJSON = JSON.stringify(obj); 
+
+hasilnya akan menjadi sebuah string yang mengikuti notasi JSON.
+
+- variabel myJSON sekarang adalah sebuah string, dan siap untuk dikirim ke sebuah server.
+
+- berikut contoh kode lengkapnya:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Create a JSON string from a JavaScript object.</h2>
+<p id="demo"></p>
+
+<script>
+const obj = {name: "John", age: 30, city: "New York"};
+const myJSON = JSON.stringify(obj);
+document.getElementById("demo").innerHTML = myJSON;
+</script>
+
+</body>
+</html>
+
+>> output: {"name":"John","age":30,"city":"New York"}
+
+----------
+
+# Stringify a JavaScript Array
+
+penggunaan function JSON.stringify juga memungkinkan kita untuk mengubah sebuah array javascript.
+
+- bayangkan kita punya sebuah array seperti ini:
+
+const arr = ["John", "Peter", "Sally", "Jane"];
+
+- gunakan function JSON.stringify() untuk mengubah array diatas menjadi sebuah string, seperti berikut:
+
+const myJSON = JSON.stringify(arr); 
+
+hasilnya akan menjadi sebuah string yang mengikuti notasi JSON.
+
+- variabel myJSON sekarang menjadi sebuah string, dan siap untuk dikirim ke sebuah server.
+
+- berikut adalah kode lengkapnya:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Create a JSON string from a JavaScript array.</h2>
+<p id="demo"></p>
+
+<script>
+const arr = ["John", "Peter", "Sally", "Jane"];
+const myJSON = JSON.stringify(arr);
+document.getElementById("demo").innerHTML = myJSON;
+</script>
+
+</body>
+</html>
+
+>> output: ["John","Peter","Sally","Jane"]
+
+----------
+
+# Storing Data
+ketika menyimpan data, data harus dalam sebuah bentuk format yang khusus, dan terlepas dari dimana kita memilih untuk menyimpan datanya tersebut, 'teks' selalu merupakan salah satu format yang legal. JSON membuatnya mungkin untuk menyimpan object javascript sebagai text.
+
+- contoh menyimpan data didalam local storage:
+
+// Storing data:
+const myObj = {name: "John", age: 31, city: "New York"};
+const myJSON = JSON.stringify(myObj);
+localStorage.setItem("testJSON", myJSON);
+
+// Retrieving data:
+let text = localStorage.getItem("testJSON");
+let obj = JSON.parse(text);
+document.getElementById("demo").innerHTML = obj.name; 
+
+>> output: John
+
+----------
+
+# Exceptions
+
+## Stringify Dates
+di JSON, object date tidak diijinkan. function JSON.stringify() akan mengubah date apapun menjadi string.
+
+- contoh:
+
+const obj = {name: "John", today: new Date(), city : "New York"};
+const myJSON = JSON.stringify(obj);
+document.getElementById("demo").innerHTML = myJSON;
+
+kita bisa mengubah string kembali menjadi sebuah object date di penerima.
+
+
+## Stringify Functions
+di JSON, function tidak diijinkan sebagai value dari suatu object. function JSON.stringify() akan me-remove function apapun dari sebuah object javascript, baik key dan value nya. Ini bisa dihilangkan jika kita mengubah function nya menjadi string sebelum menjalankan function JSON.stringify(). berikut contohnya:
+
+const obj = {name: "John", age: function () {return 30;}, city: "New York"};
+obj.age = obj.age.toString();
+const myJSON = JSON.stringify(obj);
+document.getElementById("demo").innerHTML = myJSON;
+
+>> output: {"name":"John","age":"function () {return 30;}","city":"New York"}
+
+NOTE: jika kita mengirimkan function menggunakan JSON, function tersebut akan kehilangan scope mereka, dan penerima nya akan harus menggunakan eval() untuk mengubahnya kembali menjadi function.
+
+--------------------------------------------------
+
+* JSON Object Literals
 
 
 
