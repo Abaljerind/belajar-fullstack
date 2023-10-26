@@ -3649,4 +3649,44 @@ ketika menyimpan data, data harus dibuat menjadi sebuah format yang khusus, dan 
 
 --------------------------------------------------
 
+* JSON Syntax, adalah sebuah bagian dari sintaks javascript.
+
+# JSON Syntax Rules
+JSON sintaks berasal dari sintaks notasi object javascript, jadi aturan penulisannya antara lain:
+- data ada dalam bentuk pasangan name / value a.k.a key / value
+- tiap data dipisahkan oleh koma.
+- tanda kurung kurawal {} menyimpan object nya.
+- tanda kurung siku [] menyimpan array nya.
+
+----------
+
+# JSON Data - A Name and a Value
+sebuah pasangan name / value terdiri dari sebuah kolom nama yang diapit oleh tanda kutip dua, diikuti oleh sebuah titik dua, dan diikuti oleh sebuah value, seperti berikut:
+
+"name":"John"
+
+untuk tiap tiap name pada JSON diperlukan tanda kutip dua.
+
+----------
+
+# JSON - Evaluates to Javascript Objects
+
+pada JSON, keys / names disini wajib dalam bentuk string, ditulis dengan tanda kutip dua:
+
+{"name":"John"}
+
+pada javascript, keys bisa dalam bentuk string, number atau nama pengenal (identifier names):
+
+{name:"John"} 
+
+
+--------------------------------------------------
+
+* JSON vs XML
+
+
+
+
+--------------------------------------------------
+
 *** Sisa materi, bisa dipelajari lagi di website codepolitan belajar materi javascript dasar.
