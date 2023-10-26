@@ -3683,6 +3683,70 @@ pada javascript, keys bisa dalam bentuk string, number atau nama pengenal (ident
 --------------------------------------------------
 
 * JSON vs XML
+JSON dan XMl, keduanya bisa digunakan untuk menerima data dari sebuah web server.
+
+berikut ini adalah contoh JSON dan XMl yang keduanya mendefinisikan sebuah object employees dengan sebuah array dari 3 buah employee:
+
+% contoh JSON
+{"employees":[
+  { "firstName":"John", "lastName":"Doe" },
+  { "firstName":"Anna", "lastName":"Smith" },
+  { "firstName":"Peter", "lastName":"Jones" }
+]}
+
+
+% contoh XML
+<employees>
+  <employee>
+    <firstName>John</firstName> <lastName>Doe</lastName>
+  </employee>
+  <employee>
+    <firstName>Anna</firstName> <lastName>Smith</lastName>
+  </employee>
+  <employee>
+    <firstName>Peter</firstName> <lastName>Jones</lastName>
+  </employee>
+</employees>
+
+----------
+
+# JSON sama dengan XML Karena...
+- keduanya bersifat 'self-describing' (dapat dibaca oleh manusia).
+- keduanya bersifat hirarkis (terdapat value di dalam kumpulan value).
+- keduanya bisa diubah (parse) dan digunakan oleh banyak bahasa pemrograman.
+- keduanya bisa didapatkan dengan sebuah XMLHttpRequest.
+
+----------
+
+# JSON tidak sama dengan XML Karena...
+- JSON tidak menggunakan tag penutup.
+- JSON lebih pendek.
+- JSON lebih cepat dibaca dan ditulis.
+- JSON bisa menggunakan array.
+
+dan perbedaan terbesarnya adalah:
+XML harus diubah dengan sebuah XML parser. Sedangkan JSON bisa diubah oleh sebuah function standar dari javascript.
+
+----------
+
+# Kenapa JSON lebih baik ketimbang XML...
+XML lebih sulit untuk diubah ketimbang JSON.
+JSON diubah menjadi sebuah object javascript yang siap pakai.
+
+Untuk aplikasi aplikasi AJAX, JSON lebih cepat dan mudah ketimbang XML:
+
+% menggunakan XML:
+  - mendapatkan sebuah dokumen XML.
+  - menggunakan XML DOM ke perulangan melalui dokumen nya.
+  - mengekstrak value value dan menyimpan di dalam variabel variabel.
+
+% menggunakan JSON:
+  - mendapat sebuah string JSON.
+  - JSON.Parse mengambil string JSON dan mengubahnya menjadi objek JavaScript. 
+
+--------------------------------------------------
+
+* JSON Data Types
 
 
 
