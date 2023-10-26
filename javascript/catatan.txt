@@ -4024,7 +4024,114 @@ NOTE: jika kita mengirimkan function menggunakan JSON, function tersebut akan ke
 --------------------------------------------------
 
 * JSON Object Literals
+dibawah ini adalah sebuah string JSON:
 
+'{"name":"John", "age":30, "car":null}'
+
+didalam string JSON terdapat sebuah JSON object literal:
+
+{"name":"John", "age":30, "car":null}
+
+JSON object literals dikelilingi oleh tanda kurung kurawal {}.
+JSON object literals berisi pasangan key value.
+keys dan values tadi dipisahkan oleh tanda titik dua :
+keys wajib dalam bentuk string, dan values wajib menjadi sebuah tipe data JSON yang valid, tipe datanya antara lain:
+  - string
+  - number
+  - object
+  - array
+  - boolean
+  - null
+tiap tiap pasangan key dan value dipisahkan oleh sebuah koma.
+
+Ini adalah kesalahan umum untuk menyebut sebuah JSON object literal sebagai 'sebuah object JSON'.
+JSON tidak bisa menjadi sebuah object. JSON adalah sebuah format dalam bentuk string.
+Data nya hanya JSON ketika data tersebut dalam format sebuah string. Ketika datanya diubah menjadi sebuah variable javascript, datanya menjadi sebuah object javascript.
+
+----------
+
+# Javascript Objects 
+kita bisa membuat sebuah object javascript dari sebuah JSON object literal:
+
+myObj = {"name":"John", "age":30, "car":null};
+
+normalnya, kita membuat sebuah object javascript dengan cara parsing sebuah JSON string, seperti berikut:
+
+myJSON = '{"name":"John", "age":30, "car":null}';
+myObj = JSON.parse(myJSON);
+
+----------
+
+# Accessing Object Values
+kita bisa mengakses suatu value dari object menggunakan notasi dot (.), seperti berikut:
+
+const myJSON = '{"name":"John", "age":30, "car":null}';
+const myObj = JSON.parse(myJSON);
+x = myObj.name;
+
+kita juga bisa mengakses value dari object menggunakan tanda kurung siku [], seperti berikut:
+
+const myJSON = '{"name":"John", "age":30, "car":null}';
+const myObj = JSON.parse(myJSON);
+x = myObj["name"];
+
+----------
+
+# Looping an Object
+kita bisa melakukan perulangan melalui properti properti object dengan sebuah perulangan 'for-in', seperti berikut:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Looping Object Properties</h2>
+<p id="demo"></p>
+
+<script>
+const myJSON = '{"name":"John", "age":30, "car":null}';
+const myObj = JSON.parse(myJSON);
+
+let text = "";
+for (const x in myObj) {
+  text += x + ", ";
+}
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
+
+>> output: name, age, car,
+
+
+dalam sebuah perulangan for-in, gunakan notasi tanda kurung siku [] untuk mengakses value dari properti properti nya, seperti berikut:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Looping JavaScript Object Values</h2>
+<p id="demo"></p>
+
+<script>
+const myJSON = '{"name":"John", "age":30, "car":null}';
+const myObj = JSON.parse(myJSON);
+
+let text = "";
+for (const x in myObj) {
+  text += myObj[x] + ", ";
+}
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
+
+>> output: John, 30, null,
+
+--------------------------------------------------
+
+* JSON Array Literals
 
 
 
