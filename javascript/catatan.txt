@@ -3748,6 +3748,26 @@ Untuk aplikasi aplikasi AJAX, JSON lebih cepat dan mudah ketimbang XML:
 
 * JSON Data Types
 
+# Valid data types
+di JSON, value value nya wajib salah satu dari tipe data berikut ini:
+- sebuah string, wajib ditulis menggunakan tanda kutip dua.
+- sebuah number, wajib dalam bentuk integer atau float.
+- sebuah object (JSON Object), value value pada JSON bisa berisikan object.
+- sebuah array, value value pada JSON bisa berisikan array.
+- sebuah boolean, value value pada JSON bisa bernilai true atau false.
+- null, value value pada JSON bisa berisi null.
+
+JSON tidak bisa menggunakan salah satu tipe data dibawah ini:
+- sebuah function
+- sebuah date
+- undefined
+
+tetapi, pada javascript, ketiga tipe data yang tidak bisa digunakan oleh JSON tadi, bisa digunakan oleh object javascript.
+
+--------------------------------------------------
+
+* JSON.parse()
+
 
 
 
