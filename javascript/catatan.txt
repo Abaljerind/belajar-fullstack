@@ -3624,9 +3624,28 @@ echo "</table>";
 
 --------------------------------------------------
 
-* 
+* JSON - Introduction
 
+JSON -> sebuah text format untuk menyimpan dan mengirim data. JSON itu bersifat 'self-describing' dan mudah untuk di mengerti.
 
+- contoh json dalam bentuk string:
+'{"name":"John", "age":30, "car":null}'
+
+contoh diatas mendefinisikan sebuah object dengan 3 properti:
+- name
+- age
+- car
+
+tiap tiap properti nya mempunyai sebuah value.
+
+Jika kita mengubah (parse) string JSON nya dengan sebuah program javascript, kita bisa mengakses data nya sebagai sebuah object:
+let personName = obj.name;
+let personAge = obj.age; 
+
+----------
+
+# Storing Data
+ketika menyimpan data, data harus dibuat menjadi sebuah format yang khusus, dan terlepas dari dimana kita memilih untuk menyimpan datanya, 'text' selalu menjadi salah satu dari format format yang diperbolehkan (legal). JSON membuatnya menjadi mungkin untuk menyimpan object javascript sebagai text.
 
 --------------------------------------------------
 
