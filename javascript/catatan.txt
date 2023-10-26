@@ -4133,6 +4133,81 @@ document.getElementById("demo").innerHTML = text;
 
 * JSON Array Literals
 
+dibawah ini adalah sebuah JSON string:
+
+'["Ford", "BMW", "Fiat"]'
+
+didalam JSON string tersebut terdapat sebuah JSON array literal:
+
+["Ford", "BMW", "Fiat"]
+
+array didalam JSON hampir sama dengan array di javascript.
+pada JSON, values pada array wajib bertipe data string, number, object, array, boolean atau null.
+pada JavaScript, values pada array bisa menjadi tipe data apa saja berdasarkan pada kalimat diatas, ditambah javascript expression apapun yang valid, termasuk functions, dates dan undefined.
+
+----------
+
+# JavaScript Arrays
+
+kita bisa membuat javascript array dari sebuah array literal seperti dibawah ini:
+
+myArray = ["Ford", "BMW", "Fiat"];
+
+kita bisa membuat sebuah javascript array dengan melakukan parsing sebuah JSON string, seperti dibawah ini:
+
+myJSON = '["Ford", "BMW", "Fiat"]';
+myArray = JSON.parse(myJSON);
+
+----------
+
+# Accessing Array Values
+
+kita bisa mengakses value pada array dengan index, seperti berikut:
+
+myArray[0];
+
+----------
+
+# Arrays in Objects
+
+object bisa beriisikan array, dan untuk mengakses value nya bisa dengan index, seperti berikut:
+
+{
+"name":"John",
+"age":30,
+"cars":["Ford", "BMW", "Fiat"]
+}
+
+myObj.cars[0];
+
+----------
+
+# Looping Through an Array
+
+kita bisa mengakses value pada array menggunakan perulangan for..in, berikut contohnya:
+
+const myJSON = '{"name":"John", "age":30, "cars":["Ford", "BMW", "Fiat"]}';
+const myObj = JSON.parse(myJSON);
+
+let text = "";
+for (let i in myObj.cars) {
+  text += myObj.cars[i] + ", ";
+}
+
+document.getElementById("demo").innerHTML = text;
+
+>> output: Ford, BMW, Fiat,
+
+kita juga bisa menggunakan perulangan for, seperti berikut:
+
+for (let i = 0; i < myObj.cars.length; i++) {
+  x += myObj.cars[i];
+} 
+
+--------------------------------------------------
+
+* JSON Server
+
 
 
 --------------------------------------------------
