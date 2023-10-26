@@ -3767,6 +3767,135 @@ tetapi, pada javascript, ketiga tipe data yang tidak bisa digunakan oleh JSON ta
 --------------------------------------------------
 
 * JSON.parse()
+Penggunaan umum JSON digunakan untuk melakukan penukaran data ke atau dari sebuah web server.
+Ketika menerima data dari sebuah web server, data nya selalu dalam bentuk sebuah string.
+Ubah data dengan JSON.parse(), dan datanya menjadi sebuah object javascript.
+
+----------
+
+# Example - Parsing JSON
+
+1. bayangkan kita menerima text berikut dari sebuah web server:
+'{"name":"John", "age":30, "city":"New York"}'
+
+2. gunakan function javascript JSON.parse() untuk mengubah text nya menjadi sebuah object javascript, seperti berikut:
+const obj = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
+
+pastikan text nya dalam format JSON, jika tidak kita akan mendapatkan sebuah sintaks error.
+
+3. gunakan object javascript nya didalam halaman website kita:
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = obj.name;
+</script> 
+
+
+Berikut ini adalah contoh kode lengkapnya:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Creating an Object from a JSON String</h2>
+
+<p id="demo"></p>
+
+<script>
+const txt = '{"name":"John", "age":30, "city":"New York"}'                // menerima data text dari web server
+const obj = JSON.parse(txt);                                              // mengubah text tadi dengan function parse
+document.getElementById("demo").innerHTML = obj.name + ", " + obj.age;    // menggunakan object js yang sudah di parse
+</script>
+
+</body>
+</html>
+
+----------
+
+# Array as JSON
+
+ketika menggunakan JSON.parse() pada sebuah JSON yang berasal dari sebuah array, method parse nya akan mengembalikan sebuah array javascript, bukan sebuah object javascript.
+
+contohnya:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Parsing a JSON Array.</h2>
+<p>Data written as an JSON array will be parsed into a JavaScript array.</p>
+<p id="demo"></p>
+
+<script>
+const text = '[ "Ford", "BMW", "Audi", "Fiat" ]';
+const myArr = JSON.parse(text);
+document.getElementById("demo").innerHTML = myArr[0];
+</script>
+
+</body>
+</html>
+
+>> output: Ford
+
+----------
+
+# Exceptions
+
+## Parsing Dates
+object object date (tanggal) tidak diijinkan didalam JSON. Jika kita perlu memasukkan sebuah date (tanggal), kita harus menulisnya sebagai sebuah string. Kita juga bisa mengubahnya kembali sebagai sebuah object date nantinya.
+
+- contoh mengubah sebuah string menjadi sebuah date:
+
+const text = '{"name":"John", "birth":"1986-12-14", "city":"New York"}';
+const obj = JSON.parse(text);
+obj.birth = new Date(obj.birth);
+
+document.getElementById("demo").innerHTML = obj.name + ", " + obj.birth; 
+
+>> output: John, Sun Dec 14 1986 07:00:00 GMT+0700 (Western Indonesia Time)
+
+
+atau, kita bisa menggunakan parameter kedua dari function JSON.parse(), yang disebut 'reviver'.
+paramter reviver itu adalah sebuah function yang mengecek tiap properti, sebelum mengembalikan value nya.
+
+- contoh mengubah sebuah string menjadi sebuah date, menggunakan function reviver:
+
+const text = '{"name":"John", "birth":"1986-12-14", "city":"New York"}';
+const obj = JSON.parse(text, function (key, value) {
+  if (key == "birth") {
+    return new Date(value);
+  } else {
+    return value;
+  }
+});
+
+document.getElementById("demo").innerHTML = obj.name + ", " + obj.birth; 
+
+>> output: John, Sun Dec 14 1986 07:00:00 GMT+0700 (Western Indonesia Time)
+
+
+## Parsing Functions
+
+function tidak diijinkan didalam JSON.
+jika kita butuh memasukkan sebuah function, maka perlu ditulis sebagai sebuah string.
+kita bisa mengubahnya kembali sebagai sebuah function nantinya.
+
+- contoh mengubah sebuah string menjadi sebuah function:
+
+const text = '{"name":"John", "age":"function () {return 30;}", "city":"New York"}';
+const obj = JSON.parse(text);
+obj.age = eval("(" + obj.age + ")");
+
+document.getElementById("demo").innerHTML = obj.name + ", " + obj.age(); 
+
+>> output: John, 30
+
+NOTE: kita diharuskan menghindari penggunaan function didalam JSON, karena function nya akan kehilangan scope mereka, dan kita akan diharuskan untuk menggunakan eval() untuk mengubahnya kembali menjadi function.
+
+--------------------------------------------------
+
+* JSON.stringify()
+
 
 
 
