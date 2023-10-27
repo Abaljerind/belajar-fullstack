@@ -4208,6 +4208,115 @@ for (let i = 0; i < myObj.cars.length; i++) {
 
 * JSON Server
 
+penggunaan umum dari JSON adalah untuk bertukar data ke atau dari sebuah web server.
+ketika menerima data dari sebuah web server, datanya selalu dalam bentuk string.
+lakukan parsing data dengan JSON.parse(), dan data menjadi sebuah object javascript.
+
+----------
+
+# Sending Data
+
+jika kita punya data yang disimpan didalam sebuah object javascript, kita bisa mengubah object menjadi JSON, dan mengirimnya ke sebuah server, berikut contohnya:
+
+const myObj = {name: "John", age: 31, city: "New York"};
+const myJSON = JSON.stringify(myObj);
+window.location = "demo_json.php?x=" + myJSON;
+
+----------
+
+# Receiving Data
+
+jika kita menerima data dalam format JSON, kita bisa dengan mudah mengubah datanya menjadi sebuah javascript object, berikut contohnya:
+
+const myJSON = '{"name":"John", "age":31, "city":"New York"}';
+const myObj = JSON.parse(myJSON);
+document.getElementById("demo").innerHTML = myObj.name; 
+
+----------
+
+# JSON from a Server
+
+kita bisa melakukan request JSON dari server menggunakan sebuah request AJAX.
+
+selama response dari server dituliskan dalam format JSON, kita bisa mengubah string nya menjadi sebuah javascript object.
+
+- contoh menggunakan XMLHttpRequest untuk mengambil data dari server:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Fetch a JSON file with XMLHttpRequest</h2>
+<p id="demo"></p>
+
+<script>
+const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+  document.getElementById("demo").innerHTML = myObj.name;
+}
+xmlhttp.open("GET", "json_demo.txt");
+xmlhttp.send();
+</script>
+
+</body>
+</html>
+
+>> output: John
+
+- isi file json_demo.txt:
+
+{
+    "name":"John",
+    "age":31,
+    "pets":[
+        { "animal":"dog", "name":"Fido" },
+        { "animal":"cat", "name":"Felix" },
+        { "animal":"hamster", "name":"Lightning" }
+    ]
+}
+
+----------
+
+# Array as JSON
+
+ketika menggunakan JSON.parse() pada JSON yang berasal dari sebuah array, method JSON.parse() akan mengembalikan sebuah javascript array, bukan sebuah javascript object.
+
+- contoh JSON mengembalikan sebuah array dari sebuah server:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Fetch a JSON file with XMLHttpRequest</h2>
+<p>Content written as an JSON array will be converted into a JavaScript array.</p>
+<p id="demo"></p>
+
+<script>
+const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  const myArr = JSON.parse(this.responseText);
+  document.getElementById("demo").innerHTML = myArr[0];
+}
+xmlhttp.open("GET", "json_demo_array.txt", true);
+xmlhttp.send();
+</script>
+
+</body>
+</html>
+
+>> output: Ford
+
+- isi file json_demo_array.txt:
+
+[ "Ford", "BMW", "Audi", "Fiat" ]
+
+
+--------------------------------------------------
+
+* JSON PHP
+
+
 
 
 --------------------------------------------------
