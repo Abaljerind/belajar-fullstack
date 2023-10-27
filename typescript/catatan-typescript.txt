@@ -90,10 +90,82 @@ ini adalah salah satu cara untuk secara cepat menggunakan TypeScript, ada banyak
 --------------------------------------------------------------
 
 * TypeScript Simple Types
+TypeScript mendukung beberapa tipe data primitif sederhana yang kita tau.
+
+terdapat 3 tipe data primitif di javascript dan TypeScript, antara lain:
+- boolean.
+- number - seluruh angka dan yang tipe nya float.
+- string.
+
+ada 2 lagi yang tidak biasanya digunakan diversi terbaru dari javascript dan TypeScript yaitu:
+- bigint - seluruh angka dan yang tipe nya float, ditambah diijinkan adanya nilai untuk negatif dan positif yang lebih besar dari tipe data number.
+- symbol - digunakan untuk membuat sebuah unique identifier (unique id) secara global.
+
+-------------
+
+# Type Assignment 
+ketika membuat sebuah variable, ada 2 cara utama TypeScript menugaskan sebuah tipe data:
+- explicit
+- implicit
+
+dikedua contoh dibawah ini, firstName ditulis dalam tipe data string.
+
+## Explicit, menuliskan secara langsung tipe datanya:
+
+let firstName: string = "Dylan";
+
+cara explicit ini lebih mudah dibaca dan lebih terlihat tujuannya.
+
+
+## Implicit, akan membuat TypeScript menebak tipe datanya, berdasarkan nilai yang diberikan:
+
+let firstName = "Dylan";
+
+cara menebak yang dilakukan oleh TypeScript ini disebut 'infer' (menebak).
+cara ini lebih pendek, cepat untuk diketik, dan sering digunakan ketika melakukan pengembangan (developing) dan testing.
+
+-------------
+
+# Error in type Assignment
+TypeScript akan menampilkan error jika tipe datanya tidak cocok.
+
+- contoh:
+let firstName: string = "Dylan"; // type string
+firstName = 33; // attempts to re-assign the value to a different type 
+
+tipe implicit akan membuat variable firstName nya sulit dikenali sebagai sebuah string, tetapi keduanya akan menampilkan error:
+
+- contoh:
+let firstName = "Dylan"; // inferred to type string
+firstName = 33; // attempts to re-assign the value to a different type 
+
+sedangkan javascript tidak akan menampilkan adanya error untuk tipe data yang tidak cocok seperti contoh diatas.
+
+-------------
+
+# Unable to Infer
+TypeScript mungkin tidak akan selalu bisa menebak dengan tepat tipe data apa dari suatu variable. dalam beberapa kasus, TypeScript akan mengatur tipe datanya ke tipe data manapun yang menonaktifkan pemeriksaan tipe data.
+
+- contoh:
+// Implicit any as JSON.parse doesn't know what type of data it returns so it can be "any" thing...
+const json = JSON.parse("55");
+// Most expect json to be an object, but it can be a string or a number like this example
+console.log(typeof json);
+
+>> output: number
+
+perilaku diatas bisa dinonaktifkan dengan mengaktifkan 'noImplicitAny' sebagai sebuah opsi pilihan di sebuah project TypeScript di file 'tsconfig.json'. file itu adalah sebuah file konfigurasi JSON untuk mengkostumisasi bagaimana beberapa TypeScript berperilaku.
+
+NOTE: kita mungkin akan melihat tipe data primitif yang ditulis secara kapital seperti 'Boolean'.
+
+boolean != Boolean
+untuk tutorial ini, hanya untuk mengetahui cara menggunakan value yang lower-case (boolean dan sebagainya), untuk yang upper-case (Boolean) untuk keadaan yang sangat spesifik.
+
+--------------------------------------------------------------
+
+* TypeScript Special Types
 
 
 
 -------------
-
-
 --------------------------------------------------------------
