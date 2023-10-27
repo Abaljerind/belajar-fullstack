@@ -4314,8 +4314,298 @@ xmlhttp.send();
 
 --------------------------------------------------
 
-* JSON PHP
+* JSON HTML
 
+JSON bisa secara mudah diubah menjadi javascript. Javascript bisa digunakan untuk membuat HTML di halaman website kita.
+
+----------
+
+# HTML Table
+
+- contoh membuat sebuah table HTML dengan data yang diterima sebagai JSON:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Make a table based on JSON data.</h2>
+
+<p id="demo"></p>
+
+<script>
+const dbParam = JSON.stringify({table:"customers",limit:20});
+const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+  let text = "<table border='1'>"
+  for (let x in myObj) {
+    text += "<tr><td>" + myObj[x].name + "</td></tr>";
+  }
+  text += "</table>"    
+  document.getElementById("demo").innerHTML = text;
+}
+xmlhttp.open("POST", "json_demo_html_table.php");
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + dbParam);
+</script>
+
+</body>
+</html>
+
+>> output: sebuah table dengan isi banyak nama.
+
+----------
+
+# Dynamic HTML Table
+
+- contoh membuat table HTML berdasarkan nilai dari sebuah menu dropdown:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Make a table based on the value of a drop down menu.</h2>
+
+<select id="myselect" onchange="change_myselect(this.value)">
+  <option value="">Choose an option:</option>
+  <option value="customers">Customers</option>
+  <option value="products">Products</option>
+  <option value="suppliers">Suppliers</option>
+</select>
+
+<p id="demo"></p>
+
+<script>
+function change_myselect(sel) {
+  const dbParam = JSON.stringify({table:sel,limit:20});
+  const xmlhttp = new XMLHttpRequest();
+  xmlhttp.onload = function() {
+    myObj = JSON.parse(this.responseText);
+    text = "<table border='1'>"
+    for (x in myObj) {
+      text += "<tr><td>" + myObj[x].name + "</td></tr>";
+    }
+    text += "</table>"    
+    document.getElementById("demo").innerHTML = text;
+  }
+  xmlhttp.open("POST", "json_demo_html_table.php", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send("x=" + dbParam);
+}
+</script>
+
+</body>
+</html>
+
+----------
+
+# HTML Drop Down List
+
+- contoh membuat sebuah drop down list HTML dengan data diterima sebagai JSON:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Make a drop down list based on JSON data.</h2>
+<p id="demo"></p>
+
+<script>
+const dbParam = JSON.stringify({table:"customers",limit:20});
+const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+  let text = "<select>"
+  for (let x in myObj) {
+    text += "<option>" + myObj[x].name + "</option>";
+  }
+  text += "</select>"
+  document.getElementById("demo").innerHTML = text;
+}
+xmlhttp.open("POST", "json_demo_html_table.php");
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + dbParam);
+</script>
+
+</body>
+</html>
+
+--------------------------------------------------
+
+* JSONP (JSON with Padding)
+
+JSONP adalah sebuah method untuk mengirim data JSON tanpa mengkhawatirkan tentang masalah 'cross-domain'.
+JSONP tidak menggunakan object XMLHttpRequest. Melainkan menggunakan tag <script>.
+
+----------
+
+# JSONP Intro
+
+melakukan request sebuah file dari domain yang lain bisa menyebabkan masalah, disebabkan oleh aturan 'cross-domain'.
+melakukan request sebuah script external dari domain lain tidak menyebabkan masalah cross-domain.
+JSONP menggunakan keunggulan ini, dan merequest file file menggunakan tag script ketimbang object XMLHttpRequest.
+
+berikut contohnya:
+
+<script src="demo_jsonp.php">
+
+----------
+
+# The Server File
+
+file yang ada di server membungkus hasilnya didalam sebuah function panggilan, seperti berikut:
+
+<?php
+
+$myJSON = '{"name":"John", "age":30, "city":"New York"}';
+
+echo "myFunc(".$myJSON.");";
+
+?>
+
+>> output: myFunc({"name":"John", "age":30, "city":"New York"});
+
+hasilnya mengembalikan sebuah panggilan ke sebuah function bernama myFunc dengan data JSON sebagai sebuah parameter.
+pastikan bahwa function nya ada dibagian client.
+
+----------
+
+# The JavaScript Function
+
+function bernama myFunc diatas tadi berada di sisi client, dan siap untuk menangani data JSON, seperti berikut:
+
+function myFunc(myObj) {
+  document.getElementById("demo").innerHTML = myObj.name;
+} 
+
+----------
+
+# Creating a Dynamic Script Tag
+
+contoh diatas tadi akan menjalankan function 'myFunc' ketika halamannya sedang dimuat, berdasarkan dimana kita meletakkan tag script nya.
+tag script seharusnya dibuat ketika dibutuhkan saja, seperti contoh berikut, membuat dan memasukkan tag <script> ketika sebuah button diklik:
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<h2>Click the Button.</h2>
+<p>A script tag with a src attribute is created and placed in the document.</p>
+<p>The PHP file returns a call to a function with the JSON object as a parameter.</p>
+
+<button onclick="clickButton()">Click me!</button>
+
+<p id="demo"></p>
+
+<script>
+function clickButton() {
+  let s = document.createElement("script");
+  s.src = "demo_jsonp.php";
+  document.body.appendChild(s);
+}
+
+function myFunc(myObj) {
+  document.getElementById("demo").innerHTML = myObj.name;
+}
+</script>
+
+</body>
+</html>
+
+----------
+
+# Dynamic JSONP Result
+
+contoh diatas masih bersifat statis. berikut adalah contoh dengan mengirim JSON ke file php, dan membiarkan file php mengembalikan sebuah object JSON berdasarkan informasi yang didapatkan:
+
+<?php
+header("Content-Type: application/json; charset=UTF-8");
+$obj = json_decode($_GET["x"], false);
+
+$conn = new mysqli("myServer", "myUser", "myPassword", "Northwind");
+$result = $conn->query("SELECT name FROM ".$obj->$table." LIMIT ".$obj->$limit);
+$outp = array();
+$outp = $result->fetch_all(MYSQLI_ASSOC);
+
+echo "myFunc(".json_encode($outp).")";
+?>
+
+penjelasan file php diatas:
+- mengubah request menjadi sebuah object, menggunakan php function json_decode().
+- akses database nya, dan mengisi sebuah array dengan data yang diminta.
+- menambahkan array ke sebuah object.
+- mengubah array menjadi JSON menggunakan function json_encode().
+- membungkus function 'myFunc' disekitar object yang dikembalikan.
+
+berikut contoh function 'myFunc' yang akan dipanggil dari file php:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>A script tag with a src attribute is created and placed in the document.</p>
+<p>The PHP file returns a call to a function with an object as a parameter.</p>
+<p id="demo"></p>
+
+<p>Try changing the table property from "customers" to "products".</p>
+
+<script>
+const obj = { table: "customers", limit: 10 };
+let s = document.createElement("script");
+s.src = "jsonp_demo_db.php?x=" + JSON.stringify(obj);
+document.body.appendChild(s);
+
+function myFunc(myObj) {
+  let txt = "";
+  for (let x in myObj) {
+    txt += myObj[x].name + "<br>";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+</body>
+</html>
+
+----------
+
+# Callback Function
+
+ketika kita tidak memiliki kontrol pada file server nya, lalu bagaimana kita mendapatkan file server untuk memanggil function yang benar?
+terkadang file server menawarkan sebuah function callback sebagai sebuah parameter, seperti berikut:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Request With a Callback Function</h2>
+<p>The PHP file returns a call to the function you send as a callback.</p>
+<p id="demo"></p>
+
+<script>
+let s = document.createElement("script");
+s.src = "demo_jsonp2.php?callback=myDisplayFunction";
+document.body.appendChild(s);
+
+function myDisplayFunction(myObj) {
+  document.getElementById("demo").innerHTML = myObj.name;
+}
+</script>
+
+</body>
+</html>
+
+>> output: 
+Request With a Callback Function
+
+The PHP file returns a call to the function you send as a callback.
+
+John
+
+--------------------------------------------------
+
+* JavaScript / JQuery DOM Selectors
 
 
 
