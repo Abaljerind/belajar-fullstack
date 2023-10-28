@@ -13,3 +13,5 @@ http
     res.end(txt);
   })
   .listen(8080);
+
+// untuk akses gunakan url ini: http://localhost:8080/?year=2017&month=July&day=tuesday
