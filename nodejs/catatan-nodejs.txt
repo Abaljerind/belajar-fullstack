@@ -53,6 +53,39 @@ Node.js berjalan dengan thread tunggal, tanpa blokiran, pemrograman asynchronous
 
 * Node.js Get Started
 
+# Getting Started
+Setelah kita selesai mendownload dan menginstall Node.js dikomputer kita, mari coba untuk menampilkan 'Hello World' disebuah browser web.
+
+- buatlah sebuah file Node.js bernama 'myfirst.js' dan tambahkan kode dibawah ini:
+
+var http = require('http');
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end('Hello World!');
+}).listen(8080); 
+
+simpanlah file tersebut dikomputer kita, di C:\Users\Your Name\myfirst.js
+kode diatas memberitahukan komputer untuk menulis 'Hello World!' jika seseorang (contohnya sebuah browser web) mencoba mengakses komputer kita di port 8080. untuk lebih lanjutnya akan dijelaskan nanti.
+
+-----------
+
+# Command Line Interface
+Node.js harus dimulai didalam sebuah program Command Line Interface dikomputer kita. untuk platform windows bisa menggunakan Command Prompt. lalu pergi ke browser yang berisi file myfirst.js tadi.
+
+-----------
+
+# Initiate the Node.js File
+file yang baru saja dibuat tadi harus dimulai oleh Node.js sebelum ada aksi apapun yang mengambil alihnya.
+bukalah Command Prompt dan ketikkan 'node myfirst.js' lalu tekan enter.
+sekarang, komputer kita bekerja sebagai sebuah server.
+jika seseorang mencoba untuk mengakses komputer kita di port 8080, mereka akan mendapatkan pesan 'Hello World!'.
+terakhir, buka browser kita, dan ketikkan alamat berikut http://localhost:8080.
+
+-----------------------------------------------
+
+* Node.js Modules
+
 
 
 -----------
