@@ -1,6 +1,57 @@
-* Node.JS Tutorial *
+* Node.js Tutorial *
+
+Node.js adalah sebuah lingkungan server yang bersifat open-source. 
+Node.js mengijinkan kita untuk menjalankan JavaScript diserver.
+-----------------------------------------------
+
+* Node.js Introduction
+
+# What is Node.js?
+- Node.js adalah sebuah lingkungan server yang bersifat open-source.
+- Node.js itu gratis.
+- Node.js bisa berjalan diberbagai macam platform seperti windows, linux, unix, mac os, dan lainnya.
+- Node.js menggunakan JavaScript di server nya.
+
+-----------
+
+# Why Node.js?
+Node.js menggunakan pemrograman asynchronous.
+
+sebuah tugas yang umum untuk sebuah web server bisa untuk membuat sebuah file diserver dan mengembalikan isi filenya ke client.
+
+berikut ini adalah bagaimana PHP atau ASP menangani sebuah permintaan file:
+- mengirim tugasnya ke system file komputer.
+- menunggu ketika system file membuka dan membaca filenya.
+- mengembalikan isi filenya ke client.
+- bersiap untuk menangani permintaan selanjutnya.
+
+berikut ini adalah bagaimana Node.js menangani sebuah permintaan file:
+- mengirim tugasnya ke system file komputer.
+- bersiap untuk menangani permintaan selanjutnya.
+- ketika system file sudah membuka dan membaca filenya, server mengembalikan isi filenya ke client.
+
+Node.js mengeliminasi proses menunggunya, dan meneruskannya dengan permintaan selanjutnya.
+Node.js berjalan dengan thread tunggal, tanpa blokiran, pemrograman asynchronous, yang mana sangat efisien penggunaan memorynya.
+
+-----------
+
+# What can Node.js do?
+- Node.js bisa menghasilkan isi halaman yang dinamik.
+- Node.js bisa membuat, membuka, membaca, menulis, menghapus, dan menutup file file diserver.
+- Node.js bisa mengumpulkan data dari form.
+- Node.js bisa menambah, menghapus, dan mengubah data di database kita.
+
+-----------
+
+# What is a Node.js File?
+- file file Node.js berisi tugas tugas yang akan dieksekusi di event event khusus.
+- sebuah event khas antara lain seseorang mencoba untuk mengakses sebuah port diserver.
+- file file Node.js wajib dimulai diserver sebelum memiliki efek apapun.
+- file file Node.js memiliki ekstensi .js
 
 -----------------------------------------------
+
+* Node.js Get Started
 
 
 
