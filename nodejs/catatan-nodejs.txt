@@ -179,6 +179,112 @@ selanjutnya kita bisa melihat hasilnya tersebut lewat url http://localhost:8080
 
 * Node.js HTTP Module
 
+# The Built-in HTTP Module
+Node.js memiliki sebuah module bawaan bernama HTTP, yang mengijinkan Node.js untuk mentransfer data melewati HTTP.
+untuk memasukkan module HTTP, gunakan method require, berikut contohnya:
+
+var http = require('http'); 
 
 -----------
+
+# Node.js as a Web Server
+module HTTP bisa membuat sebuah server HTTP yang mendengarkan (listen) port port server dan memberikan sebuah response balik ke client.
+gunakan method createServer() untuk membuat sebuah server HTTP, berikut contohnya:
+
+var http = require('http');
+
+//create a server object:
+http.createServer(function (req, res) {
+  res.write('Hello World!'); //write a response to the client
+  res.end(); //end the response
+}).listen(8080); //the server object listens on port 8080 
+
+function yang dimasukkan kedalam method http.createServer(), akan dieksekusi ketika seseorang mencoba mengakses komputernya diport 8080.
+
+simpan kode diatas kedalam sebuah file bernama "demo_http.js", dan mulai jalankan filenya tersebut dengan perintah berikut:
+
+>> node demo_http.js 
+
+lalu buka diweb browser localhost dengan port 8080 >> http://localhost:8080
+
+-----------
+
+# Add an HTTP Header
+jika response dari server HTTP seharusnya ditampilkan sebagai sebuah HTML, kita seharusnya memasukkan sebuah header HTTP dengan isi content type yang tepat, berikut contohnya:
+
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write('Hello World!');
+  res.end();
+}).listen(8080); 
+
+argument pertama dari method res.writeHead() adalah kode status, 200 berarti semuanya OK, lalu argument kedua adalah sebuah object berisikan response header.
+
+-----------
+
+# Read the QUery String
+function yang dimasukkan ke dalam method http.createServer() memiliki sebuah argument req yang merepresentasikan permintaan (request) dari client, sebagai sebuah object (http.IncomingMessage object)
+
+object ini memiliki sebuah properti bernama "url" yang menyimpan sebagian dari url yang muncul setelah nama domainnya, berikut contohnya:
+
+var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write(req.url);
+  res.end();
+}).listen(8080); 
+
+simpan kode diatas didalam sebuah file bernama "demo_http_url.js" dan mulai jalankan filenya dengan perintah berikut:
+
+>> node demo_http_url.js 
+
+jika kita sudah mengikuti semua langkah langkah diatas dikomputer kita, kita seharusnya bisa melihat 2 hasil yang berbeda ketika membuka 2 alamat localhost dibawah ini:
+
+http://localhost:8080/summer
+
+>> output: /summer
+
+http://localhost:8080/winter
+
+>> output: /winter
+
+-----------
+
+# Split the Query String
+terdapat module module bawaan untuk secara mudah membagi string query menjadi bagian bagian yang mudah untuk dibaca, seperti module URL.
+
+- contoh membagi string query menjadi bagian bagian yang mudah untuk dibaca:
+
+var http = require('http');
+var url = require('url');
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  
+  /*Use the url module to turn the querystring into an object:*/
+  var q = url.parse(req.url, true).query;
+  
+  /*Return the year and month from the query object:*/
+  var txt = q.year + " " + q.month;
+  res.end(txt);
+}).listen(8080);
+
+simpan kode diatas kedalam sebuah file bernama "demo_querystring.js" dan mulai jalankan filenya dengan perintah berikut:
+
+>> node demo_querystring.js 
+
+untuk alamat url-nya, gunakan yang dibawah ini:
+
+http://localhost:8080/?year=2017&month=July
+
+>> output: 2017 July
+
 -----------------------------------------------
+
+* Node.js File System Module
+
+
+-----------------------------------------------
+-----------
+
