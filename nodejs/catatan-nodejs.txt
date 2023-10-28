@@ -86,6 +86,98 @@ terakhir, buka browser kita, dan ketikkan alamat berikut http://localhost:8080.
 
 * Node.js Modules
 
+# What is a Module in Node.js?
+pertimbangkan Module Module itu sama dengan perpustakaan JavaScript.
+sebuah kumpulan function function yang ingin kita masukkan kedalam aplikasi kita.
+
+-----------
+
+# Built-in Modules
+Node.js memiliki sebuah kumpulan Module Module bawaan yang bisa kita gunakan tanpa perlu adanya installasi.
+dibawah ini adalah sebuah daftar module module bawaan Node.js versi 6.10.3:
+
+Module 	            Description
+assert	            Menyediakan serangkaian tes pernyataan
+buffer	            Untuk menangani data biner
+child_process	    Untuk menjalankan sebuah proses child
+cluster	            Untuk membagi satu proses Node menjadi beberapa proses
+crypto	            Untuk menangani fungsi kriptografi OpenSSL
+dgram	            Menyediakan implementasi soket datagram UDP
+dns	                Untuk melakukan pencarian DNS dan fungsi resolusi nama
+domain	            Tidak digunakan lagi. Untuk menangani kesalahan yang tidak tertangani
+events	            Untuk menangani event event
+fs	                Untuk menangani sistem file
+http	            Untuk membuat Node.js bertindak sebagai server HTTP
+https	            Untuk membuat Node.js bertindak sebagai server HTTPS
+net	                Untuk membuat server dan klien
+os	                Memberikan informasi tentang sistem operasi
+path	            Untuk menangani jalur file (alamat suatu file)
+punycode	        Tidak digunakan lagi. Skema pengkodean karakter
+querystring	        Untuk menangani string query URL
+readline	        Untuk menangani aliran yang dapat dibaca satu baris pada satu waktu
+stream	            Untuk menangani data streaming
+string_decoder	    Untuk memecahkan kode objek buffer menjadi string
+timers	            Untuk menjalankan suatu fungsi setelah beberapa milidetik tertentu
+tls	                Untuk mengimplementasikan protokol TLS dan SSL
+tty	                Menyediakan kelas yang digunakan oleh terminal teks
+url	                Untuk mengurai string URL
+util	            Untuk mengakses fungsi utilitas
+v8	                Untuk mengakses informasi tentang V8 (mesin JavaScript)
+vm	                Untuk mengkompilasi kode JavaScript di mesin virtual
+zlib	            Untuk mengompresi atau mendekompresi file
+
+-----------
+
+# Include Modules
+untuk memasukkan sebuah module, gunakan function require() dengan nama dari modulenya, contohnya:
+
+var http = require('http'); 
+
+sekarang aplikasi kita punya akses ke module HTTP, dan bisa membuat sebuah server, berikut contoh kodenya:
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end('Hello World!');
+}).listen(8080); 
+
+-----------
+
+# Create your Own Module
+kita bisa membuat module kita sendiri, dan secara mudah memasukkannya kedalam aplikasi kita.
+contoh dibawah ini membuat sebuah module yang mengembalikan sebuah objek tanggal dan waktu terkini:
+
+exports.myDateTime = function () {
+  return Date();
+};
+
+gunakan keyword 'exports' untuk membuat properti dan method tersedia diluar file module.
+simpan kode diatas disebuah file dengan nama "myfirstmodule.js"
+
+-----------
+
+# Include your Own Module
+sekarang kita bisa memasukkan dan menggunakan module diatas didalam file file Node.js manapun.
+- contoh penggunaan module "myfirstmodule" didalam sebuah file Node.js:
+
+var http = require('http');
+var dt = require('./myfirstmodule');
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write("The date and time are currently: " + dt.myDateTime());
+  res.end();
+}).listen(8080); 
+
+perhatikan bahwa kita menggunakan ./ untuk menemukan lokasi modulenya, yang berarti bahwa module tersebut berada dilokasi yang sama dengan file Node.js nya.
+simpan kode diatas itu didalam sebuah file "demo_module.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_module.js 
+
+selanjutnya kita bisa melihat hasilnya tersebut lewat url http://localhost:8080
+
+-----------------------------------------------
+
+* Node.js HTTP Module
 
 
 -----------
