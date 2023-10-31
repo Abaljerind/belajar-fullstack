@@ -426,6 +426,108 @@ fs.rename('mynewfile1.txt', 'myrenamedfile.txt', function (err) {
   console.log('File Renamed!');
 }); 
 
+-----------------------------------------------
+
+* Node.js URL Module
+
+# The Built-in URL Module
+module URL membagi sebuah alamat website menjadi beberapa bagian yang dapat dibaca.
+untuk menambahkan module URL, gunakan method require():
+
+var url = require('url'); 
+
+
+mengurai sebuah alamat website dengan method url.parse(), dan hasilnya akan mengembalikan sebuah object URL dengan tiap bagian dari alamatnya sebagai properti. contoh dibawah ini membagi sebuah alamat website menjadi beberapa bagian yang dapat dibaca:
+
+var url = require('url');
+var adr = 'http://localhost:8080/default.htm?year=2017&month=february';
+
+//Parse the address:
+var q = url.parse(adr, true);
+
+/*The parse method returns an object containing url properties*/
+console.log(q.host); //returns 'localhost:8080'
+console.log(q.pathname); //returns '/default.htm'
+console.log(q.search); //returns '?year=2017&month=february'
+
+/*The query property returns an object with all the querystring parameters as properties:*/
+var qdata = q.query; //returns an object: { year: 2017, month: 'february' }
+console.log(qdata.month); //returns 'february'
+
+-----------
+
+# Node.js File Server
+sekarang kita tau bagaimana untuk menguraikan query string, dan kita sudah mempelajari bagaimana membuat Node.js bertingkah laku sebagai sebuah file server. sekarang mari kita kombinasikan keduanya, dan menampilkan file yang diminta oleh client.
+
+sekarang kita buat dua buah file HTML dan menyimpan keduanya didalam folder yang sama dengan file Node.js nya.
+
+summer.html
+
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Summer</h1>
+<p>I love the sun!</p>
+</body>
+</html> 
+
+
+winter.html
+
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Winter</h1>
+<p>I love the snow!</p>
+</body>
+</html> 
+
+
+lanjut membuat sebuah file Node.js yang akan membuka file yang diminta dan mengembalikan isinya ke client. jika ada yang salah maka akan ditampilkan error 404, berikut kodenya:
+
+demo_fileserver.js
+
+var http = require('http');
+var url = require('url');
+var fs = require('fs');
+
+http.createServer(function (req, res) {
+  var q = url.parse(req.url, true);
+  var filename = "." + q.pathname;
+  fs.readFile(filename, function(err, data) {
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/html'});
+      return res.end("404 Not Found");
+    } 
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    return res.end();
+  });
+}).listen(8080); 
+
+
+ingat untuk memulai filenya dengan perintah berikut:
+
+>> node demo_fileserver.js 
+
+
+selanjutnya ketika dibuka di web browser dengan dua alamat website dibawah ini, maka isinya akan ditampilkan seperti berikut:
+
+http://localhost:8080/summer.html
+output>>
+
+Summer
+
+I love the sun!
+
+
+http://localhost:8080/winter.html
+output>>
+
+Winter
+
+I love the snow!
+
 -----------
 -----------------------------------------------
 
