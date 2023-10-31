@@ -528,6 +528,60 @@ Winter
 
 I love the snow!
 
+-----------------------------------------------
+
+* Node.js NPM
+
+# What is NPM?
+NPM adalah sebuah package manager untuk package package Node.js, atau module module yang kita suka. www.npmjs.com berisikan ribuan package package gratis untuk didownload dan digunakan. program npm sudah terinstall dikomputer kita ketika kita melakukan installasi Node.js.
+
+-----------
+
+# What is a Package?
+sebuah package pada Node.js berisikan semua file file yang kita butuhkan untuk sebuah module. module module tersebut adalah perpustakaan JavaScript yang bisa kita masukkan kedalam project kita.
+
+-----------
+
+# Download a Package
+mengunduh sebuah package itu sangatlah mudah, caranya dengan membuka cmd dan memberitahukan NPM untuk mengunduh package yang kita mau. berikut adalah contoh bagaimana mengunduh sebuah package yang disebut "upper-case":
+
+>> npm install upper-case
+
+sekarang kita telah selesai mengunduh dan menginstall package pertama kita.
+NPM membuat sebuah folder bernama "node_modules", dimana package package yang sudah diunduh akan disimpan. semua package yang kita install dimasa depan nantinya akan disimpan didalam folder tersebut.
+
+sekarang project kita akan memiliki struktur folder seperti berikut:
+
+C:\Users\My Name\node_modules\upper-case
+
+-----------
+
+# Using a Package
+setelah package yang kita butuhkan selesai diinstall, maka package tersebut sudah bisa digunakan. termasuk package "upper-case" bisa kita masukkan kedalam module manapun, berikut contoh penggunaannya:
+
+var uc = require('upper-case'); 
+
+
+- contoh, buatlah sebuah file Node.js yang akan mengubah output "Hello World!" menjadi huruf kapital semua:
+
+var http = require('http');
+var uc = require('upper-case');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write(uc.upperCase("Hello World!"));
+  res.end();
+}).listen(8080); 
+
+simpan kode diatas didalam sebuah file bernama "demo_uppercase.js" dan jalankan kodenya dengan perintah berikut:
+
+>> node demo_uppercase.js
+
+hasilnya dapat dilihat dialamat berikut >> http://localhost:8080
+
+-----------------------------------------------
+
+* Node.js Events
+
 -----------
 -----------------------------------------------
 
