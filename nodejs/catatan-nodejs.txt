@@ -625,6 +625,8 @@ eventEmitter.on('scream', myEventHandler);
 //Fire the 'scream' event:
 eventEmitter.emit('scream');
 
+output>> I hear a scream!
+
 -----------------------------------------------
 
 * Node.js Upload Files
