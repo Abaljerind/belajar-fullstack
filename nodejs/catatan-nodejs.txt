@@ -284,7 +284,148 @@ http://localhost:8080/?year=2017&month=July
 
 * Node.js File System Module
 
+# Node.js as a File Server
+Module file system Node.js mengijinkan kita untuk bekerja dengan file system dikomputer kita sendiri.
+untuk memasukkan module file system, gunakan method require(), seperti contoh dibawah ini:
 
------------------------------------------------
+var fs = require('fs'); 
+
+penggunaan umum untuk module file system antara lain:
+- membaca file
+- membuat file
+- mengupdate file
+- menghapus file
+- mengganti nama file
+
 -----------
+
+## Read Files
+method fs.readFile() digunakan untuk membaca file file yang ada dikomputer kita.
+kita asumsikan kita memiliki sebuah file HTML yang disimpan dilokasi yang sama dengan file Node.js, berikut contoh file HTML nya:
+
+demofile1.html
+
+<html>
+<body>
+<h1>My Header</h1>
+<p>My paragraph.</p>
+</body>
+</html> 
+
+lalu buat sebuah file Node.js yang akan membaca file HTML diatas, dan mengembalikan isinya, berikut isi file Node.js nya:
+
+
+var http = require('http');
+var fs = require('fs');
+http.createServer(function (req, res) {
+  //Open a file on the server and return its content:
+  fs.readFile('demofile1.html', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    return res.end();
+  });
+}).listen(8080);
+
+lalu simpan kode diatas kedalam file yang bernama 'demo_readfile.js', lalu jalankan kodenya dengan perintah berikut:
+
+>> node demo_readfile.js
+
+terakhir, akses dengan url berikut: http://localhost:8080
+
+-----------
+
+## Create Files
+Module file system memiliki method method untuk membuat file file baru, berikut method methodnya:
+- fs.appendFile()
+- fs.open()
+- fs.writeFile()
+
+- method fs.appendFile() menambahkan konten tertentu ke sebuah file. jika filenya tidak ada, maka filenya akan dibuatkan, berikut contoh membuat sebuah file baru menggunakan method appendFile():
+
+var fs = require('fs');
+
+fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+  if (err) throw err;
+  console.log('Saved!');
+}); 
+
+
+- method fs.open() mengambil sebuah 'flag' sebagai argument keduanya, jika flagnya ini bernilai 'w' untuk menulis / 'writing', maka file tertentu dibuka untuk ditulis. jika filenya tidak ada, maka sebuah file kosong dibuat. berikut contoh membuat sebuah file baru yang kosong menggunakan method open():
+
+var fs = require('fs');
+
+fs.open('mynewfile2.txt', 'w', function (err, file) {
+  if (err) throw err;
+  console.log('Saved!');
+}); 
+
+
+- method fs.writeFile() mengganti file tertentu dan isinya jika ada. jika filenya tidak ada, maka akan dibuatkan sebuah file baru, berisikan content tertentu. berikut contoh membuat sebuah file baru menggunakan method writeFile():
+
+var fs = require('fs');
+
+fs.writeFile('mynewfile3.txt', 'Hello content!', function (err) {
+  if (err) throw err;
+  console.log('Saved!');
+}); 
+
+-----------
+
+## Update Files
+module file system memiliki method method untuk mengupdate file file, diantaranya:
+
+- fs.appendFile()
+- fs.writeFile()
+
+- method fs.appendFile() menambahkan isi tertentu diakhir dari file yang ditentukan. contoh menambahkan kalimat 'This is my text.' ke akhir dari file mynewfile.txt:
+
+var fs = require('fs');
+
+fs.appendFile('mynewfile.txt', ' This is my text.', function (err) {
+  if (err) throw err;
+  console.log('Updated!');
+}); 
+
+
+- method fs.writeFile() mengganti file tertentu dan isi filenya. contoh mengganti isi dari file mynewfile3.txt:
+
+var fs = require('fs');
+
+fs.writeFile('mynewfile3.txt', 'This is my text', function (err) {
+  if (err) throw err;
+  console.log('Replaced!');
+}); 
+
+-----------
+
+## Delete Files
+untuk menghapus sebuah file dengan module file system, gunakan method fs.unlink().
+method fs.unlink() ini akan menghapus file yang ditentukan:
+
+- contoh menghapus file mynewfile2.txt:
+
+var fs = require('fs');
+
+fs.unlink('mynewfile2.txt', function (err) {
+  if (err) throw err;
+  console.log('File deleted!');
+}); 
+
+-----------
+
+## Rename Files
+untuk mengganti nama sebuah file dengan module file system, gunakan method fs.rename().
+method fs.rename() akan mengganti nama dari sebuah file yang ditentukan.
+
+- contoh mengganti name file 'mynewfile1.txt' menjadi 'myrenamedfile.txt':
+
+var fs = require('fs');
+
+fs.rename('mynewfile1.txt', 'myrenamedfile.txt', function (err) {
+  if (err) throw err;
+  console.log('File Renamed!');
+}); 
+
+-----------
+-----------------------------------------------
 
