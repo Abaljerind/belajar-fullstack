@@ -582,6 +582,53 @@ hasilnya dapat dilihat dialamat berikut >> http://localhost:8080
 
 * Node.js Events
 
+# Events in Node.js
+setiap aksi yang dilakukan pada komputer adalah sebuah event. seperti ketika sebuah koneksi dibuat atau sebuah file dibuka.
+object object didalam Node.js bisa menjalankan event event, seperti object readStream menjalankan event ketika membuka dan menutup sebuah file, berikut contohnya:
+
+var fs = require('fs');
+
+var readStream = fs.createReadStream('./demofile.txt');
+
+/*Write to the console when the file is opened:*/
+readStream.on('open', function () {
+  console.log('The file is open');
+});
+
+-----------
+
+# Events Module
+Node.js memiliki sebuah module bawaan yang disebut "Events", dimana kita bisa membuat, menjalankan, dan mendengarkan (listen) event event milik kita sendiri.
+
+untuk memasukkan module event bawaan gunakan method 'require()'. lalu tambahannya, semua properti dan method dari event event tersebut adalah sebuah contoh dari object "EventEmitter". agar bisa mengakses properti dan method ini, buatlah sebuah object EventEmitter seperti contoh dibawah:
+
+var events = require('events');
+var eventEmitter = new events.EventEmitter(); 
+
+-----------
+
+# The EventEmitter Object
+kita bisa menugaskan event handlers ke event milik kita sendiri dengan object eventEmitter.
+contoh dibawah ini, kita membuat sebuah function yang akan dieksekusi ketika sebuah event "scream" dijalankan. untuk menjalankan sebuah event, gunakan method "emit()".
+
+var events = require('events');
+var eventEmitter = new events.EventEmitter();
+
+//Create an event handler:
+var myEventHandler = function () {
+  console.log('I hear a scream!');
+}
+
+//Assign the event handler to an event:
+eventEmitter.on('scream', myEventHandler);
+
+//Fire the 'scream' event:
+eventEmitter.emit('scream');
+
+-----------------------------------------------
+
+* Node.js Upload Files
+
 -----------
 -----------------------------------------------
 
