@@ -803,5 +803,39 @@ setelah selesai mendownload dan menginstall MongoDB nya lewat cmd, kita bisa men
 
 var mongo = require('mongodb');
 
+-----------------------------------------------
+
+* Node.js MongoDB Create Database
+# Creating a Database
+untuk membuat sebuah database didalam MongoDB, mulai dengan membuat sebuah object MongoClient, lalu tetapkan sebuah koneksi URL dengan ip address yang benar dan nama dari database yang mau dibuat.
+
+MongoDB akan membuat database jika database tersebut belum ada, dan membuat koneksi yang terhubung dengan database tersebut.
+
+- contoh membuat sebuah database bernama "mydb":
+
+var MongoClient = require('mongodb').MongoClient;
+//Create a database named "mydb":
+var url = "mongodb://localhost:27017/mydb";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  console.log("Database created!");
+  db.close();
+});
+
+simpan kode diatas didalam sebuah file bernama "demo_create_mongo_db.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_create_mongo_db.js
+
+>> output:
+Database created!
+
+
+NOTE: pada MongoDB, sebuah database belum dibuat sampai database tersebut mendapatkan isinya. MongoDB menunggu sampai kita telah membuat sebuah collection (table), dengan sedikitnya 1 buah dokumen (record) sebelum akhirnya membuat database nya (dan collection nya).
+
+-----------------------------------------------
+
+* Node.js MongoDB Create Collection
+
 -----------
 -----------------------------------------------
