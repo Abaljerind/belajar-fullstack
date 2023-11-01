@@ -713,6 +713,78 @@ http.createServer(function (req, res) {
   }
 }).listen(8080); 
 
+-----------------------------------------------
+
+* Node.js Send an Email
+
+# The Nodemailer Module
+module Nodemailer memberikan kemudahan untuk mengirim email dari komputer kita.
+module Nodemailer ini bisa kita download dan install dengan npm, berikut caranya:
+
+>> npm install nodemailer
+
+setelah didownload, kita sudah bisa memasukkan module tersebut kedalam aplikasi manapun:
+
+var nodemailer = require('nodemailer'); 
+
+-----------
+
+# Send an Email
+
+sekarang kita sudah siap untuk mengirim email dari server.
+gunakan username dan password dari provider email yang dipilih untuk mengirim sebuah email. pada Tutorial kali ini, akan diperlihatkan bagaimana menggunakan akun gmail untuk mengirim sebuah email:
+
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'youremail@gmail.com',
+    pass: 'yourpassword'
+  }
+});
+
+var mailOptions = {
+  from: 'youremail@gmail.com',
+  to: 'myfriend@yahoo.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+}); 
+
+dan selesai! sekarang server kita sudah bisa mengirim email.
+
+-----------
+
+# Multiple Receivers
+untuk mengirim sebuah email ke lebih dari satu penerima, tambahkan email penerima ke properti "to" dari object mailOptions, dipisahkan dengan koma, berikut contohnya:
+
+var mailOptions = {
+  from: 'youremail@gmail.com',
+  to: 'myfriend@yahoo.com, myotherfriend@yahoo.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+} 
+
+-----------
+
+# Send HTML
+untuk mengirim text dengan format HTML didalam email, gunakan properti "HTML" bukan properti "text", berikut contoh penggunaannya:
+
+var mailOptions = {
+  from: 'youremail@gmail.com',
+  to: 'myfriend@yahoo.com',
+  subject: 'Sending Email using Node.js',
+  html: '<h1>Welcome</h1><p>That was easy!</p>'
+} 
+
 -----------
 -----------------------------------------------
 
