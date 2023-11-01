@@ -631,6 +631,88 @@ output>> I hear a scream!
 
 * Node.js Upload Files
 
+# The Formidable Module
+terdapat module yang sangat bagus untuk pekerjaan yang berhubungan dengan mengupload file file, yaitu "Formidable". module Formidable tersebut bisa didownload dan diinstall menggunakan NPM, berikut contohnya:
+
+>> npm install formidable
+
+setelah selesai mendownload module Formidable tersebut, kita bisa memasukkannya kedalam aplikasi / project kita, berikut contohnya:
+
+var formidable = require('formidable');
+
+-----------
+
+# Upload Files
+sekarang kita sudah siap untuk membuat sebuah halaman website didalam Node.js yang mengijinkan user untuk mengupload file file mereka ke komputer kita.
+
+- step 1: Create an Upload Form
+buat sebuah file Node.js yang menuliskan sebuah form HTML, dengan sebuah input untuk melakukan Upload. Kode dibawah ini akan membuat sebuah form HTML:
+
+var http = require('http');
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
+  res.write('<input type="file" name="filetoupload"><br>');
+  res.write('<input type="submit">');
+  res.write('</form>');
+  return res.end();
+}).listen(8080); 
+
+
+- step 2: Parse the Uploaded File
+masukkan module Formidable agar bisa mengurai file yang telah diupload setelah file tersebut mencapai server. ketika file telah diupload dan diuraikan, file tersebut akan ditempatkan disebuah folder sementara didalam komputer kita. contoh dibawah ini, file nya akan diupload, dan ditempatkan didalam sebuah folder sementara:
+
+var http = require('http');
+var formidable = require('formidable');
+
+http.createServer(function (req, res) {
+  if (req.url == '/fileupload') {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+      res.write('File uploaded');
+      res.end();
+    });
+  } else {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
+    res.write('<input type="file" name="filetoupload"><br>');
+    res.write('<input type="submit">');
+    res.write('</form>');
+    return res.end();
+  }
+}).listen(8080); 
+
+
+- step 3: Save the File
+ketika sebuah file sudah berhasil diupload ke server, file tersebut ditempatkan difolder sementara. jalur ke folder sementara ini bisa ditemukan didalam object "files", yang dijadikan sebagai argument ketiga didalam method parse() dari sebuah callback function. untuk memindahkan filenya ke folder pilihan kita, gunakan module file system, dan ganti nama filenya. contoh dibawah ini adalah contoh memasukkan module file system dan memindahkan filenya ke folder terkini:
+
+var http = require('http');
+var formidable = require('formidable');
+var fs = require('fs');
+
+http.createServer(function (req, res) {
+  if (req.url == '/fileupload') {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+      var oldpath = files.filetoupload.filepath;
+      var newpath = 'C:/Users/Your Name/' + files.filetoupload.originalFilename;
+      fs.rename(oldpath, newpath, function (err) {
+        if (err) throw err;
+        res.write('File uploaded and moved!');
+        res.end();
+      });
+ });
+  } else {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
+    res.write('<input type="file" name="filetoupload"><br>');
+    res.write('<input type="submit">');
+    res.write('</form>');
+    return res.end();
+  }
+}).listen(8080); 
+
 -----------
 -----------------------------------------------
 
