@@ -785,6 +785,23 @@ var mailOptions = {
   html: '<h1>Welcome</h1><p>That was easy!</p>'
 } 
 
------------
 -----------------------------------------------
 
+* Node.js MongoDB
+Node.js bisa digunakan didalam aplikasi database.
+salah satu database NoSQL yang populer adalah MongoDB.
+
+# Install MongoDB Driver
+mari coba MongoDB dengan Node.js
+untuk mendownload dan menginstall MongoDB driver, buka cmd dan jalankan perintah berikut:
+
+>> npm install mongodb
+
+untuk download versi desktop dan yang gratis bisa lewat alamat website berikut: https://www.mongodb.com
+
+setelah selesai mendownload dan menginstall MongoDB nya lewat cmd, kita bisa menggunakan module nya dengan Node.js untuk memanipulasi MongoDB database:
+
+var mongo = require('mongodb');
+
+-----------
+-----------------------------------------------
