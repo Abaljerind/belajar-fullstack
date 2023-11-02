@@ -1358,6 +1358,98 @@ simpan kode diatas didalam file bernama "demo_mongodb_query_s.js" dan jalankan f
 
 * Node.js MongoDB Sort
 
+# Sort the Result
+gunakan method sort() untuk mengurutkan hasil secara ascending atau descending. method sort() ini mengambil 1 buah parameter, sebuah objek yang menentukan urutan pengurutannya.
+
+- contoh mengurutkan hasil secara alfabet menggunakan nama:
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  //Sort the result by name:
+  var sort = { name: 1 };
+  dbo.collection("customers").find().sort(sort).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+simpan kode diatas didalam sebuah file bernama "demo_sort.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_sort.js 
+
+>> output:
+[
+  { _id: 58fdbf5c0ef8a50b4cdd9a86, name: 'Amy', address: 'Apple st 652'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8e, name: 'Ben', address: 'Park Lane 38'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8a, name: 'Betty', address: 'Green Grass 1'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a90, name: 'Chuck', address: 'Main Road 989'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a87, name: 'Hannah', address: 'Mountain 21'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a84, name: 'John', address: 'Highway 71'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a88, name: 'Michael', address: 'Valley 345'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a85, name: 'Peter', address: 'Lowstreet 4'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8b, name: 'Richard', address: 'Sky st 331'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a89, name: 'Sandy', address: 'Ocean blvd 2'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8c, name: 'Susan', address: 'One way 98'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8d, name: 'Vicky', address: 'Yellow Garden 2'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a91, name: 'Viola', address: 'Sideway 1633'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8f, name: 'William', address: 'Central st 954'}
+]
+
+-----------
+
+# Sort Descending
+gunakan value -1 didalam object sort untuk mengurutkan secara descending.
+
+{ name: 1 } // ascending
+{ name: -1 } //descending
+
+- contoh mengurutkan hasil secara descending menggunakan nama:
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  //Sort the result descending by name:
+  var sort = { name: -1 };
+  dbo.collection("customers").find().sort(sort).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+simpan kode diatas kedalam file bernama "demo_sort_desc.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_sort_desc.js 
+
+>> output:
+[
+  { _id: 58fdbf5c0ef8a50b4cdd9a8f, name: 'William', address: 'Central st 954'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a91, name: 'Viola', address: 'Sideway 1633'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8d, name: 'Vicky', address: 'Yellow Garden 2'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8c, name: 'Susan', address: 'One way 98'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a89, name: 'Sandy', address: 'Ocean blvd 2'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8b, name: 'Richard', address: 'Sky st 331'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a85, name: 'Peter', address: 'Lowstreet 4'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a88, name: 'Michael', address: 'Valley 345'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a84, name: 'John', address: 'Highway 71'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a87, name: 'Hannah', address: 'Mountain 21'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a90, name: 'Chuck', address: 'Main Road 989'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8a, name: 'Betty', address: 'Green Grass 1'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8e, name: 'Ben', address: 'Park Lane 38'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a86, name: 'Amy', address: 'Apple st 652'}
+]
+
+-----------------------------------------------
+
+* Node.js MongoDB Delete
 
 -----------
 -----------------------------------------------
