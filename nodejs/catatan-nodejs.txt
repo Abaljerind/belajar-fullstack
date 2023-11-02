@@ -1581,6 +1581,90 @@ simpan kode diatas kedalam file bernama "demo_dropcollection.js" dan jalankan fi
 -----------------------------------------------
 
 * Node.js MongoDB Update
+kita bisa mengupdate sebuah record / dokumen menggunakan method updateOne().
+parameter pertama dari method updateOne() ini adalah sebuah object query yang menentukan mana dokumen untuk diupdate. jika query nya menemukan data yang ingin diupdate lebih dari 1 maka yang akan diupdate hanyalah data pertamanya saja. parameter kedua adalah sebuah object yang menentukan nilai baru dari dokumennya.
+
+- contoh mengupdate dokumen dengan address "Valley 345" ke nama "Mickey" dan address "Canyon 123":
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://127.0.0.1:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  var myquery = { address: "Valley 345" };
+  var newvalues = { $set: {name: "Mickey", address: "Canyon 123" } };
+  dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
+    if (err) throw err;
+    console.log("1 document updated");
+    db.close();
+  });
+}); 
+
+simpan kode diatas kedalam file bernama "demo_update_one.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_update_one.js 
+
+>> output: 1 document updated
+
+-----------
+
+# Update only Specific Fields
+ketika menggunakan operator "$set", yang akan diupdate hanya field field tertentu saja.
+
+- contoh mengupdate address dari "Valley 345" menjadi "Canyon 123":
+
+...
+  var myquery = { address: "Valley 345" };
+  var newvalues = { $set: { address: "Canyon 123" } };
+  dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
+...
+
+-----------
+
+# Update Many Documents
+untuk mengupdate semua dokumen yang sesuai dengan kriteria yang telah ditentukan, gunakan method updateMany().
+
+- contoh mengupdate semua dokumen yang namanya dimulai dari huruf "S":
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://127.0.0.1:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  var myquery = { address: /^S/ };
+  var newvalues = {$set: {name: "Minnie"} };
+  dbo.collection("customers").updateMany(myquery, newvalues, function(err, res) {
+    if (err) throw err;
+    console.log(res.result.nModified + " document(s) updated");
+    db.close();
+  });
+}); 
+
+simpan kode diatas kedalam file bernama "demo_update_many.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_update_many.js 
+
+>> output: 2 document(s) updated
+
+-----------
+
+# The Result Object
+method updateOne() dan updateMany() mengembalikan sebuah object yang berisi informasi tentang bagaimana eksekusinya berdampak / berefek pada database.
+
+kebanyakan informasinya tidak penting, tapi 1 object didalam object disebut "result" yang memberitahukan kita jika eksekusinya berjalan sukses (OK), dan berapa banyak dokumen yang terkena dampaknya / efeknya.
+
+hasil objectnya terlihat seperti dibawah ini:
+{ n: 1, nModified: 2, ok: 1 }
+
+kita bisa menggunakan object ini untuk mengembalikan jumlah dari dokumen yang terupdate, berikut contohnya:
+
+console.log(res.result.nModified);
+
+-----------------------------------------------
+
+* Node.js MongoDB Limit
 
 
 -----------
