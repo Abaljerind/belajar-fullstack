@@ -1293,5 +1293,71 @@ console.log(result[3].address);
 
 * Node.js MongoDB Query
 
+# Filter the Result
+ketika menemukan dokumen dokumen didalam sebuah collection, kita bisa memfilter hasilnya menggunakan sebuah object query. argument pertama dari method find() adalah sebuah object query, dan digunakan untuk membatasi pencarian.
+
+- contoh menemukan dokumen dengan address "Park Lane 38":
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  /*Return only the documents with the address "Park Lane 38":*/
+  var query = { address: "Park Lane 38" };
+  dbo.collection("customers").find(query).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+simpan kodenya didalam sebuah file bernama "demo_mongodb_query.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_mongodb_query.js 
+
+>> output: 
+[
+  { _id: 58fdbf5c0ef8a50b4cdd9a8e , name: 'Ben', address: 'Park Lane 38' }
+]
+
+-----------
+
+# Filter with Regular Expressions
+kita bisa menulis Regular Expressions untuk menemukan secara benar apa yang dicari. Regular Expressions hanya bisa digunakan untuk melakukan query string. untuk menemukan dokumen yang address nya dimulai dari huruf S, gunakan Regular Expressions /^S/.
+
+- contoh dibawah ini adalah contoh menemukan dokumen yang alamatnya dimulai dari huruf S:
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  /*Return only the documents where the address starts with an "S":*/
+  var query = { address: /^S/ };
+  dbo.collection("customers").find(query).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+simpan kode diatas didalam file bernama "demo_mongodb_query_s.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_mongodb_query_s.js 
+
+>> output: 
+[
+  { _id: 58fdbf5c0ef8a50b4cdd9a8b , name: 'Richard', address: 'Sky st 331' },
+  { _id: 58fdbf5c0ef8a50b4cdd9a91 , name: 'Viola', address: 'Sideway 1633' }
+]
+
+-----------------------------------------------
+
+* Node.js MongoDB Sort
+
+
 -----------
 -----------------------------------------------
