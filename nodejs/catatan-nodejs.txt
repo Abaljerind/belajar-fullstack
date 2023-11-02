@@ -1724,6 +1724,59 @@ seperti yang dilihat diatas, yang hanya ditampilkan dokumennya berjumlah 5 saja.
 
 * Node.js MongoDB Join
 
+# Join Collections
+MongoDB bukanlah sebuah database relational, tapi kita bisa melakukan sebuah left outer join menggunakan stage "$lookup". stage "$lookup" ini memperbolehkan kita menentukan collection mana yang mau kita lakukan join (gabungkan) dengan collection terkini, dan field field mana yang seharusnya cocok. 
+
+misalkan kita punya sebuah collection "orders" dan "products":
+
+orders
+[
+  { _id: 1, product_id: 154, status: 1 }
+]
+
+products
+[
+  { _id: 154, name: 'Chocolate Heaven' },
+  { _id: 155, name: 'Tasty Lemons' },
+  { _id: 156, name: 'Vanilla Dreams' }
+]
+
+- contoh pencocokkan dokumen dokumen "products" ke collection "orders":
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://127.0.0.1:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  dbo.collection('orders').aggregate([
+    { $lookup:
+       {
+         from: 'products',
+         localField: 'product_id',
+         foreignField: '_id',
+         as: 'orderdetails'
+       }
+     }
+    ]).toArray(function(err, res) {
+    if (err) throw err;
+    console.log(JSON.stringify(res));
+    db.close();
+  });
+}); 
+
+simpan kode diatas kedalam file bernama "demo_mongodb_join.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_mongodb_join.js 
+
+>> output:
+[
+  { "_id": 1, "product_id": 154, "status": 1, "orderdetails": [
+    { "_id": 154, "name": "Chocolate Heaven" } ]
+  }
+]
+
+seperti yang bisa dilihat dari contoh diatas, pencocokkan dokumen dari collection products dimasukkan kedalam collection orders sebagai sebuah array.
 
 -----------
 -----------------------------------------------
