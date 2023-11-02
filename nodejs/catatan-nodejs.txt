@@ -1523,6 +1523,65 @@ console.log(obj.result.n);
 
 * Node.js MongoDB Drop
 
+# Drop Collection
+kita bisa menghapus sebuah table, atau collection menggunakan method drop().
+
+method drop() mengambil sebuah callback function berisi object error dan hasil parameter yang mengembalikan nilai true jika collection berhasil dihapuskan, sebaliknya akan mengembalikan nilai false.
+
+- contoh menghapus table customers:
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  //Delete the "customers" collection:
+  dbo.collection("customers").drop(function(err, delOK) {
+    if (err) throw err;
+    if (delOK) console.log("Collection deleted");
+    db.close();
+  });
+});
+
+simpan kode diatas kedalam file bernama "demo_drop.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_drop.js 
+
+>> output: Collection deleted
+
+-----------
+
+# db.dropCollection
+kita juga bisa menggunakan method dropCollection() untuk menghapus sebuah table / collection.
+method dropCollection() ini mengambil 2 buah parameter, yaitu nama dari collection nya dan sebuah callback function.
+
+- contoh menghapus collection customers menggunakan method dropCollection():
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  //Delete the "customers" collection:
+  dbo.dropCollection("customers", function(err, delOK) {
+    if (err) throw err;
+    if (delOK) console.log("Collection deleted");
+    db.close();
+  });
+});
+
+simpan kode diatas kedalam file bernama "demo_dropcollection.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_dropcollection.js
+
+>> output: Collection deleted
+
+-----------------------------------------------
+
+* Node.js MongoDB Update
+
 
 -----------
 -----------------------------------------------
