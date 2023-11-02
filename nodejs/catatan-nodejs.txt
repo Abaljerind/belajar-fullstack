@@ -1451,5 +1451,78 @@ simpan kode diatas kedalam file bernama "demo_sort_desc.js" dan jalankan filenya
 
 * Node.js MongoDB Delete
 
+# Delete Document
+untuk menghapus sebuah record atau dokumen pada MongoDB, kita bisa menggunakan method deleteOne(). parameter pertama dari method deleteOne() adalah sebuah object query yang menentukan dokumen mana yang akan dihapus. jika query nya menemukan lebih dari 1 dokumen maka hanya dokumen yang pertama yang akan dihapus.
+
+- contoh menghapus dokumen dengan address "Mountain 21":
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  /*Delete the first customers with the address "Mountain 21":*/
+  var myquery = { address: 'Mountain 21' };
+  dbo.collection("customers").deleteOne(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted");
+    db.close();
+  });
+});
+
+simpan kode diatas kedalam file bernama "demo_delete.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_delete.js 
+
+>> output: 1 document deleted
+
+-----------
+
+# Delete Many
+untuk menghapus lebih dari 1 dokumen, gunakan method deleteMany(). parameter pertama dari method deleteMany() adalah sebuah object query yang menentukan dokumen mana yang akan didelete.
+
+- contoh menghapus semua dokumen yang address nya dimulai dari huruf "O":
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  /*Delete all customers where the address starts with an "O":*/
+  var myquery = { address: /^O/ };
+  dbo.collection("customers").deleteMany(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log(obj.result.n + " document(s) deleted");
+    db.close();
+  });
+});
+
+simpan kode diatas dengan nama "demo_delete_many.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_delete_many.js 
+
+>> output: 2 document(s) deleted
+
+-----------
+
+# The Result Object
+method deleteMany() mengembalikan sebuah object yang berisi informasi tentang bagaimana eksekusi kodenya berefek pada database. kebanyakan informasinya tidak penting untuk dipahami, tetapi 1 object didalam object disebut "result" yang memberitahu kita jika eksekusinya berjalan lancar (OK), dan berapa banyak dokumen yang terkena efeknya.
+
+hasil object nya terlihat seperti dibawah ini:
+{ n: 2, ok: 1 }
+
+kita bisa gunakan object ini untuk mengembalikan jumlah dokumen yang dihapus.
+
+- contoh mengembalikan jumlah dokumen yang dihapus:
+
+console.log(obj.result.n);
+
+-----------------------------------------------
+
+* Node.js MongoDB Drop
+
+
 -----------
 -----------------------------------------------
