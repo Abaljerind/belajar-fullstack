@@ -870,5 +870,180 @@ NOTE: pada MongoDB, sebuah collection tidak akan dibuat sampai collection terseb
 
 * Node.js MongoDB Insert
 
+# Insert into Collection
+untuk memasukkan sebuah record, atau dokumen kalau untuk MongoDB, kedalam sebuah collection, kita gunakan method insertOne().
+sebuah dokumen pada MongoDB sama dengan sebuah record pada MySQL.
+
+parameter pertama dari method insertOne() adalah sebuah object yang berisikan "name(s)" dan "value(s)" dari tiap tiap kolom didalam dokumen yang ingin kita masukkan.
+
+method insertOne() juga mengambil sebuah callback function dimana kita bisa menerapkan error apapun yang muncul, atau hasil dari proses insertnya. 
+
+- contoh dibawah memasukkan sebuah dokumen didalam collection "customers":
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  var myobj = { name: "Company Inc", address: "Highway 37" };
+  dbo.collection("customers").insertOne(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+    db.close();
+  });
+}); 
+
+simpan kode diatas kedalam file bernama "demo_mongodb_insert.js" dan jalankan filenya dengan perintah berikut:
+>> node demo_mongodb_insert.js 
+
+>> output: 1 document inserted
+
+NOTE: jika kita mencoba memasukkan dokumen dokumen kedalam sebuah collection yang belum dibuat, maka MongoDB akan membuat collection-nya secara otomatis.
+
+-----------
+
+# Insert Multiple Documents
+untuk memasukkan beberapa document sekaligus kedalam sebuah collection pada MongoDB, kita gunakan method insertMany().
+
+parameter pertama dari method insertMany() adalah sebuah array yang berisi object, berisikan data yang ingin kita masukkan ke collection.
+
+method insertMany() juga mengambil sebuah callback function dimana kita bisa menerapkan error apapun yang muncul, atau hasil dari proses insertnya.
+
+- contoh dibawah adalah contoh memasukkan beberapa dokumen sekaligus didalam collection "customers":
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  var myobj = [
+    { name: 'John', address: 'Highway 71'},
+    { name: 'Peter', address: 'Lowstreet 4'},
+    { name: 'Amy', address: 'Apple st 652'},
+    { name: 'Hannah', address: 'Mountain 21'},
+    { name: 'Michael', address: 'Valley 345'},
+    { name: 'Sandy', address: 'Ocean blvd 2'},
+    { name: 'Betty', address: 'Green Grass 1'},
+    { name: 'Richard', address: 'Sky st 331'},
+    { name: 'Susan', address: 'One way 98'},
+    { name: 'Vicky', address: 'Yellow Garden 2'},
+    { name: 'Ben', address: 'Park Lane 38'},
+    { name: 'William', address: 'Central st 954'},
+    { name: 'Chuck', address: 'Main Road 989'},
+    { name: 'Viola', address: 'Sideway 1633'}
+  ];
+  dbo.collection("customers").insertMany(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("Number of documents inserted: " + res.insertedCount);
+    db.close();
+  });
+}); 
+
+simpan kode diatas dengan nama "demo_mongodb_insert_multiple.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_mongodb_insert_multiple.js 
+
+>> output: Number of documents inserted: 14
+
+-----------
+
+# The Result Object
+ketika menjalankan method insertMany(), sebuah hasil object dikembalikan.
+hasil object tersebut berisi informasi tentang bagaimana proses insert berefek pada database.
+object yang dikembalikan dari contoh diatas pada file "demo_mongodb_insert_multiple.js" terlihat seperti berikut:
+
+{
+  result: { ok: 1, n: 14 },
+  ops: [
+    { name: 'John', address: 'Highway 71', _id: 58fdbf5c0ef8a50b4cdd9a84 },
+    { name: 'Peter', address: 'Lowstreet 4', _id: 58fdbf5c0ef8a50b4cdd9a85 },
+    { name: 'Amy', address: 'Apple st 652', _id: 58fdbf5c0ef8a50b4cdd9a86 },
+    { name: 'Hannah', address: 'Mountain 21', _id: 58fdbf5c0ef8a50b4cdd9a87 },
+    { name: 'Michael', address: 'Valley 345', _id: 58fdbf5c0ef8a50b4cdd9a88 },
+    { name: 'Sandy', address: 'Ocean blvd 2', _id: 58fdbf5c0ef8a50b4cdd9a89 },
+    { name: 'Betty', address: 'Green Grass 1', _id: 58fdbf5c0ef8a50b4cdd9a8a },
+    { name: 'Richard', address: 'Sky st 331', _id: 58fdbf5c0ef8a50b4cdd9a8b },
+    { name: 'Susan', address: 'One way 98', _id: 58fdbf5c0ef8a50b4cdd9a8c },
+    { name: 'Vicky', address: 'Yellow Garden 2', _id: 58fdbf5c0ef8a50b4cdd9a8d },
+    { name: 'Ben', address: 'Park Lane 38', _id: 58fdbf5c0ef8a50b4cdd9a8e },
+    { name: 'William', address: 'Central st 954', _id: 58fdbf5c0ef8a50b4cdd9a8f },
+    { name: 'Chuck', address: 'Main Road 989', _id: 58fdbf5c0ef8a50b4cdd9a90 },
+    { name: 'Viola', address: 'Sideway 1633', _id: 58fdbf5c0ef8a50b4cdd9a91 } ],
+  insertedCount: 14,
+  insertedIds: [
+    58fdbf5c0ef8a50b4cdd9a84,
+    58fdbf5c0ef8a50b4cdd9a85,
+    58fdbf5c0ef8a50b4cdd9a86,
+    58fdbf5c0ef8a50b4cdd9a87,
+    58fdbf5c0ef8a50b4cdd9a88,
+    58fdbf5c0ef8a50b4cdd9a89,
+    58fdbf5c0ef8a50b4cdd9a8a,
+    58fdbf5c0ef8a50b4cdd9a8b,
+    58fdbf5c0ef8a50b4cdd9a8c,
+    58fdbf5c0ef8a50b4cdd9a8d,
+    58fdbf5c0ef8a50b4cdd9a8e,
+    58fdbf5c0ef8a50b4cdd9a8f
+    58fdbf5c0ef8a50b4cdd9a90,
+    58fdbf5c0ef8a50b4cdd9a91 ]
+} 
+
+values dari propertinya bisa ditampilkan seperti dibawah ini, contoh mengembalikan jumlah dokumen yang sudah dimasukkan:
+
+>> console.log(res.insertedCount)
+
+>> output: 14
+
+-----------
+
+# The _id Field
+jika kita tidak membuat sebuah field untuk _id, maka MongoDB menambah satu field _id untuk kita dan menugaskan sebuah id unik untuk tiap dokumen. pada contoh diatas tadi, tidak ada field _id yang dibuat, dan bisa dilihat dari hasil berupa object nya, MongoDB menugaskan sebuah id unik untuk tiap dokumen. jika kita yang membuat field _id, value nya wajib unik untuk tiap tiap dokumennya. 
+
+- contoh dibawah kita akan memasukkan 3 buah record kedalam table "products", dengan membuat field _id nya:
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/mydb";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  //Insert 3 documents, with specified id values:
+  var myobj = [
+    { _id: 154, name: 'Chocolate Heaven'},
+    { _id: 155, name: 'Tasty Lemon'},
+    { _id: 156, name: 'Vanilla Dream'}
+  ];
+  dbo.collection("products").insertMany(myobj, function(err, res) {
+    if (err) throw err;
+    //Return the result object:
+    console.log(res);
+    db.close();
+  });
+});
+
+simpan kode diatas didalam file bernama "demo_mongodb_insert_id.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_mongodb_insert_id.js 
+
+>> output:
+
+{
+  result: { ok: 1, n: 3 },
+  ops: [
+    { _id: 154, name: 'Chocolate Heaven },
+    { _id: 155, name: 'Tasty Lemon },
+    { _id: 156, name: 'Vanilla Dream } ],
+  insertedCount: 3,
+  insertedIds: [
+    154,
+    155,
+    156 ]
+}
+
+-----------------------------------------------
+
+* Node.js MongoDB Find
+
 -----------
 -----------------------------------------------
