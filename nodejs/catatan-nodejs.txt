@@ -1044,6 +1044,254 @@ simpan kode diatas didalam file bernama "demo_mongodb_insert_id.js" dan jalankan
 -----------------------------------------------
 
 * Node.js MongoDB Find
+pada MongoDB kita menggunakan method find() dan fineOne() untuk menemukan data didalam sebuah collection. sama seperti perintah SELECT yang digunakan untuk menemukan data didalam sebuah table pada sebuah database MySQL.
+
+# Find One
+untuk menampilkan data dari sebuah collection pada MongoDB, kita bisa menggunakan method findOne(). method tersebut akan mengembalikan data pertama didalam sebuah selection. parameter pertama dari method findOne() adalah sebuah object query. pada contoh kali ini kita menggunakan object query yang kosong, yang mana menampilkan semua dokumen didalam sebuah collection (tetapi mengembalikan hanya dokumen yang pertamanya saja.)
+
+- menemukan dokumen pertama didalam collection customers:
+
+Result Size: 753 x 576
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  //Find the first document in the customers collection:
+  dbo.collection("customers").findOne({}, function(err, result) {
+    if (err) throw err;
+    console.log(result.name);
+    db.close();
+  });
+});
+
+simpan kode diatas didalam sebuah file bernama "demo_mongodb_findone.js" dan jalankan filenya dengan perintah berikut:
+>> node demo_mongodb_findone.js 
+
+>> output: Company Inc.
+
+-----------
+
+# Find All
+untuk menampilkan data dari sebuah table didalam MongoDB, kita juga bisa menggunakan method find(). method find() ini mengembalikan semua data yang diminta lewat selection. parameter pertama dari method find() adalah sebuah object query. pada contoh kali ini kita masih akan menggunakan sebuah object query yang kosong, yang mana menampilkan semua dokumen didalam collection. jika tidak ada penggunaan parameter sama sekali pada method find() maka akan mengembalikan hasil yang sama dengan perintah SELECT * pada MySQL.
+
+- contoh menemukan semua dokumen didalam collection customers:
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  //Find all documents in the customers collection:
+  dbo.collection("customers").find({}).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+simpan kode diatas didalam sebuah file bernama "demo_mongodb_find.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_mongodb_find.js 
+
+>> output:
+[
+  { _id: 58fdbf5c0ef8a50b4cdd9a84 , name: 'John', address: 'Highway 71'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a85 , name: 'Peter', address: 'Lowstreet 4'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a86 , name: 'Amy', address: 'Apple st 652'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a87 , name: 'Hannah', address: 'Mountain 21'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a88 , name: 'Michael', address: 'Valley 345'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a89 , name: 'Sandy', address: 'Ocean blvd 2'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8a , name: 'Betty', address: 'Green Grass 1'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8b , name: 'Richard', address: 'Sky st 331'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8c , name: 'Susan', address: 'One way 98'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8d , name: 'Vicky', address: 'Yellow Garden 2'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8e , name: 'Ben', address: 'Park Lane 38'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a8f , name: 'William', address: 'Central st 954'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a90 , name: 'Chuck', address: 'Main Road 989'},
+  { _id: 58fdbf5c0ef8a50b4cdd9a91 , name: 'Viola', address: 'Sideway 1633'}
+]
+
+-----------
+
+# Find Some
+parameter kedua dari method find() adalah object "projection" yang mendeskripsikan yang mana field field untuk dimasukkan kedalam hasil / output. parameter ini bersifat opsional, dan jika ditambahkan maka semua field akan dimasukkan kedalam output.
+
+- contoh mengembalikan field name dan address dari semua dokumen didalam collection customers:
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  //Exclude the _id field from the result:
+  dbo.collection("customers").find({}, { projection: { _id: 0, name: 1, address: 1 } }).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+simpan kode diatas didalam file bernama "demo_mongodb_find_fields.js" dan jalankan filenya dengan perintah berikut:
+
+>> node demo_mongodb_find_fields.js 
+
+>> output:
+[
+  { name: 'John', address: 'Highway 71'},
+  { name: 'Peter', address: 'Lowstreet 4'},
+  { name: 'Amy', address: 'Apple st 652'},
+  { name: 'Hannah', address: 'Mountain 21'},
+  { name: 'Michael', address: 'Valley 345'},
+  { name: 'Sandy', address: 'Ocean blvd 2'},
+  { name: 'Betty', address: 'Green Grass 1'},
+  { name: 'Richard', address: 'Sky st 331'},
+  { name: 'Susan', address: 'One way 98'},
+  { name: 'Vicky', address: 'Yellow Garden 2'},
+  { name: 'Ben', address: 'Park Lane 38'},
+  { name: 'William', address: 'Central st 954'},
+  { name: 'Chuck', address: 'Main Road 989'},
+  { name: 'Viola', address: 'Sideway 1633'}
+]
+
+NOTE: kita tidak diperbolehkan untuk menspesifikasikan value 0 dan 1 didalam object yang sama (kecuali jika salah satu dari field nya adalah field _id). jika kita menspesifikasikan sebuah field dengan value 0, maka field yang lain mendapatkan value 1 dan akan menjadi seperti berikut:
+
+- contoh mengecualikan "address" dari hasil output:
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/mydb";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  //Exclude "address" field in the result:
+  db.collection("customers").find({}, { projection: { address: 0 } }).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+>> output:
+[
+{ _id: 594a51721daccb087032309e, name: 'John' },
+{ _id: 594a51721daccb087032309f, name: 'Peter' },
+{ _id: 594a51721daccb08703230a0, name: 'Amy' },
+{ _id: 594a51721daccb08703230a1, name: 'Hannah' },
+{ _id: 594a51721daccb08703230a2, name: 'Michael' },
+{ _id: 594a51721daccb08703230a3, name: 'Sandy' },
+{ _id: 594a51721daccb08703230a4, name: 'Betty' },
+{ _id: 594a51721daccb08703230a5, name: 'Richard' },
+{ _id: 594a51721daccb08703230a6, name: 'Susan' },
+{ _id: 594a51721daccb08703230a7, name: 'Vicky' },
+{ _id: 594a51721daccb08703230a8, name: 'Ben' },
+{ _id: 594a51721daccb08703230a9, name: 'William' },
+{ _id: 594a51721daccb08703230aa, name: 'Chuck' },
+{ _id: 594a51721daccb08703230ab, name: 'Viola' }
+]
+
+karna address dikecualikan maka field _id dan name akan ditampilkan seperti diatas.
+
+
+untuk mengecualikan field _id, kita wajib mengatur value nya menjadi 0 seperti contoh dibawah ini
+- contoh, yang akan menampilkan hanya field "name" saja:
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/mydb";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  //Return only the "name" field in the result:
+  db.collection("customers").find({}, { projection: { _id: 0, name: 1 } }).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+>> output:
+[
+{ name: 'John' },
+{ name: 'Peter' },
+{ name: 'Amy' },
+{ name: 'Hannah' },
+{ name: 'Michael' },
+{ name: 'Sandy' },
+{ name: 'Betty' },
+{ name: 'Richard' },
+{ name: 'Susan' },
+{ name: 'Vicky' },
+{ name: 'Ben' },
+{ name: 'William' },
+{ name: 'Chuck' },
+{ name: 'Viola' }
+] 
+
+
+- contoh dibawah akan memberikan hasil yang sama dengan contoh pertama diatas tadi, yaitu mengembalikan semua field kecual field _id:
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/mydb";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  //Exclude the _id field from the result:
+  db.collection("customers").find({}, { projection: { _id: 0 } }).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+output:
+[
+{ name: 'John', address: 'Highway 71'},
+{ name: 'Peter', address: 'Lowstreet 4'},
+{ name: 'Amy', address: 'Apple st 652'},
+{ name: 'Hannah', address: 'Mountain 21'},
+{ name: 'Michael', address: 'Valley 345'},
+{ name: 'Sandy', address: 'Ocean blvd 2'},
+{ name: 'Betty', address: 'Green Grass 1'},
+{ name: 'Richard', address: 'Sky st 331'},
+{ name: 'Susan', address: 'One way 98'},
+{ name: 'Vicky', address: 'Yellow Garden 2'},
+{ name: 'Ben', address: 'Park Lane 38'},
+{ name: 'William', address: 'Central st 954'},
+{ name: 'Chuck', address: 'Main Road 989'},
+{ name: 'Viola', address: 'Sideway 1633'}
+] 
+
+
+- contoh dibawah ini akan mendapatkan pesan error karna kita menspesifikasikan kedua value 0 dan 1 didalam object yang sama (kecuali jika salah satu field nya adalah field _id):
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  dbo.collection("customers").find({}, { projection: { name: 1, address: 0 } }).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+}); 
+
+-----------
+
+# The Result Object
+seperti yang bisa dilihat dari hasil contoh diatas, hasilnya bisa diubah menjadi sebuah array berisikan tiap dokumen sebagai sebuah object. untuk mengembalikan contohnya address dari dokumen keempat, cukup dengan merujuk pada array keempat dari properti object address:
+
+console.log(result[3].address);
+
+>> output: Mountain 21
+
+-----------------------------------------------
+
+* Node.js MongoDB Query
 
 -----------
 -----------------------------------------------
