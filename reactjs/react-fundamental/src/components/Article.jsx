@@ -1,11 +1,10 @@
-function Article() {
-  const name = "Naruto";
-  const titles = ["Naruto shippuden", "One Piece", "Bleach", "Eyeshield 21"];
+function Article(props) {
   return (
     <>
-      <div>Namaku adalah {name}</div>
+      <div>Namaku adalah {props.name}</div>
       <div>
-        {titles.map((title) => {
+        <p>Berikut adalah nama nama timku:</p>
+        {props.titles.map((title) => {
           return (
             <>
               <div key={title}>{title}</div>
