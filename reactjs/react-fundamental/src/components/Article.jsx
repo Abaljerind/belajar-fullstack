@@ -1,5 +1,20 @@
 function Article() {
-  return <div>halo dunia, apa kabar?</div>;
+  const name = "Naruto";
+  const titles = ["Naruto shippuden", "One Piece", "Bleach", "Eyeshield 21"];
+  return (
+    <>
+      <div>Namaku adalah {name}</div>
+      <div>
+        {titles.map((title) => {
+          return (
+            <>
+              <div key={title}>{title}</div>
+            </>
+          );
+        })}
+      </div>
+    </>
+  );
 }
 
 export default Article;
