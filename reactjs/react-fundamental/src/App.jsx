@@ -5,8 +5,9 @@ function App() {
   return (
     <>
       <div className="App">
-        <Article />
-        <Article />
+        <Article name="Naruto" titles={["Hinata Hyuga", "Tsunade", "Jiraiya"]} />
+        <hr />
+        <Article name="Sasuke" titles={["Sakura Haruno", "Orochimaru", "Kakashi"]} />
       </div>
     </>
   );
