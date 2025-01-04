@@ -1,13 +1,11 @@
 import "./App.css";
-import Article from "./components/Article";
+import HomePage from "./pages";
 
 function App() {
   return (
     <>
       <div className="App">
-        <Article name="Naruto" titles={["Hinata Hyuga", "Tsunade", "Jiraiya"]} />
-        <hr />
-        <Article name="Sasuke" titles={["Sakura Haruno", "Orochimaru", "Kakashi"]} />
+        <HomePage />
       </div>
     </>
   );
