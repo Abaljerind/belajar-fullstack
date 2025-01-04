@@ -1,17 +1,9 @@
 function Article(props) {
   return (
     <>
-      <div>Namaku adalah {props.name}</div>
-      <div>
-        <p>Berikut adalah nama nama timku:</p>
-        {props.titles.map((title) => {
-          return (
-            <>
-              <div key={title}>{title}</div>
-            </>
-          );
-        })}
-      </div>
+      <h3>Title: {props.title}</h3>
+      <p>Tags: {props.tags.join(", ")}</p>
+      <p>Date: {props.date}</p>
     </>
   );
 }
