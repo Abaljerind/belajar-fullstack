@@ -1,9 +1,10 @@
 function Article(props) {
   return (
     <>
-      <h3>Title: {props.title}</h3>
+      <h3>{props.title}</h3>
       <small>
-        Tags: {props.tags.join(", ")}, Date: {props.date}
+        <strong>Tags:</strong> {props.tags.join(", ")}, <strong>Date:</strong>{" "}
+        {props.date}
       </small>
     </>
   );
