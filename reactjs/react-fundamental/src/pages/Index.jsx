@@ -1,13 +1,25 @@
 import posts from "../posts.json";
 import Article from "../components/Article";
+import { useState } from "react";
 
-export default function HomePage() {
+function HomePage() {
+  const [search, setSearch] = useState("");
+
+  const changeSearch = (e) => {
+    setSearch(e.target.value);
+  };
   return (
     <>
       <h1>Simple Blog</h1>
-      {posts.map((blog) => {
-        return <Article title={blog.title} tags={blog.tags} date={blog.date} />;
+      <div>
+        Cari Artikel : <input type="text" onChange={changeSearch} />
+      </div>
+      <small>Ditemukan 0 data dengan kata {search}</small>
+      {posts.map(({ title, tags, date }, index) => {
+        return <Article title={title} tags={tags} date={date} key={index} />;
       })}
     </>
   );
 }
+
+export default HomePage;
