@@ -3,6 +3,7 @@ function Article(props) {
     <>
       <h3>{props.title}</h3>
       <small>
+        <i style={{ color: "red" }}>{props.isNew && "New Article -- "}</i>{" "}
         <strong>Tags:</strong> {props.tags.join(", ")}, <strong>Date:</strong>{" "}
         {props.date}
       </small>
