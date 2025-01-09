@@ -20,6 +20,14 @@ function HomePage() {
       .then((json) => setExternalPosts(json));
   }, []);
 
+  useEffect(() => {
+    console.log("ada post baru");
+  }, [posts]);
+
+  useEffect(() => {
+    console.log("rendering...");
+  });
+
   return (
     <>
       <h1>Simple Blog</h1>
