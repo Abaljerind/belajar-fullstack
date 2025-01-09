@@ -6,6 +6,7 @@ import Search from "../components/Search";
 function HomePage() {
   const [posts, setPosts] = useState(postsData);
   const [totalPosts, setTotalPosts] = useState(0);
+  const [externalPosts, setExternalPosts] = useState([]);
 
   const onSearchChange = (value) => {
     const filteredPosts = postsData.filter((post) => post.title.includes(value));
@@ -14,12 +15,10 @@ function HomePage() {
   };
 
   useEffect(() => {
-    console.log("render");
-
-    return () => {
-      console.log("cleanup");
-    };
-  }, [posts]);
+    fetch("https://jsonplaceholder.typicode.com/posts/")
+      .then((response) => response.json())
+      .then((json) => setExternalPosts(json));
+  }, []);
 
   return (
     <>
@@ -27,6 +26,15 @@ function HomePage() {
       <Search onSearchChange={onSearchChange} totalPosts={totalPosts} />
       {posts.map((props, index) => {
         return <Article {...props} key={index} />;
+      })}
+      <hr />
+      <h2>External Posts</h2>
+      {externalPosts.map((item) => {
+        return (
+          <p key={item.id}>
+            {item.id}. {item.title}
+          </p>
+        );
       })}
     </>
   );
