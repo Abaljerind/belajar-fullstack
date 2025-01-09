@@ -1,6 +1,6 @@
 import postsData from "../posts.json";
 import Article from "../components/Article";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Search from "../components/Search";
 
 function HomePage() {
@@ -8,12 +8,18 @@ function HomePage() {
   const [totalPosts, setTotalPosts] = useState(0);
 
   const onSearchChange = (value) => {
-    const filteredPosts = postsData.filter((post) =>
-      post.title.includes(value)
-    );
+    const filteredPosts = postsData.filter((post) => post.title.includes(value));
     setPosts(filteredPosts);
     setTotalPosts(filteredPosts.length);
   };
+
+  useEffect(() => {
+    console.log("render");
+
+    return () => {
+      console.log("cleanup");
+    };
+  }, [posts]);
 
   return (
     <>
