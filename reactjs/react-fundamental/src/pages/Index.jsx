@@ -1,12 +1,11 @@
+import { useState } from "react";
 import postsData from "../posts.json";
 import Article from "../components/Article";
-import { useState, useEffect } from "react";
 import Search from "../components/Search";
 
 function HomePage() {
   const [posts, setPosts] = useState(postsData);
   const [totalPosts, setTotalPosts] = useState(0);
-  const [externalPosts, setExternalPosts] = useState([]);
 
   const onSearchChange = (value) => {
     const filteredPosts = postsData.filter((post) => post.title.includes(value));
@@ -14,19 +13,13 @@ function HomePage() {
     setTotalPosts(filteredPosts.length);
   };
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts/")
-      .then((response) => response.json())
-      .then((json) => setExternalPosts(json));
-  }, []);
+  // useEffect(() => {
+  //   console.log("ada post baru");
+  // }, [posts]);
 
-  useEffect(() => {
-    console.log("ada post baru");
-  }, [posts]);
-
-  useEffect(() => {
-    console.log("rendering...");
-  });
+  // useEffect(() => {
+  //   console.log("rendering...");
+  // });
 
   return (
     <>
@@ -34,15 +27,6 @@ function HomePage() {
       <Search onSearchChange={onSearchChange} totalPosts={totalPosts} />
       {posts.map((props, index) => {
         return <Article {...props} key={index} />;
-      })}
-      <hr />
-      <h2>External Posts</h2>
-      {externalPosts.map((item) => {
-        return (
-          <p key={item.id}>
-            {item.id}. {item.title}
-          </p>
-        );
       })}
     </>
   );
