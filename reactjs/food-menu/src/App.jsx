@@ -82,12 +82,12 @@ function Food(props) {
   const { nama, deskripsi, harga, foto, stok } = props.foodObj;
 
   return (
-    <li className="food">
+    <li className={`food ${stok ? "" : "sold-out"}`}>
       <img src={foto} alt={nama} width={100} height={70} />
       <div>
         <h3>{nama}</h3>
         <p>{deskripsi}</p>
-        <h4>Rp{harga}</h4>
+        <h4>{stok ? `Rp${harga}` : "Habis"}</h4>
       </div>
     </li>
   );
