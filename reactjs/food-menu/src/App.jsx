@@ -1,5 +1,6 @@
 import "./index.css";
 import data from "./data";
+import { useEffect, useState } from "react";
 
 function App() {
   return (
@@ -46,16 +47,24 @@ function Footer() {
   const jamBuka = 10;
   const jamTutup = 22;
 
+  const [jam, setJam] = useState(0);
+
+  useEffect(() => {
+    setInterval(() => {
+      setJam(new Date().toLocaleTimeString());
+    }, 1000);
+  }, []);
+
   const isOpen = hour >= jamBuka && hour <= jamTutup;
 
   if (isOpen) {
-    return <FooterOpenHour jamBuka={jamBuka} jamTutup={jamTutup} />;
+    return <FooterOpenHour jamBuka={jamBuka} jamTutup={jamTutup} jam={jam} />;
   } else {
-    return <FooterClosedHour jamBuka={jamBuka} jamTutup={jamTutup} />;
+    return <FooterClosedHour jamBuka={jamBuka} jamTutup={jamTutup} jam={jam} />;
   }
 }
 
-function FooterOpenHour({ jamBuka, jamTutup }) {
+function FooterOpenHour({ jamBuka, jamTutup, jam }) {
   return (
     <footer className="footer">
       <div className="order">
@@ -64,6 +73,7 @@ function FooterOpenHour({ jamBuka, jamTutup }) {
         </p>
         <button className="btn">Order</button>
       </div>
+      <p>Jam: {jam} WIB</p>
     </footer>
   );
 }
@@ -74,6 +84,7 @@ function FooterClosedHour(props) {
       <p>
         Silahkan datang di jam {props.jamBuka} - {props.jamTutup}.
       </p>
+      <p>Jam: {props.jam} WIB</p>
     </footer>
   );
 }
