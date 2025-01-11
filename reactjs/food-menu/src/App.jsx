@@ -16,18 +16,21 @@ function Header() {
 }
 
 function Menu() {
-  const foods = data;
+  // const foods = data;
+  const foods = [];
   const numFoods = foods.length;
 
   return (
     <main className="menu">
       <h2>Menu Kita</h2>
-      {numFoods > 0 && (
+      {numFoods > 0 ? (
         <ul className="foods">
           {foods.map((food, index) => {
             return <Food foodObj={food} key={index + 1} />;
           })}
         </ul>
+      ) : (
+        <p>Maaf, saat ini kami sedang tutup 🙏</p>
       )}
     </main>
   );
@@ -35,20 +38,24 @@ function Menu() {
 
 function Footer() {
   const hour = new Date().getHours();
-  const jamBuka = 10;
+  const jamBuka = 20;
   const jamTutup = 22;
 
-  const isOpen = hour >= jamBuka || hour <= jamTutup;
+  const isOpen = hour >= jamBuka && hour <= jamTutup;
 
   return (
     <footer className="footer">
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>
             {new Date().getFullYear()} Warteg Mang Udin | Jam Buka {jamBuka} - Jam Tutup {jamTutup}
           </p>
           <button className="btn">Order</button>
         </div>
+      ) : (
+        <p>
+          Silahkan datang di jam {jamBuka} - {jamTutup}.
+        </p>
       )}
     </footer>
   );
