@@ -1,4 +1,5 @@
 import "./index.css";
+import data from "./data";
 
 function App() {
   return (
@@ -18,8 +19,11 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Menu Kita</h2>
-      <Food nama="Nasi Goreng" deskripsi="ini nasi goreng enak" harga={24000} foto="../public/food/nasi-goreng.jpg" />
-      <Food nama="Gado Gado" deskripsi="ini gado gado yang enak" harga={24000} foto="../public/food/gado-gado.jpg" />
+      <ul className="foods">
+        {data.map((food, index) => {
+          return <Food foodObj={food} key={index + 1} />;
+        })}
+      </ul>
     </main>
   );
 }
@@ -45,14 +49,14 @@ function Footer() {
 function Food(props) {
   console.log(props);
   return (
-    <div className="food">
-      <img src={props.foto} alt={props.nama} width={100} height={70} />
+    <li className="food">
+      <img src={props.foodObj.foto} alt={props.foodObj.nama} width={100} height={70} />
       <div>
-        <h3>{props.nama}</h3>
-        <p>{props.deskripsi}</p>
-        <h4>Rp{props.harga}</h4>
+        <h3>{props.foodObj.nama}</h3>
+        <p>{props.foodObj.deskripsi}</p>
+        <h4>Rp{props.foodObj.harga}</h4>
       </div>
-    </div>
+    </li>
   );
 }
 
