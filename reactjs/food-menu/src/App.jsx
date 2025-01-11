@@ -12,7 +12,7 @@ function App() {
 }
 
 function Header() {
-  return <h1>Warteg Mang Udin</h1>;
+  return <h1 style={{ color: "mediumslateblue" }}>Warteg Mang Udin</h1>;
 }
 
 function Menu() {
@@ -22,13 +22,18 @@ function Menu() {
 
   return (
     <main className="menu">
-      <h2>Menu Kita</h2>
+      <h2 style={{ fontSize: "32px", color: "mediumslateblue" }}>Menu Kita</h2>
       {numFoods > 0 ? (
-        <ul className="foods">
-          {foods.map((food, index) => {
-            return <Food foodObj={food} key={index + 1} />;
-          })}
-        </ul>
+        <>
+          <p style={{ fontSize: "20px", color: "mediumslateblue" }}>
+            Aneka makanan Indonesia yang ada dan tersedia di Warteg Mang Udin! Buka Senin - Minggu 🚀
+          </p>
+          <ul className="foods">
+            {foods.map((food, index) => {
+              return <Food foodObj={food} key={index + 1} />;
+            })}
+          </ul>
+        </>
       ) : (
         <p>Maaf, saat ini kami sedang tutup 🙏</p>
       )}
