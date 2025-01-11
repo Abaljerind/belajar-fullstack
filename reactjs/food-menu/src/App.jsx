@@ -18,10 +18,8 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Menu Kita</h2>
-      <Food />
-      <Food />
-      <Food />
-      <Food />
+      <Food nama="Nasi Goreng" deskripsi="ini nasi goreng enak" harga={24000} foto="../public/food/nasi-goreng.jpg" />
+      <Food nama="Gado Gado" deskripsi="ini gado gado yang enak" harga={24000} foto="../public/food/gado-gado.jpg" />
     </main>
   );
 }
@@ -31,11 +29,11 @@ function Footer() {
   const jamBuka = 12;
   const jamTutup = 22;
 
-  if (hour < jamBuka || hour > jamTutup) {
-    alert("Warteg Mang Udin Tutup");
-  } else {
-    alert("Warung Mang Udin Buka");
-  }
+  // if (hour < jamBuka || hour > jamTutup) {
+  //   alert("Warteg Mang Udin Tutup");
+  // } else {
+  //   alert("Warung Mang Udin Buka");
+  // }
 
   return (
     <footer className="footer">
@@ -44,12 +42,16 @@ function Footer() {
   );
 }
 
-function Food() {
+function Food(props) {
+  console.log(props);
   return (
-    <div>
-      <img src="../food/soto-betawi.jpg" alt="Soto Betawi" width={100} height={70} />
-      <h2>Soto Betawi</h2>
-      <p>Soto Betawi dari Jakarta</p>
+    <div className="food">
+      <img src={props.foto} alt={props.nama} width={100} height={70} />
+      <div>
+        <h3>{props.nama}</h3>
+        <p>{props.deskripsi}</p>
+        <h4>Rp{props.harga}</h4>
+      </div>
     </div>
   );
 }
