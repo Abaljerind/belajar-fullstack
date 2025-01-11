@@ -16,38 +16,45 @@ function Header() {
 }
 
 function Menu() {
+  const foods = data;
+  const numFoods = foods.length;
+
   return (
     <main className="menu">
       <h2>Menu Kita</h2>
-      <ul className="foods">
-        {data.map((food, index) => {
-          return <Food foodObj={food} key={index + 1} />;
-        })}
-      </ul>
+      {numFoods > 0 && (
+        <ul className="foods">
+          {foods.map((food, index) => {
+            return <Food foodObj={food} key={index + 1} />;
+          })}
+        </ul>
+      )}
     </main>
   );
 }
 
 function Footer() {
   const hour = new Date().getHours();
-  const jamBuka = 12;
+  const jamBuka = 10;
   const jamTutup = 22;
 
-  // if (hour < jamBuka || hour > jamTutup) {
-  //   alert("Warteg Mang Udin Tutup");
-  // } else {
-  //   alert("Warung Mang Udin Buka");
-  // }
+  const isOpen = hour >= jamBuka || hour <= jamTutup;
 
   return (
     <footer className="footer">
-      {new Date().getFullYear()} Warteg Mang Udin | Jam Buka {jamBuka} - Jam Tutup {jamTutup}
+      {isOpen && (
+        <div className="order">
+          <p>
+            {new Date().getFullYear()} Warteg Mang Udin | Jam Buka {jamBuka} - Jam Tutup {jamTutup}
+          </p>
+          <button className="btn">Order</button>
+        </div>
+      )}
     </footer>
   );
 }
 
 function Food(props) {
-  console.log(props);
   return (
     <li className="food">
       <img src={props.foodObj.foto} alt={props.foodObj.nama} width={100} height={70} />
