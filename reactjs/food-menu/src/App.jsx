@@ -25,7 +25,21 @@ function Menu() {
 }
 
 function Footer() {
-  return <footer>{new Date().getFullYear()} Warteg Mang Udin</footer>;
+  const hour = new Date().getHours();
+  const jamBuka = 12;
+  const jamTutup = 22;
+
+  if (hour < jamBuka || hour > jamTutup) {
+    alert("Warteg Mang Udin Tutup");
+  } else {
+    alert("Warung Mang Udin Buka");
+  }
+
+  return (
+    <footer>
+      {new Date().getFullYear()} Warteg Mang Udin | Jam Buka {jamBuka} - Jam Tutup {jamTutup}
+    </footer>
+  );
 }
 
 function Food() {
