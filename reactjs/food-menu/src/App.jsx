@@ -1,10 +1,12 @@
+import "./index.css";
+
 function App() {
   return (
-    <>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
-    </>
+    </div>
   );
 }
 
@@ -14,13 +16,13 @@ function Header() {
 
 function Menu() {
   return (
-    <div>
+    <main className="menu">
       <h2>Menu Kita</h2>
       <Food />
       <Food />
       <Food />
       <Food />
-    </div>
+    </main>
   );
 }
 
@@ -36,7 +38,7 @@ function Footer() {
   }
 
   return (
-    <footer>
+    <footer className="footer">
       {new Date().getFullYear()} Warteg Mang Udin | Jam Buka {jamBuka} - Jam Tutup {jamTutup}
     </footer>
   );
