@@ -38,27 +38,31 @@ function Menu() {
 
 function Footer() {
   const hour = new Date().getHours();
-  const jamBuka = 20;
+  const jamBuka = 10;
   const jamTutup = 22;
 
   const isOpen = hour >= jamBuka && hour <= jamTutup;
 
-  return (
-    <footer className="footer">
-      {isOpen ? (
+  if (isOpen) {
+    return (
+      <footer className="footer">
         <div className="order">
           <p>
             {new Date().getFullYear()} Warteg Mang Udin | Jam Buka {jamBuka} - Jam Tutup {jamTutup}
           </p>
           <button className="btn">Order</button>
         </div>
-      ) : (
+      </footer>
+    );
+  } else {
+    return (
+      <footer className="footer">
         <p>
           Silahkan datang di jam {jamBuka} - {jamTutup}.
         </p>
-      )}
-    </footer>
-  );
+      </footer>
+    );
+  }
 }
 
 function Food(props) {
