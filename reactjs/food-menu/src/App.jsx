@@ -16,8 +16,8 @@ function Header() {
 }
 
 function Menu() {
-  // const foods = data;
-  const foods = [];
+  const foods = data;
+  // const foods = [];
   const numFoods = foods.length;
 
   return (
@@ -50,12 +50,12 @@ function Footer() {
   }
 }
 
-function FooterOpenHour(props) {
+function FooterOpenHour({ jamBuka, jamTutup }) {
   return (
     <footer className="footer">
       <div className="order">
         <p>
-          {new Date().getFullYear()} Warteg Mang Udin | Jam Buka {props.jamBuka} - Jam Tutup {props.jamTutup}
+          {new Date().getFullYear()} Warteg Mang Udin | Jam Buka {jamBuka} - Jam Tutup {jamTutup}
         </p>
         <button className="btn">Order</button>
       </div>
@@ -63,7 +63,7 @@ function FooterOpenHour(props) {
   );
 }
 
-function FooterClosedHour() {
+function FooterClosedHour(props) {
   return (
     <footer className="footer">
       <p>
@@ -74,13 +74,15 @@ function FooterClosedHour() {
 }
 
 function Food(props) {
+  const { nama, deskripsi, harga, foto, stok } = props.foodObj;
+
   return (
     <li className="food">
-      <img src={props.foodObj.foto} alt={props.foodObj.nama} width={100} height={70} />
+      <img src={foto} alt={nama} width={100} height={70} />
       <div>
-        <h3>{props.foodObj.nama}</h3>
-        <p>{props.foodObj.deskripsi}</p>
-        <h4>Rp{props.foodObj.harga}</h4>
+        <h3>{nama}</h3>
+        <p>{deskripsi}</p>
+        <h4>Rp{harga}</h4>
       </div>
     </li>
   );
