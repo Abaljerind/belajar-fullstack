@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const listItems = [
   { id: 1, title: "Eat", done: false },
   { id: 2, title: "Sleep", done: true },
@@ -21,10 +23,18 @@ function Logo() {
 }
 
 function Form() {
+  const [title, setTitle] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
-    <div className="add-form">
+    <form className="add-form" onSubmit={handleSubmit}>
       <h3>Tambahkan yang mau kamu catat 🫡</h3>
-    </div>
+      <input type="text" name="title" id="" value={title} onChange={(e) => setTitle(e.target.value)} />
+      <button>Add</button>
+    </form>
   );
 }
 
