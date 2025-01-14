@@ -21,7 +21,7 @@ function App() {
         <Logo />
         <Form onAddItem={handleAddItem} />
         <CheckList listItems={listItems} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
-        <Stats />
+        <Stats listItems={listItems} />
       </div>
     </>
   );
@@ -80,10 +80,26 @@ function Item({ item, onDeleteItem, onToggleItem }) {
   );
 }
 
-function Stats() {
+function Stats({ listItems }) {
+  if (listItems.length === 0) {
+    return (
+      <footer className="stats">
+        <p>📃 Yuk buat catatan kamu 😁</p>
+      </footer>
+    );
+  }
+
+  const totalItems = listItems.length;
+  const totalItemsDone = listItems.filter((item) => item.done).length;
+  const percentageItems = Math.round((totalItemsDone / totalItems) * 100);
+
   return (
     <footer className="stats">
-      <span>📃 Kamu punya x catatan dan baru x yang di selesai (x%) ✅</span>
+      <span>
+        {percentageItems === 100
+          ? "Kamu sudah melakukan semuanya 👍😁"
+          : `📃 Kamu punya ${totalItems} catatan dan baru ${totalItemsDone} yang sudah selesai. Status: (${percentageItems}%) ✅`}
+      </span>
     </footer>
   );
 }
