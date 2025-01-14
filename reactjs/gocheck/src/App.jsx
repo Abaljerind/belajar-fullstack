@@ -15,12 +15,24 @@ function App() {
     setListItems((prevListItems) => prevListItems.map((item) => (item.id === id ? { ...item, done: !item.done } : item)));
   }
 
+  function handleClearItems() {
+    const confirm = window.confirm("Anda yakin ingin mengkosongkan catatan?");
+    if (confirm) {
+      setListItems([]);
+    }
+  }
+
   return (
     <>
       <div className="app">
         <Logo />
         <Form onAddItem={handleAddItem} />
-        <CheckList listItems={listItems} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
+        <CheckList
+          listItems={listItems}
+          onDeleteItem={handleDeleteItem}
+          onToggleItem={handleToggleItem}
+          onClearItems={handleClearItems}
+        />
         <Stats listItems={listItems} />
       </div>
     </>
@@ -88,6 +100,7 @@ function CheckList(props) {
           <option value="title">Urutkan berdasarkan judul</option>
           <option value="status">Urutkan berdasarkan status</option>
         </select>
+        <button onClick={props.onClearItems}>Hapus semua catatan</button>
       </div>
     </div>
   );
