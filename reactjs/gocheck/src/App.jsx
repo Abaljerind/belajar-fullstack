@@ -7,12 +7,16 @@ function App() {
     setListItems((prevListItems) => [...prevListItems, item]);
   }
 
+  function handleDeleteItem(id) {
+    setListItems((prevListItems) => prevListItems.filter((item) => item.id !== id));
+  }
+
   return (
     <>
       <div className="app">
         <Logo />
         <Form onAddItem={handleAddItem} />
-        <CheckList listItems={listItems} />
+        <CheckList listItems={listItems} onDeleteItem={handleDeleteItem} />
         <Stats />
       </div>
     </>
@@ -55,19 +59,19 @@ function CheckList(props) {
     <div className="list">
       <ul>
         {props.listItems.map((item) => {
-          return <Item item={item} key={item.id} />;
+          return <Item item={item} key={item.id} onDeleteItem={props.onDeleteItem} />;
         })}
       </ul>
     </div>
   );
 }
 
-function Item({ item }) {
+function Item({ item, onDeleteItem }) {
   return (
     <li>
       <input type="checkbox" />
       <p style={{ textDecoration: item.done ? "line-through" : "" }}>{item.title}</p>
-      <button>❌</button>
+      <button onClick={() => onDeleteItem(item.id)}>❌</button>
     </li>
   );
 }
