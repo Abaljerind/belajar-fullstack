@@ -11,12 +11,16 @@ function App() {
     setListItems((prevListItems) => prevListItems.filter((item) => item.id !== id));
   }
 
+  function handleToggleItem(id) {
+    setListItems((prevListItems) => prevListItems.map((item) => (item.id === id ? { ...item, done: !item.done } : item)));
+  }
+
   return (
     <>
       <div className="app">
         <Logo />
         <Form onAddItem={handleAddItem} />
-        <CheckList listItems={listItems} onDeleteItem={handleDeleteItem} />
+        <CheckList listItems={listItems} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
         <Stats />
       </div>
     </>
@@ -59,17 +63,17 @@ function CheckList(props) {
     <div className="list">
       <ul>
         {props.listItems.map((item) => {
-          return <Item item={item} key={item.id} onDeleteItem={props.onDeleteItem} />;
+          return <Item item={item} key={item.id} onDeleteItem={props.onDeleteItem} onToggleItem={props.onToggleItem} />;
         })}
       </ul>
     </div>
   );
 }
 
-function Item({ item, onDeleteItem }) {
+function Item({ item, onDeleteItem, onToggleItem }) {
   return (
     <li>
-      <input type="checkbox" />
+      <input type="checkbox" value={item.done} onChange={() => onToggleItem(item.id)} />
       <p style={{ textDecoration: item.done ? "line-through" : "" }}>{item.title}</p>
       <button onClick={() => onDeleteItem(item.id)}>❌</button>
     </li>
