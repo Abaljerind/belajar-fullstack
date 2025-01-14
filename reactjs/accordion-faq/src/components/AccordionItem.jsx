@@ -1,10 +1,8 @@
-import { useState } from "react";
-
-function AccordionItem({ number, question, answer }) {
-  const [isOpen, setIsOpen] = useState(false);
+function AccordionItem({ number, question, answer, currOpen, onSetOpen }) {
+  const isOpen = number === currOpen;
 
   function handleToggle() {
-    setIsOpen((prevIsOpen) => !prevIsOpen);
+    onSetOpen(isOpen ? null : number);
   }
 
   return (
