@@ -46,13 +46,13 @@ function App() {
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendList friends={friends} onSelectedFriend={handleSelectedFriend} />
+        <FriendList friends={friends} onSelectedFriend={handleSelectedFriend} selectedFriend={selectedFriend} />
         {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
         <button className="button" onClick={handleShowAddFriend}>
           {showAddFriend ? "Tutup" : "Tambah teman"}
         </button>
       </div>
-      {selectedFriend && <FormSplitBill />}
+      {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} />}
     </div>
   );
 }
