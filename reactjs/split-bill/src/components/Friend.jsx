@@ -1,8 +1,8 @@
 export default function Friend({ friend, onSelectedFriend, selectedFriend }) {
-  const isSelected = selectedFriend?.id === friend.id;
+  const isSelectedFriend = selectedFriend?.id === friend.id;
 
   return (
-    <li className={isSelected ? "selected" : ""}>
+    <li className={isSelectedFriend ? "selected" : ""}>
       <img src={friend.image} alt={friend.name} />
       <h3>{friend.name}</h3>
       {friend.balance < 0 && (
@@ -17,7 +17,7 @@ export default function Friend({ friend, onSelectedFriend, selectedFriend }) {
       )}
       {friend.balance === 0 && <p>Kamu dan {friend.name} tidak ada hutang</p>}
       <button className="button" onClick={() => onSelectedFriend(friend)}>
-        {isSelected ? "Tutup" : "Pilih"}
+        {isSelectedFriend ? "Tutup" : "Pilih"}
       </button>
     </li>
   );
