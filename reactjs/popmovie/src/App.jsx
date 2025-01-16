@@ -186,13 +186,10 @@ function WatchedList() {
 
 function Main() {
   return (
-    <>
-      <main className="main">
-        <MovieList />
-        <WatchedList />
-      </main>
-      ;
-    </>
+    <main className="main">
+      <MovieList />
+      <WatchedList />
+    </main>
   );
 }
 
