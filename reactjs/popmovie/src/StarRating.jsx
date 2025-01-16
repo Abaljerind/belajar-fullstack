@@ -20,15 +20,15 @@ const starStyle = {
   cursor: "pointer",
 };
 
-export default function StarRating() {
+export default function StarRating({ max }) {
   return (
     <div style={containerStyle}>
       <div style={containerStarStyle}>
-        {Array.from({ length: 5 }, (_, i) => {
-          <span>{`Star ${i + 1}`}</span>;
+        {Array.from({ length: max }, (_, i) => {
+          return <span>{`Star${i + 1}`}</span>;
         })}
       </div>
-      <p style={textStyle}>5</p>
+      <p style={textStyle}>{max} star</p>
     </div>
   );
 }
