@@ -72,11 +72,21 @@ function Search() {
   );
 }
 
-function NumResults({ movies }) {
+function NumResults() {
   return (
     <p className="num-results">
       Found <strong>X</strong> results
     </p>
+  );
+}
+
+function NavBar() {
+  return (
+    <nav className="nav-bar">
+      <Logo />
+      <Search />
+      <NumResults />
+    </nav>
   );
 }
 
@@ -174,19 +184,23 @@ function WatchedList() {
   );
 }
 
-export default function App() {
+function Main() {
   return (
     <>
-      <nav className="nav-bar">
-        <Logo />
-        <Search />
-        <NumResults />
-      </nav>
-
       <main className="main">
         <MovieList />
         <WatchedList />
       </main>
+      ;
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      <NavBar />
+      <Main />
     </>
   );
 }
