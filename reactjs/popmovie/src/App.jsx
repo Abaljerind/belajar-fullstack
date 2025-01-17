@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const tempMovieData = [
   {
@@ -189,9 +189,21 @@ function Main({ children }) {
   return <main className="main">{children}</main>;
 }
 
+const API_KEY = "964fbde3";
+
 export default function App() {
-  const [movies, setMovies] = useState(tempMovieData);
+  const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(tempWatchedData);
+
+  useEffect(() => {
+    async function fetchMovie() {
+      const res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=naruto`);
+      const data = await res.json();
+      setMovies(data.Search);
+    }
+
+    fetchMovie();
+  }, []);
 
   return (
     <>
