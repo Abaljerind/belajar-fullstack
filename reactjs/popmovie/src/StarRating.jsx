@@ -49,12 +49,13 @@ StarRating.propTypes = {
   size: PropTypes.number,
 };
 
-export default function StarRating({ max = 5, color, size = 24 }) {
+export default function StarRating({ max = 5, color, size = 24, onSetRating }) {
   const [rating, setRating] = useState(0);
   const [temporaryRating, setTemporaryRating] = useState(0);
 
   function handleRating(rating) {
     setRating(rating);
+    onSetRating(rating);
   }
 
   return (
