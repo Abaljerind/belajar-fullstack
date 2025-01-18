@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import StarRating from "./StarRating";
 
 const tempMovieData = [
   {
@@ -185,24 +186,28 @@ function BoxMovies({ children }) {
 
 function MovieDetails({ selectedMovieId, onCloseMovie }) {
   const [movie, setMovie] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     Title: title,
-    Year: year,
     Poster: poster,
     imdbRating,
     Runtime: runtime,
     Plot: plot,
     Genre: genre,
     Country: country,
-    Rated: rated,
+    Actors: actors,
+    Director: director,
+    Released: released,
   } = movie;
 
   useEffect(() => {
+    setIsLoading(true);
     async function getMovieDetails() {
       const response = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${selectedMovieId}`);
       const data = await response.json();
       setMovie(data);
+      setIsLoading(false);
     }
 
     getMovieDetails();
@@ -210,10 +215,36 @@ function MovieDetails({ selectedMovieId, onCloseMovie }) {
 
   return (
     <div className="details">
-      <button className="btn-back" onClick={onCloseMovie}>
-        ✖️
-      </button>
-      {selectedMovieId}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <header>
+            <button className="btn-back" onClick={onCloseMovie}>
+              ✖️
+            </button>
+            <img src={poster} alt={`${title} poster`} />
+            <div className="details-overview">
+              <h2>{title}</h2>
+              <p>🗓️ release: {released}</p>
+              <p>⌛ runtime: {runtime}</p>
+              <p>🌟 rating: {imdbRating}</p>
+            </div>
+          </header>
+          <section>
+            <p>
+              <em>{plot}</em>
+            </p>
+            <p>Genre: {genre}</p>
+            <p>Starring: {actors}</p>
+            <p>Directed by: {director}</p>
+            <p>Country: {country}</p>
+            <div className="rating">
+              <StarRating max={10} size={24} color="#fcc419" />
+            </div>
+          </section>
+        </>
+      )}
     </div>
   );
 }
