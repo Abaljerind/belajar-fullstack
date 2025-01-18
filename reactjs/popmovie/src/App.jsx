@@ -189,17 +189,30 @@ function Main({ children }) {
   return <main className="main">{children}</main>;
 }
 
+function Loader() {
+  return (
+    <div className="loader">
+      <div className="loading-bar">
+        <div className="bar"></div>
+      </div>
+    </div>
+  );
+}
+
 const API_KEY = "964fbde3";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(tempWatchedData);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     async function fetchMovie() {
       const res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=naruto`);
       const data = await res.json();
       setMovies(data.Search);
+      setIsLoading(false);
     }
 
     fetchMovie();
@@ -214,9 +227,7 @@ export default function App() {
       </NavBar>
 
       <Main>
-        <BoxMovies>
-          <MovieList movies={movies} />
-        </BoxMovies>
+        <BoxMovies>{isLoading ? <Loader /> : <MovieList movies={movies} />}</BoxMovies>
         <BoxMovies>
           <WatchedSummary watched={watched} />
           <WatchedList watched={watched} />
