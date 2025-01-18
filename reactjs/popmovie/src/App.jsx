@@ -58,9 +58,7 @@ function Logo() {
   );
 }
 
-function Search() {
-  const [query, setQuery] = useState("");
-
+function Search({ query, setQuery }) {
   return (
     <input
       className="search"
@@ -214,15 +212,15 @@ export default function App() {
   const [watched, setWatched] = useState(tempWatchedData);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-
-  // const query = "wqesadoanlkdm";
-  const query = "naruto";
+  const [query, setQuery] = useState("naruto");
 
   useEffect(() => {
-    setIsLoading(true);
     async function fetchMovie() {
       try {
-        const res = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`);
+        setIsLoading(true);
+        setError("");
+
+        const res = await fetch(`http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
         if (!res.ok) throw new Error("Ada yang salah...");
 
         const data = await res.json();
@@ -236,14 +234,20 @@ export default function App() {
       }
     }
 
+    if (query.length <= 5) {
+      setMovies([]);
+      setError("");
+      return;
+    }
+
     fetchMovie();
-  }, []);
+  }, [query]);
 
   return (
     <>
       <NavBar>
         <Logo />
-        <Search />
+        <Search query={query} setQuery={setQuery} />
         <NumResults movies={movies} />
       </NavBar>
 
