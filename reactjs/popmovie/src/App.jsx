@@ -241,6 +241,11 @@ function MovieDetails({ selectedMovieId, onCloseMovie, onAddWatched, watched }) 
   useEffect(() => {
     if (!title) return;
     document.title = `PopMovie | ${title}`;
+
+    // function cleanup. lifecycle unmount dari useEffect
+    return function () {
+      document.title = "PopMovie";
+    };
   }, [title]);
 
   return (
