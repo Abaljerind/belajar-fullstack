@@ -238,6 +238,11 @@ function MovieDetails({ selectedMovieId, onCloseMovie, onAddWatched, watched }) 
     getMovieDetails();
   }, [selectedMovieId]);
 
+  useEffect(() => {
+    if (!title) return;
+    document.title = `PopMovie | ${title}`;
+  }, [title]);
+
   return (
     <div className="details">
       {isLoading ? (
